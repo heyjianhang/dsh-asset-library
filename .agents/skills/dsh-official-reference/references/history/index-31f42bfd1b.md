@@ -1,0 +1,258 @@
+# .agents/notes/archived/bug-fix
+
+仅追溯背景时读取；提案、废弃记录不代表当前接口。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Note: Preserve Windows DACLs during atomic file replacement](2026-07-19-windows-atomic-write-dacl-preservation-b2c5cb4287.md) — `.agents/notes/archived/bug-fix/2026-07-19-windows-atomic-write-dacl-preservation.md`
+- [Agent Note: Windows 原子文件替换期间保留 DACL](2026-07-19-windows-atomic-write-dacl-preservation.zh-7930a5d6c4.md) — `.agents/notes/archived/bug-fix/2026-07-19-windows-atomic-write-dacl-preservation.zh.md`
+- [Agent Note: Keep the Code Mode result card complete](2026-07-20-code-mode-result-card-completeness-a7fffa88eb.md) — `.agents/notes/archived/bug-fix/2026-07-20-code-mode-result-card-completeness.md`
+- [Agent Note: 保证 Code Mode 结果卡片内容完整](2026-07-20-code-mode-result-card-completeness.zh-d857cb02d1.md) — `.agents/notes/archived/bug-fix/2026-07-20-code-mode-result-card-completeness.zh.md`
+- [Agent Note: A config hot-reload must not kill or degrade a live app](2026-07-20-config-hot-reload-resilience-d3054f4a64.md) — `.agents/notes/archived/bug-fix/2026-07-20-config-hot-reload-resilience.md`
+- [Agent Note: 配置热重载不得杀死或降级正在运行的应用](2026-07-20-config-hot-reload-resilience.zh-65fdfd2ab8.md) — `.agents/notes/archived/bug-fix/2026-07-20-config-hot-reload-resilience.zh.md`
+- [Agent Note: Render error cause chains at every diagnostic boundary](2026-07-20-error-cause-chain-diagnostics-12a679dd81.md) — `.agents/notes/archived/bug-fix/2026-07-20-error-cause-chain-diagnostics.md`
+- [Agent Note: 在每个诊断边界渲染错误 cause 链](2026-07-20-error-cause-chain-diagnostics.zh-dd4a10e6d9.md) — `.agents/notes/archived/bug-fix/2026-07-20-error-cause-chain-diagnostics.zh.md`
+- [Agent Note: The summarization call replays the conversation prefix for KV-cache reuse](2026-07-21-compaction-summary-prefix-cache-reuse-d11b642211.md) — `.agents/notes/archived/bug-fix/2026-07-21-compaction-summary-prefix-cache-reuse.md`
+- [Agent Note: 摘要调用回放对话前缀以复用 KV Cache](2026-07-21-compaction-summary-prefix-cache-reuse.zh-faa7adf9e5.md) — `.agents/notes/archived/bug-fix/2026-07-21-compaction-summary-prefix-cache-reuse.zh.md`
+- [Agent Note: Semantic session checkpoints](2026-07-21-semantic-session-checkpoints-84b3bda20a.md) — `.agents/notes/archived/bug-fix/2026-07-21-semantic-session-checkpoints.md`
+- [Agent Note: 语义会话检查点](2026-07-21-semantic-session-checkpoints.zh-77c01b0109.md) — `.agents/notes/archived/bug-fix/2026-07-21-semantic-session-checkpoints.zh.md`
+- [Agent Note: A collapsed sidebar retains its control rail](2026-07-22-collapsed-sidebar-control-rail-22d00af983.md) — `.agents/notes/archived/bug-fix/2026-07-22-collapsed-sidebar-control-rail.md`
+- [Agent Note: 侧边栏折叠后保留控制栏](2026-07-22-collapsed-sidebar-control-rail.zh-41c70599c1.md) — `.agents/notes/archived/bug-fix/2026-07-22-collapsed-sidebar-control-rail.zh.md`
+- [Agent Note: Classify pi-ai transport truncations from flattened message text](2026-07-22-pi-ai-transport-truncation-classification-b4e7c9f6d2.md) — `.agents/notes/archived/bug-fix/2026-07-22-pi-ai-transport-truncation-classification.md`
+- [Agent Note: 从扁平化的消息文本中分类 pi-ai 传输层截断](2026-07-22-pi-ai-transport-truncation-classification.zh-0e6400d990.md) — `.agents/notes/archived/bug-fix/2026-07-22-pi-ai-transport-truncation-classification.zh.md`
+- [Agent Note: demo:web builds the client plugin bundles](2026-07-23-demo-web-builds-client-bundles-7d3ed3e6ac.md) — `.agents/notes/archived/bug-fix/2026-07-23-demo-web-builds-client-bundles.md`
+- [Agent Note: demo:web 构建客户端插件的打包产物](2026-07-23-demo-web-builds-client-bundles.zh-4c3efb52d6.md) — `.agents/notes/archived/bug-fix/2026-07-23-demo-web-builds-client-bundles.zh.md`
+- [Agent Note: Thinking rows use one disclosure target](2026-07-23-thinking-row-disclosure-target-aeb9cb1539.md) — `.agents/notes/archived/bug-fix/2026-07-23-thinking-row-disclosure-target.md`
+- [Agent Note: thinking 行使用单一展开目标](2026-07-23-thinking-row-disclosure-target.zh-67e010b0b8.md) — `.agents/notes/archived/bug-fix/2026-07-23-thinking-row-disclosure-target.zh.md`
+- [Agent Note: TUI generic-card Markdown rendering](2026-07-23-tui-generic-card-markdown-f863da2055.md) — `.agents/notes/archived/bug-fix/2026-07-23-tui-generic-card-markdown.md`
+- [Agent Note: TUI 通用卡片的 Markdown 渲染](2026-07-23-tui-generic-card-markdown.zh-92f6f9ec3f.md) — `.agents/notes/archived/bug-fix/2026-07-23-tui-generic-card-markdown.zh.md`
+- [Agent Note: Empty model completions are retryable EMPTY_RESPONSE failures](2026-07-24-empty-model-response-is-retryable-ccf9232265.md) — `.agents/notes/archived/bug-fix/2026-07-24-empty-model-response-is-retryable.md`
+- [Agent Note: 空模型补全是可重试的 EMPTY_RESPONSE 失败](2026-07-24-empty-model-response-is-retryable.zh-0c6532ecb5.md) — `.agents/notes/archived/bug-fix/2026-07-24-empty-model-response-is-retryable.zh.md`
+- [Agent Note: Recursive Python SDK session notifications](2026-07-24-recursive-python-sdk-session-notifications-6f5a02b85b.md) — `.agents/notes/archived/bug-fix/2026-07-24-recursive-python-sdk-session-notifications.md`
+- [Agent Note: Python SDK 递归会话通知](2026-07-24-recursive-python-sdk-session-notifications.zh-9131d4f4d9.md) — `.agents/notes/archived/bug-fix/2026-07-24-recursive-python-sdk-session-notifications.zh.md`
+- [Agent Note: TUI presents a reason for every turn-end kind](2026-07-24-tui-turn-end-stop-reason-notices-8df390f688.md) — `.agents/notes/archived/bug-fix/2026-07-24-tui-turn-end-stop-reason-notices.md`
+- [Agent Note: TUI 为每种轮次结束 kind 呈现原因](2026-07-24-tui-turn-end-stop-reason-notices.zh-3c1c39a62e.md) — `.agents/notes/archived/bug-fix/2026-07-24-tui-turn-end-stop-reason-notices.zh.md`
+- [Agent Note: Intent draft echoes in the same tick](2026-07-26-intent-draft-same-tick-echo-09a807bd90.md) — `.agents/notes/archived/bug-fix/2026-07-26-intent-draft-same-tick-echo.md`
+- [Agent Note: Intent draft echoes in the same tick](2026-07-26-intent-draft-same-tick-echo.zh-aeb3744b14.md) — `.agents/notes/archived/bug-fix/2026-07-26-intent-draft-same-tick-echo.zh.md`
+- [Agent Note: Sample over-cap glob results across the tree](2026-07-27-glob-sampling-89ce372474.md) — `.agents/notes/archived/bug-fix/2026-07-27-glob-sampling.md`
+- [Agent Note: 跨目录树采样超出上限的 glob 结果](2026-07-27-glob-sampling.zh-0a958f32ed.md) — `.agents/notes/archived/bug-fix/2026-07-27-glob-sampling.zh.md`
+- [Agent Note: Question-composer option rows are scroll content, not the slack absorber](2026-07-27-question-composer-rows-do-not-shrink-50a737615a.md) — `.agents/notes/archived/bug-fix/2026-07-27-question-composer-rows-do-not-shrink.md`
+- [Agent Note: 提问 composer 的选项行是滚动内容，而非空间不足时的吸收方](2026-07-27-question-composer-rows-do-not-shrink.zh-c8e22ae5b5.md) — `.agents/notes/archived/bug-fix/2026-07-27-question-composer-rows-do-not-shrink.zh.md`
+- [Agent Note: Stable snapshot refresh volatiles](2026-07-27-stable-snapshot-refresh-volatiles-2b35ce5c8f.md) — `.agents/notes/archived/bug-fix/2026-07-27-stable-snapshot-refresh-volatiles.md`
+- [Agent Note: 稳定快照刷新中的易变值](2026-07-27-stable-snapshot-refresh-volatiles.zh-8070e34311.md) — `.agents/notes/archived/bug-fix/2026-07-27-stable-snapshot-refresh-volatiles.zh.md`
+- [Agent Note: Tool-card single-row fields render inline](2026-07-27-tool-card-single-row-fields-inline-bd003a1d67.md) — `.agents/notes/archived/bug-fix/2026-07-27-tool-card-single-row-fields-inline.md`
+- [Agent Note: 工具卡片的单行字段以内联方式渲染](2026-07-27-tool-card-single-row-fields-inline.zh-b45937f7f4.md) — `.agents/notes/archived/bug-fix/2026-07-27-tool-card-single-row-fields-inline.zh.md`
+- [Agent Note: TUI diff card dropped the duplicated file path](2026-07-27-tui-diff-card-redundant-path-header-e1115f17b5.md) — `.agents/notes/archived/bug-fix/2026-07-27-tui-diff-card-redundant-path-header.md`
+- [Agent Note: TUI diff 卡片重复打印文件路径](2026-07-27-tui-diff-card-redundant-path-header.zh-2597878f07.md) — `.agents/notes/archived/bug-fix/2026-07-27-tui-diff-card-redundant-path-header.zh.md`
+- [Agent Note: TUI step timing trails the step's last message](2026-07-27-tui-step-timing-trails-tool-cards-7162d89e9c.md) — `.agents/notes/archived/bug-fix/2026-07-27-tui-step-timing-trails-tool-cards.md`
+- [Agent Note: TUI 步骤计时跟在该步骤最后一条消息之后](2026-07-27-tui-step-timing-trails-tool-cards.zh-171bbea93c.md) — `.agents/notes/archived/bug-fix/2026-07-27-tui-step-timing-trails-tool-cards.zh.md`
+- [Agent Note: The scrollbar tokens get their consumer, and the workspace list reserves its gutter](2026-07-28-themed-scrollbars-and-reserved-gutter-31821aa50b.md) — `.agents/notes/archived/bug-fix/2026-07-28-themed-scrollbars-and-reserved-gutter.md`
+- [Agent Note: 滚动条 token 有了消费方，工作区列表预留出滚动条空位](2026-07-28-themed-scrollbars-and-reserved-gutter.zh-a874911bbf.md) — `.agents/notes/archived/bug-fix/2026-07-28-themed-scrollbars-and-reserved-gutter.zh.md`
+- [Agent Note: Web agents receive explicit runtime context](2026-07-28-web-agent-runtime-context-3936e96c16.md) — `.agents/notes/archived/bug-fix/2026-07-28-web-agent-runtime-context.md`
+- [Agent Note: Web agent 获得显式运行时上下文](2026-07-28-web-agent-runtime-context.zh-b1a3ee3384.md) — `.agents/notes/archived/bug-fix/2026-07-28-web-agent-runtime-context.zh.md`
+- [Agent Note: Web conversation UI polish sweep](2026-07-28-web-conversation-polish-sweep-0711b76bbc.md) — `.agents/notes/archived/bug-fix/2026-07-28-web-conversation-polish-sweep.md`
+- [Agent Note: Web 对话 UI 视觉优化](2026-07-28-web-conversation-polish-sweep.zh-5477e1fc08.md) — `.agents/notes/archived/bug-fix/2026-07-28-web-conversation-polish-sweep.zh.md`
+- [Agent Note: Web GUI changes close the loop on the existing URL](2026-07-28-web-gui-feedback-loop-dffd80fdb9.md) — `.agents/notes/archived/bug-fix/2026-07-28-web-gui-feedback-loop.md`
+- [Agent Note: Web GUI 改动在现有 URL 上闭环](2026-07-28-web-gui-feedback-loop.zh-a1de229a49.md) — `.agents/notes/archived/bug-fix/2026-07-28-web-gui-feedback-loop.zh.md`
+- [Agent Note: Atomic Web image admission](2026-07-29-atomic-web-image-admission-1006d41b30.md) — `.agents/notes/archived/bug-fix/2026-07-29-atomic-web-image-admission.md`
+- [Agent Note: Web 图片准入的原子性](2026-07-29-atomic-web-image-admission.zh-070ead182e.md) — `.agents/notes/archived/bug-fix/2026-07-29-atomic-web-image-admission.zh.md`
+- [Agent Note: The human transcript projects append-origin events](2026-07-29-human-transcript-append-origin-45db509ed7.md) — `.agents/notes/archived/bug-fix/2026-07-29-human-transcript-append-origin.md`
+- [Agent Note: 人类可读记录投影追加来源的事件](2026-07-29-human-transcript-append-origin.zh-62a877b3a2.md) — `.agents/notes/archived/bug-fix/2026-07-29-human-transcript-append-origin.zh.md`
+- [Agent Note: Isolate pnpm setup per GitHub Actions runner](2026-07-29-pnpm-setup-runner-isolation-e8a4295f2e.md) — `.agents/notes/archived/bug-fix/2026-07-29-pnpm-setup-runner-isolation.md`
+- [Agent Note: 按 GitHub Actions runner 隔离 pnpm 设置](2026-07-29-pnpm-setup-runner-isolation.zh-25ef13a523.md) — `.agents/notes/archived/bug-fix/2026-07-29-pnpm-setup-runner-isolation.zh.md`
+- [Agent Note: Fixed header, sticky composer inside the transcript scrollport](2026-07-29-sticky-composer-conversation-scroll-793a45d39b.md) — `.agents/notes/archived/bug-fix/2026-07-29-sticky-composer-conversation-scroll.md`
+- [Agent Note: 固定标题栏，sticky 编辑器位于 transcript（文本记录）滚动容器内](2026-07-29-sticky-composer-conversation-scroll.zh-8f353fba4c.md) — `.agents/notes/archived/bug-fix/2026-07-29-sticky-composer-conversation-scroll.zh.md`
+- [Agent Note: Web details follow the current Session lifecycle](2026-07-29-web-details-session-lifecycle-acb6fc354e.md) — `.agents/notes/archived/bug-fix/2026-07-29-web-details-session-lifecycle.md`
+- [Agent Note: Web 详情栏遵循当前会话生命周期](2026-07-29-web-details-session-lifecycle.zh-64285bb730.md) — `.agents/notes/archived/bug-fix/2026-07-29-web-details-session-lifecycle.zh.md`
+- [Agent Note: The approval takeover shares the composer's text cap](2026-07-30-approval-panel-command-cap-b3a25e5131.md) — `.agents/notes/archived/bug-fix/2026-07-30-approval-panel-command-cap.md`
+- [Agent Note: 审批接管面板与输入框共用同一文本高度上限](2026-07-30-approval-panel-command-cap.zh-278c0907b8.md) — `.agents/notes/archived/bug-fix/2026-07-30-approval-panel-command-cap.zh.md`
+- [Agent Note: Bound overwrite contextual-diff bases at the provider](2026-07-30-bounded-overwrite-diff-basis-4a3ecb16ca.md) — `.agents/notes/archived/bug-fix/2026-07-30-bounded-overwrite-diff-basis.md`
+- [Agent Note: 在提供方限制覆写上下文 diff 基础](2026-07-30-bounded-overwrite-diff-basis.zh-57994d360f.md) — `.agents/notes/archived/bug-fix/2026-07-30-bounded-overwrite-diff-basis.zh.md`
+- [Agent Note: Composer context stack order](2026-07-30-composer-context-stack-order-9aa64e5b40.md) — `.agents/notes/archived/bug-fix/2026-07-30-composer-context-stack-order.md`
+- [Agent Note: Composer 上下文堆栈顺序](2026-07-30-composer-context-stack-order.zh-62776f3dd0.md) — `.agents/notes/archived/bug-fix/2026-07-30-composer-context-stack-order.zh.md`
+- [Agent Note: Hover popup pointer grace](2026-07-30-hover-popup-pointer-grace-6a917b7b85.md) — `.agents/notes/archived/bug-fix/2026-07-30-hover-popup-pointer-grace.md`
+- [Agent Note: 悬浮弹层的指针宽限期](2026-07-30-hover-popup-pointer-grace.zh-587e9bdf0d.md) — `.agents/notes/archived/bug-fix/2026-07-30-hover-popup-pointer-grace.zh.md`
+- [Agent Note: Multi-select custom answer composition](2026-07-30-multi-select-custom-answer-composition-129a8ffd03.md) — `.agents/notes/archived/bug-fix/2026-07-30-multi-select-custom-answer-composition.md`
+- [Agent Note: 多选题自定义答案组合](2026-07-30-multi-select-custom-answer-composition.zh-637614e5ff.md) — `.agents/notes/archived/bug-fix/2026-07-30-multi-select-custom-answer-composition.zh.md`
+- [Agent Note: Source checkout paths do not define working directories](2026-07-30-source-checkout-workdir-distinction-641aaa2c2c.md) — `.agents/notes/archived/bug-fix/2026-07-30-source-checkout-workdir-distinction.md`
+- [Agent Note: 源码 checkout 路径不定义工作目录](2026-07-30-source-checkout-workdir-distinction.zh-c5b613a149.md) — `.agents/notes/archived/bug-fix/2026-07-30-source-checkout-workdir-distinction.zh.md`
+- [Agent Note: TUI model-context resolution defers on the adapter-registration race](2026-07-30-tui-adapter-registration-race-ee0951b8f9.md) — `.agents/notes/archived/bug-fix/2026-07-30-tui-adapter-registration-race.md`
+- [Agent Note: TUI 模型上下文解析在适配器注册竞争时延后重试](2026-07-30-tui-adapter-registration-race.zh-79e7b16290.md) — `.agents/notes/archived/bug-fix/2026-07-30-tui-adapter-registration-race.zh.md`
+- [Agent Note: Web details default closed](2026-07-30-web-details-default-closed-1bc038bcb0.md) — `.agents/notes/archived/bug-fix/2026-07-30-web-details-default-closed.md`
+- [Agent Note: Web 详情栏默认关闭](2026-07-30-web-details-default-closed.zh-b3dea25d00.md) — `.agents/notes/archived/bug-fix/2026-07-30-web-details-default-closed.zh.md`
+- [Agent Note: The browser conversation is a log-ordered human transcript](2026-07-30-web-transcript-log-ordered-projection-7e5765d1bf.md) — `.agents/notes/archived/bug-fix/2026-07-30-web-transcript-log-ordered-projection.md`
+- [Agent Note: 浏览器会话是按日志顺序投影的人类对话记录](2026-07-30-web-transcript-log-ordered-projection.zh-a38250a6bf.md) — `.agents/notes/archived/bug-fix/2026-07-30-web-transcript-log-ordered-projection.zh.md`
+- [Agent Note: Settlement, framing, and lifecycle fixes in the CPython backend](2026-07-31-code-runtime-python-settlement-fixes-cce52fbd74.md) — `.agents/notes/archived/bug-fix/2026-07-31-code-runtime-python-settlement-fixes.md`
+- [Agent Note: CPython 后端中的结算、分帧与生命周期修复](2026-07-31-code-runtime-python-settlement-fixes.zh-d3b8f6e93b.md) — `.agents/notes/archived/bug-fix/2026-07-31-code-runtime-python-settlement-fixes.zh.md`
+- [Agent Note: The composer's two text layers share one scrollport](2026-07-31-composer-text-layers-share-one-scrollport-205344631e.md) — `.agents/notes/archived/bug-fix/2026-07-31-composer-text-layers-share-one-scrollport.md`
+- [Agent Note: composer 的两层文本共用同一个滚动容器](2026-07-31-composer-text-layers-share-one-scrollport.zh-cec53e41c0.md) — `.agents/notes/archived/bug-fix/2026-07-31-composer-text-layers-share-one-scrollport.zh.md`
+- [Agent Note: Compaction checkpoints use an English engineering register](2026-07-31-english-compaction-checkpoints-cbb13c8c97.md) — `.agents/notes/archived/bug-fix/2026-07-31-english-compaction-checkpoints.md`
+- [Agent Note: 压缩检查点使用英语工程文体](2026-07-31-english-compaction-checkpoints.zh-9c5b0151bf.md) — `.agents/notes/archived/bug-fix/2026-07-31-english-compaction-checkpoints.zh.md`
+- [Agent Note: Fork anchor floors to an event seq](2026-07-31-fork-anchor-floors-to-event-seq-6f479bb740.md) — `.agents/notes/archived/bug-fix/2026-07-31-fork-anchor-floors-to-event-seq.md`
+- [Agent Note: fork 锚点向下取整到事件 seq](2026-07-31-fork-anchor-floors-to-event-seq.zh-214b2455e9.md) — `.agents/notes/archived/bug-fix/2026-07-31-fork-anchor-floors-to-event-seq.zh.md`
+- [Agent Note: Hero stays visible while a blank session opens](2026-07-31-hero-visible-while-blank-session-opens-e14033c458.md) — `.agents/notes/archived/bug-fix/2026-07-31-hero-visible-while-blank-session-opens.md`
+- [Agent Note: 空白会话打开期间保持 hero 可见](2026-07-31-hero-visible-while-blank-session-opens.zh-78aaaf1749.md) — `.agents/notes/archived/bug-fix/2026-07-31-hero-visible-while-blank-session-opens.zh.md`
+- [Agent Note: Resume selector folds titles only](2026-07-31-resume-selector-batch-projection-879454fed0.md) — `.agents/notes/archived/bug-fix/2026-07-31-resume-selector-batch-projection.md`
+- [Agent Note: 恢复选择器只折叠标题](2026-07-31-resume-selector-batch-projection.zh-777d2ac5bf.md) — `.agents/notes/archived/bug-fix/2026-07-31-resume-selector-batch-projection.zh.md`
+- [Agent Note: Same-basename Workspace adoption](2026-07-31-same-basename-workspace-adoption-da42d15af9.md) — `.agents/notes/archived/bug-fix/2026-07-31-same-basename-workspace-adoption.md`
+- [Agent Note: 接纳 basename 相同的 Workspace](2026-07-31-same-basename-workspace-adoption.zh-27d285205d.md) — `.agents/notes/archived/bug-fix/2026-07-31-same-basename-workspace-adoption.zh.md`
+- [Agent Note: TUI diff context lines stay neutral](2026-07-31-tui-diff-context-line-accounting-2c8c73bc77.md) — `.agents/notes/archived/bug-fix/2026-07-31-tui-diff-context-line-accounting.md`
+- [Agent Note: TUI diff 上下文行保持中性](2026-07-31-tui-diff-context-line-accounting.zh-4a88f9709f.md) — `.agents/notes/archived/bug-fix/2026-07-31-tui-diff-context-line-accounting.zh.md`
+- [Agent Note: Web stop preserves pending Queue](2026-07-31-web-stop-preserves-queue-2783415c01.md) — `.agents/notes/archived/bug-fix/2026-07-31-web-stop-preserves-queue.md`
+- [Agent Note: Web 停止操作保留待处理 Queue](2026-07-31-web-stop-preserves-queue.zh-54832182d7.md) — `.agents/notes/archived/bug-fix/2026-07-31-web-stop-preserves-queue.zh.md`
+- [Agent Note: Reject human interaction from runtime-owned subagents](2026-08-01-ask-user-delegated-caller-guard-8cfa9e4a58.md) — `.agents/notes/archived/bug-fix/2026-08-01-ask-user-delegated-caller-guard.md`
+- [Agent Note: 拒绝运行时中归属于其他 agent 的 subagent 向人类发起交互](2026-08-01-ask-user-delegated-caller-guard.zh-fa0aee9e7a.md) — `.agents/notes/archived/bug-fix/2026-08-01-ask-user-delegated-caller-guard.zh.md`
+- [Agent Note: Goal-round wrap-up message](2026-08-02-goal-round-wrapup-message-173bf2f011.md) — `.agents/notes/archived/bug-fix/2026-08-02-goal-round-wrapup-message.md`
+- [Agent Note: Goal Round 收尾消息](2026-08-02-goal-round-wrapup-message.zh-67c3d06078.md) — `.agents/notes/archived/bug-fix/2026-08-02-goal-round-wrapup-message.zh.md`
+- [Agent Note: Message fork actions require a completed turn tail](2026-08-02-message-fork-actions-require-completed-turn-tail-c19cb79648.md) — `.agents/notes/archived/bug-fix/2026-08-02-message-fork-actions-require-completed-turn-tail.md`
+- [Agent Note: 消息 fork 操作要求消息位于已完成轮次尾部](2026-08-02-message-fork-actions-require-completed-turn-tail.zh-d463f43146.md) — `.agents/notes/archived/bug-fix/2026-08-02-message-fork-actions-require-completed-turn-tail.zh.md`
+- [Agent Note: Todo-first composer context order](2026-08-02-todo-first-composer-context-order-9a51cfe9ba.md) — `.agents/notes/archived/bug-fix/2026-08-02-todo-first-composer-context-order.md`
+- [Agent Note: Todo 优先的 composer 上下文顺序](2026-08-02-todo-first-composer-context-order.zh-244c591a9e.md) — `.agents/notes/archived/bug-fix/2026-08-02-todo-first-composer-context-order.zh.md`
+- [Agent Note: HMR's initial scan deadlocked a failing boot into a silent exit 13](2026-08-03-hmr-initial-scan-boot-deadlock-bf3a06b059.md) — `.agents/notes/archived/bug-fix/2026-08-03-hmr-initial-scan-boot-deadlock.md`
+- [Agent Note: HMR 初始扫描使失败的启动死锁为静默的 exit 13](2026-08-03-hmr-initial-scan-boot-deadlock.zh-182a7ed185.md) — `.agents/notes/archived/bug-fix/2026-08-03-hmr-initial-scan-boot-deadlock.zh.md`
+- [Agent Note: TUI long-session render costs — shared step-timing scan and card line caches](2026-08-03-tui-long-session-render-costs-595d1d85a4.md) — `.agents/notes/archived/bug-fix/2026-08-03-tui-long-session-render-costs.md`
+- [Agent Note: TUI 长会话渲染开销：共享步骤耗时扫描与卡片行缓存](2026-08-03-tui-long-session-render-costs.zh-f76fc7e11f.md) — `.agents/notes/archived/bug-fix/2026-08-03-tui-long-session-render-costs.zh.md`
+- [Agent Note: The conversation column reserves one scrollbar gutter for every view](2026-08-04-composer-tab-gutter-reservation-8c58022d38.md) — `.agents/notes/archived/bug-fix/2026-08-04-composer-tab-gutter-reservation.md`
+- [Agent Note: 会话列为每个视图预留同一条滚动条槽](2026-08-04-composer-tab-gutter-reservation.zh-e26bbb8cfd.md) — `.agents/notes/archived/bug-fix/2026-08-04-composer-tab-gutter-reservation.zh.md`
+- [Agent Note: Large history provenance is scanned without argument expansion](2026-08-04-large-history-pagination-call-stack-8cb34a6bfe.md) — `.agents/notes/archived/bug-fix/2026-08-04-large-history-pagination-call-stack.md`
+- [Agent Note: 大规模历史记录的溯源信息通过扫描处理，不做参数展开](2026-08-04-large-history-pagination-call-stack.zh-0e01d4d066.md) — `.agents/notes/archived/bug-fix/2026-08-04-large-history-pagination-call-stack.zh.md`
+- [Agent Note: the context meter could not see a compaction](2026-08-05-context-meter-blind-to-compaction-f2d2fa88ff.md) — `.agents/notes/archived/bug-fix/2026-08-05-context-meter-blind-to-compaction.md`
+- [Agent Note: 上下文仪表看不见压缩](2026-08-05-context-meter-blind-to-compaction.zh-69a9900b4e.md) — `.agents/notes/archived/bug-fix/2026-08-05-context-meter-blind-to-compaction.zh.md`
+- [Agent Note: Turn-tail IconActions require a completed turn](2026-08-05-turn-tail-actions-require-a-completed-turn-f294748b66.md) — `.agents/notes/archived/bug-fix/2026-08-05-turn-tail-actions-require-a-completed-turn.md`
+- [Agent Note: 轮次尾部 IconActions 要求轮次已完成](2026-08-05-turn-tail-actions-require-a-completed-turn.zh-3240d99709.md) — `.agents/notes/archived/bug-fix/2026-08-05-turn-tail-actions-require-a-completed-turn.zh.md`
+- [Agent Note: Workspace New Session reuse hijacked cwd-matching unaccounted blank sessions](2026-08-05-workspace-blank-session-reuse-membership-598dbe54a3.md) — `.agents/notes/archived/bug-fix/2026-08-05-workspace-blank-session-reuse-membership.md`
+- [Agent Note: 工作区新建会话复用了 cwd 匹配但未入账的空白会话](2026-08-05-workspace-blank-session-reuse-membership.zh-4b43cfff98.md) — `.agents/notes/archived/bug-fix/2026-08-05-workspace-blank-session-reuse-membership.zh.md`
+- [Agent Note: Validate API key format before it reaches an HTTP header](2026-08-06-api-key-format-validation-204c1bdeca.md) — `.agents/notes/archived/bug-fix/2026-08-06-api-key-format-validation.md`
+- [Agent Note: 在 API Key 进入 HTTP header 之前校验其格式](2026-08-06-api-key-format-validation.zh-c62ddd2e12.md) — `.agents/notes/archived/bug-fix/2026-08-06-api-key-format-validation.zh.md`
+- [Agent Note: list_agents uses ready for resumable children](2026-08-06-list-agents-residency-vocabulary-94c918c31c.md) — `.agents/notes/archived/bug-fix/2026-08-06-list-agents-residency-vocabulary.md`
+- [Agent Note: list_agents uses ready for resumable children](2026-08-06-list-agents-residency-vocabulary.zh-5b884dc1b3.md) — `.agents/notes/archived/bug-fix/2026-08-06-list-agents-residency-vocabulary.zh.md`
+- [Agent Note: onboarding takeover chrome moves into the step](2026-08-06-onboarding-step-owned-takeover-chrome-82c6f9e025.md) — `.agents/notes/archived/bug-fix/2026-08-06-onboarding-step-owned-takeover-chrome.md`
+- [Agent Note: 首次使用引导的接管界面框架移入步骤自身](2026-08-06-onboarding-step-owned-takeover-chrome.zh-0a4ce65cac.md) — `.agents/notes/archived/bug-fix/2026-08-06-onboarding-step-owned-takeover-chrome.zh.md`
+- [Agent Note: narrow-viewport plan chip click-area regression test](2026-08-06-plan-narrow-viewport-regression-d5b8c2dc5f.md) — `.agents/notes/archived/bug-fix/2026-08-06-plan-narrow-viewport-regression.md`
+- [Agent Note: 窄视口下 Plan chip 点击区域回归测试](2026-08-06-plan-narrow-viewport-regression.zh-bb0c60a013.md) — `.agents/notes/archived/bug-fix/2026-08-06-plan-narrow-viewport-regression.zh.md`
+- [Agent Note: Recoverable provider credential lifecycle](2026-08-06-provider-credential-lifecycle-88830bb9f5.md) — `.agents/notes/archived/bug-fix/2026-08-06-provider-credential-lifecycle.md`
+- [Agent Note: 可恢复的提供方凭据生命周期](2026-08-06-provider-credential-lifecycle.zh-ed5f13a283.md) — `.agents/notes/archived/bug-fix/2026-08-06-provider-credential-lifecycle.zh.md`
+- [Agent Note: Reader scroll attribution through the observed-top ledger](2026-08-06-reader-scroll-attribution-observed-top-ledger-ffd5a13777.md) — `.agents/notes/archived/bug-fix/2026-08-06-reader-scroll-attribution-observed-top-ledger.md`
+- [Agent Note: 经由 observed-top ledger 的读者滚动归因](2026-08-06-reader-scroll-attribution-observed-top-ledger.zh-0996faf17b.md) — `.agents/notes/archived/bug-fix/2026-08-06-reader-scroll-attribution-observed-top-ledger.zh.md`
+- [Agent Note: unpriced surface replacements fold neutrally](2026-08-06-token-surface-unpriced-replace-compatibility-db0485133c.md) — `.agents/notes/archived/bug-fix/2026-08-06-token-surface-unpriced-replace-compatibility.md`
+- [Agent Note: 未计价的表层替换以中性方式折叠](2026-08-06-token-surface-unpriced-replace-compatibility.zh-d2d9eb4976.md) — `.agents/notes/archived/bug-fix/2026-08-06-token-surface-unpriced-replace-compatibility.zh.md`
+- [Agent Note: Broken presets are roster rows, not gaps](2026-08-09-broken-preset-roster-rows-0e047bbff4.md) — `.agents/notes/archived/bug-fix/2026-08-09-broken-preset-roster-rows.md`
+- [Agent Note: 损坏的 preset 是名单行，不是空缺](2026-08-09-broken-preset-roster-rows.zh-698e330da5.md) — `.agents/notes/archived/bug-fix/2026-08-09-broken-preset-roster-rows.zh.md`
+- [Agent Note: Filesystem absence is an observation and guarded creation never replaces](2026-08-09-filesystem-absence-observation-49e4ca5bbc.md) — `.agents/notes/archived/bug-fix/2026-08-09-filesystem-absence-observation.md`
+- [Agent Note: 文件系统中的缺失是一种观测，带防护的创建绝不执行替换](2026-08-09-filesystem-absence-observation.zh-56684ee394.md) — `.agents/notes/archived/bug-fix/2026-08-09-filesystem-absence-observation.zh.md`
+- [Agent Note: The minimal preset owns the complete RL agent composition](2026-08-10-minimal-preset-owns-rl-composition-aa9f494841.md) — `.agents/notes/archived/bug-fix/2026-08-10-minimal-preset-owns-rl-composition.md`
+- [Agent Note: minimal preset 拥有完整的 RL agent 组合](2026-08-10-minimal-preset-owns-rl-composition.zh-09cf9bda71.md) — `.agents/notes/archived/bug-fix/2026-08-10-minimal-preset-owns-rl-composition.zh.md`
+- [Agent Note: Pre-Plugin Theme Bootstrap](2026-08-10-pre-plugin-theme-bootstrap-53470af1fc.md) — `.agents/notes/archived/bug-fix/2026-08-10-pre-plugin-theme-bootstrap.md`
+- [Agent Note: 插件激活前的主题引导](2026-08-10-pre-plugin-theme-bootstrap.zh-99686720b7.md) — `.agents/notes/archived/bug-fix/2026-08-10-pre-plugin-theme-bootstrap.zh.md`
+- [Agent Note: The session-row identity guard covers the preset](2026-08-10-session-row-identity-covers-the-preset-0225810eba.md) — `.agents/notes/archived/bug-fix/2026-08-10-session-row-identity-covers-the-preset.md`
+- [Agent Note: 会话行的标识判定纳入 preset](2026-08-10-session-row-identity-covers-the-preset.zh-f721c82897.md) — `.agents/notes/archived/bug-fix/2026-08-10-session-row-identity-covers-the-preset.zh.md`
+- [Agent Note: The slash catalog follows a blank session's preset switch](2026-08-10-slash-catalog-follows-preset-switch-d4448e3a85.md) — `.agents/notes/archived/bug-fix/2026-08-10-slash-catalog-follows-preset-switch.md`
+- [Agent Note: 斜杠目录跟随空会话的 preset 切换](2026-08-10-slash-catalog-follows-preset-switch.zh-2c0478edaf.md) — `.agents/notes/archived/bug-fix/2026-08-10-slash-catalog-follows-preset-switch.zh.md`
+- [Agent Note: One selection rule keeps subagent output past an empty terminal message](2026-08-10-subagent-empty-terminal-message-output-d3c2f229fc.md) — `.agents/notes/archived/bug-fix/2026-08-10-subagent-empty-terminal-message-output.md`
+- [Agent Note: 用同一条选取规则在空终止消息后保留子代理输出](2026-08-10-subagent-empty-terminal-message-output.zh-4f4944bcbd.md) — `.agents/notes/archived/bug-fix/2026-08-10-subagent-empty-terminal-message-output.zh.md`
+- [Agent Note: Web favicon follows the color scheme](2026-08-10-web-favicon-dark-mode-b6b7bab39f.md) — `.agents/notes/archived/bug-fix/2026-08-10-web-favicon-dark-mode.md`
+- [Agent Note: 网页图标随配色方案切换](2026-08-10-web-favicon-dark-mode.zh-2d1f63f2eb.md) — `.agents/notes/archived/bug-fix/2026-08-10-web-favicon-dark-mode.zh.md`
+- [Agent Note: Bounded background job admission](2026-08-11-bounded-background-job-admission-3eca406fca.md) — `.agents/notes/archived/bug-fix/2026-08-11-bounded-background-job-admission.md`
+- [Agent Note: 有界后台任务准入](2026-08-11-bounded-background-job-admission.zh-3336d7bf9a.md) — `.agents/notes/archived/bug-fix/2026-08-11-bounded-background-job-admission.zh.md`
+- [Agent Note: Owned-run finish reason reporting](2026-08-11-owned-run-finish-reason-32d5e2ba7f.md) — `.agents/notes/archived/bug-fix/2026-08-11-owned-run-finish-reason.md`
+- [Agent Note: 自有运行的结束原因报告](2026-08-11-owned-run-finish-reason.zh-2d7f147eca.md) — `.agents/notes/archived/bug-fix/2026-08-11-owned-run-finish-reason.zh.md`
+- [Agent Note: The preset-authoring agent mount-validates its own composition](2026-08-11-preset-authoring-agent-validates-its-own-composition-c776da0e08.md) — `.agents/notes/archived/bug-fix/2026-08-11-preset-authoring-agent-validates-its-own-composition.md`
+- [Agent Note: 创作 preset 的 agent 自行挂载校验其组装](2026-08-11-preset-authoring-agent-validates-its-own-composition.zh-f402244c6f.md) — `.agents/notes/archived/bug-fix/2026-08-11-preset-authoring-agent-validates-its-own-composition.zh.md`
+- [Agent Note: Preset cards clamp their description instead of sizing the roster](2026-08-11-preset-card-description-clamp-9b2882b979.md) — `.agents/notes/archived/bug-fix/2026-08-11-preset-card-description-clamp.md`
+- [Agent Note: 预设卡片截断自身描述，而不是由描述决定整份名单的高度](2026-08-11-preset-card-description-clamp.zh-5fef9fc3d6.md) — `.agents/notes/archived/bug-fix/2026-08-11-preset-card-description-clamp.zh.md`
+- [Agent Note: Synchronous cleanup of managed subprocesses on host exit](2026-08-11-synchronous-subprocess-exit-cleanup-4d0bb2fa34.md) — `.agents/notes/archived/bug-fix/2026-08-11-synchronous-subprocess-exit-cleanup.md`
+- [Agent Note: 宿主退出时同步清理受管子进程](2026-08-11-synchronous-subprocess-exit-cleanup.zh-775c14da35.md) — `.agents/notes/archived/bug-fix/2026-08-11-synchronous-subprocess-exit-cleanup.zh.md`
+- [Agent Note: Collapsed sidebar upper controls share one entry motion](2026-08-12-collapsed-sidebar-shared-entry-motion-3a921f950c.md) — `.agents/notes/archived/bug-fix/2026-08-12-collapsed-sidebar-shared-entry-motion.md`
+- [Agent Note: 收起侧栏的上方控件共用同一进入动画](2026-08-12-collapsed-sidebar-shared-entry-motion.zh-ba56616a88.md) — `.agents/notes/archived/bug-fix/2026-08-12-collapsed-sidebar-shared-entry-motion.zh.md`
+- [Agent Note: The overlay composer seat compensates for the bar instead of reserving a gutter](2026-08-12-composer-overlay-seat-width-compensation-7ff33ad618.md) — `.agents/notes/archived/bug-fix/2026-08-12-composer-overlay-seat-width-compensation.md`
+- [Agent Note: 覆盖视图的 composer 座位改为补偿滚动条宽度，不再预留滚动条槽](2026-08-12-composer-overlay-seat-width-compensation.zh-231ad14ab0.md) — `.agents/notes/archived/bug-fix/2026-08-12-composer-overlay-seat-width-compensation.zh.md`
+- [Agent Note: fix the pwsh terminal overlay duplicate-loader collision](2026-08-12-fix-pwsh-terminal-overlay-dup-87ededfa8a.md) — `.agents/notes/archived/bug-fix/2026-08-12-fix-pwsh-terminal-overlay-dup.md`
+- [Agent Note: 修复 pwsh 终端 overlay 的重复 loader 冲突](2026-08-12-fix-pwsh-terminal-overlay-dup.zh-6239ea4953.md) — `.agents/notes/archived/bug-fix/2026-08-12-fix-pwsh-terminal-overlay-dup.zh.md`
+- [Agent Note: Full-session stats-strip figures through a sessionStats projection](2026-08-12-full-session-turn-step-counts-80a8160980.md) — `.agents/notes/archived/bug-fix/2026-08-12-full-session-turn-step-counts.md`
+- [Agent Note: 通过 sessionStats 投影提供全会话统计条数字](2026-08-12-full-session-turn-step-counts.zh-69e298fbd2.md) — `.agents/notes/archived/bug-fix/2026-08-12-full-session-turn-step-counts.zh.md`
+- [Agent Note: The chat flow surfaces a max-tokens turn end](2026-08-12-max-tokens-turn-end-notice-27c4124323.md) — `.agents/notes/archived/bug-fix/2026-08-12-max-tokens-turn-end-notice.md`
+- [Agent Note: 聊天流展示 max-tokens 结束的轮次](2026-08-12-max-tokens-turn-end-notice.zh-efcaced4db.md) — `.agents/notes/archived/bug-fix/2026-08-12-max-tokens-turn-end-notice.zh.md`
+- [Agent Note: First-run readiness reads every provider, and the setup card closes](2026-08-12-onboarding-reads-every-provider-ba18b852d4.md) — `.agents/notes/archived/bug-fix/2026-08-12-onboarding-reads-every-provider.md`
+- [Agent Note: First-run readiness reads every provider, and the setup card closes](2026-08-12-onboarding-reads-every-provider.zh-f1e290fb00.md) — `.agents/notes/archived/bug-fix/2026-08-12-onboarding-reads-every-provider.zh.md`
+- [Agent Note: Resolve Microsoft Store pwsh aliases](2026-08-12-resolve-store-pwsh-aliases-e2a0b2e648.md) — `.agents/notes/archived/bug-fix/2026-08-12-resolve-store-pwsh-aliases.md`
+- [Agent Note: 解析 Microsoft Store 的 pwsh 别名](2026-08-12-resolve-store-pwsh-aliases.zh-26f13951dc.md) — `.agents/notes/archived/bug-fix/2026-08-12-resolve-store-pwsh-aliases.zh.md`
+- [Agent Note: Unlink fixture junctions before recursive deletion](2026-08-12-unlink-fixture-junctions-before-delete-423f679505.md) — `.agents/notes/archived/bug-fix/2026-08-12-unlink-fixture-junctions-before-delete.md`
+- [Agent Note: 递归删除前先解链 fixture junction](2026-08-12-unlink-fixture-junctions-before-delete.zh-6a8428fcd1.md) — `.agents/notes/archived/bug-fix/2026-08-12-unlink-fixture-junctions-before-delete.zh.md`
+- [Agent Note: Unlink stale profile fallback links instead of rmSync](2026-08-12-unlink-stale-profile-fallback-links-7d4c5bd804.md) — `.agents/notes/archived/bug-fix/2026-08-12-unlink-stale-profile-fallback-links.md`
+- [Agent Note: 用 unlink 删除过期的 profile 回退链接而非 rmSync](2026-08-12-unlink-stale-profile-fallback-links.zh-3bcbb17442.md) — `.agents/notes/archived/bug-fix/2026-08-12-unlink-stale-profile-fallback-links.zh.md`
+- [Agent Note: Bound cold blank-session verification](2026-08-13-bounded-cold-blank-verification-eb61604c52.md) — `.agents/notes/archived/bug-fix/2026-08-13-bounded-cold-blank-verification.md`
+- [Agent Note: 有界验证冷空白会话](2026-08-13-bounded-cold-blank-verification.zh-54a37c0de1.md) — `.agents/notes/archived/bug-fix/2026-08-13-bounded-cold-blank-verification.zh.md`
+- [Agent Note: The feedback note editor floats above the transcript in a popover](2026-08-13-feedback-note-editor-popover-de45b763db.md) — `.agents/notes/archived/bug-fix/2026-08-13-feedback-note-editor-popover.md`
+- [Agent Note: 反馈备注编辑器以浮层悬浮在对话记录上方](2026-08-13-feedback-note-editor-popover.zh-3f0f9a04d3.md) — `.agents/notes/archived/bug-fix/2026-08-13-feedback-note-editor-popover.zh.md`
+- [Agent Note: The configurable-provider directory withholds OAuth-only providers](2026-08-13-oauth-only-providers-withheld-7115ab6375.md) — `.agents/notes/archived/bug-fix/2026-08-13-oauth-only-providers-withheld.md`
+- [Agent Note: 可配置提供方目录不再提供仅以 OAuth 认证的提供方](2026-08-13-oauth-only-providers-withheld.zh-794bf696d8.md) — `.agents/notes/archived/bug-fix/2026-08-13-oauth-only-providers-withheld.zh.md`
+- [Agent Note: Safari textarea soft-wrap shrink recovery](2026-08-13-safari-textarea-soft-wrap-reflow-da54a85b19.md) — `.agents/notes/archived/bug-fix/2026-08-13-safari-textarea-soft-wrap-reflow.md`
+- [Agent Note: Safari textarea 软换行收缩恢复](2026-08-13-safari-textarea-soft-wrap-reflow.zh-2e16f8f6a5.md) — `.agents/notes/archived/bug-fix/2026-08-13-safari-textarea-soft-wrap-reflow.zh.md`
+- [Agent Note: Replay state aligns with assembled content by construction](2026-08-15-max-token-replay-state-alignment-2302a6c95a.md) — `.agents/notes/archived/bug-fix/2026-08-15-max-token-replay-state-alignment.md`
+- [Agent Note: 回放状态与组装内容按构造对齐](2026-08-15-max-token-replay-state-alignment.zh-10a0f0a5ed.md) — `.agents/notes/archived/bug-fix/2026-08-15-max-token-replay-state-alignment.zh.md`
+- [Agent Note: Persistent bash keeps the backend's controlled prompt](2026-08-15-persistent-bash-keeps-controlled-prompt-0e66bd3b08.md) — `.agents/notes/archived/bug-fix/2026-08-15-persistent-bash-keeps-controlled-prompt.md`
+- [Agent Note: 持久 bash 保留后端的受控提示符](2026-08-15-persistent-bash-keeps-controlled-prompt.zh-aa68ac26aa.md) — `.agents/notes/archived/bug-fix/2026-08-15-persistent-bash-keeps-controlled-prompt.zh.md`
+- [Agent Note: Rail search keeps its expansion when the opening click reaches document](2026-08-18-rail-search-outside-click-self-dismissal-6007e1c929.md) — `.agents/notes/archived/bug-fix/2026-08-18-rail-search-outside-click-self-dismissal.md`
+- [Agent Note: 轨道搜索在展开点击到达 document 时保持展开](2026-08-18-rail-search-outside-click-self-dismissal.zh-d299cb6736.md) — `.agents/notes/archived/bug-fix/2026-08-18-rail-search-outside-click-self-dismissal.zh.md`
+- [Agent Note: Tool-row file-open failures stay visible](2026-08-18-tool-row-file-open-failure-2665473d0f.md) — `.agents/notes/archived/bug-fix/2026-08-18-tool-row-file-open-failure.md`
+- [Agent Note: Tool-row file-open failures stay visible](2026-08-18-tool-row-file-open-failure.zh-152634f8a5.md) — `.agents/notes/archived/bug-fix/2026-08-18-tool-row-file-open-failure.zh.md`
+- [Agent Note: DeepSeek reasoning passback on every reasoned turn](2026-08-19-deepseek-reasoning-passback-every-turn-a6e5fdaa7d.md) — `.agents/notes/archived/bug-fix/2026-08-19-deepseek-reasoning-passback-every-turn.md`
+- [Agent Note: DeepSeek reasoning passback on every reasoned turn](2026-08-19-deepseek-reasoning-passback-every-turn.zh-430a6e1a7f.md) — `.agents/notes/archived/bug-fix/2026-08-19-deepseek-reasoning-passback-every-turn.zh.md`
+- [Agent Note: Composer edits carry the range they applied to](2026-08-20-composer-edit-range-from-selection-509f7c4a8a.md) — `.agents/notes/archived/bug-fix/2026-08-20-composer-edit-range-from-selection.md`
+- [Agent Note: 输入框的编辑自带它所作用的范围](2026-08-20-composer-edit-range-from-selection.zh-5f50ed6ec9.md) — `.agents/notes/archived/bug-fix/2026-08-20-composer-edit-range-from-selection.zh.md`
+- [Agent Note: Composer reference decorations key by draft-order ordinal](2026-08-20-composer-reference-decoration-keys-69053a61df.md) — `.agents/notes/archived/bug-fix/2026-08-20-composer-reference-decoration-keys.md`
+- [Agent Note: 输入框引用装饰按草稿顺序序号取 key](2026-08-20-composer-reference-decoration-keys.zh-909c5d2461.md) — `.agents/notes/archived/bug-fix/2026-08-20-composer-reference-decoration-keys.zh.md`
+- [Agent Note: Explicit Web index paths and 404 static misses](2026-08-20-explicit-web-index-paths-c9bc06ef52.md) — `.agents/notes/archived/bug-fix/2026-08-20-explicit-web-index-paths.md`
+- [Agent Note: 显式 Web index 路径与静态资源未命中的 404](2026-08-20-explicit-web-index-paths.zh-ff8878e75f.md) — `.agents/notes/archived/bug-fix/2026-08-20-explicit-web-index-paths.zh.md`
+- [Agent Note: The shipped preset root is the plugin's own](2026-08-20-plugin-owned-shipped-preset-root-4c7f5eed44.md) — `.agents/notes/archived/bug-fix/2026-08-20-plugin-owned-shipped-preset-root.md`
+- [Agent Note: The shipped preset root is the plugin's own](2026-08-20-plugin-owned-shipped-preset-root.zh-0503d702ff.md) — `.agents/notes/archived/bug-fix/2026-08-20-plugin-owned-shipped-preset-root.zh.md`
+- [Agent Note: Running drafts take the primary Send action](2026-08-20-running-draft-primary-send-859158c88d.md) — `.agents/notes/archived/bug-fix/2026-08-20-running-draft-primary-send.md`
+- [Agent Note: 运行中草稿取得主 Send 操作](2026-08-20-running-draft-primary-send.zh-91773c113d.md) — `.agents/notes/archived/bug-fix/2026-08-20-running-draft-primary-send.zh.md`
+- [Agent Note: Terminal turn errors survive same-turn retry history](2026-08-20-turn-error-survives-same-turn-retry-history-ad10028e12.md) — `.agents/notes/archived/bug-fix/2026-08-20-turn-error-survives-same-turn-retry-history.md`
+- [Agent Note: Terminal turn errors survive same-turn retry history](2026-08-20-turn-error-survives-same-turn-retry-history.zh-2994e4ce9a.md) — `.agents/notes/archived/bug-fix/2026-08-20-turn-error-survives-same-turn-retry-history.zh.md`
+- [Agent Note: Recover DeepSeek image requests from Files resolution failures](2026-08-21-deepseek-files-inline-fallback-203f80e870.md) — `.agents/notes/archived/bug-fix/2026-08-21-deepseek-files-inline-fallback.md`
+- [Agent Note: DeepSeek Files 解析失败时恢复图片请求](2026-08-21-deepseek-files-inline-fallback.zh-05c1590bf8.md) — `.agents/notes/archived/bug-fix/2026-08-21-deepseek-files-inline-fallback.zh.md`
+- [Agent Note: Sent user text projects inline, and queue rows fold wire references](2026-08-21-inline-user-text-projection-a6558bafe3.md) — `.agents/notes/archived/bug-fix/2026-08-21-inline-user-text-projection.md`
+- [Agent Note: 已发送用户文本行内投影，Queue 行折叠 wire 引用](2026-08-21-inline-user-text-projection.zh-807b567d7b.md) — `.agents/notes/archived/bug-fix/2026-08-21-inline-user-text-projection.zh.md`
+- [Agent Note: Win32 folder-picker paths stop truncating at U+XX00 code units](2026-08-23-win32-utf16-nul-truncation-edfbd27599.md) — `.agents/notes/archived/bug-fix/2026-08-23-win32-utf16-nul-truncation.md`
+- [Agent Note: Win32 目录选择器路径不再在 U+XX00 码元处截断](2026-08-23-win32-utf16-nul-truncation.zh-886de73252.md) — `.agents/notes/archived/bug-fix/2026-08-23-win32-utf16-nul-truncation.zh.md`
+- [Agent Note: Equal-order system-prompt sections render in activation order](2026-08-24-system-prompt-section-order-ties-bbc698f4b6.md) — `.agents/notes/archived/bug-fix/2026-08-24-system-prompt-section-order-ties.md`
+- [Agent Note: 等序系统提示词分段按激活顺序渲染](2026-08-24-system-prompt-section-order-ties.zh-d5d0836d79.md) — `.agents/notes/archived/bug-fix/2026-08-24-system-prompt-section-order-ties.zh.md`
+- [Agent Note: Token-meter surface fold commits in place through a plan/commit pair](2026-08-24-token-meter-surface-fold-plan-commit-f7fe0ad102.md) — `.agents/notes/archived/bug-fix/2026-08-24-token-meter-surface-fold-plan-commit.md`
+- [Agent Note: token-meter surface fold 改为 plan/commit 两段式原地提交](2026-08-24-token-meter-surface-fold-plan-commit.zh-189bc2786d.md) — `.agents/notes/archived/bug-fix/2026-08-24-token-meter-surface-fold-plan-commit.zh.md`
+- [Agent Note: Composer e2e gestures gate on the contenteditable attribute](2026-08-26-composer-gesture-editable-gate-84734f324f.md) — `.agents/notes/archived/bug-fix/2026-08-26-composer-gesture-editable-gate.md`
+- [Agent Note: Composer e2e 手势以 contenteditable 属性为门](2026-08-26-composer-gesture-editable-gate.zh-dad76e8e24.md) — `.agents/notes/archived/bug-fix/2026-08-26-composer-gesture-editable-gate.zh.md`
+- [Agent Note: pi-ai grant payloads store their JSON image](2026-08-26-pi-ai-grant-payload-json-image-dd91090b9a.md) — `.agents/notes/archived/bug-fix/2026-08-26-pi-ai-grant-payload-json-image.md`
+- [Agent Note: pi-ai grant payload 落盘其 JSON 像](2026-08-26-pi-ai-grant-payload-json-image.zh-5cd5b6a94c.md) — `.agents/notes/archived/bug-fix/2026-08-26-pi-ai-grant-payload-json-image.zh.md`
+- [Agent Note: Question drafts survive Session switches](2026-08-26-question-drafts-survive-session-switch-40dc3df8c5.md) — `.agents/notes/archived/bug-fix/2026-08-26-question-drafts-survive-session-switch.md`
+- [Agent Note: 提问草稿在 Session 切换后保留](2026-08-26-question-drafts-survive-session-switch.zh-a9d3fa304d.md) — `.agents/notes/archived/bug-fix/2026-08-26-question-drafts-survive-session-switch.zh.md`
+- [Agent Note: Stable Turn-process ordering](2026-08-26-stable-turn-process-order-ebb8afa907.md) — `.agents/notes/archived/bug-fix/2026-08-26-stable-turn-process-order.md`
+- [Agent Note: 稳定的轮次过程排序](2026-08-26-stable-turn-process-order.zh-8bd8bf0bde.md) — `.agents/notes/archived/bug-fix/2026-08-26-stable-turn-process-order.zh.md`
+- [Agent Note: Steer and follow-up image delivery](2026-08-27-steer-followup-image-delivery-6bf3f2bf69.md) — `.agents/notes/archived/bug-fix/2026-08-27-steer-followup-image-delivery.md`
+- [Agent Note: steer 与 follow-up 的图片投递](2026-08-27-steer-followup-image-delivery.zh-0af1501edf.md) — `.agents/notes/archived/bug-fix/2026-08-27-steer-followup-image-delivery.zh.md`
+- [Agent Note: Linear drain for long-lived stream queues](2026-08-28-linear-stream-queue-drain-345484ebf2.md) — `.agents/notes/archived/bug-fix/2026-08-28-linear-stream-queue-drain.md`
+- [Agent Note: 长期流队列的线性排空](2026-08-28-linear-stream-queue-drain.zh-2a06397b26.md) — `.agents/notes/archived/bug-fix/2026-08-28-linear-stream-queue-drain.zh.md`
+- [Agent Note: read_image accepts extension-less image paths](2026-08-28-read-image-extensionless-paths-f036bffbf7.md) — `.agents/notes/archived/bug-fix/2026-08-28-read-image-extensionless-paths.md`
+- [Agent Note: read_image 接受无扩展名图片路径](2026-08-28-read-image-extensionless-paths.zh-ab31b18685.md) — `.agents/notes/archived/bug-fix/2026-08-28-read-image-extensionless-paths.zh.md`
+- [Agent Note: The trigger menu keeps previous rows through refinement](2026-08-28-trigger-menu-stale-while-revalidate-2ac49a9049.md) — `.agents/notes/archived/bug-fix/2026-08-28-trigger-menu-stale-while-revalidate.md`
+- [Agent Note: The trigger menu keeps previous rows through refinement](2026-08-28-trigger-menu-stale-while-revalidate.zh-05c85d6b05.md) — `.agents/notes/archived/bug-fix/2026-08-28-trigger-menu-stale-while-revalidate.zh.md`
+- [Agent Note: Bound in-flight binding calls, snapshot binding metadata, compact the reply queue, and meter wide completions with cursors in the CPython backend](2026-08-29-code-runtime-python-call-backlog-and-binding-metadata-snapshot-979199b505.md) — `.agents/notes/archived/bug-fix/2026-08-29-code-runtime-python-call-backlog-and-binding-metadata-snapshot.md`
+- [Agent Note: 在 CPython 后端限制在途 binding 调用、快照 binding 元数据、压缩回复队列并用游标计量宽完成值](2026-08-29-code-runtime-python-call-backlog-and-binding-metadata-snapshot.zh-c9cfd4a7a8.md) — `.agents/notes/archived/bug-fix/2026-08-29-code-runtime-python-call-backlog-and-binding-metadata-snapshot.zh.md`
+- [Agent Note: Load-time pythonBin validation, binding snapshot, and reply-drain settle in the CPython backend](2026-08-29-code-runtime-python-load-and-dispatch-hardening-b0990810a1.md) — `.agents/notes/archived/bug-fix/2026-08-29-code-runtime-python-load-and-dispatch-hardening.md`
+- [Agent Note: CPython 后端的加载期 pythonBin 校验、binding 快照与回复排空结算](2026-08-29-code-runtime-python-load-and-dispatch-hardening.zh-1b78247de4.md) — `.agents/notes/archived/bug-fix/2026-08-29-code-runtime-python-load-and-dispatch-hardening.zh.md`
+- [Agent Note: Bound the reply backlog and count lone surrogates without a match list in the CPython backend](2026-08-29-code-runtime-python-reply-backlog-and-surrogate-count-8f66bad3bf.md) — `.agents/notes/archived/bug-fix/2026-08-29-code-runtime-python-reply-backlog-and-surrogate-count.md`
+- [Agent Note: 在 CPython 后端限制回复积压并改用长度差计数孤立代理项](2026-08-29-code-runtime-python-reply-backlog-and-surrogate-count.zh-58c5e95a2b.md) — `.agents/notes/archived/bug-fix/2026-08-29-code-runtime-python-reply-backlog-and-surrogate-count.zh.md`
+- [Agent Note: The drill claim is published before the edit that re-enters tracking](2026-08-29-drill-claim-precedes-the-drill-edit-41dcb0349d.md) — `.agents/notes/archived/bug-fix/2026-08-29-drill-claim-precedes-the-drill-edit.md`
+- [Agent Note: The drill claim is published before the edit that re-enters tracking](2026-08-29-drill-claim-precedes-the-drill-edit.zh-71e20a8adc.md) — `.agents/notes/archived/bug-fix/2026-08-29-drill-claim-precedes-the-drill-edit.zh.md`
+- [Agent Note: Retry transient Windows atomic replacements](2026-08-29-windows-atomic-replace-retry-cbf22dd8f4.md) — `.agents/notes/archived/bug-fix/2026-08-29-windows-atomic-replace-retry.md`
+- [Agent Note: 重试 Windows 上的瞬时原子替换失败](2026-08-29-windows-atomic-replace-retry.zh-a71e593660.md) — `.agents/notes/archived/bug-fix/2026-08-29-windows-atomic-replace-retry.zh.md`
+- [Agent Note: Host-initiated goal pause aborts the live turn](2026-09-01-host-goal-pause-aborts-turn-a355ca116f.md) — `.agents/notes/archived/bug-fix/2026-09-01-host-goal-pause-aborts-turn.md`
+- [Agent Note: 宿主发起的 goal 暂停中止当前轮次](2026-09-01-host-goal-pause-aborts-turn.zh-1e022bb258.md) — `.agents/notes/archived/bug-fix/2026-09-01-host-goal-pause-aborts-turn.zh.md`
+- [Agent Note: Fully qualified Workspace paths](2026-09-03-fully-qualified-workspace-paths-3ac78d1c79.md) — `.agents/notes/archived/bug-fix/2026-09-03-fully-qualified-workspace-paths.md`
+- [Agent Note: Workspace 完全限定路径](2026-09-03-fully-qualified-workspace-paths.zh-22bae4d974.md) — `.agents/notes/archived/bug-fix/2026-09-03-fully-qualified-workspace-paths.zh.md`
+- [Agent Note: Suppressing Windows subprocess windows](2026-09-03-hidden-windows-subprocess-windows-a2687e0464.md) — `.agents/notes/archived/bug-fix/2026-09-03-hidden-windows-subprocess-windows.md`
+- [Agent Note: 隐藏 Windows 子进程窗口](2026-09-03-hidden-windows-subprocess-windows.zh-4234e7c490.md) — `.agents/notes/archived/bug-fix/2026-09-03-hidden-windows-subprocess-windows.zh.md`
+- [Agent Note: Session search result reveal](2026-09-03-session-search-result-reveal-9a8b5b24d8.md) — `.agents/notes/archived/bug-fix/2026-09-03-session-search-result-reveal.md`
+- [Agent Note: Session 搜索结果显露](2026-09-03-session-search-result-reveal.zh-74ef1257cb.md) — `.agents/notes/archived/bug-fix/2026-09-03-session-search-result-reveal.zh.md`
+- [Agent Note: Content-sized diagram previews](2026-09-09-content-sized-diagram-previews-25b37169e8.md) — `.agents/notes/archived/bug-fix/2026-09-09-content-sized-diagram-previews.md`
+- [Agent Note: 按内容定高的图表预览](2026-09-09-content-sized-diagram-previews.zh-eda2b0d0d3.md) — `.agents/notes/archived/bug-fix/2026-09-09-content-sized-diagram-previews.zh.md`

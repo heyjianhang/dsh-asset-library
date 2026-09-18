@@ -1,0 +1,47 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/lifecycle-chrome/hero.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/lifecycle-chrome/hero.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- button "New session"
+- button "Collapse sidebar":
+  - img
+- button "New session":
+  - img
+  - text: New Session
+- navigation "Global panels":
+  - button "Plugins"
+- text: Workspaces
+- button "Search sessions":
+  - img
+- textbox "Search sessions..."
+- button "View options":
+  - img
+- button "Add workspace":
+  - img
+- tree "Sessions":
+  - treeitem "workspace" [expanded]:
+    - img
+    - text: workspace
+  - treeitem "New Session" [selected]
+- button "Settings":
+  - img
+  - text: Settings
+- banner:
+  - button "Open right sidebar":
+    - img
+- text: Into the Unknown Preview
+- button "Choose workspace":
+  - img
+  - text: workspace
+  - img
+- button "Standard mode":
+  - img
+  - text: Standard mode
+  - img
+- textbox "Describe what you want to build, / commands, @ files or sessions":
+  - paragraph
+- button "Add files or run commands":
+  - img
+- 'button "Access mode, current: Workspace Write"': Workspace Write
+- button "Select model, current DeepSeek-V4-Flash":
+  - text: DeepSeek-V4-Flash
+  - img
+- button "Send message" [disabled]

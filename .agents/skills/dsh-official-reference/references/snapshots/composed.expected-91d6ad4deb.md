@@ -1,0 +1,21 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/question-composer/composed.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/question-composer/composed.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- region "Which color do you prefer?":
+  - text: Pick one
+  - heading "Which color do you prefer?" [level=2]
+  - button "Collapse the question card" [expanded]:
+    - img
+  - button "Dismiss all questions":
+    - img
+  - group:
+    - checkbox "Blue" [checked]: Blue A cool recessive hue that reads as calm and trustworthy in long reading sessions and dense dashboards.
+    - checkbox "Green": Green A restful mid-spectrum hue with the highest perceived brightness, easiest on the eye over long sessions.
+    - textbox "Type your answer": Include accessibility notes
+  - button "Previous question" [disabled]:
+    - img
+  - text: 1 / 1
+  - button "Next question" [disabled]:
+    - img
+  - status
+  - button "Skip"
+  - button "Submit"

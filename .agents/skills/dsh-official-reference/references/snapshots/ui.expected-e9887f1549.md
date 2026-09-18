@@ -1,0 +1,44 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/workflow-run/ui.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/workflow-run/ui.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- button "System prompt":
+  - img
+  - img
+  - text: System prompt
+- text: "Use the workflow tool exactly once, with args omitted, meta set to { \"name\": \"snapshot-flow\", \"description\": \"one child for the snapshot\" }, and this EXACT script body (copy it verbatim): phase('Run') const reply = await agent('Reply with exactly the word WF_CHILD_OK and nothing else.') return { reply } After the workflow returns, reply with the single word WORKFLOW_DONE and stop. Do not use any other tool. {{clock}}"
+- button "Copy":
+  - img
+- button "1 tool call" [expanded]:
+  - text: 1 tool call
+  - img
+- button "Context injection @deepseek-ai/dsh-system-prompt":
+  - img
+  - img
+  - text: Context injection @deepseek-ai/dsh-system-prompt
+- button "Think The user wants me to use the workflow tool exactly once with specific parameters. Let me carefully follow the instructions:":
+  - img
+  - img
+  - text: "Think The user wants me to use the workflow tool exactly once with specific parameters. Let me carefully follow the instructions:"
+- button "Tool call workflow ·":
+  - img
+  - img
+  - text: Tool call workflow ·
+- button "snapshot-flow 1 member Completed":
+  - img
+  - text: snapshot-flow 1 member Completed
+- button "Think The workflow returned successfully with the reply \"WF_CHILD_OK\". Now I need to reply with exactly \"WORKFLOW_DONE\" and stop.":
+  - img
+  - img
+  - text: Think The workflow returned successfully with the reply "WF_CHILD_OK". Now I need to reply with exactly "WORKFLOW_DONE" and stop.
+- paragraph: WORKFLOW_DONE
+- button "Copy":
+  - img
+- button "Good response":
+  - img
+- button "Bad response":
+  - img
+- button "Branch into a new conversation":
+  - img
+- button "Ran for {{duration}}":
+  - img
+  - text: Ran for {{duration}}
+- text: {{clock}}

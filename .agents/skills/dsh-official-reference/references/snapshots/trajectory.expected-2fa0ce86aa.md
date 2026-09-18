@@ -1,0 +1,24 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/ptc-round/trajectory.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/ptc-round/trajectory.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- heading "Code typescript Wrap lines Copy code" [level=3]:
+  - button "Code":
+    - text: Code
+    - img
+  - text: typescript
+  - button "Wrap lines"
+  - button "Copy code":
+    - img
+- code: "const bashResult = await tools.bash({ command: \"echo CODE_ROUND_OK\", description: \"Echo CODE_ROUND_OK\" }); let readError = null; try { await tools.read({ file_path: \"missing.txt\" }); } catch (e) { readError = { toolName: e.toolName, message: e.message }; } return { bash: bashResult.stdout.text.trim(), readError };"
+- heading "Output Copy output" [level=3]:
+  - button "Output":
+    - text: Output
+    - img
+  - button "Copy output":
+    - img
+- text: "{"
+- tree "Result JSON":
+  - treeitem "bash:\"CODE_ROUND_OK\","
+  - 'treeitem "Expand readError:{toolName: \"read\", message: \"cannot read \\\"{{cwd}}/workspace/missing.txt\\\": not found\"}"':
+    - button "Expand"
+    - text: "readError:{toolName: \"read\", message: \"cannot read \\\"{{cwd}}/workspace/missing.txt\\\": not found\"}"
+- text: "}"

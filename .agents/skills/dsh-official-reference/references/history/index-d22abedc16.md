@@ -1,0 +1,254 @@
+# .agents/notes/archived/architecture
+
+仅追溯背景时读取；提案、废弃记录不代表当前接口。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Note: Custom typed tool-schema DSL instead of schemastery](2026-06-11-custom-schema-dsl-5412ff9a9c.md) — `.agents/notes/archived/architecture/2026-06-11-custom-schema-dsl.md`
+- [Agent Note: 使用自定义类型化工具 schema DSL 替代 schemastery](2026-06-11-custom-schema-dsl.zh-35f8c52d7d.md) — `.agents/notes/archived/architecture/2026-06-11-custom-schema-dsl.zh.md`
+- [Agent Note: Runtime arg validation at the model boundary](2026-06-11-runtime-arg-validation-f719059bbd.md) — `.agents/notes/archived/architecture/2026-06-11-runtime-arg-validation.md`
+- [Agent Note: 模型边界处的运行时参数校验](2026-06-11-runtime-arg-validation.zh-64a94555b1.md) — `.agents/notes/archived/architecture/2026-06-11-runtime-arg-validation.zh.md`
+- [Agent Note: Structured error taxonomy](2026-06-11-structured-error-taxonomy-3a162531d0.md) — `.agents/notes/archived/architecture/2026-06-11-structured-error-taxonomy.md`
+- [Agent Note: 结构化错误分类体系](2026-06-11-structured-error-taxonomy.zh-755285fe51.md) — `.agents/notes/archived/architecture/2026-06-11-structured-error-taxonomy.zh.md`
+- [Agent Note: Tool schemas are part of the system-prompt assembly](2026-06-11-tool-schemas-in-prompt-assembly-d9c618a298.md) — `.agents/notes/archived/architecture/2026-06-11-tool-schemas-in-prompt-assembly.md`
+- [Agent Note: 工具 schema 是系统提示词组装的一部分](2026-06-11-tool-schemas-in-prompt-assembly.zh-61d4af9be4.md) — `.agents/notes/archived/architecture/2026-06-11-tool-schemas-in-prompt-assembly.zh.md`
+- [Agent Note: Every session event is enclosed in a turn](2026-06-15-turn-enclosure-invariant-58e4e8d95c.md) — `.agents/notes/archived/architecture/2026-06-15-turn-enclosure-invariant.md`
+- [Agent Note: 每个会话事件都封闭在一个轮次内](2026-06-15-turn-enclosure-invariant.zh-36c203838f.md) — `.agents/notes/archived/architecture/2026-06-15-turn-enclosure-invariant.zh.md`
+- [Agent Note: Filesystem capability seam — ctx.fs, local backend, and model-facing filesystem tools](2026-06-17-filesystem-capability-seam-4aa5d720ed.md) — `.agents/notes/archived/architecture/2026-06-17-filesystem-capability-seam.md`
+- [Agent Note: 文件系统能力 seam——ctx.fs、本地后端与面向模型的文件系统工具](2026-06-17-filesystem-capability-seam.zh-c744a5a1e4.md) — `.agents/notes/archived/architecture/2026-06-17-filesystem-capability-seam.zh.md`
+- [Agent Note: Agent lifecycle and ownership contracts](2026-06-18-agent-lifecycle-and-ownership-contracts-11f5149b4d.md) — `.agents/notes/archived/architecture/2026-06-18-agent-lifecycle-and-ownership-contracts.md`
+- [Agent Note: Agent 生命周期与所有权约定](2026-06-18-agent-lifecycle-and-ownership-contracts.zh-05f8a37a9f.md) — `.agents/notes/archived/architecture/2026-06-18-agent-lifecycle-and-ownership-contracts.zh.md`
+- [Agent Note: Shared persistence write coordinator](2026-06-18-shared-persistence-write-coordinator-afb735ebb3.md) — `.agents/notes/archived/architecture/2026-06-18-shared-persistence-write-coordinator.md`
+- [Agent Note: 共享持久化写入协调器](2026-06-18-shared-persistence-write-coordinator.zh-031bd85815.md) — `.agents/notes/archived/architecture/2026-06-18-shared-persistence-write-coordinator.zh.md`
+- [Agent Note: Branded IDs everywhere they belong](2026-06-20-branded-ids-7d017e30d1.md) — `.agents/notes/archived/architecture/2026-06-20-branded-ids.md`
+- [Agent Note: 在所有应有之处使用 branded ID](2026-06-20-branded-ids.zh-ddbeb444ff.md) — `.agents/notes/archived/architecture/2026-06-20-branded-ids.zh.md`
+- [Agent Note: Extract example apps into packages](2026-06-20-extract-example-app-packages-7e5f8f0a0e.md) — `.agents/notes/archived/architecture/2026-06-20-extract-example-app-packages.md`
+- [Agent Note: 将示例应用提取为独立包](2026-06-20-extract-example-app-packages.zh-4ba4314b6e.md) — `.agents/notes/archived/architecture/2026-06-20-extract-example-app-packages.zh.md`
+- [Agent Note: Reorganize packages into a modular hierarchy](2026-06-20-package-hierarchy-30decc8328.md) — `.agents/notes/archived/architecture/2026-06-20-package-hierarchy.md`
+- [Agent Note: 将包重组为模块化层级结构](2026-06-20-package-hierarchy.zh-f4e8e1c1de.md) — `.agents/notes/archived/architecture/2026-06-20-package-hierarchy.zh.md`
+- [Agent Note: stdin + extra env on the bash seam](2026-06-30-bash-stdin-env-trusted-plugin-api-5a57d4ed2b.md) — `.agents/notes/archived/architecture/2026-06-30-bash-stdin-env-trusted-plugin-api.md`
+- [Agent Note: 在 bash seam 上支持 stdin 与额外 env](2026-06-30-bash-stdin-env-trusted-plugin-api.zh-046219e134.md) — `.agents/notes/archived/architecture/2026-06-30-bash-stdin-env-trusted-plugin-api.zh.md`
+- [Agent Note: Resolve filesystem paths against the caller's session cwd](2026-07-02-fs-per-session-cwd-a45018b34b.md) — `.agents/notes/archived/architecture/2026-07-02-fs-per-session-cwd.md`
+- [Agent Note: 相对文件系统路径按调用方的会话 cwd 解析](2026-07-02-fs-per-session-cwd.zh-869453f099.md) — `.agents/notes/archived/architecture/2026-07-02-fs-per-session-cwd.zh.md`
+- [Agent Note: Result-time applied-hunk diffs for file mutations](2026-07-02-result-time-applied-hunk-diffs-2147010087.md) — `.agents/notes/archived/architecture/2026-07-02-result-time-applied-hunk-diffs.md`
+- [Agent Note: 结果时刻的 applied-hunk diff 用于文件变更](2026-07-02-result-time-applied-hunk-diffs.zh-81ac494047.md) — `.agents/notes/archived/architecture/2026-07-02-result-time-applied-hunk-diffs.zh.md`
+- [Agent Note: Add direct directory listing to the filesystem seam](2026-07-03-filesystem-directory-listing-seam-55ab42ecea.md) — `.agents/notes/archived/architecture/2026-07-03-filesystem-directory-listing-seam.md`
+- [Agent Note: 为文件系统 seam 添加直接目录列举能力](2026-07-03-filesystem-directory-listing-seam.zh-8cc0d0810d.md) — `.agents/notes/archived/architecture/2026-07-03-filesystem-directory-listing-seam.zh.md`
+- [Agent Note: Subagent provider-lifecycle events — subagent/provider-added / subagent/provider-removed](2026-07-05-subagent-provider-lifecycle-events-3646e2ee4f.md) — `.agents/notes/archived/architecture/2026-07-05-subagent-provider-lifecycle-events.md`
+- [Agent Note: Subagent 提供方生命周期事件——subagent/provider-added / subagent/provider-removed](2026-07-05-subagent-provider-lifecycle-events.zh-df55755b70.md) — `.agents/notes/archived/architecture/2026-07-05-subagent-provider-lifecycle-events.zh.md`
+- [Agent Note: Windows write-permission semantics — inherited DACLs, not mode bits](2026-07-05-windows-fs-permissions-88e324f097.md) — `.agents/notes/archived/architecture/2026-07-05-windows-fs-permissions.md`
+- [Agent Note: Windows 写入权限语义：继承 DACL，而非权限模式位](2026-07-05-windows-fs-permissions.zh-e74b59ba56.md) — `.agents/notes/archived/architecture/2026-07-05-windows-fs-permissions.zh.md`
+- [Agent Note: Tool result retention library](2026-07-06-tool-result-retention-library-d6de35a92b.md) — `.agents/notes/archived/architecture/2026-07-06-tool-result-retention-library.md`
+- [Agent Note: 工具结果保留库](2026-07-06-tool-result-retention-library.zh-fa301b0998.md) — `.agents/notes/archived/architecture/2026-07-06-tool-result-retention-library.zh.md`
+- [Agent Note: Shared scoped-layer storage](2026-07-12-scoped-layers-store-d86b95d436.md) — `.agents/notes/archived/architecture/2026-07-12-scoped-layers-store.md`
+- [Agent Note: 共享作用域分层存储](2026-07-12-scoped-layers-store.zh-5d0b1759dc.md) — `.agents/notes/archived/architecture/2026-07-12-scoped-layers-store.zh.md`
+- [Agent Note: Advisory LLM catalogs and per-session ACP model selection](2026-07-15-llm-model-catalog-and-acp-selection-1b707e034b.md) — `.agents/notes/archived/architecture/2026-07-15-llm-model-catalog-and-acp-selection.md`
+- [Agent Note: 建议性 LLM 目录与 ACP 会话级模型选择](2026-07-15-llm-model-catalog-and-acp-selection.zh-1c8ce3bcfb.md) — `.agents/notes/archived/architecture/2026-07-15-llm-model-catalog-and-acp-selection.zh.md`
+- [Agent Note: LSP capability seam and model-facing query tool](2026-07-15-lsp-capability-seam-161bc99444.md) — `.agents/notes/archived/architecture/2026-07-15-lsp-capability-seam.md`
+- [Agent Note: LSP 能力 seam 与面向模型的查询工具](2026-07-15-lsp-capability-seam.zh-af57d62454.md) — `.agents/notes/archived/architecture/2026-07-15-lsp-capability-seam.zh.md`
+- [Agent Note: Replay token meter service](2026-07-15-replay-token-meter-service-041fb481a8.md) — `.agents/notes/archived/architecture/2026-07-15-replay-token-meter-service.md`
+- [Agent Note: 回放式 token 计量服务](2026-07-15-replay-token-meter-service.zh-20016952cf.md) — `.agents/notes/archived/architecture/2026-07-15-replay-token-meter-service.zh.md`
+- [Agent Note: One-shot startup cleanup for local spill files](2026-07-17-local-spill-startup-cleanup-88db12ad34.md) — `.agents/notes/archived/architecture/2026-07-17-local-spill-startup-cleanup.md`
+- [Agent Note: 本地 spill 文件的一次性启动清理](2026-07-17-local-spill-startup-cleanup.zh-c636b4e848.md) — `.agents/notes/archived/architecture/2026-07-17-local-spill-startup-cleanup.zh.md`
+- [Agent Note: GUI layering and the RPC protocol — host/client layering by capability provider, the four-quadrant message model, and the fetch carrier](2026-07-19-gui-layering-and-rpc-protocol-b2d3f9ba0f.md) — `.agents/notes/archived/architecture/2026-07-19-gui-layering-and-rpc-protocol.md`
+- [Agent Note: GUI 分层与 RPC 协议——host/client 按能力提供方分层、四象限消息模型与 fetch 载体](2026-07-19-gui-layering-and-rpc-protocol.zh-7dfd241fb7.md) — `.agents/notes/archived/architecture/2026-07-19-gui-layering-and-rpc-protocol.zh.md`
+- [Agent Note: Package-owned invariant service contract](2026-07-19-package-owned-invariant-service-8a42197b83.md) — `.agents/notes/archived/architecture/2026-07-19-package-owned-invariant-service.md`
+- [Agent Note: 包拥有的不变式服务约定](2026-07-19-package-owned-invariant-service.zh-e880fcf5ab.md) — `.agents/notes/archived/architecture/2026-07-19-package-owned-invariant-service.zh.md`
+- [Agent Note: todo event types belong to their producer](2026-07-20-todo-event-ownership-d3697c215a.md) — `.agents/notes/archived/architecture/2026-07-20-todo-event-ownership.md`
+- [Agent Note: todo 事件类型归其生产方所有](2026-07-20-todo-event-ownership.zh-ab4fd6f35b.md) — `.agents/notes/archived/architecture/2026-07-20-todo-event-ownership.zh.md`
+- [Agent Note: Effect-owned TUI interactive extensions](2026-07-22-tui-interactive-extension-service-d5df871f3b.md) — `.agents/notes/archived/architecture/2026-07-22-tui-interactive-extension-service.md`
+- [Agent Note: 由 effect 持有的 TUI 交互扩展](2026-07-22-tui-interactive-extension-service.zh-dba2397452.md) — `.agents/notes/archived/architecture/2026-07-22-tui-interactive-extension-service.zh.md`
+- [Agent Note: Unify agent delivery on send(target × wakeup) and coalesce injected context into user/message](2026-07-22-unified-send-and-coalesced-user-messages-97030676db.md) — `.agents/notes/archived/architecture/2026-07-22-unified-send-and-coalesced-user-messages.md`
+- [Agent Note: 将 agent 投递统一到 send(target × wakeup) 并把注入的上下文合并进 user/message](2026-07-22-unified-send-and-coalesced-user-messages.zh-0a6b70ba3a.md) — `.agents/notes/archived/architecture/2026-07-22-unified-send-and-coalesced-user-messages.zh.md`
+- [Agent Note: Toolview dissolution — tool rows are per-view keyed slots](2026-07-23-toolview-dissolution-4b28a87318.md) — `.agents/notes/archived/architecture/2026-07-23-toolview-dissolution.md`
+- [Agent Note: toolview 溶解——工具行即 per-view keyed slot](2026-07-23-toolview-dissolution.zh-019430e4e6.md) — `.agents/notes/archived/architecture/2026-07-23-toolview-dissolution.zh.md`
+- [Agent Note: Unified session query service](2026-07-23-unified-session-query-service-9f0bf7d9fb.md) — `.agents/notes/archived/architecture/2026-07-23-unified-session-query-service.md`
+- [Agent Note: 统一会话查询服务](2026-07-23-unified-session-query-service.zh-548a11a708.md) — `.agents/notes/archived/architecture/2026-07-23-unified-session-query-service.zh.md`
+- [Agent Note: Adapter-owned reasoning effort capabilities](2026-07-24-adapter-owned-reasoning-effort-capabilities-f21fc1ba6a.md) — `.agents/notes/archived/architecture/2026-07-24-adapter-owned-reasoning-effort-capabilities.md`
+- [Agent Note: 适配器持有的推理强度能力](2026-07-24-adapter-owned-reasoning-effort-capabilities.zh-69e78e504d.md) — `.agents/notes/archived/architecture/2026-07-24-adapter-owned-reasoning-effort-capabilities.zh.md`
+- [Agent Note: Parse dsh argv through one Commander adapter](2026-07-24-dsh-commander-argument-adapter-f8fe1dbcd2.md) — `.agents/notes/archived/architecture/2026-07-24-dsh-commander-argument-adapter.md`
+- [Agent Note: 通过单个 Commander 适配器解析 dsh 的 argv](2026-07-24-dsh-commander-argument-adapter.zh-f1669683b2.md) — `.agents/notes/archived/architecture/2026-07-24-dsh-commander-argument-adapter.zh.md`
+- [Agent Note: Web command business surfaces and assembly (ui-commands / ui-skill / ui-subagent)](2026-07-25-web-command-surfaces-and-assembly-d80c9db860.md) — `.agents/notes/archived/architecture/2026-07-25-web-command-surfaces-and-assembly.md`
+- [Agent Note: Web 命令业务面与装配（ui-commands / ui-skill / ui-subagent）](2026-07-25-web-command-surfaces-and-assembly.zh-fcae1cbd96.md) — `.agents/notes/archived/architecture/2026-07-25-web-command-surfaces-and-assembly.zh.md`
+- [Agent Note: Web input state machine, composer slots, and the slash pipeline (ui-conversation input / ui-input-trigger)](2026-07-25-web-input-machine-and-slash-pipeline-9f4aec38ed.md) — `.agents/notes/archived/architecture/2026-07-25-web-input-machine-and-slash-pipeline.md`
+- [Agent Note: Web 输入状态机、composer slot 与 slash 流水线（ui-conversation input / ui-input-trigger）](2026-07-25-web-input-machine-and-slash-pipeline.zh-09f3909ae6.md) — `.agents/notes/archived/architecture/2026-07-25-web-input-machine-and-slash-pipeline.zh.md`
+- [Agent Note: The job registry is a capability seam (dsh-jobs / dsh-jobs-local)](2026-07-26-job-registry-seam-38018d3a7a.md) — `.agents/notes/archived/architecture/2026-07-26-job-registry-seam.md`
+- [Agent Note: 任务注册表是一个能力 seam（dsh-jobs / dsh-jobs-local）](2026-07-26-job-registry-seam.zh-a181c8bd8b.md) — `.agents/notes/archived/architecture/2026-07-26-job-registry-seam.zh.md`
+- [Agent Note: Make packed chunk rows the default JSONL layout](2026-07-26-packed-chunk-rows-by-default-c9b40c163f.md) — `.agents/notes/archived/architecture/2026-07-26-packed-chunk-rows-by-default.md`
+- [Agent Note: 将打包分片行设为默认 JSONL 布局](2026-07-26-packed-chunk-rows-by-default.zh-bc53072998.md) — `.agents/notes/archived/architecture/2026-07-26-packed-chunk-rows-by-default.zh.md`
+- [Agent Note: The subprocess service is its own seam under the bash executors (dsh-subprocess / dsh-subprocess-local)](2026-07-26-subprocess-seam-b3edf55c9a.md) — `.agents/notes/archived/architecture/2026-07-26-subprocess-seam.md`
+- [Agent Note: 进程服务是 bash 执行器之下的独立 seam（dsh-subprocess / dsh-subprocess-local）](2026-07-26-subprocess-seam.zh-ac77fcec76.md) — `.agents/notes/archived/architecture/2026-07-26-subprocess-seam.zh.md`
+- [Agent Note: The dispose ladder belongs to its consumer, not the subprocess seam](2026-07-27-dispose-ladder-to-consumer-14c6745442.md) — `.agents/notes/archived/architecture/2026-07-27-dispose-ladder-to-consumer.md`
+- [Agent Note: dispose 阶梯归其消费方所有，而非 subprocess seam](2026-07-27-dispose-ladder-to-consumer.zh-5a47e564a6.md) — `.agents/notes/archived/architecture/2026-07-27-dispose-ladder-to-consumer.zh.md`
+- [Agent Note: dsh-tui chat channel module split](2026-07-27-tui-chat-channel-module-split-0e9b7f6373.md) — `.agents/notes/archived/architecture/2026-07-27-tui-chat-channel-module-split.md`
+- [Agent Note: dsh-tui 聊天通道模块拆分](2026-07-27-tui-chat-channel-module-split.zh-aa5f13ccfe.md) — `.agents/notes/archived/architecture/2026-07-27-tui-chat-channel-module-split.zh.md`
+- [Agent Note: Consolidated TUI presentation and navigation](2026-07-28-consolidated-tui-presentation-1178dc65e3.md) — `.agents/notes/archived/architecture/2026-07-28-consolidated-tui-presentation.md`
+- [Agent Note: 统一的 TUI 呈现与导航](2026-07-28-consolidated-tui-presentation.zh-c4bb11cd8e.md) — `.agents/notes/archived/architecture/2026-07-28-consolidated-tui-presentation.zh.md`
+- [Agent Note: A capability-discriminated directory-picker seam for the web-GUI host](2026-07-28-directory-picker-capability-seam-aeba353c1a.md) — `.agents/notes/archived/architecture/2026-07-28-directory-picker-capability-seam.md`
+- [Agent Note: web GUI 宿主的能力可辨识目录选择 seam](2026-07-28-directory-picker-capability-seam.zh-c10fa116ab.md) — `.agents/notes/archived/architecture/2026-07-28-directory-picker-capability-seam.zh.md`
+- [Agent Note: Native TypeScript source launch for dsh](2026-07-28-dsh-native-typescript-source-launch-3dfcfc10d1.md) — `.agents/notes/archived/architecture/2026-07-28-dsh-native-typescript-source-launch.md`
+- [Agent Note: dsh 原生 TypeScript 源码启动](2026-07-28-dsh-native-typescript-source-launch.zh-33e71ce6c0.md) — `.agents/notes/archived/architecture/2026-07-28-dsh-native-typescript-source-launch.zh.md`
+- [Agent Note: user-settings seam (ctx.settings) and the file provider](2026-07-28-user-settings-seam-5399aaaf05.md) — `.agents/notes/archived/architecture/2026-07-28-user-settings-seam.md`
+- [Agent Note: 用户设置 seam（ctx.settings）与文件提供方](2026-07-28-user-settings-seam.zh-aba8a5114a.md) — `.agents/notes/archived/architecture/2026-07-28-user-settings-seam.zh.md`
+- [Agent Note: Regroup packages/ by measured clustering](2026-07-29-package-regrouping-987dfe9a28.md) — `.agents/notes/archived/architecture/2026-07-29-package-regrouping.md`
+- [Agent Note: 按实测聚类重新划分 packages/ 分组](2026-07-29-package-regrouping.zh-a05d507584.md) — `.agents/notes/archived/architecture/2026-07-29-package-regrouping.zh.md`
+- [Agent Note: request-level LLM configuration and the credential seam](2026-07-29-request-level-llm-config-credentials-60513cfb8b.md) — `.agents/notes/archived/architecture/2026-07-29-request-level-llm-config-credentials.md`
+- [Agent Note: 请求级 LLM 配置与凭据 seam](2026-07-29-request-level-llm-config-credentials.zh-da336c7977.md) — `.agents/notes/archived/architecture/2026-07-29-request-level-llm-config-credentials.zh.md`
+- [Agent Note: Adapter-owned max-token defaults](2026-07-30-adapter-owned-max-token-defaults-9387b4e6fd.md) — `.agents/notes/archived/architecture/2026-07-30-adapter-owned-max-token-defaults.md`
+- [Agent Note: 适配器持有的最大 token 默认值](2026-07-30-adapter-owned-max-token-defaults.zh-b8030db6d7.md) — `.agents/notes/archived/architecture/2026-07-30-adapter-owned-max-token-defaults.zh.md`
+- [Agent Note: Full client copy rollout onto the typed locale seat](2026-07-30-client-locale-full-rollout-e5a3d82a82.md) — `.agents/notes/archived/architecture/2026-07-30-client-locale-full-rollout.md`
+- [Agent Note: client 文案全量接入 typed locale 席位](2026-07-30-client-locale-full-rollout.zh-923c6521dd.md) — `.agents/notes/archived/architecture/2026-07-30-client-locale-full-rollout.zh.md`
+- [Agent Note: Command row copy is split between the row and the handler](2026-07-30-command-row-copy-contract-07f532b6cc.md) — `.agents/notes/archived/architecture/2026-07-30-command-row-copy-contract.md`
+- [Agent Note: 命令条目文案分别由条目与 handler 负责](2026-07-30-command-row-copy-contract.zh-5800b950e0.md) — `.agents/notes/archived/architecture/2026-07-30-command-row-copy-contract.zh.md`
+- [Agent Note: what the configuration plane exposes, and who may overwrite what](2026-07-30-config-plane-boundaries-8bfa3e3e38.md) — `.agents/notes/archived/architecture/2026-07-30-config-plane-boundaries.md`
+- [Agent Note: 配置面暴露什么，以及谁有权覆盖什么](2026-07-30-config-plane-boundaries.zh-3f7b7ec80d.md) — `.agents/notes/archived/architecture/2026-07-30-config-plane-boundaries.zh.md`
+- [Agent Note: settings write-path integrity and observer lifecycle](2026-07-30-settings-write-path-integrity-658fbffde4.md) — `.agents/notes/archived/architecture/2026-07-30-settings-write-path-integrity.md`
+- [Agent Note: settings 写路径完整性与观察者生命周期](2026-07-30-settings-write-path-integrity.zh-68f6e4c777.md) — `.agents/notes/archived/architecture/2026-07-30-settings-write-path-integrity.zh.md`
+- [Agent Note: the web configuration plane](2026-07-30-web-config-plane-ab67e63d6b.md) — `.agents/notes/archived/architecture/2026-07-30-web-config-plane.md`
+- [Agent Note: web 配置平面](2026-07-30-web-config-plane.zh-dd299127ba.md) — `.agents/notes/archived/architecture/2026-07-30-web-config-plane.zh.md`
+- [Agent Note: the code-runtime seam owns portable-identifier exclusions](2026-07-31-code-runtime-portable-identifier-seam-8e5c50bc9d.md) — `.agents/notes/archived/architecture/2026-07-31-code-runtime-portable-identifier-seam.md`
+- [Agent Note: code-runtime seam 拥有可移植标识符排除集](2026-07-31-code-runtime-portable-identifier-seam.zh-7de0832f8e.md) — `.agents/notes/archived/architecture/2026-07-31-code-runtime-portable-identifier-seam.zh.md`
+- [Agent Note: Packaged ripgrep spawn for glob/grep](2026-08-01-packaged-ripgrep-search-fd81d9820e.md) — `.agents/notes/archived/architecture/2026-08-01-packaged-ripgrep-search.md`
+- [Agent Note: glob/grep 改用打包的 ripgrep 二进制直接 spawn](2026-08-01-packaged-ripgrep-search.zh-35c552642b.md) — `.agents/notes/archived/architecture/2026-08-01-packaged-ripgrep-search.zh.md`
+- [Agent Note: pi-ai routes are declared providers, not catalog lookups](2026-08-03-pi-ai-declared-provider-catalog-5728ec76f8.md) — `.agents/notes/archived/architecture/2026-08-03-pi-ai-declared-provider-catalog.md`
+- [Agent Note: pi-ai 路由是被声明的提供方，而不是 catalog 查表](2026-08-03-pi-ai-declared-provider-catalog.zh-93e2de8308.md) — `.agents/notes/archived/architecture/2026-08-03-pi-ai-declared-provider-catalog.zh.md`
+- [Agent Note: Splitting the credential store from the user environment layer](2026-08-04-credentials-yaml-and-user-environment-layer-ea059697e2.md) — `.agents/notes/archived/architecture/2026-08-04-credentials-yaml-and-user-environment-layer.md`
+- [Agent Note: 把凭据存储与用户环境层拆开](2026-08-04-credentials-yaml-and-user-environment-layer.zh-79a35b22f4.md) — `.agents/notes/archived/architecture/2026-08-04-credentials-yaml-and-user-environment-layer.zh.md`
+- [Agent Note: Declaring a provider from the Models page](2026-08-04-declaring-a-provider-from-the-models-page-d7babb39a2.md) — `.agents/notes/archived/architecture/2026-08-04-declaring-a-provider-from-the-models-page.md`
+- [Agent Note: 在 Models 页上声明一个提供方](2026-08-04-declaring-a-provider-from-the-models-page.zh-6a9c082617.md) — `.agents/notes/archived/architecture/2026-08-04-declaring-a-provider-from-the-models-page.zh.md`
+- [Agent Note: WebSocket carrier for browser downlinks](2026-08-04-websocket-downlink-carrier-6c224b29a0.md) — `.agents/notes/archived/architecture/2026-08-04-websocket-downlink-carrier.md`
+- [Agent Note: 浏览器下行 WebSocket 载体](2026-08-04-websocket-downlink-carrier.zh-9e8a5f72c2.md) — `.agents/notes/archived/architecture/2026-08-04-websocket-downlink-carrier.zh.md`
+- [Agent Note: Large-session JSONL restore pipeline](2026-08-05-large-session-jsonl-restore-pipeline-998f665155.md) — `.agents/notes/archived/architecture/2026-08-05-large-session-jsonl-restore-pipeline.md`
+- [Agent Note: 大型会话 JSONL 恢复流水线](2026-08-05-large-session-jsonl-restore-pipeline.zh-4f9075ebcc.md) — `.agents/notes/archived/architecture/2026-08-05-large-session-jsonl-restore-pipeline.zh.md`
+- [Agent Note: Reusable Session preparation before publication](2026-08-05-session-preparation-6617e26179.md) — `.agents/notes/archived/architecture/2026-08-05-session-preparation.md`
+- [Agent Note: 发布前可复用的 Session 准备阶段](2026-08-05-session-preparation.zh-2a98a6f16d.md) — `.agents/notes/archived/architecture/2026-08-05-session-preparation.zh.md`
+- [Agent Note: Slot declaration injection and reload lifetimes](2026-08-05-slot-declaration-injection-444178bae7.md) — `.agents/notes/archived/architecture/2026-08-05-slot-declaration-injection.md`
+- [Agent Note: slot 声明注入与重载生命周期](2026-08-05-slot-declaration-injection.zh-19e4a480e9.md) — `.agents/notes/archived/architecture/2026-08-05-slot-declaration-injection.zh.md`
+- [Agent Note: Agent-scoped events dispatch a single payload object](2026-08-06-agent-event-payload-objects-46dc4fe535.md) — `.agents/notes/archived/architecture/2026-08-06-agent-event-payload-objects.md`
+- [Agent Note: Agent 作用域事件 dispatch 单个 payload 对象](2026-08-06-agent-event-payload-objects.zh-63203f6f1d.md) — `.agents/notes/archived/architecture/2026-08-06-agent-event-payload-objects.zh.md`
+- [Agent Note: Apps own their command line through ctx.cmdlineArgs](2026-08-06-app-owned-command-line-451f393074.md) — `.agents/notes/archived/architecture/2026-08-06-app-owned-command-line.md`
+- [Agent Note: 应用通过 ctx.cmdlineArgs 持有自己的命令行](2026-08-06-app-owned-command-line.zh-b8c32dd6c3.md) — `.agents/notes/archived/architecture/2026-08-06-app-owned-command-line.zh.md`
+- [Agent Note: Subagent list identity via the projection unit](2026-08-06-subagent-list-identity-projection-a474d15b90.md) — `.agents/notes/archived/architecture/2026-08-06-subagent-list-identity-projection.md`
+- [Agent Note: subagent 列表经投影单元读取身份](2026-08-06-subagent-list-identity-projection.zh-ce6cedcab2.md) — `.agents/notes/archived/architecture/2026-08-06-subagent-list-identity-projection.zh.md`
+- [Agent Note: Incremental streaming markdown through a direct mdast renderer](2026-08-06-web-markdown-incremental-ast-renderer-8654a745c0.md) — `.agents/notes/archived/architecture/2026-08-06-web-markdown-incremental-ast-renderer.md`
+- [Agent Note: 经由直接 mdast 渲染器的增量流式 Markdown](2026-08-06-web-markdown-incremental-ast-renderer.zh-a1f3167896.md) — `.agents/notes/archived/architecture/2026-08-06-web-markdown-incremental-ast-renderer.zh.md`
+- [Agent Note: Web shell dist chunk split and directory layout](2026-08-06-web-shell-dist-chunk-layout-bf7c1519e0.md) — `.agents/notes/archived/architecture/2026-08-06-web-shell-dist-chunk-layout.md`
+- [Agent Note: Web 壳产物的分片拆分与目录布局](2026-08-06-web-shell-dist-chunk-layout.zh-e8717fc5c7.md) — `.agents/notes/archived/architecture/2026-08-06-web-shell-dist-chunk-layout.zh.md`
+- [Agent Note: Shared anonymous user id across telemetry, feedback, and DeepSeek requests](2026-08-07-shared-feedback-telemetry-user-id-9b37526576.md) — `.agents/notes/archived/architecture/2026-08-07-shared-feedback-telemetry-user-id.md`
+- [Agent Note: 遥测、反馈与 DeepSeek 请求共享匿名用户 id](2026-08-07-shared-feedback-telemetry-user-id.zh-7d31f481ec.md) — `.agents/notes/archived/architecture/2026-08-07-shared-feedback-telemetry-user-id.zh.md`
+- [Agent Note: Bounded session persistence write batching](2026-08-08-bounded-session-persistence-write-batching-069f23afc3.md) — `.agents/notes/archived/architecture/2026-08-08-bounded-session-persistence-write-batching.md`
+- [Agent Note: 为会话持久化写入批处理设定上界](2026-08-08-bounded-session-persistence-write-batching.zh-0e3a171071.md) — `.agents/notes/archived/architecture/2026-08-08-bounded-session-persistence-write-batching.zh.md`
+- [Agent Note: Client Tool presentation ownership](2026-08-08-client-tool-presentation-ownership-573df29f41.md) — `.agents/notes/archived/architecture/2026-08-08-client-tool-presentation-ownership.md`
+- [Agent Note: Client 工具展示所有权](2026-08-08-client-tool-presentation-ownership.zh-3d40bf1547.md) — `.agents/notes/archived/architecture/2026-08-08-client-tool-presentation-ownership.zh.md`
+- [Agent Note: Per-preset standing mounts over a scope parent chain](2026-08-08-per-preset-standing-mounts-3816df49a4.md) — `.agents/notes/archived/architecture/2026-08-08-per-preset-standing-mounts.md`
+- [Agent Note: 基于作用域父链的逐预设常驻挂载](2026-08-08-per-preset-standing-mounts.zh-280f100ce5.md) — `.agents/notes/archived/architecture/2026-08-08-per-preset-standing-mounts.zh.md`
+- [Agent Note: An independent Events backstop closes the cordis-surface exhaustiveness gap](2026-08-09-cordis-event-walk-backstop-819090e0f9.md) — `.agents/notes/archived/architecture/2026-08-09-cordis-event-walk-backstop.md`
+- [Agent Note: 独立的 Events 兜底扫描补上 Cordis 表面完备性缺口](2026-08-09-cordis-event-walk-backstop.zh-4862ffbd42.md) — `.agents/notes/archived/architecture/2026-08-09-cordis-event-walk-backstop.zh.md`
+- [Agent Note: headless is a direct core entry point](2026-08-09-headless-direct-core-entry-point-e537ecdcaf.md) — `.agents/notes/archived/architecture/2026-08-09-headless-direct-core-entry-point.md`
+- [Agent Note: headless 是直接使用核心服务的入口](2026-08-09-headless-direct-core-entry-point.zh-19940fbb2e.md) — `.agents/notes/archived/architecture/2026-08-09-headless-direct-core-entry-point.zh.md`
+- [Agent Note: The skill registry is host-held and layered per scope](2026-08-09-layered-skill-registry-a266e1957e.md) — `.agents/notes/archived/architecture/2026-08-09-layered-skill-registry.md`
+- [Agent Note: skill 注册表由宿主持有并按 scope 分层](2026-08-09-layered-skill-registry.zh-f88acefbcb.md) — `.agents/notes/archived/architecture/2026-08-09-layered-skill-registry.zh.md`
+- [Agent Note: Lifecycle-bound message feedback sidecar](2026-08-10-message-feedback-sidecar-6e9a32d6d7.md) — `.agents/notes/archived/architecture/2026-08-10-message-feedback-sidecar.md`
+- [Agent Note: 绑定生命周期的消息反馈伴随记录](2026-08-10-message-feedback-sidecar.zh-edd54a1d10.md) — `.agents/notes/archived/architecture/2026-08-10-message-feedback-sidecar.zh.md`
+- [Agent Note: Product subagent providers live in the shared profile host](2026-08-10-product-subagent-providers-in-shared-host-f9d70c5492.md) — `.agents/notes/archived/architecture/2026-08-10-product-subagent-providers-in-shared-host.md`
+- [Agent Note: 产品 subagent 提供方位于共享 profile 宿主](2026-08-10-product-subagent-providers-in-shared-host.zh-b9e01027c7.md) — `.agents/notes/archived/architecture/2026-08-10-product-subagent-providers-in-shared-host.zh.md`
+- [Agent Note: Place unary browser operations on owning Remote services](2026-08-10-unary-apiproxy-remote-migration-c8fe8b39d6.md) — `.agents/notes/archived/architecture/2026-08-10-unary-apiproxy-remote-migration.md`
+- [Agent Note: 将一元浏览器操作放到所属 Remote 服务](2026-08-10-unary-apiproxy-remote-migration.zh-49989dd95a.md) — `.agents/notes/archived/architecture/2026-08-10-unary-apiproxy-remote-migration.zh.md`
+- [Agent Note: Trim the command-line seams to existing interfaces](2026-08-11-cmdline-seam-trim-4cd1a08cc2.md) — `.agents/notes/archived/architecture/2026-08-11-cmdline-seam-trim.md`
+- [Agent Note: 把命令行接缝收窄到既有接口](2026-08-11-cmdline-seam-trim.zh-8fbb270f2f.md) — `.agents/notes/archived/architecture/2026-08-11-cmdline-seam-trim.zh.md`
+- [Agent Note: Loader interpolates the entry disabled field](2026-08-11-loader-entry-disabled-interpolation-8c91f46548.md) — `.agents/notes/archived/architecture/2026-08-11-loader-entry-disabled-interpolation.md`
+- [Agent Note: Loader 插值条目 disabled 字段](2026-08-11-loader-entry-disabled-interpolation.zh-c2b3593b7e.md) — `.agents/notes/archived/architecture/2026-08-11-loader-entry-disabled-interpolation.zh.md`
+- [Agent Note: Feature-owned tabs in Plugins settings](2026-08-11-plugin-settings-tabs-4fae0b2988.md) — `.agents/notes/archived/architecture/2026-08-11-plugin-settings-tabs.md`
+- [Agent Note: “插件”设置中的功能自有标签页](2026-08-11-plugin-settings-tabs.zh-910f6d308b.md) — `.agents/notes/archived/architecture/2026-08-11-plugin-settings-tabs.zh.md`
+- [Agent Note: Persistent pwsh over the terminal seam on Windows](2026-08-11-pwsh-persistent-pty-8bf35dbbd3.md) — `.agents/notes/archived/architecture/2026-08-11-pwsh-persistent-pty.md`
+- [Agent Note: Windows 上基于 terminal seam 的持久化 pwsh](2026-08-11-pwsh-persistent-pty.zh-cb905ec481.md) — `.agents/notes/archived/architecture/2026-08-11-pwsh-persistent-pty.zh.md`
+- [Agent Note: Repository naming contract and pre-release rename ledger](2026-08-11-repository-naming-contract-and-rename-ledger-e23d5c0b78.md) — `.agents/notes/archived/architecture/2026-08-11-repository-naming-contract-and-rename-ledger.md`
+- [Agent Note: 仓库命名约定与预发布重命名清单](2026-08-11-repository-naming-contract-and-rename-ledger.zh-bc4a25b907.md) — `.agents/notes/archived/architecture/2026-08-11-repository-naming-contract-and-rename-ledger.zh.md`
+- [Agent Note: Trajectory assembly from registered Conversation Contexts](2026-08-11-trajectory-conversation-context-assembly-7ad50668e0.md) — `.agents/notes/archived/architecture/2026-08-11-trajectory-conversation-context-assembly.md`
+- [Agent Note: Trajectory 基于注册式 Conversation Context 组装数据](2026-08-11-trajectory-conversation-context-assembly.zh-b7461e6d10.md) — `.agents/notes/archived/architecture/2026-08-11-trajectory-conversation-context-assembly.zh.md`
+- [Agent Note: A pi-ai model declares its own input modalities, and undeclared means text](2026-08-12-pi-ai-route-default-input-modalities-b5f86cb56f.md) — `.agents/notes/archived/architecture/2026-08-12-pi-ai-route-default-input-modalities.md`
+- [Agent Note: pi-ai 模型自行声明输入模态，未声明即为文本](2026-08-12-pi-ai-route-default-input-modalities.zh-90cbca36ed.md) — `.agents/notes/archived/architecture/2026-08-12-pi-ai-route-default-input-modalities.zh.md`
+- [Agent Note: Plugin-owned settings surface](2026-08-12-plugin-owned-settings-surface-ad2fe68337.md) — `.agents/notes/archived/architecture/2026-08-12-plugin-owned-settings-surface.md`
+- [Agent Note: 由插件自己拥有的设置表层](2026-08-12-plugin-owned-settings-surface.zh-4a8f34a434.md) — `.agents/notes/archived/architecture/2026-08-12-plugin-owned-settings-surface.zh.md`
+- [Agent Note: Session content search ships opt-in through openAt never](2026-08-13-session-content-search-opt-in-5af69f85f2.md) — `.agents/notes/archived/architecture/2026-08-13-session-content-search-opt-in.md`
+- [Agent Note: 会话内容搜索通过 openAt never 以 opt-in 方式交付](2026-08-13-session-content-search-opt-in.zh-54ff9daf78.md) — `.agents/notes/archived/architecture/2026-08-13-session-content-search-opt-in.zh.md`
+- [Agent Note: Carry packed chunk rows through session history](2026-08-15-packed-session-history-transport-097bdd9afe.md) — `.agents/notes/archived/architecture/2026-08-15-packed-session-history-transport.md`
+- [Agent Note: 在会话历史中传输打包分片行](2026-08-15-packed-session-history-transport.zh-78aaf3b55e.md) — `.agents/notes/archived/architecture/2026-08-15-packed-session-history-transport.zh.md`
+- [Agent Note: Dynamic client render and attachment ownership](2026-08-17-dynamic-client-render-and-attachment-ownership-6f2ffa12f1.md) — `.agents/notes/archived/architecture/2026-08-17-dynamic-client-render-and-attachment-ownership.md`
+- [Agent Note: 客户端渲染与附件呈现的动态归属](2026-08-17-dynamic-client-render-and-attachment-ownership.zh-cf5af20557.md) — `.agents/notes/archived/architecture/2026-08-17-dynamic-client-render-and-attachment-ownership.zh.md`
+- [Agent Note: Settings describe mirror](2026-08-17-settings-describe-mirror-d940c01c0c.md) — `.agents/notes/archived/architecture/2026-08-17-settings-describe-mirror.md`
+- [Agent Note: Settings describe 镜像](2026-08-17-settings-describe-mirror.zh-0f9b18508d.md) — `.agents/notes/archived/architecture/2026-08-17-settings-describe-mirror.zh.md`
+- [Agent Note: Build-time public environment variables for client business code](2026-08-18-client-build-environment-5aba504cb4.md) — `.agents/notes/archived/architecture/2026-08-18-client-build-environment.md`
+- [Agent Note: Client 业务代码使用构建期公开环境变量](2026-08-18-client-build-environment.zh-98b6b20b9b.md) — `.agents/notes/archived/architecture/2026-08-18-client-build-environment.zh.md`
+- [Agent Note: SQLite physical chunk-row compression](2026-08-18-sqlite-physical-chunk-row-compression-1e584eeacd.md) — `.agents/notes/archived/architecture/2026-08-18-sqlite-physical-chunk-row-compression.md`
+- [Agent Note: SQLite 物理分片行压缩](2026-08-18-sqlite-physical-chunk-row-compression.zh-5cd4cd0355.md) — `.agents/notes/archived/architecture/2026-08-18-sqlite-physical-chunk-row-compression.zh.md`
+- [Agent Note: Mark experimental packages in npm names](2026-08-19-experimental-package-name-prefix-d3d4cd3f96.md) — `.agents/notes/archived/architecture/2026-08-19-experimental-package-name-prefix.md`
+- [Agent Note: 在 npm 名中标记实验性包](2026-08-19-experimental-package-name-prefix.zh-0ad559c0a7.md) — `.agents/notes/archived/architecture/2026-08-19-experimental-package-name-prefix.zh.md`
+- [Agent Note: Projection cache as per-session files](2026-08-19-projection-cache-per-session-files-5aaddd4251.md) — `.agents/notes/archived/architecture/2026-08-19-projection-cache-per-session-files.md`
+- [Agent Note: 投影缓存改为每会话文件](2026-08-19-projection-cache-per-session-files.zh-12fbfb22f5.md) — `.agents/notes/archived/architecture/2026-08-19-projection-cache-per-session-files.zh.md`
+- [Agent Note: Separate session projection state from client views](2026-08-19-session-projection-state-and-client-views-8ae2321550.md) — `.agents/notes/archived/architecture/2026-08-19-session-projection-state-and-client-views.md`
+- [Agent Note: 拆分会话投影状态与客户端视图](2026-08-19-session-projection-state-and-client-views.zh-8b26f27dd7.md) — `.agents/notes/archived/architecture/2026-08-19-session-projection-state-and-client-views.zh.md`
+- [Agent Note: Windows sandbox process primitives have one low-level owner](2026-08-19-shared-win32-process-primitives-699767dd40.md) — `.agents/notes/archived/architecture/2026-08-19-shared-win32-process-primitives.md`
+- [Agent Note: Windows sandbox process primitives 只有一个低层 owner](2026-08-19-shared-win32-process-primitives.zh-f9ca922c91.md) — `.agents/notes/archived/architecture/2026-08-19-shared-win32-process-primitives.zh.md`
+- [Agent Note: structured index injection table (webserver/index-inject)](2026-08-19-web-index-injection-table-bbc0f66fbb.md) — `.agents/notes/archived/architecture/2026-08-19-web-index-injection-table.md`
+- [Agent Note: 结构化 index 注入表（webserver/index-inject 事件）](2026-08-19-web-index-injection-table.zh-c9d883932c.md) — `.agents/notes/archived/architecture/2026-08-19-web-index-injection-table.zh.md`
+- [Agent Note: per-PR preview deployments on Cloudflare Pages](2026-08-20-preview-cloudflare-pages-deploy-7514be12ff.md) — `.agents/notes/archived/architecture/2026-08-20-preview-cloudflare-pages-deploy.md`
+- [Agent Note: 每 PR 预览部署上 Cloudflare Pages](2026-08-20-preview-cloudflare-pages-deploy.zh-a3185b4c83.md) — `.agents/notes/archived/architecture/2026-08-20-preview-cloudflare-pages-deploy.zh.md`
+- [Agent Note: Web composer as a Lexical editor (chips as atomic nodes)](2026-08-20-web-composer-lexical-editor-1ee8ad198d.md) — `.agents/notes/archived/architecture/2026-08-20-web-composer-lexical-editor.md`
+- [Agent Note: Web 输入框改为 Lexical 编辑器（chip 为原子节点）](2026-08-20-web-composer-lexical-editor.zh-6dae9fdbb1.md) — `.agents/notes/archived/architecture/2026-08-20-web-composer-lexical-editor.zh.md`
+- [Agent Note: the worker's Node face — builtins, VFS, and the shell process layer](2026-08-20-webworker-node-face-d7fba07246.md) — `.agents/notes/archived/architecture/2026-08-20-webworker-node-face.md`
+- [Agent Note: worker 的 Node 面——builtin、VFS 与 shell 进程层](2026-08-20-webworker-node-face.zh-e32639da1d.md) — `.agents/notes/archived/architecture/2026-08-20-webworker-node-face.zh.md`
+- [Agent Note: pack-time lowering and the single-build preview](2026-08-20-webworker-pack-lowering-and-preview-9786ac9820.md) — `.agents/notes/archived/architecture/2026-08-20-webworker-pack-lowering-and-preview.md`
+- [Agent Note: pack 期 lowering 与单构建 preview](2026-08-20-webworker-pack-lowering-and-preview.zh-8db09afcfa.md) — `.agents/notes/archived/architecture/2026-08-20-webworker-pack-lowering-and-preview.zh.md`
+- [Agent Note: Session log reads state their materialization cost](2026-08-21-session-log-read-intent-6269dbb811.md) — `.agents/notes/archived/architecture/2026-08-21-session-log-read-intent.md`
+- [Agent Note: 会话日志读取显式表达物化成本](2026-08-21-session-log-read-intent.zh-e01df90d6c.md) — `.agents/notes/archived/architecture/2026-08-21-session-log-read-intent.zh.md`
+- [Agent Note: Cross-realm CDP inspector](2026-08-23-cross-realm-cdp-inspector-c43fa674ed.md) — `.agents/notes/archived/architecture/2026-08-23-cross-realm-cdp-inspector.md`
+- [Agent Note: 跨 realm CDP Inspector](2026-08-23-cross-realm-cdp-inspector.zh-33535dd4ba.md) — `.agents/notes/archived/architecture/2026-08-23-cross-realm-cdp-inspector.zh.md`
+- [Agent Note: Python SDK runtime through the dsh profile launcher](2026-08-23-python-sdk-dsh-profile-runtime-c08269b614.md) — `.agents/notes/archived/architecture/2026-08-23-python-sdk-dsh-profile-runtime.md`
+- [Agent Note: 通过 dsh profile 启动器运行 Python SDK 运行时](2026-08-23-python-sdk-dsh-profile-runtime.zh-498fff3d36.md) — `.agents/notes/archived/architecture/2026-08-23-python-sdk-dsh-profile-runtime.zh.md`
+- [Agent Note: Python SDK Windows x64 runtime](2026-08-23-python-sdk-windows-x64-runtime-9292adaea0.md) — `.agents/notes/archived/architecture/2026-08-23-python-sdk-windows-x64-runtime.md`
+- [Agent Note: Python SDK Windows x64 运行时](2026-08-23-python-sdk-windows-x64-runtime.zh-43facfa5cc.md) — `.agents/notes/archived/architecture/2026-08-23-python-sdk-windows-x64-runtime.zh.md`
+- [Agent Note: Web Worker VFS watching and CLI-compatible confinement](2026-08-23-webworker-vfs-watch-and-landlock-48b2354106.md) — `.agents/notes/archived/architecture/2026-08-23-webworker-vfs-watch-and-landlock.md`
+- [Agent Note: Web Worker VFS 监听与 CLI 兼容 confinement](2026-08-23-webworker-vfs-watch-and-landlock.zh-45a1766030.md) — `.agents/notes/archived/architecture/2026-08-23-webworker-vfs-watch-and-landlock.zh.md`
+- [Agent Note: Cordis runtime tree inspection](2026-08-24-cordis-runtime-tree-inspection-e023f6061f.md) — `.agents/notes/archived/architecture/2026-08-24-cordis-runtime-tree-inspection.md`
+- [Agent Note: Cordis 运行时树检查](2026-08-24-cordis-runtime-tree-inspection.zh-211d5e401a.md) — `.agents/notes/archived/architecture/2026-08-24-cordis-runtime-tree-inspection.zh.md`
+- [Agent Note: Standalone sdk-minimal profile under dsh](2026-08-24-standalone-sdk-minimal-profile-4331212864.md) — `.agents/notes/archived/architecture/2026-08-24-standalone-sdk-minimal-profile.md`
+- [Agent Note: dsh 下的独立 sdk-minimal profile](2026-08-24-standalone-sdk-minimal-profile.zh-d4c4aa1535.md) — `.agents/notes/archived/architecture/2026-08-24-standalone-sdk-minimal-profile.zh.md`
+- [Agent Note: JSONL persistence compression latency](2026-08-25-persistence-latency-and-page-size-561775a175.md) — `.agents/notes/archived/architecture/2026-08-25-persistence-latency-and-page-size.md`
+- [Agent Note: JSONL 持久化压缩延迟](2026-08-25-persistence-latency-and-page-size.zh-81ae11cb33.md) — `.agents/notes/archived/architecture/2026-08-25-persistence-latency-and-page-size.zh.md`
+- [Agent Note: Rename code-mode to ptc — the transport is named PTC, user-facing copy says PTC mode](2026-08-25-rename-code-mode-to-ptc-1c7d5c0997.md) — `.agents/notes/archived/architecture/2026-08-25-rename-code-mode-to-ptc.md`
+- [Agent Note: 将 code-mode 重命名为 ptc——传输层命名为 PTC，用户文案使用 PTC mode](2026-08-25-rename-code-mode-to-ptc.zh-7e52d6d5d8.md) — `.agents/notes/archived/architecture/2026-08-25-rename-code-mode-to-ptc.zh.md`
+- [Agent Note: Centralize sparse first-party prompt-section orders](2026-08-25-sparse-first-party-prompt-section-orders-572dad3ac4.md) — `.agents/notes/archived/architecture/2026-08-25-sparse-first-party-prompt-section-orders.md`
+- [Agent Note: 集中管理稀疏的 first-party 提示词段顺序](2026-08-25-sparse-first-party-prompt-section-orders.zh-6e5b4d4ea5.md) — `.agents/notes/archived/architecture/2026-08-25-sparse-first-party-prompt-section-orders.zh.md`
+- [Agent Note: Inspector execution realms and protocol planes](2026-08-26-inspector-execution-realms-and-protocol-planes-0e657ab33f.md) — `.agents/notes/archived/architecture/2026-08-26-inspector-execution-realms-and-protocol-planes.md`
+- [Agent Note: Inspector 执行环境与协议平面](2026-08-26-inspector-execution-realms-and-protocol-planes.zh-42d2608b9e.md) — `.agents/notes/archived/architecture/2026-08-26-inspector-execution-realms-and-protocol-planes.zh.md`
+- [Agent Note: Local submission echoes over the prompt rpcId](2026-08-26-local-submission-echoes-35df54939a.md) — `.agents/notes/archived/architecture/2026-08-26-local-submission-echoes.md`
+- [Agent Note: 基于 prompt rpcId 的本地提交回显](2026-08-26-local-submission-echoes.zh-010d50842d.md) — `.agents/notes/archived/architecture/2026-08-26-local-submission-echoes.zh.md`
+- [Agent Note: Models-page extension slots](2026-08-26-models-page-extension-slots-fe1b7ec0db.md) — `.agents/notes/archived/architecture/2026-08-26-models-page-extension-slots.md`
+- [Agent Note: Models 页扩展插槽](2026-08-26-models-page-extension-slots.zh-e4a59a5ead.md) — `.agents/notes/archived/architecture/2026-08-26-models-page-extension-slots.zh.md`
+- [Agent Note: Preset health resolves the rows it can prove will start](2026-08-26-preset-health-resolves-rows-72a2634065.md) — `.agents/notes/archived/architecture/2026-08-26-preset-health-resolves-rows.md`
+- [Agent Note: Preset health resolves the rows it can prove will start](2026-08-26-preset-health-resolves-rows.zh-62b1fe7bf7.md) — `.agents/notes/archived/architecture/2026-08-26-preset-health-resolves-rows.zh.md`
+- [Agent Note: Inspector development mount](2026-08-27-inspector-development-mount-72d6e289ac.md) — `.agents/notes/archived/architecture/2026-08-27-inspector-development-mount.md`
+- [Agent Note: Inspector 开发挂载](2026-08-27-inspector-development-mount.zh-8d0804d910.md) — `.agents/notes/archived/architecture/2026-08-27-inspector-development-mount.zh.md`
+- [Agent Note: Process-table snapshots replace per-question inspector reads](2026-08-27-process-table-snapshots-3859d04ba4.md) — `.agents/notes/archived/architecture/2026-08-27-process-table-snapshots.md`
+- [Agent Note: Process-table snapshots replace per-question inspector reads](2026-08-27-process-table-snapshots.zh-ad0759a743.md) — `.agents/notes/archived/architecture/2026-08-27-process-table-snapshots.zh.md`
+- [Agent Note: The plugin inventory carries every agent preset's composition](2026-08-29-plugin-inventory-agent-preset-scopes-fbb0f3f1ba.md) — `.agents/notes/archived/architecture/2026-08-29-plugin-inventory-agent-preset-scopes.md`
+- [Agent Note: 插件清单携带每个 Agent 预设的组合](2026-08-29-plugin-inventory-agent-preset-scopes.zh-7b6962ac32.md) — `.agents/notes/archived/architecture/2026-08-29-plugin-inventory-agent-preset-scopes.zh.md`
+- [Agent Note: Live assistant stream frames remain separate from the session log](2026-08-31-live-assistant-stream-frames-031367d91e.md) — `.agents/notes/archived/architecture/2026-08-31-live-assistant-stream-frames.md`
+- [Agent Note: 实时 assistant 流帧与 Session log 保持分离](2026-08-31-live-assistant-stream-frames.zh-659ee1348a.md) — `.agents/notes/archived/architecture/2026-08-31-live-assistant-stream-frames.zh.md`
+- [Agent Note: Distinguish Session event identities from log offsets](2026-08-31-session-sequence-and-log-offset-brands-9669a606d4.md) — `.agents/notes/archived/architecture/2026-08-31-session-sequence-and-log-offset-brands.md`
+- [Agent Note: 区分 Session 事件身份与日志偏移](2026-08-31-session-sequence-and-log-offset-brands.zh-c87ca4dd13.md) — `.agents/notes/archived/architecture/2026-08-31-session-sequence-and-log-offset-brands.zh.md`
+- [Agent Note: Viewport-activated syntax highlighting](2026-08-31-viewport-activated-syntax-highlighting-730bd2fdf9.md) — `.agents/notes/archived/architecture/2026-08-31-viewport-activated-syntax-highlighting.md`
+- [Agent Note: 视口激活的语法高亮](2026-08-31-viewport-activated-syntax-highlighting.zh-adba9e0f9b.md) — `.agents/notes/archived/architecture/2026-08-31-viewport-activated-syntax-highlighting.zh.md`
+- [Agent Note: Streamed tool-call identity survives empty continuation deltas](2026-09-01-streamed-tool-call-identity-83bd2d445c.md) — `.agents/notes/archived/architecture/2026-09-01-streamed-tool-call-identity.md`
+- [Agent Note: 流式工具调用身份不被空续传分片抹除](2026-09-01-streamed-tool-call-identity.zh-922f06e521.md) — `.agents/notes/archived/architecture/2026-09-01-streamed-tool-call-identity.zh.md`
+- [Agent Note: Durable image offload by surface replacement](2026-09-02-durable-image-offload-41e3132e73.md) — `.agents/notes/archived/architecture/2026-09-02-durable-image-offload.md`
+- [Agent Note: 以表层替换实现持久的图片 offload](2026-09-02-durable-image-offload.zh-9fab0473a9.md) — `.agents/notes/archived/architecture/2026-09-02-durable-image-offload.zh.md`
+- [Agent Note: Reading protocol-specific model listings](2026-09-02-protocol-specific-model-listing-discovery-ea084854d2.md) — `.agents/notes/archived/architecture/2026-09-02-protocol-specific-model-listing-discovery.md`
+- [Agent Note: 读取协议特定的模型列表](2026-09-02-protocol-specific-model-listing-discovery.zh-66078f4ce0.md) — `.agents/notes/archived/architecture/2026-09-02-protocol-specific-model-listing-discovery.zh.md`
+- [Agent Note: Modify the Desktop profile in place](2026-09-09-desktop-in-place-profile-4afda41044.md) — `.agents/notes/archived/architecture/2026-09-09-desktop-in-place-profile.md`
+- [Agent Note: 直接修改 Desktop profile](2026-09-09-desktop-in-place-profile.zh-1b3c9df72e.md) — `.agents/notes/archived/architecture/2026-09-09-desktop-in-place-profile.zh.md`
+- [Agent Note: Local Office preview through WASM PDF bytes](2026-09-10-local-office-preview-783aee3ac0.md) — `.agents/notes/archived/architecture/2026-09-10-local-office-preview.md`
+- [Agent Note: 通过 WASM PDF 字节进行本地 Office 预览](2026-09-10-local-office-preview.zh-f65e63fc4e.md) — `.agents/notes/archived/architecture/2026-09-10-local-office-preview.zh.md`
+- [Agent Note: Font reuse and image resolution in WASM previews](2026-09-11-wasm-preview-font-and-image-budgets-7ce794910f.md) — `.agents/notes/archived/architecture/2026-09-11-wasm-preview-font-and-image-budgets.md`
+- [Agent Note: WASM 预览的字体复用与图像分辨率](2026-09-11-wasm-preview-font-and-image-budgets.zh-10b0b6fee3.md) — `.agents/notes/archived/architecture/2026-09-11-wasm-preview-font-and-image-budgets.zh.md`

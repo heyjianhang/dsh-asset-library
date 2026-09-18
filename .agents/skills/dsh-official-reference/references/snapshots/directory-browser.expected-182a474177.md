@@ -1,0 +1,58 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/workspace-management/directory-browser.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/workspace-management/directory-browser.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- dialog "Select Workspace Directory":
+  - heading "Select Workspace Directory" [level=2]
+  - navigation:
+    - button "Home"
+    - img
+    - button "browse-golden"
+  - button "Edit path":
+    - img
+  - list:
+    - listitem:
+      - button "adopted":
+        - img
+        - text: adopted
+        - img
+    - listitem:
+      - button "alpha-ws":
+        - img
+        - text: alpha-ws
+        - img
+    - listitem:
+      - button "beta-ws":
+        - img
+        - text: beta-ws
+        - img
+    - listitem:
+      - button "browse-golden":
+        - img
+        - text: browse-golden
+        - img
+    - listitem:
+      - button "same-name":
+        - img
+        - text: same-name
+        - img
+    - listitem:
+      - button "workspace":
+        - img
+        - text: workspace
+        - img
+  - list:
+    - listitem:
+      - button "alpha":
+        - img
+        - text: alpha
+        - img
+    - listitem:
+      - button "beta":
+        - img
+        - text: beta
+        - img
+  - button "New folder":
+    - img
+    - text: New folder
+  - button "Show hidden files"
+  - button "Cancel"
+  - button "Open"

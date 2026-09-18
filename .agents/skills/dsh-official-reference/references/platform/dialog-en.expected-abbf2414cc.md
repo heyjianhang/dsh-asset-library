@@ -1,0 +1,55 @@
+> 自动同步的官方参考原文。来源：[apps/web/tests/expected/settings-chrome/dialog-en.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/apps/web/tests/expected/settings-chrome/dialog-en.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- dialog "Settings":
+  - navigation:
+    - text: Settings
+    - button "General":
+      - img
+      - text: General
+    - button "Models":
+      - img
+      - text: Models
+    - button "Built-in plugins":
+      - img
+      - text: Built-in plugins
+    - button "Agent presets":
+      - img
+      - text: Agent presets
+    - button "Archived sessions":
+      - img
+      - text: Archived sessions
+  - button "Open configuration file"
+  - button "Close":
+    - img
+    - text: Close
+  - text: Permission Choose the default permission mode for new sessions
+  - button "Workspace Write":
+    - text: Workspace Write
+    - img
+  - text: Language
+  - button "English":
+    - text: English
+    - img
+  - text: Appearance
+  - button "Light":
+    - img
+    - text: Light
+  - button "Dark":
+    - img
+    - text: Dark
+  - button "System" [pressed]:
+    - img
+    - text: System
+  - text: Font size Only affects conversation content 14
+  - button "Increase font size":
+    - img
+  - button "Decrease font size":
+    - img
+  - text: px Conversation display Controls process content in completed turns
+  - button "Compact":
+    - text: Compact
+    - img
+  - text: Send behavior while busy What Enter and the Send button do while the agent is running; Cmd/Ctrl+Enter uses the other behavior
+  - button "Queue":
+    - text: Queue
+    - img

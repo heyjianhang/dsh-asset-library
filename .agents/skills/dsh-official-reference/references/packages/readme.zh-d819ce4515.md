@@ -1,0 +1,53 @@
+> 自动同步的官方参考原文。来源：[packages/lsp/README.zh.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/packages/lsp/README.zh.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+---
+description: "lsp 组地图：通过 LSP seam、其 stdio 提供方与面向模型的 lsp 工具实现的语言服务器代码导航，供浏览本组的用户与维护者阅读。"
+kind: "package-group"
+---
+
+# lsp/：语言服务器代码导航
+
+[English](readme-f2bd17d5ba.md) | 中文
+
+## 概述
+
+lsp 组让 agent（智能体）通过配置好的语言服务器导航代码：转到定义、查找引用与实现，以及阅读悬停文档。使用 `lsp-stdio` 连接本地 stdio 语言服务器命令和扩展名映射，使用 `tool-lsp` 向模型提供这些操作。共享的 `lsp` 包使提供方选择和规范化结果保持一致，因此更换服务器不会改变模型请求。部署必须自行提供并配置语言服务器；本组不随附任何语言服务器。
+
+## 目录
+
+- [包](#packages)
+- [相关文档](#related-documentation)
+- [开发备注](#dev-note)
+
+-----
+
+<a id="packages"></a>
+## 包
+
+| 包 | 职责 | ctx key |
+|---|---|---|
+| [`lsp/`](readme.zh-51a34da58e.md) | 定义代码导航服务：按文件扩展名选择提供方、四种规范化的只读操作与结构化错误 | `ctx.lsp` |
+| [`lsp-stdio/`](readme.zh-8e3ecacdff.md) | 通过 `ctx.fs` 与 `ctx.subprocess` 驱动配置好的 stdio 语言服务器命令，注册为提供方 | 注册到 `ctx.lsp` |
+| [`tool-lsp/`](readme.zh-bde30f1b7b.md) | 通过 `lsp` 工具向模型暴露精确的代码导航 | 注册到 `ctx.tools` |
+
+提供方注册的是能力而非工具：`tool-lsp` 是面向模型的名称、schema、提示词指引与呈现的唯一 owner，因此更换提供方绝不会改变模型请求导航的方式。
+
+-----
+
+<a id="related-documentation"></a>
+## 相关文档
+
+- [LSP 导航子系统](../subsystems/lsp.zh-2344d70805.md)——操作、坐标、请求与结果，以及 `LspError` 错误码。
+- [生成的工具目录](../architecture/tool-catalog.zh-d49bdc76e7.md#deepseek-aidsh-tool-lsp)——模型接收的 `lsp` schema。
+
+-----
+
+<a id="dev-note"></a>
+## 开发备注
+
+<details>
+<summary>维护者的工作上下文——点击展开</summary>
+
+无。
+
+</details>

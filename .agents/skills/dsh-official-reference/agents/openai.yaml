@@ -1,0 +1,4 @@
+interface:
+  display_name: "DSH 官方开发资料"
+  short_description: "按主题查阅自动同步的官方开发、前端和文档规范，并核对宿主版本"
+  default_prompt: "使用 $dsh-official-reference 查找本次插件开发需要的官方接口与规范，核对资料提交和目标宿主版本。"

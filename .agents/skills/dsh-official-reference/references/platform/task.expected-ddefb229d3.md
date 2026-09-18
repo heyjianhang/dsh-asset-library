@@ -1,0 +1,31 @@
+> 自动同步的官方参考原文。来源：[apps/web/tests/snapshots/agent-team-panel/task.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/apps/web/tests/snapshots/agent-team-panel/task.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- button "Agent Team" [expanded]:
+  - img
+  - text: Agent Team
+- dialog "Agent Team":
+  - strong: Agent Team
+  - button "Refresh Team":
+    - img
+  - button "Close":
+    - img
+  - heading "Members" [level=3]
+  - 'button "lead Idle · Model: deepseek-v4-flash" [disabled]'
+  - heading "Shared tasks" [level=3]
+  - button "New task":
+    - img
+    - text: New task
+  - article:
+    - strong: Browser task
+    - text: Pending
+    - paragraph: Created through the assembled browser
+    - text: "task-1 Ready Write scopes: src/web Owner"
+    - combobox "Owner":
+      - option "Unowned" [selected]
+      - option "lead"
+    - button "Edit":
+      - img
+      - text: Edit
+    - button "Delete":
+      - img
+      - text: Delete

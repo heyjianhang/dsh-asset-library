@@ -1,0 +1,39 @@
+> 自动同步的官方参考原文。来源：[apps/web/tests/expected/settings-chrome/plugin-instances.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/apps/web/tests/expected/settings-chrome/plugin-instances.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- list:
+  - listitem:
+    - button "tool-subagent-control, tool-subagent-control, 已启用":
+      - strong: tool-subagent-control
+      - text: 已启用
+      - img
+      - code: tool-subagent-control
+  - listitem:
+    - button "tool-subagent-control/list-agents, tool-subagent-list-agents, 已启用":
+      - strong: tool-subagent-control/list-agents
+      - text: 已启用
+      - img
+      - code: tool-subagent-list-agents
+  - listitem:
+    - button "tool-subagent, tool-subagent, 已启用":
+      - strong: tool-subagent
+      - text: 已启用
+      - img
+      - code: tool-subagent
+  - listitem:
+    - button "tool-subagent, tool-subagent-fork, 已启用":
+      - strong: tool-subagent
+      - text: 已启用
+      - img
+      - code: tool-subagent-fork
+  - listitem:
+    - button "tool-subagent, tool-subagent-codex, 已停用":
+      - strong: tool-subagent
+      - text: 已停用
+      - img
+      - code: tool-subagent-codex
+  - listitem:
+    - button "tool-subagent, tool-subagent-claude-code, 已停用":
+      - strong: tool-subagent
+      - text: 已停用
+      - img
+      - code: tool-subagent-claude-code

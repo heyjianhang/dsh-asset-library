@@ -1,0 +1,152 @@
+# .agents/notes/archived/simplification
+
+仅追溯背景时读取；提案、废弃记录不代表当前接口。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Note: Drop the mutable session summary](2026-06-19-drop-mutable-session-summary-959cfbd329.md) — `.agents/notes/archived/simplification/2026-06-19-drop-mutable-session-summary.md`
+- [Agent Note: 移除可变的会话摘要](2026-06-19-drop-mutable-session-summary.zh-42384fec3f.md) — `.agents/notes/archived/simplification/2026-06-19-drop-mutable-session-summary.zh.md`
+- [Agent Note: Drop the unconsumed llm/adapter-change event](2026-06-20-drop-unconsumed-llm-adapter-change-event-0b09758db0.md) — `.agents/notes/archived/simplification/2026-06-20-drop-unconsumed-llm-adapter-change-event.md`
+- [Agent Note: 移除未被消费的 llm/adapter-change 事件](2026-06-20-drop-unconsumed-llm-adapter-change-event.zh-5350fb4274.md) — `.agents/notes/archived/simplification/2026-06-20-drop-unconsumed-llm-adapter-change-event.zh.md`
+- [Agent Note: Drop unconsumed assembled LLM convenience surfaces](2026-06-20-drop-unconsumed-llm-assembled-surfaces-165016e573.md) — `.agents/notes/archived/simplification/2026-06-20-drop-unconsumed-llm-assembled-surfaces.md`
+- [Agent Note: 移除未被消费的 LLM 组装便捷接口](2026-06-20-drop-unconsumed-llm-assembled-surfaces.zh-30ae51b108.md) — `.agents/notes/archived/simplification/2026-06-20-drop-unconsumed-llm-assembled-surfaces.zh.md`
+- [Agent Note: Prune dead methods from the persistence seam](2026-06-20-prune-dead-seam-methods-2717e04674.md) — `.agents/notes/archived/simplification/2026-06-20-prune-dead-seam-methods.md`
+- [Agent Note: 从持久化 seam 中移除无用方法](2026-06-20-prune-dead-seam-methods.zh-3ea22ffa55.md) — `.agents/notes/archived/simplification/2026-06-20-prune-dead-seam-methods.zh.md`
+- [Agent Note: Keep one public stop primitive](2026-06-20-public-agent-stop-api-538b04b8c7.md) — `.agents/notes/archived/simplification/2026-06-20-public-agent-stop-api.md`
+- [Agent Note: 保留单一公开停止原语](2026-06-20-public-agent-stop-api.zh-cd1687734e.md) — `.agents/notes/archived/simplification/2026-06-20-public-agent-stop-api.zh.md`
+- [Agent Note: Stop mirroring durable boundaries as agent events](2026-06-20-remove-agent-boundary-mirror-events-7697766b53.md) — `.agents/notes/archived/simplification/2026-06-20-remove-agent-boundary-mirror-events.md`
+- [Agent Note: 停止将持久化边界镜像为 agent 事件](2026-06-20-remove-agent-boundary-mirror-events.zh-07d5863785.md) — `.agents/notes/archived/simplification/2026-06-20-remove-agent-boundary-mirror-events.zh.md`
+- [Agent Note: Stop mirroring the token stream as an agent event](2026-07-02-remove-stream-chunk-mirror-504846590a.md) — `.agents/notes/archived/simplification/2026-07-02-remove-stream-chunk-mirror.md`
+- [Agent Note: 停止将 token 流镜像为 agent 事件](2026-07-02-remove-stream-chunk-mirror.zh-7f98d10111.md) — `.agents/notes/archived/simplification/2026-07-02-remove-stream-chunk-mirror.zh.md`
+- [Agent Note: Drop the image content block until a path can honor it](2026-07-04-drop-image-content-block-225f68a85e.md) — `.agents/notes/archived/simplification/2026-07-04-drop-image-content-block.md`
+- [Agent Note: 移除 image 内容块，直到有路径能真正处理它](2026-07-04-drop-image-content-block.zh-7afee67870.md) — `.agents/notes/archived/simplification/2026-07-04-drop-image-content-block.zh.md`
+- [Agent Note: Drop GenerateOptions.prefill and ToolSchema.strict — request knobs with no working end-to-end path](2026-07-04-drop-inert-request-knobs-c854b91c30.md) — `.agents/notes/archived/simplification/2026-07-04-drop-inert-request-knobs.md`
+- [Agent Note: 移除 GenerateOptions.prefill 与 ToolSchema.strict——无端到端可用路径的请求旋钮](2026-07-04-drop-inert-request-knobs.zh-91395c6b6c.md) — `.agents/notes/archived/simplification/2026-07-04-drop-inert-request-knobs.zh.md`
+- [Agent Note: Drop the unconsumed web observation surface — the providers-change event and the status methods](2026-07-04-drop-unconsumed-web-observation-surface-bdb1c5f1b8.md) — `.agents/notes/archived/simplification/2026-07-04-drop-unconsumed-web-observation-surface.md`
+- [Agent Note: 移除未被消费的 web 观测接口——providers-change 事件与 status 方法](2026-07-04-drop-unconsumed-web-observation-surface.zh-b2b0f48378.md) — `.agents/notes/archived/simplification/2026-07-04-drop-unconsumed-web-observation-surface.zh.md`
+- [Agent Note: Fold the stdio UI helper into the stdio app](2026-07-04-fold-stdio-ui-helper-576a29eabe.md) — `.agents/notes/archived/simplification/2026-07-04-fold-stdio-ui-helper.md`
+- [Agent Note: 将 stdio UI 辅助模块折入 stdio 应用](2026-07-04-fold-stdio-ui-helper.zh-4e9f9583c5.md) — `.agents/notes/archived/simplification/2026-07-04-fold-stdio-ui-helper.zh.md`
+- [Agent Note: Prune producer-less vocabulary variants (block cache hints, the agent message source, the continuation turn trigger)](2026-07-04-prune-producerless-vocabulary-variants-6e7bb8bcf5.md) — `.agents/notes/archived/simplification/2026-07-04-prune-producerless-vocabulary-variants.md`
+- [Agent Note: 裁剪无生产者的词汇变体（块缓存提示、agent 消息来源、continuation 轮次触发器）](2026-07-04-prune-producerless-vocabulary-variants.zh-a84f1d083b.md) — `.agents/notes/archived/simplification/2026-07-04-prune-producerless-vocabulary-variants.zh.md`
+- [Agent Note: Prune write-only fields and a dead routing knob from the fs seam](2026-07-04-prune-write-only-fs-surface-49bbf5caf2.md) — `.agents/notes/archived/simplification/2026-07-04-prune-write-only-fs-surface.md`
+- [Agent Note: 从 fs seam 中移除只写字段与一个无效的路由旋钮](2026-07-04-prune-write-only-fs-surface.zh-5c389e7957.md) — `.agents/notes/archived/simplification/2026-07-04-prune-write-only-fs-surface.zh.md`
+- [Agent Note: Remove the agent/steering mirror emit](2026-07-04-remove-agent-steering-mirror-fd55e8c350.md) — `.agents/notes/archived/simplification/2026-07-04-remove-agent-steering-mirror.md`
+- [Agent Note: 移除 agent/steering 镜像 emit](2026-07-04-remove-agent-steering-mirror.zh-b901c0f901.md) — `.agents/notes/archived/simplification/2026-07-04-remove-agent-steering-mirror.zh.md`
+- [Agent Note: Share the app bins' boot glue instead of maintaining twin copies](2026-07-04-share-app-bin-boot-glue-4467eae5dd.md) — `.agents/notes/archived/simplification/2026-07-04-share-app-bin-boot-glue.md`
+- [Agent Note: 共享应用 bin 的启动胶水代码，而非维护两份副本](2026-07-04-share-app-bin-boot-glue.zh-348f3ec0a5.md) — `.agents/notes/archived/simplification/2026-07-04-share-app-bin-boot-glue.zh.md`
+- [Agent Note: Tighten the hook-protocol contract — dialect, discarded fields, double defaults, and lib-owned hook/result semantics](2026-07-04-tighten-hook-protocol-contract-b17882d9db.md) — `.agents/notes/archived/simplification/2026-07-04-tighten-hook-protocol-contract.md`
+- [Agent Note: 收紧 hook-protocol 约定——dialect、被丢弃的字段、双重默认值与 lib 拥有的 hook/result 语义](2026-07-04-tighten-hook-protocol-contract.zh-04ef0bd0ef.md) — `.agents/notes/archived/simplification/2026-07-04-tighten-hook-protocol-contract.zh.md`
+- [Agent Note: Trim unreachable ACP bridge surface — the branding knobs and the kind-sniffing fallback](2026-07-04-trim-acp-bridge-unreachable-surface-201304b35e.md) — `.agents/notes/archived/simplification/2026-07-04-trim-acp-bridge-unreachable-surface.md`
+- [Agent Note: 裁剪不可达的 ACP 桥接层表面——品牌配置项与 kind 嗅探回退](2026-07-04-trim-acp-bridge-unreachable-surface.zh-82f6024d09.md) — `.agents/notes/archived/simplification/2026-07-04-trim-acp-bridge-unreachable-surface.zh.md`
+- [Agent Note: Drop unconsumed skill provider events](2026-07-12-drop-unconsumed-skill-provider-events-579f1d423d.md) — `.agents/notes/archived/simplification/2026-07-12-drop-unconsumed-skill-provider-events.md`
+- [Agent Note: 移除无消费方的 skill 提供方事件](2026-07-12-drop-unconsumed-skill-provider-events.zh-9fb071fc10.md) — `.agents/notes/archived/simplification/2026-07-12-drop-unconsumed-skill-provider-events.zh.md`
+- [Agent Note: Prune unused web seam fields](2026-07-12-prune-unused-web-seam-fields-0d484a9dc4.md) — `.agents/notes/archived/simplification/2026-07-12-prune-unused-web-seam-fields.md`
+- [Agent Note: 裁剪 web seam 中未使用的字段](2026-07-12-prune-unused-web-seam-fields.zh-2456cc425b.md) — `.agents/notes/archived/simplification/2026-07-12-prune-unused-web-seam-fields.zh.md`
+- [Agent Note: Simplify session-log representation](2026-07-12-simplify-session-log-representation-c90588dced.md) — `.agents/notes/archived/simplification/2026-07-12-simplify-session-log-representation.md`
+- [Agent Note: 简化会话日志表示](2026-07-12-simplify-session-log-representation.zh-69133cce32.md) — `.agents/notes/archived/simplification/2026-07-12-simplify-session-log-representation.zh.md`
+- [Agent Note: Retire the standalone subagent mock package](2026-07-19-retire-subagent-mock-package-723ed8ecf0.md) — `.agents/notes/archived/simplification/2026-07-19-retire-subagent-mock-package.md`
+- [Agent Note: 撤销独立的 subagent mock 包](2026-07-19-retire-subagent-mock-package.zh-7e7a022f7e.md) — `.agents/notes/archived/simplification/2026-07-19-retire-subagent-mock-package.zh.md`
+- [Agent Note: Use one surface manager per session](2026-07-19-use-one-session-surface-manager-0d895de786.md) — `.agents/notes/archived/simplification/2026-07-19-use-one-session-surface-manager.md`
+- [Agent Note: 每个会话只使用一个表层管理器](2026-07-19-use-one-session-surface-manager.zh-737f0d36cf.md) — `.agents/notes/archived/simplification/2026-07-19-use-one-session-surface-manager.zh.md`
+- [Agent Note: Remove the stdio and Echo agents](2026-07-20-remove-stdio-and-echo-agents-a1e5749ee1.md) — `.agents/notes/archived/simplification/2026-07-20-remove-stdio-and-echo-agents.md`
+- [Agent Note: 移除 stdio 和 Echo agent](2026-07-20-remove-stdio-and-echo-agents.zh-d177a7c937.md) — `.agents/notes/archived/simplification/2026-07-20-remove-stdio-and-echo-agents.zh.md`
+- [Agent Note: Retire the readline front door and the repl-agent example](2026-07-20-retire-readline-front-door-24702ff2a9.md) — `.agents/notes/archived/simplification/2026-07-20-retire-readline-front-door.md`
+- [Agent Note: 退役 readline 前端与 repl-agent 示例](2026-07-20-retire-readline-front-door.zh-4687b3e243.md) — `.agents/notes/archived/simplification/2026-07-20-retire-readline-front-door.zh.md`
+- [Agent Note: Drop the TUI /cancel slash command](2026-07-21-tui-remove-cancel-command-0de195f0ac.md) — `.agents/notes/archived/simplification/2026-07-21-tui-remove-cancel-command.md`
+- [Agent Note: Drop the TUI /cancel slash command](2026-07-21-tui-remove-cancel-command.zh-6d7155cdc9.md) — `.agents/notes/archived/simplification/2026-07-21-tui-remove-cancel-command.zh.md`
+- [Agent Note: Ship the TUI without todo_write; keep it a one-line opt-in](2026-07-21-tui-todo-write-opt-in-9d8eac01f4.md) — `.agents/notes/archived/simplification/2026-07-21-tui-todo-write-opt-in.md`
+- [Agent Note: Ship the TUI without todo_write; keep it a one-line opt-in](2026-07-21-tui-todo-write-opt-in.zh-0a81c72fdf.md) — `.agents/notes/archived/simplification/2026-07-21-tui-todo-write-opt-in.zh.md`
+- [Agent Note: TUI titles come from the session-title service](2026-07-22-tui-titles-from-session-title-service-8d2e7b5a95.md) — `.agents/notes/archived/simplification/2026-07-22-tui-titles-from-session-title-service.md`
+- [Agent Note: TUI 标题来自 session-title 服务](2026-07-22-tui-titles-from-session-title-service.zh-51d17c553d.md) — `.agents/notes/archived/simplification/2026-07-22-tui-titles-from-session-title-service.zh.md`
+- [Agent Note: Collapse live persistence into one flush controller](2026-07-23-collapse-persistence-flush-state-e8754cad15.md) — `.agents/notes/archived/simplification/2026-07-23-collapse-persistence-flush-state.md`
+- [Agent Note: 将实时持久化归并到单个刷写控制器](2026-07-23-collapse-persistence-flush-state.zh-11dc8d385d.md) — `.agents/notes/archived/simplification/2026-07-23-collapse-persistence-flush-state.zh.md`
+- [Agent Note: Consolidate gate scripts on already-present deps and builtins](2026-07-26-consolidate-gate-scripts-on-existing-deps-dae8ff2eae.md) — `.agents/notes/archived/simplification/2026-07-26-consolidate-gate-scripts-on-existing-deps.md`
+- [Agent Note: 把门禁脚本统一到已有依赖与内置模块上](2026-07-26-consolidate-gate-scripts-on-existing-deps.zh-dedd0f5f1c.md) — `.agents/notes/archived/simplification/2026-07-26-consolidate-gate-scripts-on-existing-deps.zh.md`
+- [Agent Note: Replace the hand-rolled SSE parser in llm-deepseek with eventsource-parser](2026-07-26-eventsource-parser-for-deepseek-sse-0c429911ee.md) — `.agents/notes/archived/simplification/2026-07-26-eventsource-parser-for-deepseek-sse.md`
+- [Agent Note: 用 eventsource-parser 替换 llm-deepseek 中手写的 SSE 解析器](2026-07-26-eventsource-parser-for-deepseek-sse.zh-a726bf204c.md) — `.agents/notes/archived/simplification/2026-07-26-eventsource-parser-for-deepseek-sse.zh.md`
+- [Agent Note: Merge subagent control into the subagent service](2026-07-26-merge-subagent-control-service-2e40064c99.md) — `.agents/notes/archived/simplification/2026-07-26-merge-subagent-control-service.md`
+- [Agent Note: 将 subagent 控制合并到 subagent 服务](2026-07-26-merge-subagent-control-service.zh-b38e7c7d02.md) — `.agents/notes/archived/simplification/2026-07-26-merge-subagent-control-service.zh.md`
+- [Agent Note: Replace tool-web's regex HTML-to-markdown converter with turndown](2026-07-26-turndown-for-tool-web-html-markdown-c15925ee79.md) — `.agents/notes/archived/simplification/2026-07-26-turndown-for-tool-web-html-markdown.md`
+- [Agent Note: 用 turndown 替换 tool-web 的正则 HTML 转 markdown 转换器](2026-07-26-turndown-for-tool-web-html-markdown.zh-48930d3f7f.md) — `.agents/notes/archived/simplification/2026-07-26-turndown-for-tool-web-html-markdown.zh.md`
+- [Agent Note: Copyable TUI transcript without gutter bars](2026-07-27-copyable-transcript-no-gutter-bar-84462c4a85.md) — `.agents/notes/archived/simplification/2026-07-27-copyable-transcript-no-gutter-bar.md`
+- [Agent Note: 无 gutter bar 的可复制 TUI transcript](2026-07-27-copyable-transcript-no-gutter-bar.zh-7c39e361b4.md) — `.agents/notes/archived/simplification/2026-07-27-copyable-transcript-no-gutter-bar.zh.md`
+- [Agent Note: Intent-named subagent continuation operations](2026-07-27-intent-named-subagent-continuation-operations-efac020602.md) — `.agents/notes/archived/simplification/2026-07-27-intent-named-subagent-continuation-operations.md`
+- [Agent Note: 按意图命名的 subagent 继续执行操作](2026-07-27-intent-named-subagent-continuation-operations.zh-08b39a9a76.md) — `.agents/notes/archived/simplification/2026-07-27-intent-named-subagent-continuation-operations.zh.md`
+- [Agent Note: Local JSON tree renderer](2026-07-28-local-json-tree-renderer-8a844eed21.md) — `.agents/notes/archived/simplification/2026-07-28-local-json-tree-renderer.md`
+- [Agent Note: 本地 JSON 树渲染器](2026-07-28-local-json-tree-renderer.zh-9f3db47053.md) — `.agents/notes/archived/simplification/2026-07-28-local-json-tree-renderer.zh.md`
+- [Agent Note: One shared base config with per-surface overlays](2026-07-29-shared-base-config-overlays-f88365dad7.md) — `.agents/notes/archived/simplification/2026-07-29-shared-base-config-overlays.md`
+- [Agent Note: 一份共享 base 配置加各 surface 的 overlay](2026-07-29-shared-base-config-overlays.zh-7c3f4ee129.md) — `.agents/notes/archived/simplification/2026-07-29-shared-base-config-overlays.zh.md`
+- [Agent Note: Simplify Web image input version one](2026-07-29-simplify-web-image-input-v1-95da0a4624.md) — `.agents/notes/archived/simplification/2026-07-29-simplify-web-image-input-v1.md`
+- [Agent Note: 简化 Web 图片输入第一版](2026-07-29-simplify-web-image-input-v1.zh-b5ed392512.md) — `.agents/notes/archived/simplification/2026-07-29-simplify-web-image-input-v1.zh.md`
+- [Agent Note: Keep agent routing private](2026-07-30-private-agent-send-5b985858a1.md) — `.agents/notes/archived/simplification/2026-07-30-private-agent-send.md`
+- [Agent Note: 将 agent 路由保留为私有实现](2026-07-30-private-agent-send.zh-483d922c50.md) — `.agents/notes/archived/simplification/2026-07-30-private-agent-send.zh.md`
+- [Agent Note: Sidebar resize without a visible pill](2026-07-30-sidebar-resize-without-visible-pill-f446883954.md) — `.agents/notes/archived/simplification/2026-07-30-sidebar-resize-without-visible-pill.md`
+- [Agent Note: 侧边栏缩放不显示胶囊](2026-07-30-sidebar-resize-without-visible-pill.zh-373abb3aed.md) — `.agents/notes/archived/simplification/2026-07-30-sidebar-resize-without-visible-pill.zh.md`
+- [Agent Note: Capability-neutral sandbox policy context](2026-07-31-capability-neutral-sandbox-policy-context-4a7cef65cb.md) — `.agents/notes/archived/simplification/2026-07-31-capability-neutral-sandbox-policy-context.md`
+- [Agent Note: 不依赖具体能力的沙箱策略上下文](2026-07-31-capability-neutral-sandbox-policy-context.zh-612c16a4b7.md) — `.agents/notes/archived/simplification/2026-07-31-capability-neutral-sandbox-policy-context.zh.md`
+- [Agent Note: Drop the user-message edit stub](2026-07-31-drop-user-message-edit-stub-102079f890.md) — `.agents/notes/archived/simplification/2026-07-31-drop-user-message-edit-stub.md`
+- [Agent Note: 移除 user 消息的编辑存根](2026-07-31-drop-user-message-edit-stub.zh-232e2a4e26.md) — `.agents/notes/archived/simplification/2026-07-31-drop-user-message-edit-stub.zh.md`
+- [Agent Note: One route to add a Workspace](2026-07-31-one-route-to-add-a-workspace-7901ad8281.md) — `.agents/notes/archived/simplification/2026-07-31-one-route-to-add-a-workspace.md`
+- [Agent Note: 添加 Workspace 的唯一路径](2026-07-31-one-route-to-add-a-workspace.zh-b30bf82cc4.md) — `.agents/notes/archived/simplification/2026-07-31-one-route-to-add-a-workspace.zh.md`
+- [Agent Note: Web UI drops steer entry and interjection chrome](2026-07-31-web-ui-no-steer-entry-or-interjection-chrome-1998fa0073.md) — `.agents/notes/archived/simplification/2026-07-31-web-ui-no-steer-entry-or-interjection-chrome.md`
+- [Agent Note: Web UI 去掉 steer 入口与插话 chrome](2026-07-31-web-ui-no-steer-entry-or-interjection-chrome.zh-bca9567406.md) — `.agents/notes/archived/simplification/2026-07-31-web-ui-no-steer-entry-or-interjection-chrome.zh.md`
+- [Agent Note: Explicit-config dsh entrypoint](2026-08-03-explicit-config-dsh-entrypoint-1bead6c9c4.md) — `.agents/notes/archived/simplification/2026-08-03-explicit-config-dsh-entrypoint.md`
+- [Agent Note: 显式配置的 dsh 入口](2026-08-03-explicit-config-dsh-entrypoint.zh-9569acc1bd.md) — `.agents/notes/archived/simplification/2026-08-03-explicit-config-dsh-entrypoint.zh.md`
+- [Agent Note: Omit runtime invariants from shipped dsh config](2026-08-03-omit-invariants-from-shipped-config-a0fd865bd2.md) — `.agents/notes/archived/simplification/2026-08-03-omit-invariants-from-shipped-config.md`
+- [Agent Note: 从交付的 dsh 配置中省略运行时不变式](2026-08-03-omit-invariants-from-shipped-config.zh-e15267299a.md) — `.agents/notes/archived/simplification/2026-08-03-omit-invariants-from-shipped-config.zh.md`
+- [Agent Note: Drop the Windows PowerShell picker fallback](2026-08-04-drop-windows-powershell-picker-fallback-9ff1ab405c.md) — `.agents/notes/archived/simplification/2026-08-04-drop-windows-powershell-picker-fallback.md`
+- [Agent Note: 删除 Windows PowerShell 选择器回退](2026-08-04-drop-windows-powershell-picker-fallback.zh-e8a75f4fa7.md) — `.agents/notes/archived/simplification/2026-08-04-drop-windows-powershell-picker-fallback.zh.md`
+- [Agent Note: Remove the TUI package](2026-08-04-remove-tui-package-c0cd89d68c.md) — `.agents/notes/archived/simplification/2026-08-04-remove-tui-package.md`
+- [Agent Note: 移除 TUI 包](2026-08-04-remove-tui-package.zh-5de61b76da.md) — `.agents/notes/archived/simplification/2026-08-04-remove-tui-package.zh.md`
+- [Agent Note: Buffer-free feedback telemetry](2026-08-06-buffer-free-feedback-telemetry-4424de7605.md) — `.agents/notes/archived/simplification/2026-08-06-buffer-free-feedback-telemetry.md`
+- [Agent Note: 无缓冲反馈遥测](2026-08-06-buffer-free-feedback-telemetry.zh-66e4a4a3da.md) — `.agents/notes/archived/simplification/2026-08-06-buffer-free-feedback-telemetry.zh.md`
+- [Agent Note: User and steering bubbles drop the branch action](2026-08-06-user-bubbles-drop-the-branch-action-30948018b5.md) — `.agents/notes/archived/simplification/2026-08-06-user-bubbles-drop-the-branch-action.md`
+- [Agent Note: user 与 steering 气泡移除分支操作](2026-08-06-user-bubbles-drop-the-branch-action.zh-3eb3edf528.md) — `.agents/notes/archived/simplification/2026-08-06-user-bubbles-drop-the-branch-action.zh.md`
+- [Agent Note: Remove the separate CLI demo](2026-08-08-remove-cli-demo-feec33f948.md) — `.agents/notes/archived/simplification/2026-08-08-remove-cli-demo.md`
+- [Agent Note: 移除独立的 CLI demo](2026-08-08-remove-cli-demo.zh-9d1373d723.md) — `.agents/notes/archived/simplification/2026-08-08-remove-cli-demo.zh.md`
+- [Agent Note: Bounded fixed-rate Schedule](2026-08-09-bounded-fixed-rate-schedule-e3a2ca8064.md) — `.agents/notes/archived/simplification/2026-08-09-bounded-fixed-rate-schedule.md`
+- [Agent Note: 有界固定速率 Schedule](2026-08-09-bounded-fixed-rate-schedule.zh-9bcc29becb.md) — `.agents/notes/archived/simplification/2026-08-09-bounded-fixed-rate-schedule.zh.md`
+- [Agent Note: Conversational Schedule delivery](2026-08-09-conversational-schedule-delivery-277716b7ec.md) — `.agents/notes/archived/simplification/2026-08-09-conversational-schedule-delivery.md`
+- [Agent Note: 对话式 Schedule 交付](2026-08-09-conversational-schedule-delivery.zh-15f430f0f0.md) — `.agents/notes/archived/simplification/2026-08-09-conversational-schedule-delivery.zh.md`
+- [Agent Note: Remove the dedicated repository Plugin path](2026-08-09-remove-repository-plugin-78aa8c6ff4.md) — `.agents/notes/archived/simplification/2026-08-09-remove-repository-plugin.md`
+- [Agent Note: 移除专用 repository 插件路径](2026-08-09-remove-repository-plugin.zh-30c624a907.md) — `.agents/notes/archived/simplification/2026-08-09-remove-repository-plugin.zh.md`
+- [Agent Note: One editor family in general-purpose presets](2026-08-10-default-presets-single-editor-55f1bd1bd3.md) — `.agents/notes/archived/simplification/2026-08-10-default-presets-single-editor.md`
+- [Agent Note: 通用 preset 只提供一套编辑工具](2026-08-10-default-presets-single-editor.zh-e79435adff.md) — `.agents/notes/archived/simplification/2026-08-10-default-presets-single-editor.zh.md`
+- [Agent Note: Source run without a managed installer](2026-08-10-source-run-without-managed-installer-1e57c3e1df.md) — `.agents/notes/archived/simplification/2026-08-10-source-run-without-managed-installer.md`
+- [Agent Note: 无需托管安装器的源码运行](2026-08-10-source-run-without-managed-installer.zh-8a1c8ccb82.md) — `.agents/notes/archived/simplification/2026-08-10-source-run-without-managed-installer.zh.md`
+- [Agent Note: Remove the steering interjection caption](2026-08-10-web-remove-steering-interjection-caption-a17443c777.md) — `.agents/notes/archived/simplification/2026-08-10-web-remove-steering-interjection-caption.md`
+- [Agent Note: 移除 steering（中途引导）插话标注](2026-08-10-web-remove-steering-interjection-caption.zh-3683256247.md) — `.agents/notes/archived/simplification/2026-08-10-web-remove-steering-interjection-caption.zh.md`
+- [Agent Note: parseCmdline runs the program's own commander action](2026-08-11-cmdline-program-action-ce4513719e.md) — `.agents/notes/archived/simplification/2026-08-11-cmdline-program-action.md`
+- [Agent Note: parseCmdline 运行 program 自己的 commander action](2026-08-11-cmdline-program-action.zh-7f44d34ce8.md) — `.agents/notes/archived/simplification/2026-08-11-cmdline-program-action.zh.md`
+- [Agent Note: Route documentation roots to quick start](2026-08-11-quickstart-documentation-home-f1f1b72184.md) — `.agents/notes/archived/simplification/2026-08-11-quickstart-documentation-home.md`
+- [Agent Note: 将文档根路由指向快速开始](2026-08-11-quickstart-documentation-home.zh-dcc57875ff.md) — `.agents/notes/archived/simplification/2026-08-11-quickstart-documentation-home.zh.md`
+- [Agent Note: Remove the SDK project toolchain](2026-08-11-remove-sdk-project-toolchain-c1ce0e2e3d.md) — `.agents/notes/archived/simplification/2026-08-11-remove-sdk-project-toolchain.md`
+- [Agent Note: 移除 SDK 项目工具链](2026-08-11-remove-sdk-project-toolchain.zh-faa86e1806.md) — `.agents/notes/archived/simplification/2026-08-11-remove-sdk-project-toolchain.zh.md`
+- [Agent Note: Production dsh excludes product subagent providers](2026-08-12-production-dsh-excludes-product-subagent-providers-52f6ce8ea4.md) — `.agents/notes/archived/simplification/2026-08-12-production-dsh-excludes-product-subagent-providers.md`
+- [Agent Note: 生产 dsh 排除产品 subagent 提供方](2026-08-12-production-dsh-excludes-product-subagent-providers.zh-5f0cf14c57.md) — `.agents/notes/archived/simplification/2026-08-12-production-dsh-excludes-product-subagent-providers.zh.md`
+- [Agent Note: Separate source launch from repository build](2026-08-12-separate-source-launch-from-build-a46f4b14b1.md) — `.agents/notes/archived/simplification/2026-08-12-separate-source-launch-from-build.md`
+- [Agent Note: 将源码启动与仓库构建分离](2026-08-12-separate-source-launch-from-build.zh-ab7da63806.md) — `.agents/notes/archived/simplification/2026-08-12-separate-source-launch-from-build.zh.md`
+- [Agent Note: Trim the Agent Teams read and lifecycle surface](2026-08-12-trim-agent-teams-read-and-lifecycle-surface-0f6787d98d.md) — `.agents/notes/archived/simplification/2026-08-12-trim-agent-teams-read-and-lifecycle-surface.md`
+- [Agent Note: Trim the Agent Teams read and lifecycle surface](2026-08-12-trim-agent-teams-read-and-lifecycle-surface.zh-580aee8466.md) — `.agents/notes/archived/simplification/2026-08-12-trim-agent-teams-read-and-lifecycle-surface.zh.md`
+- [Agent Note: Remove the first-run beta notice](2026-08-13-remove-first-run-beta-notice-47b0a4815d.md) — `.agents/notes/archived/simplification/2026-08-13-remove-first-run-beta-notice.md`
+- [Agent Note: 移除首次启动内测声明](2026-08-13-remove-first-run-beta-notice.zh-fc42e5675d.md) — `.agents/notes/archived/simplification/2026-08-13-remove-first-run-beta-notice.zh.md`
+- [Agent Note: Deleted stale and duplicative knip.json workspace entries](2026-08-19-knip-config-cleanup-1f580b0eba.md) — `.agents/notes/archived/simplification/2026-08-19-knip-config-cleanup.md`
+- [Agent Note: 删除 knip.json 中失效与重复的 workspace 条目](2026-08-19-knip-config-cleanup.zh-cbda560dfa.md) — `.agents/notes/archived/simplification/2026-08-19-knip-config-cleanup.zh.md`
+- [Agent Note: Product subagents expose minimal actionable diagnostics](2026-08-21-product-subagent-minimal-diagnostics-b0b59470dc.md) — `.agents/notes/archived/simplification/2026-08-21-product-subagent-minimal-diagnostics.md`
+- [Agent Note: 产品 subagent 公开最小可行动诊断](2026-08-21-product-subagent-minimal-diagnostics.zh-89b5934342.md) — `.agents/notes/archived/simplification/2026-08-21-product-subagent-minimal-diagnostics.zh.md`
+- [Agent Note: Owner-local profile tests and runnable guides](2026-08-24-owner-local-profile-tests-and-guides-df4260cadd.md) — `.agents/notes/archived/simplification/2026-08-24-owner-local-profile-tests-and-guides.md`
+- [Agent Note: 归属方本地的 Profile 测试与可运行指南](2026-08-24-owner-local-profile-tests-and-guides.zh-00e72d20cd.md) — `.agents/notes/archived/simplification/2026-08-24-owner-local-profile-tests-and-guides.zh.md`
+- [Agent Note: Remove the agent-spine demo package](2026-08-26-remove-agent-spine-demo-a1e65a038b.md) — `.agents/notes/archived/simplification/2026-08-26-remove-agent-spine-demo.md`
+- [Agent Note: 删除 agent-spine demo 包](2026-08-26-remove-agent-spine-demo.zh-b369dfb2c1.md) — `.agents/notes/archived/simplification/2026-08-26-remove-agent-spine-demo.zh.md`
+- [Agent Note: Persistence export() and pre-release read-path trims](2026-08-27-persistence-export-and-pre-release-trims-a41c5c99cd.md) — `.agents/notes/archived/simplification/2026-08-27-persistence-export-and-pre-release-trims.md`
+- [Agent Note: 持久化 export() 与预发布读取路径精简](2026-08-27-persistence-export-and-pre-release-trims.zh-43a17ad334.md) — `.agents/notes/archived/simplification/2026-08-27-persistence-export-and-pre-release-trims.zh.md`
+- [Agent Note: The hero input glow is removed](2026-08-28-remove-hero-input-glow-073e1af5d1.md) — `.agents/notes/archived/simplification/2026-08-28-remove-hero-input-glow.md`
+- [Agent Note: The hero input glow is removed](2026-08-28-remove-hero-input-glow.zh-fef5d94995.md) — `.agents/notes/archived/simplification/2026-08-28-remove-hero-input-glow.zh.md`
+- [Agent Note: The absent-probe parent repair runs on Windows only](2026-08-28-windows-only-absent-probe-repair-361bafde7c.md) — `.agents/notes/archived/simplification/2026-08-28-windows-only-absent-probe-repair.md`
+- [Agent Note: 缺失探测的父目录修复只在 Windows 上执行](2026-08-28-windows-only-absent-probe-repair.zh-c09753527d.md) — `.agents/notes/archived/simplification/2026-08-28-windows-only-absent-probe-repair.zh.md`
+- [Agent Note: Team messaging uses one Steer send_message operation](2026-08-30-team-send-message-steer-a272a8e043.md) — `.agents/notes/archived/simplification/2026-08-30-team-send-message-steer.md`
+- [Agent Note: Team 消息使用单一 Steer send_message 操作](2026-08-30-team-send-message-steer.zh-9ed8caad59.md) — `.agents/notes/archived/simplification/2026-08-30-team-send-message-steer.zh.md`
+- [Agent Note: replace produced-file probes with CSS width bands](2026-09-01-css-produced-file-layout-828b52e81e.md) — `.agents/notes/archived/simplification/2026-09-01-css-produced-file-layout.md`
+- [Agent Note: 以 CSS 宽度档位替代产出文件探针](2026-09-01-css-produced-file-layout.zh-3571ec0621.md) — `.agents/notes/archived/simplification/2026-09-01-css-produced-file-layout.zh.md`
+- [Agent Note: PTC preset omits the general workflow tool](2026-09-01-ptc-omits-workflow-tool-75143c4db3.md) — `.agents/notes/archived/simplification/2026-09-01-ptc-omits-workflow-tool.md`
+- [Agent Note: PTC preset 不提供通用 workflow 工具](2026-09-01-ptc-omits-workflow-tool.zh-a052d89b9a.md) — `.agents/notes/archived/simplification/2026-09-01-ptc-omits-workflow-tool.zh.md`

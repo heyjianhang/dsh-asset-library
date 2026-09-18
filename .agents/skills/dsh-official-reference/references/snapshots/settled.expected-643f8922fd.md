@@ -1,0 +1,55 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/steering/settled.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/steering/settled.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- banner:
+  - navigation "Session hierarchy":
+    - button "Use the ask_user_question tool to" [disabled]
+  - img
+  - text: Standard mode
+  - button "More actions":
+    - img
+  - button "Open right sidebar":
+    - img
+  - tablist:
+    - tab "Chat" [selected]
+    - tab "Trajectory"
+- button "System prompt":
+  - img
+  - img
+  - text: System prompt
+- text: Use the ask_user_question tool to ask me exactly one question with id "checkpoint", question "Ready to continue?", header "Checkpoint", and options labeled "Yes" and "No". After I answer, reply with one short sentence acknowledging my answer and stop. {{clock}}
+- button "Copy":
+  - img
+- button "1 tool call":
+  - text: 1 tool call
+  - img
+- text: "Interjection: include the word BANANA in your final reply. {{clock}}"
+- button "Copy":
+  - img
+- paragraph: Great, let's move forward. BANANA!
+- button "Copy":
+  - img
+- button "Good response":
+  - img
+- button "Bad response":
+  - img
+- button "Branch into a new conversation":
+  - img
+- button "Ran for {{duration}}":
+  - img
+  - text: Ran for {{duration}}
+- text: {{clock}}
+- textbox "Message or run a task, / commands, @ files or sessions"
+- button "Add files or run commands":
+  - img
+- 'button "Access mode, current: Workspace Write"': Workspace Write
+- button "Select model, current DeepSeek-V4-Flash":
+  - text: DeepSeek-V4-Flash
+  - img
+- button "Send message" [disabled]
+- button "1 turns 2 steps · {{throughput}} tok/s":
+  - img
+  - text: 1 turns 2 steps{{throughput}} tok/s
+- button "30 tok · Cache hit 0%":
+  - img
+  - text: 30 tokCache hit 0%
+- button "0% of context used": 0%

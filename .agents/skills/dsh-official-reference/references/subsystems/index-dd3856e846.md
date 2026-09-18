@@ -1,0 +1,114 @@
+# docs/subsystems
+
+使用 MCP、存储、凭据、审批、任务、会话、文件等能力时按专题读取。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Teams](agent-team-97b7ef8c7a.md) — `docs/subsystems/agent-team.md`
+- [Agent Teams](agent-team.zh-021876142f.md) — `docs/subsystems/agent-team.zh.md`
+- [User Approval](approval-7e58655923.md) — `docs/subsystems/approval.md`
+- [用户审批](approval.zh-dc1b51cb4a.md) — `docs/subsystems/approval.zh.md`
+- [Durable Attachments](attachment-bd162ad2ea.md) — `docs/subsystems/attachment.md`
+- [持久附件](attachment.zh-fe8727c0b4.md) — `docs/subsystems/attachment.zh.md`
+- [Profile management](boot-315056a4e7.md) — `docs/subsystems/boot.md`
+- [Profile 管理](boot.zh-d33718ced2.md) — `docs/subsystems/boot.zh.md`
+- [Browser use](browser-use-a714a20501.md) — `docs/subsystems/browser-use.md`
+- [浏览器操作](browser-use.zh-60f4629320.md) — `docs/subsystems/browser-use.zh.md`
+- [Human Commands](commands-182ff0c785.md) — `docs/subsystems/commands.md`
+- [用户命令](commands.zh-1bc0d71457.md) — `docs/subsystems/commands.zh.md`
+- [Compaction](compaction-6cf647eebd.md) — `docs/subsystems/compaction.md`
+- [压缩（compaction）](compaction.zh-df7a402560.md) — `docs/subsystems/compaction.zh.md`
+- [Computer use](computer-use-e036039168.md) — `docs/subsystems/computer-use.md`
+- [计算机操作](computer-use.zh-417e889685.md) — `docs/subsystems/computer-use.zh.md`
+- [Conversation assembly](conversation-861c54dd37.md) — `docs/subsystems/conversation.md`
+- [Conversation 组装](conversation.zh-488453c753.md) — `docs/subsystems/conversation.zh.md`
+- [Core](core-eb12d29a85.md) — `docs/subsystems/core.md`
+- [核心](core.zh-6e1fe608b8.md) — `docs/subsystems/core.zh.md`
+- [User Credentials](credentials-2173dd41d7.md) — `docs/subsystems/credentials.md`
+- [用户凭据](credentials.zh-9cf18a74e2.md) — `docs/subsystems/credentials.zh.md`
+- [Deliverables](deliverables-c8b91afeb4.md) — `docs/subsystems/deliverables.md`
+- [产出物](deliverables.zh-cad82d4984.md) — `docs/subsystems/deliverables.zh.md`
+- [Extensions](extensions-13d4d2616c.md) — `docs/subsystems/extensions.md`
+- [扩展](extensions.zh-ecc5a5bd1d.md) — `docs/subsystems/extensions.zh.md`
+- [Message Feedback](feedback-acdee6ec14.md) — `docs/subsystems/feedback.md`
+- [消息反馈](feedback.zh-e4950e5ccd.md) — `docs/subsystems/feedback.zh.md`
+- [Filesystem](filesystem-f8eb468655.md) — `docs/subsystems/filesystem.md`
+- [文件系统](filesystem.zh-9ea7883892.md) — `docs/subsystems/filesystem.zh.md`
+- [Same-session goals](goal-c08402a6f9.md) — `docs/subsystems/goal.md`
+- [同会话目标](goal.zh-3b6db4a57c.md) — `docs/subsystems/goal.zh.md`
+- [Runtime Invariants](invariants-1d2c2ceb81.md) — `docs/subsystems/invariants.md`
+- [运行时不变式](invariants.zh-37a0887ae7.md) — `docs/subsystems/invariants.zh.md`
+- [Background Job Runtime](jobs-cdd03a5ef8.md) — `docs/subsystems/jobs.md`
+- [后台任务运行时](jobs.zh-e81ae6fa7a.md) — `docs/subsystems/jobs.zh.md`
+- [LLM Streaming](llm-streaming-7a1c63fe96.md) — `docs/subsystems/llm-streaming.md`
+- [LLM（大语言模型）流式输出](llm-streaming.zh-114dc2b3ac.md) — `docs/subsystems/llm-streaming.zh.md`
+- [LSP navigation](lsp-f4bb090a5e.md) — `docs/subsystems/lsp.md`
+- [LSP 导航](lsp.zh-2344d70805.md) — `docs/subsystems/lsp.zh.md`
+- [MCP](mcp-0057687b3d.md) — `docs/subsystems/mcp.md`
+- [MCP](mcp.zh-b849fdfab2.md) — `docs/subsystems/mcp.zh.md`
+- [Office to PDF](office-to-pdf-317ee6b0d3.md) — `docs/subsystems/office-to-pdf.md`
+- [Office 转 PDF](office-to-pdf.zh-aa28baf0cf.md) — `docs/subsystems/office-to-pdf.zh.md`
+- [Permission Presets](permission-presets-20be9bdbb7.md) — `docs/subsystems/permission-presets.md`
+- [权限预设](permission-presets.zh-6aef3e844d.md) — `docs/subsystems/permission-presets.zh.md`
+- [Session Persistence](persistence-63e745c683.md) — `docs/subsystems/persistence.md`
+- [会话持久化](persistence.zh-ba1c306f9e.md) — `docs/subsystems/persistence.zh.md`
+- [Plan Mode](plan-617c8a7dda.md) — `docs/subsystems/plan.md`
+- [计划模式](plan.zh-b736ec5e76.md) — `docs/subsystems/plan.zh.md`
+- [PTC runtime](ptc-runtime-18098b6708.md) — `docs/subsystems/ptc-runtime.md`
+- [PTC 运行时](ptc-runtime.zh-1c7bbf5405.md) — `docs/subsystems/ptc-runtime.zh.md`
+- [Subsystems](readme-8b15777b3b.md) — `docs/subsystems/README.md`
+- [子系统](readme.zh-4050d378a0.md) — `docs/subsystems/README.zh.md`
+- [Process Sandbox](sandbox-627ec2f04b.md) — `docs/subsystems/sandbox.md`
+- [进程沙箱](sandbox.zh-4cd1f18b0f.md) — `docs/subsystems/sandbox.zh.md`
+- [Session-local Schedule](schedule-dd3d32d4e0.md) — `docs/subsystems/schedule.md`
+- [仅限 Session 内的 Schedule](schedule.zh-104238dcaf.md) — `docs/subsystems/schedule.zh.md`
+- [Scoped Registration](scope-af50cbbcde.md) — `docs/subsystems/scope.md`
+- [作用域注册](scope.zh-d19d6ba9f3.md) — `docs/subsystems/scope.zh.md`
+- [Session Projections](session-projection-c047f7f301.md) — `docs/subsystems/session-projection.md`
+- [会话投影](session-projection.zh-58588a2880.md) — `docs/subsystems/session-projection.zh.md`
+- [Session Query](session-query-8860b2381c.md) — `docs/subsystems/session-query.md`
+- [会话查询](session-query.zh-544dc18bcb.md) — `docs/subsystems/session-query.zh.md`
+- [Session References](session-reference-beed05a9d8.md) — `docs/subsystems/session-reference.md`
+- [会话引用](session-reference.zh-c0802e624d.md) — `docs/subsystems/session-reference.zh.md`
+- [SessionTelemetryBackend](session-telemetry-15cbcab55b.md) — `docs/subsystems/session-telemetry.md`
+- [遥测（telemetry）](session-telemetry.zh-7149d57f4c.md) — `docs/subsystems/session-telemetry.zh.md`
+- [Session Titles](session-title-41d2179d94.md) — `docs/subsystems/session-title.md`
+- [会话标题](session-title.zh-f86ac98b25.md) — `docs/subsystems/session-title.zh.md`
+- [Sessions](session-b1806dce9a.md) — `docs/subsystems/session.md`
+- [会话](session.zh-5cd9c43938.md) — `docs/subsystems/session.zh.md`
+- [Shell Executor](shell-8bac0cbd82.md) — `docs/subsystems/shell.md`
+- [Shell 执行器](shell.zh-3ac09660eb.md) — `docs/subsystems/shell.zh.md`
+- [Spill Storage](spill-9a4df6b238.md) — `docs/subsystems/spill.md`
+- [spill 存储](spill.zh-71c20ceaaa.md) — `docs/subsystems/spill.zh.md`
+- [SSH](ssh-06a64b463f.md) — `docs/subsystems/ssh.md`
+- [SSH](ssh.zh-75c8790040.md) — `docs/subsystems/ssh.zh.md`
+- [Storage](storage-5396e0be0a.md) — `docs/subsystems/storage.md`
+- [存储](storage.zh-c675c3301f.md) — `docs/subsystems/storage.zh.md`
+- [Subagent](subagent-18247ac264.md) — `docs/subsystems/subagent.md`
+- [Subagent](subagent.zh-fb64f195d3.md) — `docs/subsystems/subagent.zh.md`
+- [Subprocess](subprocess-be660d9204.md) — `docs/subsystems/subprocess.md`
+- [子进程](subprocess.zh-aef738b5c8.md) — `docs/subsystems/subprocess.zh.md`
+- [System Prompt Assembly](system-prompt-7410483c3d.md) — `docs/subsystems/system-prompt.md`
+- [系统提示词组装](system-prompt.zh-ccc9dbc365.md) — `docs/subsystems/system-prompt.zh.md`
+- [Persistent PTY Sessions](terminal-f72896adba.md) — `docs/subsystems/terminal.md`
+- [持久 PTY 会话](terminal.zh-727b893bd6.md) — `docs/subsystems/terminal.zh.md`
+- [Todo](todo-f4e162d037.md) — `docs/subsystems/todo.md`
+- [Todo](todo.zh-cc8122a504.md) — `docs/subsystems/todo.zh.md`
+- [Token Meter](token-meter-d138842e41.md) — `docs/subsystems/token-meter.md`
+- [Token 计量](token-meter.zh-371718c7db.md) — `docs/subsystems/token-meter.zh.md`
+- [Tools](tools-82b9070d05.md) — `docs/subsystems/tools.md`
+- [工具](tools.zh-9dedaa7736.md) — `docs/subsystems/tools.zh.md`
+- [Typert remote calls](typert-15ff52e11b.md) — `docs/subsystems/typert.md`
+- [Typert 远程调用](typert.zh-b6027976ec.md) — `docs/subsystems/typert.zh.md`
+- [User Interaction](user-questions-1b837ad502.md) — `docs/subsystems/user-questions.md`
+- [用户交互](user-questions.zh-850aeba645.md) — `docs/subsystems/user-questions.zh.md`
+- [HTTP Server](web-server-506c210b94.md) — `docs/subsystems/web-server.md`
+- [HTTP 服务器](web-server.zh-91b2a15a90.md) — `docs/subsystems/web-server.zh.md`
+- [Web Access](web-dc7886985f.md) — `docs/subsystems/web.md`
+- [Web 访问](web.zh-0359c43742.md) — `docs/subsystems/web.zh.md`
+- [Webhook runtime](webhook-458d1adbf9.md) — `docs/subsystems/webhook.md`
+- [Webhook runtime](webhook.zh-34a88fb5c4.md) — `docs/subsystems/webhook.zh.md`
+- [Workflow](workflow-3a8a1be2c2.md) — `docs/subsystems/workflow.md`
+- [工作流](workflow.zh-c6dff7e62c.md) — `docs/subsystems/workflow.zh.md`
+- [Workspaces](workspace-d8d44a8d59.md) — `docs/subsystems/workspace.md`
+- [工作区](workspace.zh-37c2fcc327.md) — `docs/subsystems/workspace.zh.md`

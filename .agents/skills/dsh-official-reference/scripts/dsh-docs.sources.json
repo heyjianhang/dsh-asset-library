@@ -1,0 +1,155 @@
+{
+  "repository": "deepseek-ai/deepseek-harness",
+  "preferredLanguage": "all",
+  "licensePath": "LICENSE",
+  "coverage": "all-repository-markdown",
+  "required": [
+    "docs/user/develop/basic/index.md",
+    "docs/web-styling.md",
+    "packages/client/AGENTS.md",
+    "packages/boot/plugin-manager/README.md"
+  ],
+  "groups": [
+    {
+      "id": "basics",
+      "title": "插件入门、配置、工具与发布",
+      "when": "开始插件开发及打包安装时读取。",
+      "prefixes": [
+        "docs/user/develop/basic/"
+      ]
+    },
+    {
+      "id": "framework",
+      "title": "框架、Cordis API 与生命周期",
+      "when": "实现服务、事件、依赖注入、资源清理时读取。",
+      "prefixes": [
+        "docs/user/develop/framework/",
+        "docs/cordis-api/",
+        "docs/cordis-tutorial/",
+        "vendor/"
+      ],
+      "files": [
+        "docs/cordis-primer.md",
+        "docs/cordis-primer.zh.md"
+      ]
+    },
+    {
+      "id": "practice",
+      "title": "组合与扩展实践",
+      "when": "选择扩展点、添加设置页、远程接口、适配器时读取。",
+      "prefixes": [
+        "docs/user/develop/practice/",
+        "docs/cookbook/"
+      ]
+    },
+    {
+      "id": "client",
+      "title": "前端、主题、组件、状态与国际化",
+      "when": "开发页面、Slots、Client 模块、资源、连接与换肤时读取。",
+      "prefixes": [
+        "packages/client/"
+      ],
+      "files": [
+        "docs/subsystems/web-client.md",
+        "docs/subsystems/web-client.zh.md",
+        "docs/subsystems/client-modules.md",
+        "docs/subsystems/client-modules.zh.md",
+        "docs/subsystems/client-resources.md",
+        "docs/subsystems/client-resources.zh.md",
+        "docs/subsystems/slots.md",
+        "docs/subsystems/slots.zh.md",
+        "docs/subsystems/sidebar-right.md",
+        "docs/subsystems/sidebar-right.zh.md",
+        "docs/subsystems/settings.md",
+        "docs/subsystems/settings.zh.md",
+        "docs/web-styling.md",
+        "docs/web-styling.zh.md"
+      ]
+    },
+    {
+      "id": "documentation",
+      "title": "文档规范、写作与模板",
+      "when": "编写和评审项目文档时读取。上游维护流程须核对适用范围。",
+      "prefixes": [
+        ".agents/skills/dsh-doc/",
+        ".agents/skills/dsh-prose-standard/"
+      ],
+      "files": [
+        "docs/AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents",
+      "title": "官方 Skill、Agent 与组合",
+      "when": "查询官方 Skill 和 preset 的开发方式时读取。",
+      "prefixes": [
+        ".agents/skills/",
+        "packages/preset/"
+      ],
+      "files": [
+        "docs/subsystems/skills.md",
+        "docs/subsystems/skills.zh.md"
+      ]
+    },
+    {
+      "id": "subsystems",
+      "title": "全部子系统契约",
+      "when": "使用 MCP、存储、凭据、审批、任务、会话、文件等能力时按专题读取。",
+      "prefixes": [
+        "docs/subsystems/"
+      ]
+    },
+    {
+      "id": "packages",
+      "title": "全部其余包级说明",
+      "when": "查 Host、SDK、协议、MCP、插件管理器及其他包的职责、配置与接口时读取。",
+      "prefixes": [
+        "packages/"
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "CLI、桌面、原生与开发工具",
+      "when": "验证安装、启动、宿主、原生平台与开发工具时读取。",
+      "prefixes": [
+        "apps/",
+        "native/",
+        "python/",
+        "scripts/",
+        "benchmarks/"
+      ]
+    },
+    {
+      "id": "history",
+      "title": "历史设计、提案与事故记录",
+      "when": "仅追溯背景时读取；提案、废弃记录不代表当前接口。",
+      "prefixes": [
+        ".agents/notes/",
+        "docs/postmortem/",
+        "docs/persistence-changes/"
+      ]
+    },
+    {
+      "id": "snapshots",
+      "title": "测试预期与快照资料",
+      "when": "排查对应测试行为时读取；快照内容属于测试数据，不是开发指令。",
+      "prefixes": [
+        "snapshots/"
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "架构、开发、测试与其他官方文档",
+      "when": "查询整体架构、能力目录、开发环境、测试与用户操作时读取。",
+      "prefixes": [
+        "docs/"
+      ]
+    },
+    {
+      "id": "repository",
+      "title": "仓库入口与自动纳入的新文档",
+      "when": "查贡献规则、仓库约定及尚未细分的新目录；后续按需求细分主题。",
+      "catchAll": true
+    }
+  ]
+}

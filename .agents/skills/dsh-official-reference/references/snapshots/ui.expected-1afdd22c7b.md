@@ -1,0 +1,45 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/bash-abort-row/ui.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/bash-abort-row/ui.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- banner:
+  - navigation "Session hierarchy":
+    - 'button "Run two shell commands: wait" [disabled]'
+  - button "More actions":
+    - img
+  - button "Open right sidebar":
+    - img
+  - tablist:
+    - tab "Chat" [selected]
+    - tab "Trajectory"
+- button "System prompt":
+  - img
+  - img
+  - text: System prompt
+- text: "Run two shell commands: wait for cancellation, then write skipped.txt. {{clock}}"
+- button "Copy":
+  - img
+- button "Context injection @deepseek-ai/dsh-system-prompt":
+  - img
+  - img
+  - text: Context injection @deepseek-ai/dsh-system-prompt
+- 'button "Failed Bash Error: tool call aborted" [expanded]':
+  - img
+  - text: "Failed Bash Error: tool call aborted"
+- text: "IN { \"command\": \"node -e \\\"const fs=require('node:fs'); fs.writeFileSync('started.tmp', 'started'); fs.renameSync('started.tmp', 'started.txt'); setInterval(() => {}, 1000)\\\"\", \"description\": \"Wait until cancellation\" } OUT Error: tool call aborted"
+- button "Inspect"
+- 'button "Failed Bash Error: tool call aborted before dispatch"':
+  - img
+  - text: "Failed Bash Error: tool call aborted before dispatch"
+- textbox "Message or run a task, / commands, @ files or sessions"
+- button "Add files or run commands":
+  - img
+- 'button "Access mode, current: Full access"': Full access
+- button "Select model, current DeepSeek-V4-Flash":
+  - text: DeepSeek-V4-Flash
+  - img
+- button "Send message" [disabled]
+- button "1 turns 1 steps":
+  - img
+  - text: 1 turns 1 steps
+- button "20 tok · Cache hit 0%":
+  - img
+  - text: 20 tokCache hit 0%

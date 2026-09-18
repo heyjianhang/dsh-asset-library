@@ -1,0 +1,21 @@
+.DS_Store
+Thumbs.db
+node_modules/
+.venv/
+__pycache__/
+coverage/
+dist/
+lib/
+*.tsbuildinfo
+*.tgz
+.env
+.env.*
+!.env.example
+.local/
+.runtime/
+.dsh/
+*.log
+.agents/skills/.dsh-official-reference.*
+# Official source documents may describe .dsh fixtures; preserve their inert copies.
+!/.agents/skills/dsh-official-reference/originals/**/
+!/.agents/skills/dsh-official-reference/originals/**/*.txt

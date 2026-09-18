@@ -1,0 +1,27 @@
+> 自动同步的官方参考原文。来源：[.agents/notes/implemented/testing/2026-09-07-publint-test-subprocess-lifetime.zh.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/.agents/notes/implemented/testing/2026-09-07-publint-test-subprocess-lifetime.zh.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+# Agent Note: Publint 测试子进程继承执行通道期限
+
+Status: implemented
+
+[English](2026-09-07-publint-test-subprocess-lifetime-ced10ba5dc.md) | 中文
+
+## 问题
+
+publint 脚本测试自设五秒同步子进程期限，低于 Windows 覆盖率通道现有的 90 秒测试与钩子预算。已捕获的 Windows 失败在有效和无效 JavaScript/CSS 用例中都报告空退出状态；有效用例耗时 5028 毫秒。这些日志没有记录子进程错误和信号，因此不能证明 ETIMEDOUT。期限不匹配是共享测试缺陷，不是产品改动导致失败的证据。
+
+## 决策
+
+[publint 测试](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/scripts/publint-all.spec.ts) 使用现有 Execa 依赖和 Vitest 测试上下文信号，不设独立子进程超时。[工作流](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/.github/workflows/ci.yml) 和[覆盖率参数所有者](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/scripts/coverage-partitions.ts) 继续负责预算。这与[子代理清理测试](2026-09-07-subagent-teardown-test-budgets.zh-d7e235369a.md) 采用相同的通道所有权规则，但不改变其清理逻辑。
+
+每个直接 Node 子进程创建后立即登记，取消请求发送 SIGKILL；清理先等待所有已登记子进程的结果与 close 事件，再删除私有包根目录。预期退出码断言之前先诊断进程错误、取消、超时标记、信号及捕获的输出流。正常退出码一仍是 publint 负例的有效结果。五个用例均通过隔离的发布夹具调用真实脚本。
+
+## 曾考虑的替代方案
+
+- 增大五秒常量：另一个局部常量仍会覆盖执行通道预算。
+- 预加载或替换 publint：两者都不能验证冷启动脚本导入与真实发布检查。
+- 发送终止信号后立即返回：进程与管道关闭必须先于夹具删除。
+
+## 后果
+
+以就绪状态为前提的期限回归测试取消两个存活子进程，并检查两个关闭事件、PID 已不存在及有用的诊断信息。缺失工作目录验证启动错误诊断。独立并发测试进程验证临时目录隔离和子进程调度。Windows 终止与文件系统证据仍由原生 Windows CI 负责；macOS 结果不能证明这些保证。产品代码、工作流预算和快照输出均不变。

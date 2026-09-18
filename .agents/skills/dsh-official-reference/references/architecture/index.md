@@ -1,0 +1,65 @@
+# 架构、开发、测试与其他官方文档
+
+查询整体架构、能力目录、开发环境、测试与用户操作时读取。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Turn And Step Lifecycle](agent-lifecycle-6b48ecf62d.md) — `docs/agent-lifecycle.md`
+- [Agent 轮次与步骤生命周期](agent-lifecycle.zh-18cf35d343.md) — `docs/agent-lifecycle.zh.md`
+- [API Gateway](api-gateway-6ccd3a260a.md) — `docs/api-gateway.md`
+- [API Gateway](api-gateway.zh-f61c7f37a7.md) — `docs/api-gateway.zh.md`
+- [DeepSeek Harness Architecture](architecture-140eef3ba4.md) — `docs/architecture.md`
+- [DeepSeek Harness 架构](architecture.zh-d69a3181b2.md) — `docs/architecture.zh.md`
+- [Capability Seams And Core Services](capability-seams-0f7ddb1eb9.md) — `docs/capability-seams.md`
+- [能力 Seams 与核心服务](capability-seams.zh-3cb0148b27.md) — `docs/capability-seams.zh.md`
+- [Plugin Config Catalog](config-catalog-9957d66982.md) — `docs/config-catalog.md`
+- [插件配置目录](config-catalog.zh-a03f895d4f.md) — `docs/config-catalog.zh.md`
+- [Official DeepSeek LLM API wire extensions](deepseek-llm-api-wire-extensions-923a2c8399.md) — `docs/deepseek-llm-api-wire-extensions.md`
+- [DeepSeek 官方 LLM API 协议扩展](deepseek-llm-api-wire-extensions.zh-8a5b2805bc.md) — `docs/deepseek-llm-api-wire-extensions.zh.md`
+- [Defensive patterns](defensive-patterns-1bf375e118.md) — `docs/defensive-patterns.md`
+- [防御性模式](defensive-patterns.zh-3abb9c83ff.md) — `docs/defensive-patterns.zh.md`
+- [Development guide](development-97db29a791.md) — `docs/development.md`
+- [开发指南](development.zh-58c51845ff.md) — `docs/development.zh.md`
+- [Event Producer And Consumer Matrix](event-producer-consumer-c9a237ded4.md) — `docs/event-producer-consumer.md`
+- [事件生产方与消费方矩阵](event-producer-consumer.zh-818f299c01.md) — `docs/event-producer-consumer.zh.md`
+- [Glossary](glossary-c42a05dfff.md) — `docs/glossary.md`
+- [术语表](glossary.zh-95bcbf8391.md) — `docs/glossary.zh.md`
+- [Documentation Graph Index](graph-atlas-c597d174a1.md) — `docs/graph-atlas.md`
+- [文档图索引](graph-atlas.zh-2b5410882a.md) — `docs/graph-atlas.zh.md`
+- [Bilingual documentation](readme-9f5f375ca9.md) — `docs/i18n/README.md`
+- [双语文档](readme.zh-50db0ff087.md) — `docs/i18n/README.zh.md`
+- [翻译语体样例（style samples）](style-samples-0d45fb53d2.md) — `docs/i18n/style-samples.md`
+- [Terminology](terminology-b8b31da41e.md) — `docs/i18n/terminology.md`
+- [Translation prompt (pipeline asset)](translation-prompt-e7100150cd.md) — `docs/i18n/translation-prompt.md`
+- [Translation rules](translation-rules-dbeb9890f9.md) — `docs/i18n/translation-rules.md`
+- [翻译规则](translation-rules.zh-256becd8c9.md) — `docs/i18n/translation-rules.zh.md`
+- [Shared-instance dependency graph](module-graph-84f3016eec.md) — `docs/module-graph.md`
+- [共享实例依赖关系图](module-graph.zh-e74c052650.md) — `docs/module-graph.zh.md`
+- [Session Persistence Event Catalog](persistence-catalog-158e87d1b7.md) — `docs/persistence-catalog.md`
+- [会话持久化事件目录](persistence-catalog.zh-5575fccc0c.md) — `docs/persistence-catalog.zh.md`
+- [Vendored package rescope](rescope-8d4665cb25.md) — `docs/rescope.md`
+- [Vendored 包改名](rescope.zh-9a1c0138b2.md) — `docs/rescope.zh.md`
+- [Session format version and release status](session-format-status-ab53791c06.md) — `docs/session-format-status.md`
+- [Session 格式版本与发布状态](session-format-status.zh-6ffbdb43bf.md) — `docs/session-format-status.zh.md`
+- [Testing policy](testing-c22885d97f.md) — `docs/testing.md`
+- [测试策略](testing.zh-027659fabb.md) — `docs/testing.zh.md`
+- [Tool Schema Catalog](tool-catalog-6bf6f62b02.md) — `docs/tool-catalog.md`
+- [工具 Schema 目录](tool-catalog.zh-d49bdc76e7.md) — `docs/tool-catalog.zh.md`
+- [Tool Execution Pipeline](tool-execution-pipeline-d7ba842418.md) — `docs/tool-execution-pipeline.md`
+- [工具执行流水线](tool-execution-pipeline.zh-15d01bbf03.md) — `docs/tool-execution-pipeline.zh.md`
+- [Create review Sessions from GitHub webhooks](github-review-729b4ccfac.md) — `docs/user/guide/github-review.md`
+- [通过 GitHub Webhook 创建评审会话](github-review.zh-4938c558d4.md) — `docs/user/guide/github-review.zh.md`
+- [Use the Web UI](index-27863294cc.md) — `docs/user/guide/index.md`
+- [使用 Web UI](index.zh-d142c66a68.md) — `docs/user/guide/index.zh.md`
+- [Connect a third-party memory MCP server](mcp-memory-35b77a83db.md) — `docs/user/guide/mcp-memory.md`
+- [连接第三方记忆 MCP 服务](mcp-memory.zh-3e8417e4d2.md) — `docs/user/guide/mcp-memory.zh.md`
+- [Run DSH behind a network proxy](network-proxy-70b28d25a8.md) — `docs/user/guide/network-proxy.md`
+- [在网络代理后面运行 DSH](network-proxy.zh-6f7c8eebc0.md) — `docs/user/guide/network-proxy.zh.md`
+- [Configure models](providers-28744adf5a.md) — `docs/user/guide/providers.md`
+- [配置模型](providers.zh-c8dd99922e.md) — `docs/user/guide/providers.zh.md`
+- [Get started with the Python SDK](python-sdk-4e63bdfe18.md) — `docs/user/guide/python-sdk.md`
+- [Python SDK 入门](python-sdk.zh-4b7e76bd7e.md) — `docs/user/guide/python-sdk.zh.md`
+- [Schedule session-local reminders](schedule-8cecb9a9ca.md) — `docs/user/guide/schedule.md`
+- [安排会话内提醒](schedule.zh-ad508ef3b6.md) — `docs/user/guide/schedule.zh.md`
+- [DeepSeek Harness](index-1ea2b49364.md) — `docs/user/index.md`
+- [DeepSeek Harness](index.zh-6d7c58df63.md) — `docs/user/index.zh.md`

@@ -1,0 +1,64 @@
+> 自动同步的官方参考原文。来源：[apps/web/tests/expected/markdown-cjk-strong/ui.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/apps/web/tests/expected/markdown-cjk-strong/ui.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- banner:
+  - navigation "Session hierarchy":
+    - button "CJK strong emphasis" [disabled]
+  - button "More actions":
+    - img
+  - button "Open right sidebar":
+    - img
+  - tablist:
+    - tab "Chat" [selected]
+    - tab "Trajectory"
+- text: Render adjacent CJK strong emphasis. {{clock}}
+- button "Copy":
+  - img
+- heading "CJK strong emphasis" [level=2]
+- paragraph:
+  - strong: 注意：
+  - text: 内容
+- paragraph:
+  - strong: "Notice:"
+  - text: 内容
+- paragraph:
+  - strong: 事件中间件（waterfall）
+  - text: 实现
+- paragraph:
+  - strong: 事件中间件(waterfall)
+  - text: 实现
+- paragraph:
+  - strong: 句号。
+  - text: 后续
+- paragraph:
+  - strong: Period.
+  - text: 后续
+- paragraph:
+  - strong: 提醒！
+  - text: 继续
+- paragraph:
+  - strong: Warning!
+  - text: 继续
+- paragraph: CJK_STRONG_DONE
+- button "Copy":
+  - img
+- button "Good response":
+  - img
+- button "Bad response":
+  - img
+- button "Branch into a new conversation":
+  - img
+- button "Ran for {{duration}}":
+  - img
+  - text: Ran for {{duration}}
+- text: {{clock}}
+- textbox "Message or run a task, / commands, @ files or sessions"
+- button "Add files or run commands":
+  - img
+- 'button "Access mode, current: Workspace Write"': Workspace Write
+- button "Select model, current DeepSeek-V4-Flash":
+  - text: DeepSeek-V4-Flash
+  - img
+- button "Send message" [disabled]
+- button "1 turns 1 steps":
+  - img
+  - text: 1 turns 1 steps

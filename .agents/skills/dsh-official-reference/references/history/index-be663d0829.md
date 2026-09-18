@@ -1,0 +1,128 @@
+# .agents/notes/implemented/process
+
+仅追溯背景时读取；提案、废弃记录不代表当前接口。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Note: Mechanical quality gates over prose guidelines](2026-06-11-quality-gates-63190b6489.md) — `.agents/notes/implemented/process/2026-06-11-quality-gates.md`
+- [Agent Note: 以机械质量门禁取代行文约定](2026-06-11-quality-gates.zh-47071cb1fc.md) — `.agents/notes/implemented/process/2026-06-11-quality-gates.zh.md`
+- [Agent Note: pnpm as the package manager instead of Yarn 4](2026-06-16-pnpm-over-yarn-8caab456e6.md) — `.agents/notes/implemented/process/2026-06-16-pnpm-over-yarn.md`
+- [Agent Note: 使用 pnpm 替代 Yarn 4 作为包管理器](2026-06-16-pnpm-over-yarn.zh-b2abe7cc89.md) — `.agents/notes/implemented/process/2026-06-16-pnpm-over-yarn.zh.md`
+- [Agent Note: TSC-first build and one compiler ownership](2026-06-17-ts-build-config-d02a09cf44.md) — `.agents/notes/implemented/process/2026-06-17-ts-build-config.md`
+- [Agent Note: TSC 优先构建与编译器单一归属](2026-06-17-ts-build-config.zh-6d423f3642.md) — `.agents/notes/implemented/process/2026-06-17-ts-build-config.zh.md`
+- [Agent Note: Bilingual documentation via paired sibling files and a pairing gate](2026-07-02-bilingual-docs-and-pairing-gate-aab5d3c644.md) — `.agents/notes/implemented/process/2026-07-02-bilingual-docs-and-pairing-gate.md`
+- [Agent Note: 通过配对兄弟文件与配对门禁实现双语文档](2026-07-02-bilingual-docs-and-pairing-gate.zh-31827db10a.md) — `.agents/notes/implemented/process/2026-07-02-bilingual-docs-and-pairing-gate.zh.md`
+- [Agent Note: Documentation structure, tiers, and budgets](2026-07-04-doc-tiers-and-budgets-7455169a9d.md) — `.agents/notes/implemented/process/2026-07-04-doc-tiers-and-budgets.md`
+- [Agent Note: 文档结构、层级与预算](2026-07-04-doc-tiers-and-budgets.zh-6dbd581995.md) — `.agents/notes/implemented/process/2026-07-04-doc-tiers-and-budgets.zh.md`
+- [Agent Note: One gated in-file format for Agent Notes](2026-07-05-uniform-agent-note-format-c2def0e5d5.md) — `.agents/notes/implemented/process/2026-07-05-uniform-agent-note-format.md`
+- [Agent Note: Agent Note 的统一受门禁约束的文件内格式](2026-07-05-uniform-agent-note-format.zh-21f73922db.md) — `.agents/notes/implemented/process/2026-07-05-uniform-agent-note-format.zh.md`
+- [Agent Note: Raise the Node LTS engine floor to 22.19](2026-07-06-node-engine-floor-dbc8a73ac5.md) — `.agents/notes/implemented/process/2026-07-06-node-engine-floor.md`
+- [Agent Note: 将 Node LTS 引擎下限提升至 22.19](2026-07-06-node-engine-floor.zh-eeace4c166.md) — `.agents/notes/implemented/process/2026-07-06-node-engine-floor.zh.md`
+- [Agent Note: Parallel pre-push gates](2026-07-06-parallel-pre-push-gates-e08f38ca8a.md) — `.agents/notes/implemented/process/2026-07-06-parallel-pre-push-gates.md`
+- [Agent Note: 并行 pre-push 门禁](2026-07-06-parallel-pre-push-gates.zh-c789c6f8ff.md) — `.agents/notes/implemented/process/2026-07-06-parallel-pre-push-gates.zh.md`
+- [Agent Note: Package Model Experience contract](2026-07-12-package-model-experience-contract-020235be3b.md) — `.agents/notes/implemented/process/2026-07-12-package-model-experience-contract.md`
+- [Agent Note: 包的模型体验约定](2026-07-12-package-model-experience-contract.zh-090efa2191.md) — `.agents/notes/implemented/process/2026-07-12-package-model-experience-contract.zh.md`
+- [Agent Note: Keep Agent Notes discoverable without a generated index](2026-07-19-remove-generated-agent-note-index-31da3b4b2e.md) — `.agents/notes/implemented/process/2026-07-19-remove-generated-agent-note-index.md`
+- [Agent Note: 无需生成索引即可发现 Agent Note](2026-07-19-remove-generated-agent-note-index.zh-f3898bf0d5.md) — `.agents/notes/implemented/process/2026-07-19-remove-generated-agent-note-index.zh.md`
+- [Agent Note: Web styling system — the token framework and engineering constraints](2026-07-19-web-styling-system-340a37c108.md) — `.agents/notes/implemented/process/2026-07-19-web-styling-system.md`
+- [Agent Note: Web 样式体系——token 框架与工程约束](2026-07-19-web-styling-system.zh-3f8d9e5d54.md) — `.agents/notes/implemented/process/2026-07-19-web-styling-system.zh.md`
+- [Agent Note: GUI testing system — the three-tier structure](2026-07-20-gui-testing-system-7367093e92.md) — `.agents/notes/implemented/process/2026-07-20-gui-testing-system.md`
+- [Agent Note: GUI 测试体系——三层结构](2026-07-20-gui-testing-system.zh-ee9b7cf39b.md) — `.agents/notes/implemented/process/2026-07-20-gui-testing-system.zh.md`
+- [Agent Note: Serial cross-platform CI reference](2026-07-21-serial-cross-platform-ci-reference-e42c48e083.md) — `.agents/notes/implemented/process/2026-07-21-serial-cross-platform-ci-reference.md`
+- [Agent Note: 跨平台串行 CI 参考流程](2026-07-21-serial-cross-platform-ci-reference.zh-62e9629295.md) — `.agents/notes/implemented/process/2026-07-21-serial-cross-platform-ci-reference.zh.md`
+- [Agent Note: CI failover runbook — hosted pools → in-house pool](2026-07-26-ci-failover-runbook-4e8339b9e5.md) — `.agents/notes/implemented/process/2026-07-26-ci-failover-runbook.md`
+- [Agent Note: CI 故障切换手册 — 托管池 → 自有池](2026-07-26-ci-failover-runbook.zh-cc879efeda.md) — `.agents/notes/implemented/process/2026-07-26-ci-failover-runbook.zh.md`
+- [Agent Note: Prefer maintained dependencies over hand-rolling](2026-07-26-dependencies-over-hand-rolling-8604ee426f.md) — `.agents/notes/implemented/process/2026-07-26-dependencies-over-hand-rolling.md`
+- [Agent Note: 优先选用持续维护的依赖，而非手写实现](2026-07-26-dependencies-over-hand-rolling.zh-1ea48a695d.md) — `.agents/notes/implemented/process/2026-07-26-dependencies-over-hand-rolling.zh.md`
+- [Agent Note: Freeze low-future-value Agent Notes outside the active corpus](2026-07-26-frozen-agent-note-archive-2f5c7bdaea.md) — `.agents/notes/implemented/process/2026-07-26-frozen-agent-note-archive.md`
+- [Agent Note: 将未来指导价值较低的 Agent Note 冻结在活跃记录集合之外](2026-07-26-frozen-agent-note-archive.zh-2786b820af.md) — `.agents/notes/implemented/process/2026-07-26-frozen-agent-note-archive.zh.md`
+- [Agent Note: Make Lefthook installation worktree-local](2026-07-27-worktree-local-lefthook-46072c2d76.md) — `.agents/notes/implemented/process/2026-07-27-worktree-local-lefthook.md`
+- [Agent Note: 让 Lefthook 安装限定于各 worktree](2026-07-27-worktree-local-lefthook.zh-1dcee8462f.md) — `.agents/notes/implemented/process/2026-07-27-worktree-local-lefthook.zh.md`
+- [Agent Note: Generated third-party notices](2026-07-30-generated-third-party-notices-96fb4c73f1.md) — `.agents/notes/implemented/process/2026-07-30-generated-third-party-notices.md`
+- [Agent Note: 生成的第三方声明](2026-07-30-generated-third-party-notices.zh-f7c786037f.md) — `.agents/notes/implemented/process/2026-07-30-generated-third-party-notices.zh.md`
+- [Agent Note: Native GitHub stacks and optional PR rebases](2026-08-02-native-github-stacks-and-optional-rebases-05553505d7.md) — `.agents/notes/implemented/process/2026-08-02-native-github-stacks-and-optional-rebases.md`
+- [Agent Note: GitHub 原生堆叠与可选 PR rebase](2026-08-02-native-github-stacks-and-optional-rebases.zh-0b8b342112.md) — `.agents/notes/implemented/process/2026-08-02-native-github-stacks-and-optional-rebases.zh.md`
+- [Agent Note: Package-anchored subsystem pages and thin group READMEs](2026-08-03-package-anchored-subsystem-pages-166a423575.md) — `.agents/notes/implemented/process/2026-08-03-package-anchored-subsystem-pages.md`
+- [Agent Note: 按包锚定的子系统页面与精简的分组 README](2026-08-03-package-anchored-subsystem-pages.zh-c987cb6276.md) — `.agents/notes/implemented/process/2026-08-03-package-anchored-subsystem-pages.zh.md`
+- [Agent Note: Automatically compose translation pairing records](2026-08-08-automatic-translation-pairing-merges-27cc86d125.md) — `.agents/notes/implemented/process/2026-08-08-automatic-translation-pairing-merges.md`
+- [Agent Note: 自动组合翻译配对记录](2026-08-08-automatic-translation-pairing-merges.zh-630d55f955.md) — `.agents/notes/implemented/process/2026-08-08-automatic-translation-pairing-merges.zh.md`
+- [Agent Note: Browser GIFs preserve one evidence chain](2026-08-08-browser-gif-evidence-chain-d0c058a822.md) — `.agents/notes/implemented/process/2026-08-08-browser-gif-evidence-chain.md`
+- [Agent Note: 浏览器 GIF 保留单一证据链](2026-08-08-browser-gif-evidence-chain.zh-39dc5200e0.md) — `.agents/notes/implemented/process/2026-08-08-browser-gif-evidence-chain.zh.md`
+- [Agent Note: Wine and native Windows CI](2026-08-08-native-windows-pull-request-ci-3d79c3f2c5.md) — `.agents/notes/implemented/process/2026-08-08-native-windows-pull-request-ci.md`
+- [Agent Note: Wine 与原生 Windows CI](2026-08-08-native-windows-pull-request-ci.zh-c0388d4684.md) — `.agents/notes/implemented/process/2026-08-08-native-windows-pull-request-ci.zh.md`
+- [Agent Note: Unified GitHub label taxonomy](2026-08-08-unified-github-label-taxonomy-9c321eda4b.md) — `.agents/notes/implemented/process/2026-08-08-unified-github-label-taxonomy.md`
+- [Agent Note: 统一 GitHub 标签分类体系](2026-08-08-unified-github-label-taxonomy.zh-a844372a55.md) — `.agents/notes/implemented/process/2026-08-08-unified-github-label-taxonomy.zh.md`
+- [Agent Note: Cite committed artifacts, never design-session ordinals](2026-08-09-committed-artifact-citations-22c6b3c346.md) — `.agents/notes/implemented/process/2026-08-09-committed-artifact-citations.md`
+- [Agent Note: 引用已提交的产物，绝不引用设计会话序号](2026-08-09-committed-artifact-citations.zh-46320dfc5c.md) — `.agents/notes/implemented/process/2026-08-09-committed-artifact-citations.zh.md`
+- [Agent Note: Concrete prose names actors and recorded facts](2026-08-09-concrete-prose-names-actors-and-recorded-facts-10cbf56b67.md) — `.agents/notes/implemented/process/2026-08-09-concrete-prose-names-actors-and-recorded-facts.md`
+- [Agent Note: 具体表述说明执行者和记录的事实](2026-08-09-concrete-prose-names-actors-and-recorded-facts.zh-fb44a4e6f9.md) — `.agents/notes/implemented/process/2026-08-09-concrete-prose-names-actors-and-recorded-facts.zh.md`
+- [Agent Note: Event-directed PR review status commands](2026-08-10-event-directed-pr-review-status-ad8476d767.md) — `.agents/notes/implemented/process/2026-08-10-event-directed-pr-review-status.md`
+- [Agent Note: 由事件直接指定的 PR 评审状态命令](2026-08-10-event-directed-pr-review-status.zh-77b6117391.md) — `.agents/notes/implemented/process/2026-08-10-event-directed-pr-review-status.zh.md`
+- [Agent Note: Private npm publication as three independent sequences](2026-08-10-npm-release-sequences-a0f1923999.md) — `.agents/notes/implemented/process/2026-08-10-npm-release-sequences.md`
+- [Agent Note: 三条独立序列的私有 NPM 发布](2026-08-10-npm-release-sequences.zh-c7e0833765.md) — `.agents/notes/implemented/process/2026-08-10-npm-release-sequences.zh.md`
+- [Agent Note: In-job partitioned coverage](2026-08-18-in-job-partitioned-coverage-213e628988.md) — `.agents/notes/implemented/process/2026-08-18-in-job-partitioned-coverage.md`
+- [Agent Note: 单 job 分区覆盖率](2026-08-18-in-job-partitioned-coverage.zh-098387998f.md) — `.agents/notes/implemented/process/2026-08-18-in-job-partitioned-coverage.zh.md`
+- [Agent Note: Remove Knip from repository gates](2026-08-19-remove-knip-b4009bae3b.md) — `.agents/notes/implemented/process/2026-08-19-remove-knip.md`
+- [Agent Note: 从仓库门禁中移除 Knip](2026-08-19-remove-knip.zh-455dfec7b8.md) — `.agents/notes/implemented/process/2026-08-19-remove-knip.zh.md`
+- [Agent Note: Ban an ambiguous origin label](2026-08-26-ban-ambiguous-origin-label-2e85c2a35d.md) — `.agents/notes/implemented/process/2026-08-26-ban-ambiguous-origin-label.md`
+- [Agent Note: 禁止有歧义的来源名称](2026-08-26-ban-ambiguous-origin-label.zh-ac60abef5d.md) — `.agents/notes/implemented/process/2026-08-26-ban-ambiguous-origin-label.zh.md`
+- [Agent Note: Published dependency faces and bounded peer relays](2026-08-26-published-dependency-faces-048bcd8568.md) — `.agents/notes/implemented/process/2026-08-26-published-dependency-faces.md`
+- [Agent Note: 发布依赖门面与有限 peer 中继](2026-08-26-published-dependency-faces.zh-46d18c2d61.md) — `.agents/notes/implemented/process/2026-08-26-published-dependency-faces.zh.md`
+- [Agent Note: Redirect the Node compile cache to the data-volume runner temp](2026-08-28-ci-node-compile-cache-data-disk-1bd82c4c12.md) — `.agents/notes/implemented/process/2026-08-28-ci-node-compile-cache-data-disk.md`
+- [Agent Note: 将 Node 编译缓存重定向到数据卷 runner 临时目录](2026-08-28-ci-node-compile-cache-data-disk.zh-dba3c39cdf.md) — `.agents/notes/implemented/process/2026-08-28-ci-node-compile-cache-data-disk.zh.md`
+- [Agent Note: Project-local Issue planning fields](2026-09-02-project-local-issue-planning-fields-43ff432a1d.md) — `.agents/notes/implemented/process/2026-09-02-project-local-issue-planning-fields.md`
+- [Agent Note: Project 局部 Issue 规划字段](2026-09-02-project-local-issue-planning-fields.zh-abbcfe72b3.md) — `.agents/notes/implemented/process/2026-09-02-project-local-issue-planning-fields.zh.md`
+- [Agent Note: Semantic Issue templates and presentation-neutral policy](2026-09-03-semantic-issue-templates-and-policy-a72bb6ae9f.md) — `.agents/notes/implemented/process/2026-09-03-semantic-issue-templates-and-policy.md`
+- [Agent Note: 语义化 Issue template 与不检查展示形式的 policy](2026-09-03-semantic-issue-templates-and-policy.zh-faa67c7e47.md) — `.agents/notes/implemented/process/2026-09-03-semantic-issue-templates-and-policy.zh.md`
+- [Agent Note: Evidence-driven performance optimization workflow](2026-09-06-evidence-driven-performance-skill-731d0605ab.md) — `.agents/notes/implemented/process/2026-09-06-evidence-driven-performance-skill.md`
+- [Agent Note: 以证据驱动的性能优化工作流](2026-09-06-evidence-driven-performance-skill.zh-b1c3f54619.md) — `.agents/notes/implemented/process/2026-09-06-evidence-driven-performance-skill.zh.md`
+- [Agent Note: Master-only platform CI](2026-09-06-master-only-platform-ci-3f3d63937b.md) — `.agents/notes/implemented/process/2026-09-06-master-only-platform-ci.md`
+- [Agent Note: 仅 master 执行的平台 CI](2026-09-06-master-only-platform-ci.zh-ec94db4ce1.md) — `.agents/notes/implemented/process/2026-09-06-master-only-platform-ci.zh.md`
+- [Agent Note: Isolated Node compatibility jobs on self-hosted Linux](2026-09-06-node-compatibility-selfhosted-46ea7278c2.md) — `.agents/notes/implemented/process/2026-09-06-node-compatibility-selfhosted.md`
+- [Agent Note: 自托管 Linux 上隔离的 Node 兼容性作业](2026-09-06-node-compatibility-selfhosted.zh-d100f072ee.md) — `.agents/notes/implemented/process/2026-09-06-node-compatibility-selfhosted.zh.md`
+- [Agent Note: Measured GitHub-hosted PR preview sizing](2026-09-06-preview-hosted-runner-sizing-e10a5d74d4.md) — `.agents/notes/implemented/process/2026-09-06-preview-hosted-runner-sizing.md`
+- [Agent Note: 基于测量的 GitHub 托管 PR 预览规格](2026-09-06-preview-hosted-runner-sizing.zh-1cb9a5ff31.md) — `.agents/notes/implemented/process/2026-09-06-preview-hosted-runner-sizing.zh.md`
+- [Agent Note: Windows Python runtime CI stays on GitHub-hosted Windows](2026-09-06-python-runtime-windows-hosted-4e946273e2.md) — `.agents/notes/implemented/process/2026-09-06-python-runtime-windows-hosted.md`
+- [Agent Note: Windows Python runtime CI 保留在 GitHub 托管 Windows 上](2026-09-06-python-runtime-windows-hosted.zh-af9133dd33.md) — `.agents/notes/implemented/process/2026-09-06-python-runtime-windows-hosted.zh.md`
+- [Agent Note: trusted release rehearsals on persistent Linux runners](2026-09-06-release-rehearsal-selfhosted-dfb5ebc82c.md) — `.agents/notes/implemented/process/2026-09-06-release-rehearsal-selfhosted.md`
+- [Agent Note: 在持久化 Linux 运行器上执行受信任的发布演练](2026-09-06-release-rehearsal-selfhosted.zh-7199d66169.md) — `.agents/notes/implemented/process/2026-09-06-release-rehearsal-selfhosted.zh.md`
+- [Agent Note: Issue policy module ownership](2026-09-07-issue-policy-module-ownership-44259bd9d1.md) — `.agents/notes/implemented/process/2026-09-07-issue-policy-module-ownership.md`
+- [Agent Note: Issue 策略模块归属](2026-09-07-issue-policy-module-ownership.zh-d4ff29f98c.md) — `.agents/notes/implemented/process/2026-09-07-issue-policy-module-ownership.zh.md`
+- [Agent Note: Selective Issue policy evaluation](2026-09-07-selective-issue-policy-evaluation-4752aec776.md) — `.agents/notes/implemented/process/2026-09-07-selective-issue-policy-evaluation.md`
+- [Agent Note: Issue 策略的选择性求值](2026-09-07-selective-issue-policy-evaluation.zh-63d2ab60b5.md) — `.agents/notes/implemented/process/2026-09-07-selective-issue-policy-evaluation.zh.md`
+- [Agent Note: Browser third-party libraries as build inputs](2026-09-08-browser-third-party-build-inputs-0e537c2620.md) — `.agents/notes/implemented/process/2026-09-08-browser-third-party-build-inputs.md`
+- [Agent Note: 浏览器第三方库作为构建输入](2026-09-08-browser-third-party-build-inputs.zh-0d5c17be25.md) — `.agents/notes/implemented/process/2026-09-08-browser-third-party-build-inputs.zh.md`
+- [Agent Note: Include package indexes in Markdown link discovery](2026-09-08-package-index-link-discovery-0f80db7d47.md) — `.agents/notes/implemented/process/2026-09-08-package-index-link-discovery.md`
+- [Agent Note: 将包索引纳入 Markdown 链接发现范围](2026-09-08-package-index-link-discovery.zh-cc46d1d463.md) — `.agents/notes/implemented/process/2026-09-08-package-index-link-discovery.zh.md`
+- [Agent Note: Playwright video captures continuous browser demos](2026-09-08-playwright-video-gif-d50fcc1f17.md) — `.agents/notes/implemented/process/2026-09-08-playwright-video-gif.md`
+- [Agent Note: Playwright 视频录制连续浏览器演示](2026-09-08-playwright-video-gif.zh-a805899061.md) — `.agents/notes/implemented/process/2026-09-08-playwright-video-gif.zh.md`
+- [Agent Note: Blacksmith as a failover leg for CI pools](2026-09-09-blacksmith-failover-leg-806ca2d5ec.md) — `.agents/notes/implemented/process/2026-09-09-blacksmith-failover-leg.md`
+- [Agent Note: Blacksmith 作为 CI 池的故障切换支路](2026-09-09-blacksmith-failover-leg.zh-3c64d55d4c.md) — `.agents/notes/implemented/process/2026-09-09-blacksmith-failover-leg.zh.md`
+- [Agent Note: Blocked weighted approvals remain pending](2026-09-09-blocked-weighted-approvals-remain-pending-fe7ea93a44.md) — `.agents/notes/implemented/process/2026-09-09-blocked-weighted-approvals-remain-pending.md`
+- [Agent Note: 阻塞中的加权批准保持 pending](2026-09-09-blocked-weighted-approvals-remain-pending.zh-9860ab7963.md) — `.agents/notes/implemented/process/2026-09-09-blocked-weighted-approvals-remain-pending.zh.md`
+- [Agent Note: Cancel superseded CI validation](2026-09-09-cancel-superseded-ci-72bbc6db0f.md) — `.agents/notes/implemented/process/2026-09-09-cancel-superseded-ci.md`
+- [Agent Note: 取消被取代的 CI 验证](2026-09-09-cancel-superseded-ci.zh-6fd1823261.md) — `.agents/notes/implemented/process/2026-09-09-cancel-superseded-ci.zh.md`
+- [Agent Note: Parallel macOS notarization from isolated App copies](2026-09-09-parallel-macos-notarization-620700f27c.md) — `.agents/notes/implemented/process/2026-09-09-parallel-macos-notarization.md`
+- [Agent Note: 基于隔离 App 副本的并行 macOS 公证](2026-09-09-parallel-macos-notarization.zh-abff1d5387.md) — `.agents/notes/implemented/process/2026-09-09-parallel-macos-notarization.zh.md`
+- [Agent Note: Identify approval review workflows by file path](2026-09-10-approval-review-workflow-identity-60e292b7ca.md) — `.agents/notes/implemented/process/2026-09-10-approval-review-workflow-identity.md`
+- [Agent Note: 按文件路径识别审批评审工作流](2026-09-10-approval-review-workflow-identity.zh-28f34371c5.md) — `.agents/notes/implemented/process/2026-09-10-approval-review-workflow-identity.zh.md`
+- [Agent Note: In-tree persistence-type history](2026-09-11-persistence-type-history-5143a67314.md) — `.agents/notes/implemented/process/2026-09-11-persistence-type-history.md`
+- [Agent Note: 目录内的持久化类型历史](2026-09-11-persistence-type-history.zh-88aa62c4eb.md) — `.agents/notes/implemented/process/2026-09-11-persistence-type-history.zh.md`
+- [Agent Note: Weight approvals by changed production-line ownership](2026-09-11-production-blame-approval-weight-b92ebff0af.md) — `.agents/notes/implemented/process/2026-09-11-production-blame-approval-weight.md`
+- [Agent Note: 按变更生产代码行的归属调整审批权重](2026-09-11-production-blame-approval-weight.zh-a6c528ccdc.md) — `.agents/notes/implemented/process/2026-09-11-production-blame-approval-weight.zh.md`
+- [Agent Note: Keep experimental packages outside the default product](2026-09-12-default-product-experimental-isolation-ee42d46a32.md) — `.agents/notes/implemented/process/2026-09-12-default-product-experimental-isolation.md`
+- [Agent Note: 将实验包隔离在默认产品之外](2026-09-12-default-product-experimental-isolation.zh-b409605c0e.md) — `.agents/notes/implemented/process/2026-09-12-default-product-experimental-isolation.zh.md`
+- [Agent Note: Publish experimental packages with explicit private exceptions](2026-09-12-experimental-publication-denylist-2fb41b1a91.md) — `.agents/notes/implemented/process/2026-09-12-experimental-publication-denylist.md`
+- [Agent Note: 默认发布实验性包并保留显式私有例外](2026-09-12-experimental-publication-denylist.zh-47b2d6805a.md) — `.agents/notes/implemented/process/2026-09-12-experimental-publication-denylist.zh.md`
+- [Agent Note: Maintained repository references](2026-09-12-maintained-repository-references-214dc88377.md) — `.agents/notes/implemented/process/2026-09-12-maintained-repository-references.md`
+- [Agent Note: 维护中的仓库引用](2026-09-12-maintained-repository-references.zh-cc48ea39a1.md) — `.agents/notes/implemented/process/2026-09-12-maintained-repository-references.zh.md`
+- [Agent Note: Publish every current experimental package](2026-09-12-publish-all-experimental-packages-87418f24bd.md) — `.agents/notes/implemented/process/2026-09-12-publish-all-experimental-packages.md`
+- [Agent Note: 发布所有当前实验性包](2026-09-12-publish-all-experimental-packages.zh-b4ba1187be.md) — `.agents/notes/implemented/process/2026-09-12-publish-all-experimental-packages.zh.md`
+- [Agent Note: PR-scoped approval delegation](2026-09-15-pr-approval-delegation-d80ed107b4.md) — `.agents/notes/implemented/process/2026-09-15-pr-approval-delegation.md`
+- [Agent Note: PR 范围内的批准委托](2026-09-15-pr-approval-delegation.zh-5613d62238.md) — `.agents/notes/implemented/process/2026-09-15-pr-approval-delegation.zh.md`
+- [Agent Note: Ship optional bundles with the installation](2026-09-15-shipped-optional-bundles-a1617d8785.md) — `.agents/notes/implemented/process/2026-09-15-shipped-optional-bundles.md`
+- [Agent Note: Ship optional bundles with the installation](2026-09-15-shipped-optional-bundles.zh-03fc0b3dac.md) — `.agents/notes/implemented/process/2026-09-15-shipped-optional-bundles.zh.md`
+- [Agent Note: Author approval credit](2026-09-16-author-approval-credit-e38a5150a8.md) — `.agents/notes/implemented/process/2026-09-16-author-approval-credit.md`
+- [Agent Note: 作者审批积分](2026-09-16-author-approval-credit.zh-7a23b5ca13.md) — `.agents/notes/implemented/process/2026-09-16-author-approval-credit.zh.md`
+- [Agent Note: Derive Desktop test versions from the complete dsh version](2026-09-16-desktop-release-version-derivation-56fea4a5e1.md) — `.agents/notes/implemented/process/2026-09-16-desktop-release-version-derivation.md`
+- [Agent Note: 从完整 dsh 版本派生 Desktop 测试版本](2026-09-16-desktop-release-version-derivation.zh-6b4a1469f1.md) — `.agents/notes/implemented/process/2026-09-16-desktop-release-version-derivation.zh.md`

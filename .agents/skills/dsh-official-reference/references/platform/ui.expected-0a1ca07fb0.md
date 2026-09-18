@@ -1,0 +1,50 @@
+> 自动同步的官方参考原文。来源：[apps/web/tests/expected/markdown-images/ui.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/apps/web/tests/expected/markdown-images/ui.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- banner:
+  - navigation "Session hierarchy":
+    - button "Markdown image policy" [disabled]
+  - button "More actions":
+    - img
+  - button "Open right sidebar":
+    - img
+  - tablist:
+    - tab "Chat" [selected]
+    - tab "Trajectory"
+- text: Show the Markdown image policy. {{clock}}
+- button "Copy":
+  - img
+- heading "Markdown images" [level=2]
+- paragraph:
+  - img "Remote test image"
+- paragraph: Local test image
+- paragraph:
+  - img "Workspace test image"
+- paragraph: Oversized image
+- paragraph:
+  - img "Outside workspace image"
+- paragraph: Missing image
+- paragraph: {{cwd}}/corrupt.png
+- paragraph: REMOTE_IMAGE_DONE
+- button "Copy":
+  - img
+- button "Good response":
+  - img
+- button "Bad response":
+  - img
+- button "Branch into a new conversation":
+  - img
+- button "Ran for {{duration}}":
+  - img
+  - text: Ran for {{duration}}
+- text: {{clock}}
+- textbox "Message or run a task, / commands, @ files or sessions"
+- button "Add files or run commands":
+  - img
+- 'button "Access mode, current: Workspace Write"': Workspace Write
+- button "Select model, current DeepSeek-V4-Flash":
+  - text: DeepSeek-V4-Flash
+  - img
+- button "Send message" [disabled]
+- button "1 turns 1 steps":
+  - img
+  - text: 1 turns 1 steps

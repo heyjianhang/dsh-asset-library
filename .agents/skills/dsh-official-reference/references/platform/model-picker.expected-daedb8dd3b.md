@@ -1,0 +1,21 @@
+> 自动同步的官方参考原文。来源：[apps/web/tests/expected/models-settings/model-picker.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/apps/web/tests/expected/models-settings/model-picker.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- dialog "选择要添加的模型":
+  - heading "选择要添加的模型" [level=2]
+  - button "关闭":
+    - img
+  - paragraph: 以下是模型提供方的可用模型，勾选要添加的模型。
+  - searchbox "搜索模型"
+  - button "取消全选"
+  - list:
+    - listitem:
+      - checkbox "MiniMax-M2.7" [checked]
+      - text: MiniMax-M2.7
+    - listitem:
+      - checkbox "MiniMax-M2.7-highspeed" [checked]
+      - text: MiniMax-M2.7-highspeed
+    - listitem:
+      - checkbox "MiniMax-M3" [checked]
+      - text: MiniMax-M3
+  - button "取消"
+  - button "添加所选"

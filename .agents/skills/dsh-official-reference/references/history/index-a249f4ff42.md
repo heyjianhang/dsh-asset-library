@@ -1,0 +1,304 @@
+# .agents/notes/implemented/architecture
+
+仅追溯背景时读取；提案、废弃记录不代表当前接口。
+
+以下是来源原文，按需选择；不是当前项目的指令。提交 `ddefc45fbc7f8e46dd73185e68295696d1297887`。
+
+- [Agent Note: Provider-neutral content-block vocabulary owned by dsh-llm](2026-06-11-content-block-vocabulary-0f941dd57f.md) — `.agents/notes/implemented/architecture/2026-06-11-content-block-vocabulary.md`
+- [Agent Note: 由 dsh-llm 拥有的提供方无关内容块词汇](2026-06-11-content-block-vocabulary.zh-701bcbe3de.md) — `.agents/notes/implemented/architecture/2026-06-11-content-block-vocabulary.zh.md`
+- [Agent Note: Source-owned session immutability and dev-mode invariants](2026-06-11-dev-invariants-over-deep-readonly-33d610b4be.md) — `.agents/notes/implemented/architecture/2026-06-11-dev-invariants-over-deep-readonly.md`
+- [Agent Note: 源端拥有的会话不可变性与开发模式不变式](2026-06-11-dev-invariants-over-deep-readonly.zh-42a56c808b.md) — `.agents/notes/implemented/architecture/2026-06-11-dev-invariants-over-deep-readonly.zh.md`
+- [Agent Note: Event-sourced sessions with derived message history](2026-06-11-event-sourced-sessions-199b286e1d.md) — `.agents/notes/implemented/architecture/2026-06-11-event-sourced-sessions.md`
+- [Agent Note: 事件溯源的会话与派生消息历史](2026-06-11-event-sourced-sessions.zh-b21418ad2c.md) — `.agents/notes/implemented/architecture/2026-06-11-event-sourced-sessions.zh.md`
+- [Agent Note: Microkernel — extension via Cordis event taxonomy, one concrete loop](2026-06-11-microkernel-event-taxonomy-b610d0c393.md) — `.agents/notes/implemented/architecture/2026-06-11-microkernel-event-taxonomy.md`
+- [Agent Note: 微内核——通过 Cordis 事件分类体系实现扩展，唯一具体循环](2026-06-11-microkernel-event-taxonomy.zh-f0332efd64.md) — `.agents/notes/implemented/architecture/2026-06-11-microkernel-event-taxonomy.zh.md`
+- [Agent Note: Capability seams — Service Definition / Service Provider / Consumer roles](2026-06-13-capability-seams-090260d55b.md) — `.agents/notes/implemented/architecture/2026-06-13-capability-seams.md`
+- [Agent Note: 能力 seam——Service Definition / Service Provider / Consumer 角色](2026-06-13-capability-seams.zh-f066d915d3.md) — `.agents/notes/implemented/architecture/2026-06-13-capability-seams.zh.md`
+- [Agent Note: Two LLM adapters as a design-verification twin](2026-06-13-twin-llm-adapters-3bd698908a.md) — `.agents/notes/implemented/architecture/2026-06-13-twin-llm-adapters.md`
+- [Agent Note: 以两个 LLM 适配器作为设计验证孪生体](2026-06-13-twin-llm-adapters.zh-5c4204285d.md) — `.agents/notes/implemented/architecture/2026-06-13-twin-llm-adapters.zh.md`
+- [Agent Note: Session persistence as an abstract service over the existing SessionEvent](2026-06-14-session-persistence-02b2b90359.md) — `.agents/notes/implemented/architecture/2026-06-14-session-persistence.md`
+- [Agent Note: 会话持久化作为基于现有 SessionEvent 的抽象服务](2026-06-14-session-persistence.zh-46309964ae.md) — `.agents/notes/implemented/architecture/2026-06-14-session-persistence.zh.md`
+- [Agent Note: Session surface — an ordered projection over the event log](2026-06-18-session-surface-18d903398b.md) — `.agents/notes/implemented/architecture/2026-06-18-session-surface.md`
+- [Agent Note: 会话 surface：事件日志上的有序投影](2026-06-18-session-surface.zh-20320a8f20.md) — `.agents/notes/implemented/architecture/2026-06-18-session-surface.zh.md`
+- [Agent Note: The background job runtime (ctx.jobs) and generic task control tools](2026-06-20-generic-long-running-tool-runtime-5540094856.md) — `.agents/notes/implemented/architecture/2026-06-20-generic-long-running-tool-runtime.md`
+- [Agent Note: 后台任务运行时（ctx.jobs）与通用任务控制工具](2026-06-20-generic-long-running-tool-runtime.zh-68252d4940.md) — `.agents/notes/implemented/architecture/2026-06-20-generic-long-running-tool-runtime.zh.md`
+- [Agent Note: Bounded recovery for transient LLM request failures](2026-06-21-bounded-llm-request-recovery-f80ea84c53.md) — `.agents/notes/implemented/architecture/2026-06-21-bounded-llm-request-recovery.md`
+- [Agent Note: LLM 暂时性请求失败的有界恢复](2026-06-21-bounded-llm-request-recovery.zh-c08a970171.md) — `.agents/notes/implemented/architecture/2026-06-21-bounded-llm-request-recovery.zh.md`
+- [Agent Note: Mandatory User-Agent attribution for provider requests](2026-06-21-mandatory-app-attribution-headers-90794f264f.md) — `.agents/notes/implemented/architecture/2026-06-21-mandatory-app-attribution-headers.md`
+- [Agent Note: 对提供方请求强制携带 User-Agent 归属标识](2026-06-21-mandatory-app-attribution-headers.zh-19301ac6e8.md) — `.agents/notes/implemented/architecture/2026-06-21-mandatory-app-attribution-headers.zh.md`
+- [Agent Note: Web capability seam - stable tools over multiple providers](2026-06-24-web-capability-seam-b3cbb6b772.md) — `.agents/notes/implemented/architecture/2026-06-24-web-capability-seam.md`
+- [Agent Note: Web 能力 seam——稳定的工具覆盖多个提供方](2026-06-24-web-capability-seam.zh-162f47200e.md) — `.agents/notes/implemented/architecture/2026-06-24-web-capability-seam.zh.md`
+- [Agent Note: Make dsh-fs-observation-policy an event-gate plugin, not a method interface](2026-06-26-file-context-as-event-gate-1d464540b5.md) — `.agents/notes/implemented/architecture/2026-06-26-file-context-as-event-gate.md`
+- [Agent Note: 将 dsh-fs-observation-policy 改为事件门禁插件，而非方法接口](2026-06-26-file-context-as-event-gate.zh-25877cbef1.md) — `.agents/notes/implemented/architecture/2026-06-26-file-context-as-event-gate.zh.md`
+- [Agent Note: Event-domain semantics — session is the fact log, agent is the live event channel](2026-06-30-event-domain-semantics-fb3df39671.md) — `.agents/notes/implemented/architecture/2026-06-30-event-domain-semantics.md`
+- [Agent Note: 事件域语义——会话是事实日志，agent 是实时事件通道](2026-06-30-event-domain-semantics.zh-00d4b9747b.md) — `.agents/notes/implemented/architecture/2026-06-30-event-domain-semantics.zh.md`
+- [Agent Note: Tagged render-intent union for tool-call presentation](2026-07-02-tool-render-intent-union-a1b3216936.md) — `.agents/notes/implemented/architecture/2026-07-02-tool-render-intent-union.md`
+- [Agent Note: 用于工具调用展示的带标签 render-intent 联合类型](2026-07-02-tool-render-intent-union.zh-92bea674d8.md) — `.agents/notes/implemented/architecture/2026-07-02-tool-render-intent-union.zh.md`
+- [Agent Note: Prompt variables and tool-guidance ownership](2026-07-05-prompt-variables-and-tool-guidance-ownership-c8f90fc33e.md) — `.agents/notes/implemented/architecture/2026-07-05-prompt-variables-and-tool-guidance-ownership.md`
+- [Agent Note: 提示词变量与工具指导归属](2026-07-05-prompt-variables-and-tool-guidance-ownership.zh-de1371720d.md) — `.agents/notes/implemented/architecture/2026-07-05-prompt-variables-and-tool-guidance-ownership.zh.md`
+- [Agent Note: Every LLM request is reconstructable from the session log](2026-07-05-reconstructable-requests-3000f0fcd0.md) — `.agents/notes/implemented/architecture/2026-07-05-reconstructable-requests.md`
+- [Agent Note: 每个 LLM 请求都可从会话日志重建](2026-07-05-reconstructable-requests.zh-cb41a056fb.md) — `.agents/notes/implemented/architecture/2026-07-05-reconstructable-requests.zh.md`
+- [Agent Note: Windows-native durable JSONL publication](2026-07-05-windows-jsonl-durable-publish-7727f82656.md) — `.agents/notes/implemented/architecture/2026-07-05-windows-jsonl-durable-publish.md`
+- [Agent Note: Windows 原生持久 JSONL 发布](2026-07-05-windows-jsonl-durable-publish.zh-2e97075c9e.md) — `.agents/notes/implemented/architecture/2026-07-05-windows-jsonl-durable-publish.zh.md`
+- [Agent Note: A shared timeout/deadline primitive, with hard-kill left to each capability](2026-07-06-timeout-deadline-library-1a62e8e5db.md) — `.agents/notes/implemented/architecture/2026-07-06-timeout-deadline-library.md`
+- [Agent Note: 共享的超时/截止时间原语，硬终止留给各能力自行实现](2026-07-06-timeout-deadline-library.zh-6b7e645053.md) — `.agents/notes/implemented/architecture/2026-07-06-timeout-deadline-library.zh.md`
+- [Agent Note: Tool-call timeout policy as a plugin](2026-07-07-tool-call-timeout-policy-f0a98df0b5.md) — `.agents/notes/implemented/architecture/2026-07-07-tool-call-timeout-policy.md`
+- [Agent Note: 工具调用超时策略作为插件](2026-07-07-tool-call-timeout-policy.zh-1d53027fdb.md) — `.agents/notes/implemented/architecture/2026-07-07-tool-call-timeout-policy.zh.md`
+- [Agent Note: The agent is a registration scope](2026-07-08-agent-scope-contexts-db9becfaff.md) — `.agents/notes/implemented/architecture/2026-07-08-agent-scope-contexts.md`
+- [Agent Note: agent 即注册作用域](2026-07-08-agent-scope-contexts.zh-439d9e0cf5.md) — `.agents/notes/implemented/architecture/2026-07-08-agent-scope-contexts.zh.md`
+- [Agent Note: Tool output spill policy](2026-07-08-tool-output-spill-files-9cf1d9a0d8.md) — `.agents/notes/implemented/architecture/2026-07-08-tool-output-spill-files.md`
+- [Agent Note: 工具输出 spill 策略](2026-07-08-tool-output-spill-files.zh-ae839dc4d6.md) — `.agents/notes/implemented/architecture/2026-07-08-tool-output-spill-files.zh.md`
+- [Agent Note: After-call compaction pressure and context-overflow recovery](2026-07-10-after-call-compaction-pressure-and-overflow-recovery-3cbcfdb9dc.md) — `.agents/notes/implemented/architecture/2026-07-10-after-call-compaction-pressure-and-overflow-recovery.md`
+- [Agent Note: 调用后压缩压力与上下文溢出恢复](2026-07-10-after-call-compaction-pressure-and-overflow-recovery.zh-cbbe56ac3d.md) — `.agents/notes/implemented/architecture/2026-07-10-after-call-compaction-pressure-and-overflow-recovery.zh.md`
+- [Agent Note: Single-file executable SDK runtime distribution (single-exe)](2026-07-10-single-file-executable-sdk-runtime-distribution-1ef60f39e6.md) — `.agents/notes/implemented/architecture/2026-07-10-single-file-executable-sdk-runtime-distribution.md`
+- [Agent Note: 单文件可执行的 SDK 运行时分发（single-exe）](2026-07-10-single-file-executable-sdk-runtime-distribution.zh-b2bd1bfb2d.md) — `.agents/notes/implemented/architecture/2026-07-10-single-file-executable-sdk-runtime-distribution.zh.md`
+- [Agent Note: Agent-scope runtime design and correctness](2026-07-12-agent-scope-runtime-design-69f2ad7444.md) — `.agents/notes/implemented/architecture/2026-07-12-agent-scope-runtime-design.md`
+- [Agent Note: Agent 作用域运行时设计与正确性](2026-07-12-agent-scope-runtime-design.zh-adfd3b8772.md) — `.agents/notes/implemented/architecture/2026-07-12-agent-scope-runtime-design.zh.md`
+- [Agent Note: Provider-routed LLM adapters and a generic pi-ai backend](2026-07-14-provider-routed-llm-adapters-e6f822dc50.md) — `.agents/notes/implemented/architecture/2026-07-14-provider-routed-llm-adapters.md`
+- [Agent Note: 基于提供方路由的 LLM 适配器与通用 pi-ai 后端](2026-07-14-provider-routed-llm-adapters.zh-5a50f0464c.md) — `.agents/notes/implemented/architecture/2026-07-14-provider-routed-llm-adapters.zh.md`
+- [Agent Note: Initiating Agent scope over AsyncLocalStorage](2026-07-15-agent-initiator-scope-d4aea8c7ce.md) — `.agents/notes/implemented/architecture/2026-07-15-agent-initiator-scope.md`
+- [Agent Note: 基于 AsyncLocalStorage 的发起 Agent 作用域](2026-07-15-agent-initiator-scope.zh-82255c74f2.md) — `.agents/notes/implemented/architecture/2026-07-15-agent-initiator-scope.zh.md`
+- [Agent Note: Explicit turn cancellation capability](2026-07-16-explicit-turn-cancellation-fc2d2b71c0.md) — `.agents/notes/implemented/architecture/2026-07-16-explicit-turn-cancellation.md`
+- [Agent Note: 显式轮次取消能力](2026-07-16-explicit-turn-cancellation.zh-2ae2240dc5.md) — `.agents/notes/implemented/architecture/2026-07-16-explicit-turn-cancellation.zh.md`
+- [Agent Note: Cooperative tool cancellation at the registry boundary](2026-07-19-cooperative-tool-cancellation-51369d2643.md) — `.agents/notes/implemented/architecture/2026-07-19-cooperative-tool-cancellation.md`
+- [Agent Note: 注册表边界上的协作式工具取消](2026-07-19-cooperative-tool-cancellation.zh-130c11ea8b.md) — `.agents/notes/implemented/architecture/2026-07-19-cooperative-tool-cancellation.zh.md`
+- [Agent Note: Web client architecture — the client cordis plugin tree, the slot system, and the React-free object layer](2026-07-19-gui-web-client-architecture-3ffdf750a6.md) — `.agents/notes/implemented/architecture/2026-07-19-gui-web-client-architecture.md`
+- [Agent Note: Web 客户端架构——client cordis 插件树、slot 体系与 React-free 对象层](2026-07-19-gui-web-client-architecture.zh-f20ac65249.md) — `.agents/notes/implemented/architecture/2026-07-19-gui-web-client-architecture.zh.md`
+- [Agent Note: Meaningful package invariant contracts](2026-07-19-package-invariant-runtime-contracts-dc5434ed84.md) — `.agents/notes/implemented/architecture/2026-07-19-package-invariant-runtime-contracts.md`
+- [Agent Note: 有意义的包不变量约定](2026-07-19-package-invariant-runtime-contracts.zh-80320f9d7a.md) — `.agents/notes/implemented/architecture/2026-07-19-package-invariant-runtime-contracts.zh.md`
+- [Agent Note: Zstandard JSONL session logs](2026-07-19-zstandard-jsonl-session-logs-d110512bb4.md) — `.agents/notes/implemented/architecture/2026-07-19-zstandard-jsonl-session-logs.md`
+- [Agent Note: Zstandard JSONL 会话日志](2026-07-19-zstandard-jsonl-session-logs.zh-ec82bfd0d3.md) — `.agents/notes/implemented/architecture/2026-07-19-zstandard-jsonl-session-logs.zh.md`
+- [Agent Note: Canonical tool output contract](2026-07-20-canonical-tool-output-contract-97e7aefa55.md) — `.agents/notes/implemented/architecture/2026-07-20-canonical-tool-output-contract.md`
+- [Agent Note: 规范工具输出约定](2026-07-20-canonical-tool-output-contract.zh-3f3aa8e1bb.md) — `.agents/notes/implemented/architecture/2026-07-20-canonical-tool-output-contract.zh.md`
+- [Agent Note: Routed model context and compaction policy](2026-07-20-routed-model-context-and-compaction-policy-7645f618f2.md) — `.agents/notes/implemented/architecture/2026-07-20-routed-model-context-and-compaction-policy.md`
+- [Agent Note: 路由模型上下文与压缩策略](2026-07-20-routed-model-context-and-compaction-policy.zh-a13675576e.md) — `.agents/notes/implemented/architecture/2026-07-20-routed-model-context-and-compaction-policy.zh.md`
+- [Agent Note: Unified JSON-value schema DSL](2026-07-20-unified-json-value-schema-dsl-3e5bdf9b53.md) — `.agents/notes/implemented/architecture/2026-07-20-unified-json-value-schema-dsl.md`
+- [Agent Note: 统一 JSON 值 schema DSL](2026-07-20-unified-json-value-schema-dsl.zh-23698a2794.md) — `.agents/notes/implemented/architecture/2026-07-20-unified-json-value-schema-dsl.zh.md`
+- [Agent Note: The slot system standard — single register, four props shares, and the framework store seat](2026-07-22-slot-type-chain-implementation-5c92b4dcea.md) — `.agents/notes/implemented/architecture/2026-07-22-slot-type-chain-implementation.md`
+- [Agent Note: slot 体系标准——单一 register、props 四份额与框架 store 席位](2026-07-22-slot-type-chain-implementation.zh-1e3021a26e.md) — `.agents/notes/implemented/architecture/2026-07-22-slot-type-chain-implementation.zh.md`
+- [Agent Note: Client plugin loading — lazy factories, Cordis lifecycle, and hot reload](2026-07-23-client-plugin-loading-model-4c55be861b.md) — `.agents/notes/implemented/architecture/2026-07-23-client-plugin-loading-model.md`
+- [Agent Note: client 插件装载——惰性 factory、Cordis 生命周期与热重载](2026-07-23-client-plugin-loading-model.zh-48fee137bf.md) — `.agents/notes/implemented/architecture/2026-07-23-client-plugin-loading-model.zh.md`
+- [Agent Note: Project-grouped session directories](2026-07-24-project-session-directories-d2bc04d179.md) — `.agents/notes/implemented/architecture/2026-07-24-project-session-directories.md`
+- [Agent Note: 按项目分组的会话目录](2026-07-24-project-session-directories.zh-73598dc094.md) — `.agents/notes/implemented/architecture/2026-07-24-project-session-directories.zh.md`
+- [Agent Note: Separate context injection from turn execution](2026-07-24-separate-context-injection-from-turn-execution-6dd382da93.md) — `.agents/notes/implemented/architecture/2026-07-24-separate-context-injection-from-turn-execution.md`
+- [Agent Note: 将上下文注入与轮次执行分离](2026-07-24-separate-context-injection-from-turn-execution.zh-9de83a54d3.md) — `.agents/notes/implemented/architecture/2026-07-24-separate-context-injection-from-turn-execution.zh.md`
+- [Agent Note: One harness home resolver](2026-07-24-single-harness-home-resolver-2a44f4e6d1.md) — `.agents/notes/implemented/architecture/2026-07-24-single-harness-home-resolver.md`
+- [Agent Note: 单一 harness home 解析器](2026-07-24-single-harness-home-resolver.zh-f88185d323.md) — `.agents/notes/implemented/architecture/2026-07-24-single-harness-home-resolver.zh.md`
+- [Agent Note: dsh web config-tree boot and the web transport layering](2026-07-24-web-config-tree-boot-and-transport-layering-1ca42f78f4.md) — `.agents/notes/implemented/architecture/2026-07-24-web-config-tree-boot-and-transport-layering.md`
+- [Agent Note: dsh web 的 config-tree boot 与 web 传输分层](2026-07-24-web-config-tree-boot-and-transport-layering.zh-30f3319c25.md) — `.agents/notes/implemented/architecture/2026-07-24-web-config-tree-boot-and-transport-layering.zh.md`
+- [Agent Note: Web client Agent-scope parity model and the provisioning channel (agents/scope / blank reuse / provide)](2026-07-25-web-client-session-scope-and-provide-channel-92078be7cb.md) — `.agents/notes/implemented/architecture/2026-07-25-web-client-session-scope-and-provide-channel.md`
+- [Agent Note: Web client Agent-scope 对等模型与供数通道（agents/scope / blank 复用 / provide）](2026-07-25-web-client-session-scope-and-provide-channel.zh-3f3077e950.md) — `.agents/notes/implemented/architecture/2026-07-25-web-client-session-scope-and-provide-channel.zh.md`
+- [Agent Note: Compiler-independent Typert type model](2026-07-27-compiler-independent-typert-model-d12a584a1b.md) — `.agents/notes/implemented/architecture/2026-07-27-compiler-independent-typert-model.md`
+- [Agent Note: 编译器无关的 Typert 类型模型](2026-07-27-compiler-independent-typert-model.zh-94191d43c8.md) — `.agents/notes/implemented/architecture/2026-07-27-compiler-independent-typert-model.zh.md`
+- [Agent Note: One carrier-level browser-trust boundary for all /api routes](2026-07-28-api-browser-trust-boundary-e6b23eb94c.md) — `.agents/notes/implemented/architecture/2026-07-28-api-browser-trust-boundary.md`
+- [Agent Note: 所有 /api 路由共用一道载体级浏览器信任边界](2026-07-28-api-browser-trust-boundary.zh-851fd533ec.md) — `.agents/notes/implemented/architecture/2026-07-28-api-browser-trust-boundary.zh.md`
+- [Agent Note: Create every message as an identified immutable value](2026-07-28-identified-immutable-message-values-d006105ffc.md) — `.agents/notes/implemented/architecture/2026-07-28-identified-immutable-message-values.md`
+- [Agent Note: 将每条消息创建为带标识的不可变值](2026-07-28-identified-immutable-message-values.zh-4421aab090.md) — `.agents/notes/implemented/architecture/2026-07-28-identified-immutable-message-values.zh.md`
+- [Agent Note: Portable consumers over filesystem and subprocess execution worlds](2026-07-28-portable-execution-world-consumers-f99e5ef1ac.md) — `.agents/notes/implemented/architecture/2026-07-28-portable-execution-world-consumers.md`
+- [Agent Note: 基于文件系统与进程管理执行世界的可移植消费方](2026-07-28-portable-execution-world-consumers.zh-9184f11a2b.md) — `.agents/notes/implemented/architecture/2026-07-28-portable-execution-world-consumers.zh.md`
+- [Agent Note: dsh source launch through the tsx ESM hook](2026-07-29-dsh-source-launch-tsx-esm-5b4ec76f01.md) — `.agents/notes/implemented/architecture/2026-07-29-dsh-source-launch-tsx-esm.md`
+- [Agent Note: dsh 通过 tsx ESM 钩子源码启动](2026-07-29-dsh-source-launch-tsx-esm.zh-32e31fb357.md) — `.agents/notes/implemented/architecture/2026-07-29-dsh-source-launch-tsx-esm.zh.md`
+- [Agent Note: Projected token usage and context occupancy](2026-07-29-projected-token-usage-and-request-context-55638ca27c.md) — `.agents/notes/implemented/architecture/2026-07-29-projected-token-usage-and-request-context.md`
+- [Agent Note: token 用量投影与上下文占用率](2026-07-29-projected-token-usage-and-request-context.zh-30e99ba5aa.md) — `.agents/notes/implemented/architecture/2026-07-29-projected-token-usage-and-request-context.zh.md`
+- [Agent Note: Terminal LLM stream failures](2026-07-29-terminal-llm-stream-failures-4aee1865a0.md) — `.agents/notes/implemented/architecture/2026-07-29-terminal-llm-stream-failures.md`
+- [Agent Note: LLM 流的终止失败](2026-07-29-terminal-llm-stream-failures.zh-ffdb5067c1.md) — `.agents/notes/implemented/architecture/2026-07-29-terminal-llm-stream-failures.zh.md`
+- [Agent Note: credential boundaries, whole-snapshot requests, and atomic route registration](2026-07-30-credential-boundaries-and-atomic-registration-020132b8d3.md) — `.agents/notes/implemented/architecture/2026-07-30-credential-boundaries-and-atomic-registration.md`
+- [Agent Note: 凭据边界、按整份快照发起的请求与原子路由注册](2026-07-30-credential-boundaries-and-atomic-registration.zh-bddd5f5031.md) — `.agents/notes/implemented/architecture/2026-07-30-credential-boundaries-and-atomic-registration.zh.md`
+- [Agent Note: Follow-up enqueue and owned run boundaries](2026-07-30-followup-enqueue-and-owned-runs-f4e113bc68.md) — `.agents/notes/implemented/architecture/2026-07-30-followup-enqueue-and-owned-runs.md`
+- [Agent Note: follow-up 入队与自有运行边界](2026-07-30-followup-enqueue-and-owned-runs.zh-52a0c95161.md) — `.agents/notes/implemented/architecture/2026-07-30-followup-enqueue-and-owned-runs.zh.md`
+- [Agent Note: the end-seed log boundary](2026-07-30-session-end-seed-log-boundary-50eefe3e5f.md) — `.agents/notes/implemented/architecture/2026-07-30-session-end-seed-log-boundary.md`
+- [Agent Note: 种子结束日志边界](2026-07-30-session-end-seed-log-boundary.zh-e038b079ce.md) — `.agents/notes/implemented/architecture/2026-07-30-session-end-seed-log-boundary.zh.md`
+- [Agent Note: Claim inbox input before one pre-step decision](2026-07-31-claimed-pre-step-inbox-lifecycle-bfd73daf01.md) — `.agents/notes/implemented/architecture/2026-07-31-claimed-pre-step-inbox-lifecycle.md`
+- [Agent Note: 在单一 pre-step 决策前领取 inbox 输入](2026-07-31-claimed-pre-step-inbox-lifecycle.zh-0c9d688f3e.md) — `.agents/notes/implemented/architecture/2026-07-31-claimed-pre-step-inbox-lifecycle.zh.md`
+- [Agent Note: Goal-owned durable events](2026-07-31-goal-owned-durable-events-403278864e.md) — `.agents/notes/implemented/architecture/2026-07-31-goal-owned-durable-events.md`
+- [Agent Note: Goal 自有的持久事件](2026-07-31-goal-owned-durable-events.zh-1b1fe2d8ed.md) — `.agents/notes/implemented/architecture/2026-07-31-goal-owned-durable-events.zh.md`
+- [Agent Note: the ptc-runtime-python fd-3 frame protocol](2026-07-31-ptc-runtime-python-fd3-protocol-23cdf4db12.md) — `.agents/notes/implemented/architecture/2026-07-31-ptc-runtime-python-fd3-protocol.md`
+- [Agent Note: the ptc-runtime-python fd-3 frame protocol](2026-07-31-ptc-runtime-python-fd3-protocol.zh-ec2b8fb61c.md) — `.agents/notes/implemented/architecture/2026-07-31-ptc-runtime-python-fd3-protocol.zh.md`
+- [Agent Note: Typert Gateway Targeted Method Calls](2026-08-02-typert-remote-method-calls-4c1c6daabb.md) — `.agents/notes/implemented/architecture/2026-08-02-typert-remote-method-calls.md`
+- [Agent Note: Typert Gateway 定向方法调用](2026-08-02-typert-remote-method-calls.zh-4c872b28a2.md) — `.agents/notes/implemented/architecture/2026-08-02-typert-remote-method-calls.zh.md`
+- [Agent Note: A session's agent is composed from a preset cordis.yml](2026-08-03-per-session-agent-presets-9277e26f75.md) — `.agents/notes/implemented/architecture/2026-08-03-per-session-agent-presets.md`
+- [Agent Note: 会话的 agent 由一份 preset cordis.yml 组装而成](2026-08-03-per-session-agent-presets.zh-392ca820ba.md) — `.agents/notes/implemented/architecture/2026-08-03-per-session-agent-presets.zh.md`
+- [Agent Note: One ordering for configuration sources, and what a discovered file may not decide](2026-08-04-configuration-source-ownership-b09b01d860.md) — `.agents/notes/implemented/architecture/2026-08-04-configuration-source-ownership.md`
+- [Agent Note: 配置来源的统一顺序，以及被发现的文件不得决定什么](2026-08-04-configuration-source-ownership.zh-e17f50e941.md) — `.agents/notes/implemented/architecture/2026-08-04-configuration-source-ownership.zh.md`
+- [Agent Note: Interrogating a draft provider endpoint](2026-08-04-draft-provider-endpoint-interrogation-f93b7b9592.md) — `.agents/notes/implemented/architecture/2026-08-04-draft-provider-endpoint-interrogation.md`
+- [Agent Note: 询问草稿中的提供方端点](2026-08-04-draft-provider-endpoint-interrogation.zh-d3eb9fff84.md) — `.agents/notes/implemented/architecture/2026-08-04-draft-provider-endpoint-interrogation.zh.md`
+- [Agent Note: Profile plugin bundles replace the fixed surface overlays](2026-08-05-profile-plugin-bundles-9cb0eb3b82.md) — `.agents/notes/implemented/architecture/2026-08-05-profile-plugin-bundles.md`
+- [Agent Note: profile 插件组合包取代固定的表层 overlay](2026-08-05-profile-plugin-bundles.zh-89dfd10bca.md) — `.agents/notes/implemented/architecture/2026-08-05-profile-plugin-bundles.zh.md`
+- [Agent Note: Client Conversation business-node assembly and keyed Chat snapshots](2026-08-09-client-conversation-node-assembly-ead02fa909.md) — `.agents/notes/implemented/architecture/2026-08-09-client-conversation-node-assembly.md`
+- [Agent Note: Client Conversation 业务节点组装与 Chat keyed snapshot](2026-08-09-client-conversation-node-assembly.zh-c0e31d1fff.md) — `.agents/notes/implemented/architecture/2026-08-09-client-conversation-node-assembly.zh.md`
+- [Agent Note: Cancelled streams finalize their delivered prefix](2026-08-10-cancelled-stream-prefix-finalize-6938472e86.md) — `.agents/notes/implemented/architecture/2026-08-10-cancelled-stream-prefix-finalize.md`
+- [Agent Note: 被取消的流定稿其已送达前缀](2026-08-10-cancelled-stream-prefix-finalize.zh-d7460bd88c.md) — `.agents/notes/implemented/architecture/2026-08-10-cancelled-stream-prefix-finalize.zh.md`
+- [Agent Note: Forked children preserve the parent request prefix](2026-08-10-fork-children-stay-one-shot-530bcc0913.md) — `.agents/notes/implemented/architecture/2026-08-10-fork-children-stay-one-shot.md`
+- [Agent Note: Fork child 保留 parent 请求前缀](2026-08-10-fork-children-stay-one-shot.zh-b471ad816d.md) — `.agents/notes/implemented/architecture/2026-08-10-fork-children-stay-one-shot.zh.md`
+- [Agent Note: What stays host-plane once presets own the agent plane](2026-08-10-host-plane-ownership-after-presets-5a13792cb5.md) — `.agents/notes/implemented/architecture/2026-08-10-host-plane-ownership-after-presets.md`
+- [Agent Note: What stays host-plane once presets own the agent plane](2026-08-10-host-plane-ownership-after-presets.zh-e0658e18b5.md) — `.agents/notes/implemented/architecture/2026-08-10-host-plane-ownership-after-presets.zh.md`
+- [Agent Note: Remote event delivery (ctx.remote.$on)](2026-08-10-remote-event-delivery-aa33544693.md) — `.agents/notes/implemented/architecture/2026-08-10-remote-event-delivery.md`
+- [Agent Note: Remote 事件投递（ctx.remote.$on）](2026-08-10-remote-event-delivery.zh-9e9ead668f.md) — `.agents/notes/implemented/architecture/2026-08-10-remote-event-delivery.zh.md`
+- [Agent Note: Session log versioning — one integer, an upgrade chain, and a per-event ignorable marker](2026-08-10-session-log-version-mechanism-55efaadd9c.md) — `.agents/notes/implemented/architecture/2026-08-10-session-log-version-mechanism.md`
+- [Agent Note: Session log 版本机制：单调整数、升级器链、逐事件可忽略标记](2026-08-10-session-log-version-mechanism.zh-529e2444e7.md) — `.agents/notes/implemented/architecture/2026-08-10-session-log-version-mechanism.zh.md`
+- [Agent Note: Credential records and authorization flows](2026-08-13-credential-records-and-authorization-flows-e97b5ba17a.md) — `.agents/notes/implemented/architecture/2026-08-13-credential-records-and-authorization-flows.md`
+- [Agent Note: 凭据记录与授权 flow](2026-08-13-credential-records-and-authorization-flows.zh-f1baed355a.md) — `.agents/notes/implemented/architecture/2026-08-13-credential-records-and-authorization-flows.zh.md`
+- [Agent Note: Client shell layering and dynamic package boundaries](2026-08-15-client-shells-and-dynamic-packages-cafbd41fcd.md) — `.agents/notes/implemented/architecture/2026-08-15-client-shells-and-dynamic-packages.md`
+- [Agent Note: 客户端壳分层与动态包边界](2026-08-15-client-shells-and-dynamic-packages.zh-07acdd217b.md) — `.agents/notes/implemented/architecture/2026-08-15-client-shells-and-dynamic-packages.zh.md`
+- [Agent Note: Publish Agent Teams under experimental package names](2026-08-18-experimental-agent-teams-packages-f20b63e017.md) — `.agents/notes/implemented/architecture/2026-08-18-experimental-agent-teams-packages.md`
+- [Agent Note: 以实验性包名发布 Agent Teams](2026-08-18-experimental-agent-teams-packages.zh-7729edc16e.md) — `.agents/notes/implemented/architecture/2026-08-18-experimental-agent-teams-packages.zh.md`
+- [Agent Note: Session history, control state, and Remote event transport](2026-08-18-session-history-and-event-transport-2f1ab70a93.md) — `.agents/notes/implemented/architecture/2026-08-18-session-history-and-event-transport.md`
+- [Agent Note: 会话历史、控制状态与 Remote 事件传输](2026-08-18-session-history-and-event-transport.zh-de5eb8818f.md) — `.agents/notes/implemented/architecture/2026-08-18-session-history-and-event-transport.zh.md`
+- [Agent Note: Session projections as a required reader seam](2026-08-19-session-projection-mandatory-seam-22d6d23071.md) — `.agents/notes/implemented/architecture/2026-08-19-session-projection-mandatory-seam.md`
+- [Agent Note: 会话投影作为必需的读取 seam](2026-08-19-session-projection-mandatory-seam.zh-42bee7aeee.md) — `.agents/notes/implemented/architecture/2026-08-19-session-projection-mandatory-seam.zh.md`
+- [Agent Note: Client Session, Conversation, and UI ownership layers](2026-08-20-client-session-conversation-ownership-7190d91562.md) — `.agents/notes/implemented/architecture/2026-08-20-client-session-conversation-ownership.md`
+- [Agent Note: Client Session、Conversation 与 UI 所有权分层](2026-08-20-client-session-conversation-ownership.zh-de87dd2dd6.md) — `.agents/notes/implemented/architecture/2026-08-20-client-session-conversation-ownership.zh.md`
+- [Agent Note: DeepSeek LLM API request extensions for session logs and plugin packages](2026-08-21-deepseek-llm-api-request-extensions-db37913a13.md) — `.agents/notes/implemented/architecture/2026-08-21-deepseek-llm-api-request-extensions.md`
+- [Agent Note: DeepSeek LLM API 会话日志与插件包请求扩展](2026-08-21-deepseek-llm-api-request-extensions.zh-aed4f26777.md) — `.agents/notes/implemented/architecture/2026-08-21-deepseek-llm-api-request-extensions.zh.md`
+- [Agent Note: One dsh launcher for application profiles](2026-08-22-single-dsh-application-launcher-4117297069.md) — `.agents/notes/implemented/architecture/2026-08-22-single-dsh-application-launcher.md`
+- [Agent Note: 由一个 dsh 启动应用 profile](2026-08-22-single-dsh-application-launcher.zh-418abd5a22.md) — `.agents/notes/implemented/architecture/2026-08-22-single-dsh-application-launcher.zh.md`
+- [Agent Note: Client-Derived Presentation from Raw Session Tool Events](2026-08-23-client-derived-tool-presentation-80a8aa7eab.md) — `.agents/notes/implemented/architecture/2026-08-23-client-derived-tool-presentation.md`
+- [Agent Note: Client 从原始 Session 工具事件派生展示](2026-08-23-client-derived-tool-presentation.zh-dc6c59eacf.md) — `.agents/notes/implemented/architecture/2026-08-23-client-derived-tool-presentation.zh.md`
+- [Agent Note: Locale-owned client UI copy](2026-08-23-locale-owned-client-ui-copy-8fe5a14c5a.md) — `.agents/notes/implemented/architecture/2026-08-23-locale-owned-client-ui-copy.md`
+- [Agent Note: locale 归属的 client UI 文案](2026-08-23-locale-owned-client-ui-copy.zh-fb82f6e23d.md) — `.agents/notes/implemented/architecture/2026-08-23-locale-owned-client-ui-copy.zh.md`
+- [Agent Note: Browser launch-token authentication](2026-08-24-browser-token-authentication-c63be40185.md) — `.agents/notes/implemented/architecture/2026-08-24-browser-token-authentication.md`
+- [Agent Note: 浏览器启动令牌认证](2026-08-24-browser-token-authentication.zh-02f2a3f87b.md) — `.agents/notes/implemented/architecture/2026-08-24-browser-token-authentication.zh.md`
+- [Agent Note: Package and update the Electron desktop application](2026-08-25-electron-desktop-packaging-and-updates-598174deb5.md) — `.agents/notes/implemented/architecture/2026-08-25-electron-desktop-packaging-and-updates.md`
+- [Agent Note: 打包并更新 Electron 桌面应用](2026-08-25-electron-desktop-packaging-and-updates.zh-a34af7bff1.md) — `.agents/notes/implemented/architecture/2026-08-25-electron-desktop-packaging-and-updates.zh.md`
+- [Agent Note: Session observations and projection-owned client state](2026-08-25-session-observations-and-projection-owned-client-state-8999846ec0.md) — `.agents/notes/implemented/architecture/2026-08-25-session-observations-and-projection-owned-client-state.md`
+- [Agent Note: Session observation 与 projection 所有的客户端状态](2026-08-25-session-observations-and-projection-owned-client-state.zh-4aa87001c1.md) — `.agents/notes/implemented/architecture/2026-08-25-session-observations-and-projection-owned-client-state.zh.md`
+- [Agent Note: Adjacent Agents share one Steer send_message operation](2026-08-27-adjacent-agent-steer-messaging-ad6629a1f7.md) — `.agents/notes/implemented/architecture/2026-08-27-adjacent-agent-steer-messaging.md`
+- [Agent Note: 相邻 Agent 共享一个 Steer send_message 操作](2026-08-27-adjacent-agent-steer-messaging.zh-e4531055a2.md) — `.agents/notes/implemented/architecture/2026-08-27-adjacent-agent-steer-messaging.zh.md`
+- [Agent Note: Handle-based session persistence](2026-08-27-handle-based-session-persistence-88e3b8c8e7.md) — `.agents/notes/implemented/architecture/2026-08-27-handle-based-session-persistence.md`
+- [Agent Note: 基于句柄的会话持久化](2026-08-27-handle-based-session-persistence.zh-ca10d7bf85.md) — `.agents/notes/implemented/architecture/2026-08-27-handle-based-session-persistence.zh.md`
+- [Agent Note: One outbound proxy policy, installed before anything can request](2026-08-27-outbound-proxy-policy-77feecbac5.md) — `.agents/notes/implemented/architecture/2026-08-27-outbound-proxy-policy.md`
+- [Agent Note: 一份出站代理策略，在任何请求发生之前装好](2026-08-27-outbound-proxy-policy.zh-7064fbdbf3.md) — `.agents/notes/implemented/architecture/2026-08-27-outbound-proxy-policy.zh.md`
+- [Agent Note: One Remote failure vocabulary for ctx.remote](2026-08-28-ctx-remote-failure-vocabulary-ee074f89fd.md) — `.agents/notes/implemented/architecture/2026-08-28-ctx-remote-failure-vocabulary.md`
+- [Agent Note: One Remote failure vocabulary for ctx.remote](2026-08-28-ctx-remote-failure-vocabulary.zh-2ec745c70d.md) — `.agents/notes/implemented/architecture/2026-08-28-ctx-remote-failure-vocabulary.zh.md`
+- [Agent Note: Native owners contain escaped subprocess descendants](2026-08-28-subprocess-native-containment-46845a9812.md) — `.agents/notes/implemented/architecture/2026-08-28-subprocess-native-containment.md`
+- [Agent Note: 原生 owner 收容逃逸的 subprocess 后代](2026-08-28-subprocess-native-containment.zh-a835c395a2.md) — `.agents/notes/implemented/architecture/2026-08-28-subprocess-native-containment.zh.md`
+- [Agent Note: Retain ignorable session events for external plugins](2026-08-30-retain-ignorable-external-session-events-51b16dae69.md) — `.agents/notes/implemented/architecture/2026-08-30-retain-ignorable-external-session-events.md`
+- [Agent Note: 为外部插件保留可忽略会话事件](2026-08-30-retain-ignorable-external-session-events.zh-ba06312bde.md) — `.agents/notes/implemented/architecture/2026-08-30-retain-ignorable-external-session-events.zh.md`
+- [Agent Note: Alpha Session migration refuses every unknown historical event](2026-08-31-alpha-historical-unknown-event-refusal-1bb53d31e2.md) — `.agents/notes/implemented/architecture/2026-08-31-alpha-historical-unknown-event-refusal.md`
+- [Agent Note: Alpha Session 迁移拒绝所有未知历史事件](2026-08-31-alpha-historical-unknown-event-refusal.zh-4fad30867d.md) — `.agents/notes/implemented/architecture/2026-08-31-alpha-historical-unknown-event-refusal.zh.md`
+- [Agent Note: Explicit Agent identity at runtime boundaries](2026-08-31-explicit-agent-runtime-identity-3c03f9cd09.md) — `.agents/notes/implemented/architecture/2026-08-31-explicit-agent-runtime-identity.md`
+- [Agent Note: 运行时边界显式携带 Agent 身份](2026-08-31-explicit-agent-runtime-identity.zh-856ce4262f.md) — `.agents/notes/implemented/architecture/2026-08-31-explicit-agent-runtime-identity.zh.md`
+- [Agent Note: Released Session formats migrate through stateful streaming stages](2026-08-31-released-session-format-migrations-bbff07bc00.md) — `.agents/notes/implemented/architecture/2026-08-31-released-session-format-migrations.md`
+- [Agent Note: 已发布 Session 格式通过有状态流式 Stage 迁移](2026-08-31-released-session-format-migrations.zh-836122afc9.md) — `.agents/notes/implemented/architecture/2026-08-31-released-session-format-migrations.zh.md`
+- [Agent Note: Parent-owned subagent catalog events](2026-09-01-parent-owned-subagent-catalog-dc85e64a8e.md) — `.agents/notes/implemented/architecture/2026-09-01-parent-owned-subagent-catalog.md`
+- [Agent Note: parent 自有的 subagent 目录事件](2026-09-01-parent-owned-subagent-catalog.zh-2402561c26.md) — `.agents/notes/implemented/architecture/2026-09-01-parent-owned-subagent-catalog.zh.md`
+- [Agent Note: Embed Assistant streams in v2 attempt settlements](2026-09-01-v2-embedded-assistant-streams-695f5d586e.md) — `.agents/notes/implemented/architecture/2026-09-01-v2-embedded-assistant-streams.md`
+- [Agent Note: 在 v2 attempt settlement 中嵌入 Assistant stream](2026-09-01-v2-embedded-assistant-streams.zh-1cbc37f33c.md) — `.agents/notes/implemented/architecture/2026-09-01-v2-embedded-assistant-streams.zh.md`
+- [Agent Note: Projection-cache predecessor recovery and Session-format binding (session_projcache v3-v6 → v7)](2026-09-02-projcache-cross-version-read-compat-397f889d40.md) — `.agents/notes/implemented/architecture/2026-09-02-projcache-cross-version-read-compat.md`
+- [Agent Note: 投影缓存前代恢复与 Session 格式绑定（session_projcache v3-v6 → v7）](2026-09-02-projcache-cross-version-read-compat.zh-42e1a4c7c4.md) — `.agents/notes/implemented/architecture/2026-09-02-projcache-cross-version-read-compat.zh.md`
+- [Agent Note: The system prompt is surface node 0](2026-09-02-system-prompt-as-surface-node-085aff6916.md) — `.agents/notes/implemented/architecture/2026-09-02-system-prompt-as-surface-node.md`
+- [Agent Note: 系统提示词是 surface 的第 0 号节点](2026-09-02-system-prompt-as-surface-node.zh-2d20cf8d86.md) — `.agents/notes/implemented/architecture/2026-09-02-system-prompt-as-surface-node.zh.md`
+- [Agent Note: Canonical feedback log and request delivery](2026-09-05-canonical-feedback-log-375fe59777.md) — `.agents/notes/implemented/architecture/2026-09-05-canonical-feedback-log.md`
+- [Agent Note: 权威反馈日志与请求投递](2026-09-05-canonical-feedback-log.zh-91531fede7.md) — `.agents/notes/implemented/architecture/2026-09-05-canonical-feedback-log.zh.md`
+- [Agent Note: Client resource model](2026-09-05-client-resource-model-5578c89805.md) — `.agents/notes/implemented/architecture/2026-09-05-client-resource-model.md`
+- [Agent Note: 客户端资源模型](2026-09-05-client-resource-model.zh-3cc312f496.md) — `.agents/notes/implemented/architecture/2026-09-05-client-resource-model.zh.md`
+- [Agent Note: Explicit-feedback-only upload through OpenTelemetry](2026-09-05-nonofficial-feedback-otel-31b9487a80.md) — `.agents/notes/implemented/architecture/2026-09-05-nonofficial-feedback-otel.md`
+- [Agent Note: 仅在显式反馈后通过 OpenTelemetry 上传](2026-09-05-nonofficial-feedback-otel.zh-4126e55f46.md) — `.agents/notes/implemented/architecture/2026-09-05-nonofficial-feedback-otel.zh.md`
+- [Agent Note: Package manifest declaration ownership](2026-09-05-package-manifest-types-6c705f563b.md) — `.agents/notes/implemented/architecture/2026-09-05-package-manifest-types.md`
+- [Agent Note: Package manifest 声明归属](2026-09-05-package-manifest-types.zh-4a44cc43ab.md) — `.agents/notes/implemented/architecture/2026-09-05-package-manifest-types.zh.md`
+- [Agent Note: Historical Session reads prepare before write publication](2026-09-05-read-only-session-migration-preparation-1dcea6b6ef.md) — `.agents/notes/implemented/architecture/2026-09-05-read-only-session-migration-preparation.md`
+- [Agent Note: 历史 Session 在写入发布前提供只读迁移结果](2026-09-05-read-only-session-migration-preparation.zh-54a242a53c.md) — `.agents/notes/implemented/architecture/2026-09-05-read-only-session-migration-preparation.zh.md`
+- [Agent Note: Shared client control primitives](2026-09-05-shared-client-control-primitives-a86da78dd1.md) — `.agents/notes/implemented/architecture/2026-09-05-shared-client-control-primitives.md`
+- [Agent Note: Shared client control primitives](2026-09-05-shared-client-control-primitives.zh-c53367b42b.md) — `.agents/notes/implemented/architecture/2026-09-05-shared-client-control-primitives.zh.md`
+- [Agent Note: Right Sidebar tab types and navigation](2026-09-05-sidebar-tab-types-and-navigation-7d77a92592.md) — `.agents/notes/implemented/architecture/2026-09-05-sidebar-tab-types-and-navigation.md`
+- [Agent Note: 右侧 Sidebar 的 tab 类型与导航](2026-09-05-sidebar-tab-types-and-navigation.zh-406e03f6b7.md) — `.agents/notes/implemented/architecture/2026-09-05-sidebar-tab-types-and-navigation.zh.md`
+- [Agent Note: Workspace file service](2026-09-05-workspace-files-service-d38be8cfc5.md) — `.agents/notes/implemented/architecture/2026-09-05-workspace-files-service.md`
+- [Agent Note: 工作区文件服务](2026-09-05-workspace-files-service.zh-723d29e476.md) — `.agents/notes/implemented/architecture/2026-09-05-workspace-files-service.zh.md`
+- [Agent Note: Embedded Assistant stream consumers read compact records](2026-09-06-embedded-stream-record-readers-37685a5a7f.md) — `.agents/notes/implemented/architecture/2026-09-06-embedded-stream-record-readers.md`
+- [Agent Note: 内嵌 Assistant 流的消费方直接读取紧凑记录](2026-09-06-embedded-stream-record-readers.zh-eae3ec2672.md) — `.agents/notes/implemented/architecture/2026-09-06-embedded-stream-record-readers.zh.md`
+- [Agent Note: Canonical V3 Session event envelopes](2026-09-06-v3-canonical-session-envelopes-5f9699db8e.md) — `.agents/notes/implemented/architecture/2026-09-06-v3-canonical-session-envelopes.md`
+- [Agent Note: 规范的 V3 Session 事件信封](2026-09-06-v3-canonical-session-envelopes.zh-732aafabc4.md) — `.agents/notes/implemented/architecture/2026-09-06-v3-canonical-session-envelopes.zh.md`
+- [Agent Note: Prebuilt system primitives](2026-09-07-prebuilt-system-primitives-52146098ce.md) — `.agents/notes/implemented/architecture/2026-09-07-prebuilt-system-primitives.md`
+- [Agent Note: 预编译系统原语](2026-09-07-prebuilt-system-primitives.zh-2a231c0f9c.md) — `.agents/notes/implemented/architecture/2026-09-07-prebuilt-system-primitives.zh.md`
+- [Agent Note: Responsive Sidebar and injected tab information](2026-09-07-sidebar-responsive-tab-info-9cfb70ddde.md) — `.agents/notes/implemented/architecture/2026-09-07-sidebar-responsive-tab-info.md`
+- [Agent Note: 响应式 Sidebar 与注入的标签信息](2026-09-07-sidebar-responsive-tab-info.zh-934d5d166f.md) — `.agents/notes/implemented/architecture/2026-09-07-sidebar-responsive-tab-info.zh.md`
+- [Agent Note: Workspace files as one dual-face API package](2026-09-07-workspace-files-dual-face-package-de135e2e13.md) — `.agents/notes/implemented/architecture/2026-09-07-workspace-files-dual-face-package.md`
+- [Agent Note: 工作区文件统一为 API 双面包](2026-09-07-workspace-files-dual-face-package.zh-4ac5835fe9.md) — `.agents/notes/implemented/architecture/2026-09-07-workspace-files-dual-face-package.zh.md`
+- [Agent Note: Bundle the Desktop runtime and retain external plugins](2026-09-08-desktop-bundled-runtime-and-external-plugins-4046ea823c.md) — `.agents/notes/implemented/architecture/2026-09-08-desktop-bundled-runtime-and-external-plugins.md`
+- [Agent Note: 内置 Desktop 运行时并保留外部插件](2026-09-08-desktop-bundled-runtime-and-external-plugins.zh-f8dcae25fb.md) — `.agents/notes/implemented/architecture/2026-09-08-desktop-bundled-runtime-and-external-plugins.zh.md`
+- [Agent Note: Document preview and file addresses](2026-09-08-document-preview-operations-df21631c1d.md) — `.agents/notes/implemented/architecture/2026-09-08-document-preview-operations.md`
+- [Agent Note: 文档预览与文件地址](2026-09-08-document-preview-operations.zh-aeafd87f96.md) — `.agents/notes/implemented/architecture/2026-09-08-document-preview-operations.zh.md`
+- [Agent Note: Global main panels without default UI additions](2026-09-08-global-main-panels-06f4c3011d.md) — `.agents/notes/implemented/architecture/2026-09-08-global-main-panels.md`
+- [Agent Note: 不增加默认界面的全局主面板](2026-09-08-global-main-panels.zh-14a7bf38e7.md) — `.agents/notes/implemented/architecture/2026-09-08-global-main-panels.zh.md`
+- [Agent Note: Awaited per-agent initialization](2026-09-09-awaited-agent-creation-3ef757d591.md) — `.agents/notes/implemented/architecture/2026-09-09-awaited-agent-creation.md`
+- [Agent Note: 可等待的单个 agent 初始化](2026-09-09-awaited-agent-creation.zh-b922a50187.md) — `.agents/notes/implemented/architecture/2026-09-09-awaited-agent-creation.zh.md`
+- [Agent Note: Consumer-owned startup strictness](2026-09-09-consumer-owned-startup-strictness-f065689531.md) — `.agents/notes/implemented/architecture/2026-09-09-consumer-owned-startup-strictness.md`
+- [Agent Note：由 consumer 持有启动严格语义](2026-09-09-consumer-owned-startup-strictness.zh-4867b8d447.md) — `.agents/notes/implemented/architecture/2026-09-09-consumer-owned-startup-strictness.zh.md`
+- [Agent Note: Deprecate synchronous reads of arbitrary Session events](2026-09-09-deprecate-synchronous-session-event-reads-fef9d751eb.md) — `.agents/notes/implemented/architecture/2026-09-09-deprecate-synchronous-session-event-reads.md`
+- [Agent Note: 弃用对会话任意位置事件的同步读取](2026-09-09-deprecate-synchronous-session-event-reads.zh-e5eba822a9.md) — `.agents/notes/implemented/architecture/2026-09-09-deprecate-synchronous-session-event-reads.zh.md`
+- [Agent Note: Verify Desktop release compatibility during packaging](2026-09-09-desktop-build-release-validation-af672cfb4d.md) — `.agents/notes/implemented/architecture/2026-09-09-desktop-build-release-validation.md`
+- [Agent Note: 在打包时验证 Desktop 发布兼容性](2026-09-09-desktop-build-release-validation.zh-681ba404c1.md) — `.agents/notes/implemented/architecture/2026-09-09-desktop-build-release-validation.zh.md`
+- [Agent Note: Show the Desktop window before starting the Host](2026-09-09-desktop-immediate-window-and-direct-start-fa4b0f5702.md) — `.agents/notes/implemented/architecture/2026-09-09-desktop-immediate-window-and-direct-start.md`
+- [Agent Note: Show the Desktop window before starting the Host](2026-09-09-desktop-immediate-window-and-direct-start.zh-afcccfcb32.md) — `.agents/notes/implemented/architecture/2026-09-09-desktop-immediate-window-and-direct-start.zh.md`
+- [Agent Note: Plugin management moves to the Web sidebar](2026-09-09-plugin-management-in-the-web-sidebar-8ef8ee0389.md) — `.agents/notes/implemented/architecture/2026-09-09-plugin-management-in-the-web-sidebar.md`
+- [Agent Note：插件管理移到 Web 侧栏](2026-09-09-plugin-management-in-the-web-sidebar.zh-b005d25c56.md) — `.agents/notes/implemented/architecture/2026-09-09-plugin-management-in-the-web-sidebar.zh.md`
+- [Agent Note: Add immutable profile resolution generations](2026-09-09-profile-resolution-generations-0dc0908fca.md) — `.agents/notes/implemented/architecture/2026-09-09-profile-resolution-generations.md`
+- [Agent Note: 增加不可变 profile 解析代际](2026-09-09-profile-resolution-generations.zh-29bfb6648b.md) — `.agents/notes/implemented/architecture/2026-09-09-profile-resolution-generations.zh.md`
+- [Agent Note: Workspace file read authority](2026-09-09-workspace-file-read-authority-d96a48ab0f.md) — `.agents/notes/implemented/architecture/2026-09-09-workspace-file-read-authority.md`
+- [Agent Note: 工作区文件读取权限](2026-09-09-workspace-file-read-authority.zh-74377ac70c.md) — `.agents/notes/implemented/architecture/2026-09-09-workspace-file-read-authority.zh.md`
+- [Agent Note: Command identities and composer-owned File action](2026-09-10-command-identities-and-composer-file-action-0a40cf904f.md) — `.agents/notes/implemented/architecture/2026-09-10-command-identities-and-composer-file-action.md`
+- [Agent Note: 命令标识与输入框拥有的文件动作](2026-09-10-command-identities-and-composer-file-action.zh-6e25bddf67.md) — `.agents/notes/implemented/architecture/2026-09-10-command-identities-and-composer-file-action.zh.md`
+- [Agent Note: Reusable component factories with local slots](2026-09-10-component-factories-and-local-slots-e96d54d338.md) — `.agents/notes/implemented/architecture/2026-09-10-component-factories-and-local-slots.md`
+- [Agent Note: 带局部 slot 的可复用组件 Factory](2026-09-10-component-factories-and-local-slots.zh-d16b47ef8a.md) — `.agents/notes/implemented/architecture/2026-09-10-component-factories-and-local-slots.zh.md`
+- [Agent Note: Run Desktop through the shared Web application](2026-09-10-desktop-web-wrapper-c2b30327ef.md) — `.agents/notes/implemented/architecture/2026-09-10-desktop-web-wrapper.md`
+- [Agent Note: 通过共享 Web 应用运行 Desktop](2026-09-10-desktop-web-wrapper.zh-e2efa4755b.md) — `.agents/notes/implemented/architecture/2026-09-10-desktop-web-wrapper.zh.md`
+- [Agent Note: Durable image offload events](2026-09-10-image-offload-events-5cbcf16080.md) — `.agents/notes/implemented/architecture/2026-09-10-image-offload-events.md`
+- [Agent Note：持久图片省略事件](2026-09-10-image-offload-events.zh-bbf88870f5.md) — `.agents/notes/implemented/architecture/2026-09-10-image-offload-events.zh.md`
+- [Agent Note: Public package manifest fields](2026-09-10-public-package-manifest-04eed29964.md) — `.agents/notes/implemented/architecture/2026-09-10-public-package-manifest.md`
+- [Agent Note: 公共 package manifest 字段](2026-09-10-public-package-manifest.zh-47abaad55c.md) — `.agents/notes/implemented/architecture/2026-09-10-public-package-manifest.zh.md`
+- [Agent Note: Native Windows installer pages](2026-09-10-windows-native-installer-pages-ecd861a79e.md) — `.agents/notes/implemented/architecture/2026-09-10-windows-native-installer-pages.md`
+- [Agent Note: 原生 Windows 安装页面](2026-09-10-windows-native-installer-pages.zh-4aa51cb7e6.md) — `.agents/notes/implemented/architecture/2026-09-10-windows-native-installer-pages.zh.md`
+- [Agent Note: Use Electron as the Desktop Node runtime](2026-09-11-desktop-electron-node-runtime-d2c9fa42e4.md) — `.agents/notes/implemented/architecture/2026-09-11-desktop-electron-node-runtime.md`
+- [Agent Note: 使用 Electron 作为 Desktop 的 Node 运行时](2026-09-11-desktop-electron-node-runtime.zh-3c13691b9a.md) — `.agents/notes/implemented/architecture/2026-09-11-desktop-electron-node-runtime.zh.md`
+- [Agent Note: Node Office conversion with independently packaged engines](2026-09-11-node-office-kit-826c9f931e.md) — `.agents/notes/implemented/architecture/2026-09-11-node-office-kit.md`
+- [Agent Note: 独立打包引擎的 Node Office 转换](2026-09-11-node-office-kit.zh-e15608f8d7.md) — `.agents/notes/implemented/architecture/2026-09-11-node-office-kit.zh.md`
+- [Agent Note: Plugin-owned message projections](2026-09-11-plugin-owned-message-projections-74995dce9d.md) — `.agents/notes/implemented/architecture/2026-09-11-plugin-owned-message-projections.md`
+- [Agent Note: 插件拥有消息投影](2026-09-11-plugin-owned-message-projections.zh-c434525c3f.md) — `.agents/notes/implemented/architecture/2026-09-11-plugin-owned-message-projections.zh.md`
+- [Agent Note: POSIX SSH execution providers](2026-09-11-posix-ssh-runtime-8e8eb80e78.md) — `.agents/notes/implemented/architecture/2026-09-11-posix-ssh-runtime.md`
+- [Agent Note: POSIX SSH 执行提供方](2026-09-11-posix-ssh-runtime.zh-2b7549aff4.md) — `.agents/notes/implemented/architecture/2026-09-11-posix-ssh-runtime.zh.md`
+- [Agent Note: Sandboxed Node execution for PTC](2026-09-11-sandboxed-node-ptc-runtime-2aa9dc222a.md) — `.agents/notes/implemented/architecture/2026-09-11-sandboxed-node-ptc-runtime.md`
+- [Agent Note: PTC 的沙箱 Node 执行](2026-09-11-sandboxed-node-ptc-runtime.zh-4651c7c43d.md) — `.agents/notes/implemented/architecture/2026-09-11-sandboxed-node-ptc-runtime.zh.md`
+- [Agent Note: Subprocess control pipe](2026-09-11-subprocess-control-pipe-0d96addac2.md) — `.agents/notes/implemented/architecture/2026-09-11-subprocess-control-pipe.md`
+- [Agent Note: Subprocess control pipe](2026-09-11-subprocess-control-pipe.zh-b8cd2f90cc.md) — `.agents/notes/implemented/architecture/2026-09-11-subprocess-control-pipe.zh.md`
+- [Agent Note: Replace Windows application directories after staging](2026-09-11-windows-directory-installation-329de69327.md) — `.agents/notes/implemented/architecture/2026-09-11-windows-directory-installation.md`
+- [Agent Note: 暂存完成后替换 Windows 应用目录](2026-09-11-windows-directory-installation.zh-f086a1fd95.md) — `.agents/notes/implemented/architecture/2026-09-11-windows-directory-installation.zh.md`
+- [Agent Note: Browser-use provider registration and Session ownership](2026-09-12-browser-use-provider-registration-01706588e4.md) — `.agents/notes/implemented/architecture/2026-09-12-browser-use-provider-registration.md`
+- [Agent Note: 浏览器操作提供方注册与 Session 所有权](2026-09-12-browser-use-provider-registration.zh-0784a73987.md) — `.agents/notes/implemented/architecture/2026-09-12-browser-use-provider-registration.zh.md`
+- [Agent Note: Computer-use provider registration](2026-09-12-computer-use-provider-registration-dad6c442f7.md) — `.agents/notes/implemented/architecture/2026-09-12-computer-use-provider-registration.md`
+- [Agent Note: Computer-use provider registration](2026-09-12-computer-use-provider-registration.zh-1a9483f2fd.md) — `.agents/notes/implemented/architecture/2026-09-12-computer-use-provider-registration.zh.md`
+- [Agent Note: PTC runtime vocabulary](2026-09-12-ptc-runtime-vocabulary-f525f577a4.md) — `.agents/notes/implemented/architecture/2026-09-12-ptc-runtime-vocabulary.md`
+- [Agent Note: PTC 运行时词汇](2026-09-12-ptc-runtime-vocabulary.zh-59be713298.md) — `.agents/notes/implemented/architecture/2026-09-12-ptc-runtime-vocabulary.zh.md`
+- [Agent Note: Reuse the PTC Node sandbox for workflows](2026-09-13-workflow-ptc-sandbox-reuse-b77cab18cf.md) — `.agents/notes/implemented/architecture/2026-09-13-workflow-ptc-sandbox-reuse.md`
+- [Agent Note: 工作流复用 PTC Node 沙箱](2026-09-13-workflow-ptc-sandbox-reuse.zh-74eaec4029.md) — `.agents/notes/implemented/architecture/2026-09-13-workflow-ptc-sandbox-reuse.zh.md`
+- [Agent Note: Current-profile plugin management shares CLI transactions](2026-09-14-current-profile-plugin-management-34ac25b6dc.md) — `.agents/notes/implemented/architecture/2026-09-14-current-profile-plugin-management.md`
+- [Agent Note：当前 profile 插件管理共享 CLI 事务](2026-09-14-current-profile-plugin-management.zh-054b6ea9e5.md) — `.agents/notes/implemented/architecture/2026-09-14-current-profile-plugin-management.zh.md`
+- [Agent Note: Independent LibreOffice kit ownership](2026-09-14-independent-libreoffice-kit-ed360c766c.md) — `.agents/notes/implemented/architecture/2026-09-14-independent-libreoffice-kit.md`
+- [Agent Note: 独立 LibreOffice kit 的归属](2026-09-14-independent-libreoffice-kit.zh-6045a86663.md) — `.agents/notes/implemented/architecture/2026-09-14-independent-libreoffice-kit.zh.md`
+- [Agent Note: Default DeepSeek Session-log upload](2026-09-14-session-log-upload-default-f366cef49a.md) — `.agents/notes/implemented/architecture/2026-09-14-session-log-upload-default.md`
+- [Agent Note: DeepSeek 会话日志默认上传](2026-09-14-session-log-upload-default.zh-f4c0f0fea1.md) — `.agents/notes/implemented/architecture/2026-09-14-session-log-upload-default.zh.md`
+- [Agent Note: Sidebar layout persistence and provider recovery](2026-09-14-sidebar-layout-provider-recovery-bde57468dd.md) — `.agents/notes/implemented/architecture/2026-09-14-sidebar-layout-provider-recovery.md`
+- [Agent Note: 侧栏布局持久化与 provider 恢复](2026-09-14-sidebar-layout-provider-recovery.zh-ea62ef44ac.md) — `.agents/notes/implemented/architecture/2026-09-14-sidebar-layout-provider-recovery.zh.md`
+- [Agent Note: Bounded shared Office conversion](2026-09-15-bounded-office-conversion-862866664b.md) — `.agents/notes/implemented/architecture/2026-09-15-bounded-office-conversion.md`
+- [Agent Note: 有界的共享 Office 转换](2026-09-15-bounded-office-conversion.zh-a9694319f8.md) — `.agents/notes/implemented/architecture/2026-09-15-bounded-office-conversion.zh.md`
+- [Agent Note: Client Session references, reference sources, and UI status](2026-09-15-client-session-references-47b5d0199c.md) — `.agents/notes/implemented/architecture/2026-09-15-client-session-references.md`
+- [Agent Note: Client Session 引用、引用来源与 UI 状态](2026-09-15-client-session-references.zh-541b5747f4.md) — `.agents/notes/implemented/architecture/2026-09-15-client-session-references.zh.md`
+- [Agent Note: Native Desktop fatal recovery](2026-09-15-desktop-native-fatal-recovery-249da51343.md) — `.agents/notes/implemented/architecture/2026-09-15-desktop-native-fatal-recovery.md`
+- [Agent Note: 原生 Desktop 致命错误恢复](2026-09-15-desktop-native-fatal-recovery.zh-008318f6f0.md) — `.agents/notes/implemented/architecture/2026-09-15-desktop-native-fatal-recovery.zh.md`
+- [Agent Note: Guided plugin installation](2026-09-15-guided-plugin-installation-f5585bff99.md) — `.agents/notes/implemented/architecture/2026-09-15-guided-plugin-installation.md`
+- [Agent Note：引导式插件安装](2026-09-15-guided-plugin-installation.zh-a3ecf65932.md) — `.agents/notes/implemented/architecture/2026-09-15-guided-plugin-installation.zh.md`
+- [Agent Note: Narrow pi-ai runtime imports](2026-09-15-narrow-pi-ai-runtime-imports-b5988eb380.md) — `.agents/notes/implemented/architecture/2026-09-15-narrow-pi-ai-runtime-imports.md`
+- [Agent Note：收窄 pi-ai 运行时 import](2026-09-15-narrow-pi-ai-runtime-imports.zh-f98b4bf728.md) — `.agents/notes/implemented/architecture/2026-09-15-narrow-pi-ai-runtime-imports.zh.md`
+- [Agent Note: One Office engine per platform](2026-09-15-platform-office-engines-9b68e605c4.md) — `.agents/notes/implemented/architecture/2026-09-15-platform-office-engines.md`
+- [Agent Note: 每个平台使用一个 Office 引擎](2026-09-15-platform-office-engines.zh-04b929add9.md) — `.agents/notes/implemented/architecture/2026-09-15-platform-office-engines.zh.md`
+- [Agent Note: Creator mode installs persistent plugin bundles](2026-09-16-creator-persistent-plugin-management-c805c00431.md) — `.agents/notes/implemented/architecture/2026-09-16-creator-persistent-plugin-management.md`
+- [Agent Note: 创造模式安装持久化插件组合包](2026-09-16-creator-persistent-plugin-management.zh-ee65791fa6.md) — `.agents/notes/implemented/architecture/2026-09-16-creator-persistent-plugin-management.zh.md`
+- [Agent Note: Upload Desktop releases through the Tencent COS SDK](2026-09-16-desktop-cos-upload-transport-9bbe4215e9.md) — `.agents/notes/implemented/architecture/2026-09-16-desktop-cos-upload-transport.md`
+- [Agent Note: 通过腾讯 COS SDK 上传 Desktop 发布产物](2026-09-16-desktop-cos-upload-transport.zh-416dd75dd5.md) — `.agents/notes/implemented/architecture/2026-09-16-desktop-cos-upload-transport.zh.md`
+- [Agent Note: Show a local document while the policy login page loads](2026-09-16-desktop-policy-login-loading-043e46eadb.md) — `.agents/notes/implemented/architecture/2026-09-16-desktop-policy-login-loading.md`
+- [Agent Note: 策略登录页加载期间显示本地文档](2026-09-16-desktop-policy-login-loading.zh-773925ceb4.md) — `.agents/notes/implemented/architecture/2026-09-16-desktop-policy-login-loading.zh.md`
+- [Agent Note: Suppress an enclosing tooltip while a nested one is shown](2026-09-16-nested-tooltip-suppression-81870cbd7e.md) — `.agents/notes/implemented/architecture/2026-09-16-nested-tooltip-suppression.md`
+- [Agent Note: 嵌套提示显示时抑制外层提示](2026-09-16-nested-tooltip-suppression.zh-93b8a7aeee.md) — `.agents/notes/implemented/architecture/2026-09-16-nested-tooltip-suppression.zh.md`
+- [Agent Note: Plugin configuration on the Plugins page](2026-09-16-plugin-configuration-on-the-plugins-page-55aff2e8ca.md) — `.agents/notes/implemented/architecture/2026-09-16-plugin-configuration-on-the-plugins-page.md`
+- [Agent Note：插件页上的插件配置](2026-09-16-plugin-configuration-on-the-plugins-page.zh-07dfcd0101.md) — `.agents/notes/implemented/architecture/2026-09-16-plugin-configuration-on-the-plugins-page.zh.md`
+- [Agent Note: User-terminal permissions](2026-09-16-user-terminal-permissions-5926daf6d1.md) — `.agents/notes/implemented/architecture/2026-09-16-user-terminal-permissions.md`
+- [Agent Note: User-terminal permissions](2026-09-16-user-terminal-permissions.zh-1eb76abc94.md) — `.agents/notes/implemented/architecture/2026-09-16-user-terminal-permissions.zh.md`

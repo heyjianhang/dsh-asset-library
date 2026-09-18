@@ -1,0 +1,64 @@
+# 前端、主题、组件、状态与国际化
+
+开发页面、Slots、Client 模块、资源、连接与换肤时读取。
+
+共 127 份，按来源目录继续选择，不要全部载入。
+
+- [docs/subsystems](index-dd3856e846.md)（12 份）
+- [docs](index-46b42b4229.md)（2 份）
+- [packages/client](index-0a97ef6844.md)（3 份）
+- [packages/client/connection](index-7c2e42b395.md)（2 份）
+- [packages/client/file-upload](index-3307a36f90.md)（2 份）
+- [packages/client/hmr](index-e1b9b2e931.md)（2 份）
+- [packages/client/locale](index-eb60b1f83a.md)（2 份）
+- [packages/client/modules](index-038071c628.md)（2 份）
+- [packages/client/resources](index-2a6957b9d1.md)（2 份）
+- [packages/client/store](index-d9add41525.md)（2 份）
+- [packages/client/ui-agent-preset](index-0ecd3de22b.md)（2 份）
+- [packages/client/ui-approval](index-0a13e2cb1a.md)（2 份）
+- [packages/client/ui-attachment](index-6f1f90250d.md)（2 份）
+- [packages/client/ui-brand-official](index-3840608f86.md)（2 份）
+- [packages/client/ui-chat](index-75242fda73.md)（2 份）
+- [packages/client/ui-commands](index-9b92c67e36.md)（2 份）
+- [packages/client/ui-conversation](index-ba48f79f96.md)（2 份）
+- [packages/client/ui-deliverables](index-71ac429c80.md)（2 份）
+- [packages/client/ui-directory-picker-browse](index-93bf670588.md)（2 份）
+- [packages/client/ui-directory-picker-native](index-728b5e19a7.md)（2 份）
+- [packages/client/ui-dockkit](index-d433ddce02.md)（2 份）
+- [packages/client/ui-goal](index-4a6f76440f.md)（2 份）
+- [packages/client/ui-input-trigger](index-45b3045a57.md)（2 份）
+- [packages/client/ui-jobs](index-8b56128de5.md)（2 份）
+- [packages/client/ui-layout](index-5d4f5984e1.md)（2 份）
+- [packages/client/ui-message-feedback](index-2dbc0267e2.md)（2 份）
+- [packages/client/ui-model-selection](index-96de97f9cc.md)（2 份）
+- [packages/client/ui-open-in-app](index-73221fe59e.md)（2 份）
+- [packages/client/ui-permission-presets](index-2f1f710660.md)（2 份）
+- [packages/client/ui-plan](index-4258c13ed1.md)（2 份）
+- [packages/client/ui-plugin-manager](index-18101d9b1d.md)（2 份）
+- [packages/client/ui-primitives](index-bf2d96f070.md)（2 份）
+- [packages/client/ui-reference](index-183aa226e8.md)（2 份）
+- [packages/client/ui-renderer](index-f107129166.md)（2 份）
+- [packages/client/ui-schedule](index-5c92b4bac3.md)（2 份）
+- [packages/client/ui-session](index-0628197aff.md)（2 份）
+- [packages/client/ui-settings-general](index-4871ec64e7.md)（2 份）
+- [packages/client/ui-settings-models](index-2b8d0baf50.md)（2 份）
+- [packages/client/ui-settings-plugin-inventory](index-0f6f8a1da7.md)（2 份）
+- [packages/client/ui-settings-plugins](index-7d6455fc5a.md)（2 份）
+- [packages/client/ui-settings-unarchive-sessions](index-a667709210.md)（2 份）
+- [packages/client/ui-settings](index-24fc5ec9ee.md)（2 份）
+- [packages/client/ui-sidebar-browser](index-24a6c4ec85.md)（2 份）
+- [packages/client/ui-sidebar-documentpreview](index-cbb9dbf5f9.md)（2 份）
+- [packages/client/ui-sidebar-files](index-1e741306fb.md)（2 份）
+- [packages/client/ui-sidebar-right](index-0362460627.md)（2 份）
+- [packages/client/ui-sidebar-terminal](index-44e000bca7.md)（2 份）
+- [packages/client/ui-sidebar](index-6830c47dfd.md)（2 份）
+- [packages/client/ui-skill](index-1bdbfb1289.md)（2 份）
+- [packages/client/ui-slots](index-dfba87cc2f.md)（2 份）
+- [packages/client/ui-subagent](index-8f2ef2c523.md)（2 份）
+- [packages/client/ui-theme](index-baf3849ef6.md)（2 份）
+- [packages/client/ui-tool](index-f27e7f00f0.md)（2 份）
+- [packages/client/ui-trajectory](index-9a80facbca.md)（2 份）
+- [packages/client/ui-user-questions](index-172e19cd4b.md)（2 份）
+- [packages/client/ui-workflow-run](index-0bc7fb4a50.md)（2 份）
+- [packages/client/ui-workspace](index-28df115c6c.md)（2 份）
+- [packages/client/web](index-f30aa36b18.md)（2 份）

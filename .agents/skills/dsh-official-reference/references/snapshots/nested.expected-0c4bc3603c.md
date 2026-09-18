@@ -1,0 +1,22 @@
+> 自动同步的官方参考原文。来源：[snapshots/web/subagent-conversation/nested.expected.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/snapshots/web/subagent-conversation/nested.expected.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+- banner:
+  - navigation "Session hierarchy":
+    - button "Ask a research subagent to"
+    - text: /
+    - 'button "Switch subagent: event-sourcing researcher"': event-sourcing researcher
+    - text: /
+    - 'button "Switch subagent: example editor"': example editor
+  - button "More actions":
+    - img
+  - button "Open right sidebar":
+    - img
+  - tablist:
+    - tab "Chat" [selected]
+    - tab "Trajectory"
+- text: Give one concrete event sourcing example. {{clock}}
+- button "Copy":
+  - img
+- status:
+  - strong: This subagent is read-only for now
+  - text: The parent session is offline; reopen it to continue sending messages.

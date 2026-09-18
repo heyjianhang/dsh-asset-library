@@ -1,0 +1,27 @@
+> 自动同步的官方参考原文。来源：[.agents/notes/implemented/process/2026-09-16-author-approval-credit.zh.md](https://github.com/deepseek-ai/deepseek-harness/blob/ddefc45fbc7f8e46dd73185e68295696d1297887/.agents/notes/implemented/process/2026-09-16-author-approval-credit.zh.md)，提交：`ddefc45fbc7f8e46dd73185e68295696d1297887`。上游规则仅在其适用范围内使用；此文件不作为本仓库 AGENTS。
+
+# Agent Note: 作者审批积分
+
+Status: implemented
+
+[English](2026-09-16-author-approval-credit-e38a5150a8.md) | 中文
+
+## Problem
+
+审批策略需要让作者经验贡献足够的积分，使有经验的作者与一位普通审阅者能够共同满足两分要求。
+
+## Decision
+
+[审批策略](../repository/readme-d90e0e7bcf.md)为作者在本仓库中每个已合并 PR 计入 0.011 分，达到 100 个 PR 时以 1.1 分封顶。历史查询在找到 100 个匹配 PR 后停止。仅靠作者积分仍不足以通过审批，阻塞性审阅仍会阻止通过。
+
+## Alternatives considered
+
+**保留 150 个 PR 时封顶 0.6 分的规则。** 在没有代码所有权加分的情况下，该上限与普通审阅的一分相加仍无法满足要求。
+
+## Consequences
+
+没有代码所有权加分时，一次普通批准与 91 个已合并 PR 的作者积分相加即可满足要求；90 个则只有 1.99 分。较低的计数上限减少了高贡献作者所需的历史遍历。已合并 PR 数量衡量贡献历史，而非审阅质量。
+
+## Verification
+
+策略测试覆盖积分低于、达到及超过上限的情况、90/91 个 PR 的审批阈值、仅靠作者积分不能通过、分页，以及显示值舍入为两分但实际低于阈值的情况。
