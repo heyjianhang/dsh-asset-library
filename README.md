@@ -1,107 +1,110 @@
-# DSH Plugin Devkit
+# 素材库
 
-面向 AI Agent 和开发者的 DeepSeek Harness 插件开发工具箱：提供开发规范、渐进式 Skills、完整官方文档同步、文档模板与验证工具。
+DSH 原生插件：管理本地或 S3 中的图片、视频，用文件名、标签、备注或火山多模态向量搜索。本机保存索引，一个文件夹对应一个库；ZIP 可完整迁移。点素材打开右侧详情；收藏夹按项目或用途整理，同一素材可归入多个收藏夹，不重复复制原文件。
 
-An agent-oriented development kit for DeepSeek Harness plugins, with progressive-disclosure skills, a complete upstream Markdown reference, and repeatable documentation sync.
+当前版本 0.6.5 为试用版，未发布到 npm。目标宿主 DSH 0.2.0-rc.2，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
 
-当前提供开发规则、手写开发流程 Skill、自动同步的官方参考 Skill、文档模板和检查脚本。它尚不是可安装的 DSH 业务插件。
+## 安装与使用
 
-开发流程 Skill 由本仓库编写，参考并适配官方规范；官方参考 Skill 保留自动同步的原文。两者均由本仓库组织，不是官方认证或发行的 Skill。[来源映射](docs/source-map.md) 列出采用方式和本地约定。
+在 DSH 的“插件 → 添加插件”中，可以填入下面任意一种安装来源：
 
-## 快速开始
+- 本机安装包：构建好的 `dsh-asset-library-0.6.5.tgz` 的绝对路径。
+- 本机源码目录：先在仓库执行 `npm ci && npm run build`，再填入仓库的绝对路径。
+- GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。这是私有仓库，安装器所在机器的 Git 必须具备该仓库读取权限；账户只有浏览器登录状态不保证 Git 已认证。建议安装时固定提交：`github:heyjianhang/dsh-asset-library#<commit>`。
 
-需要 Git 和 Node.js 22 或更高版本，无需安装 npm 依赖。
+仓库包含 `prepare` 构建钩子，Git 安装时生成 `lib/`。DSH 若提示构建脚本待批准，核对来源后仅允许列出的具体包，再重试。直接输入 `dsh-asset-library` 会访问 npm；本项目尚未发布到 npm，不能用裸包名安装。
 
-```sh
-git clone https://github.com/heyjianhang/dsh-plugin-devkit.git
-cd dsh-plugin-devkit
-node scripts/check-base.mjs
-node .agents/skills/dsh-official-reference/scripts/verify-local.mjs
-```
-
-然后让开发 Agent 读取根目录 [AGENTS.md](AGENTS.md)，描述你的插件需求。项目结构随需求确定，不预建业务后端、数据库或前端骨架。
-
-## 渐进式读取
-
-资料完整保存在仓库中，读取按任务展开：Skill 名称与描述 → Skill 入口 → 主题索引 → 来源目录索引（内容较多时）→ 具体文档。可按关键词检索，不要求一次加载全部参考资料。
-
-- `dsh-plugin-development`：开发前准备、需求与结构决策、文档维护、实施和验收；与本仓库的规范及模板配合使用。
-- `dsh-official-reference`：全部官方 Markdown/MDX、原始正文、来源哈希与覆盖报告；更新脚本随 Skill 携带，可以单独复制使用。
-
-历史记录、提案与测试快照单独导航，不作为当前接口或项目规则。当前数量与来源提交以 [覆盖报告](.agents/skills/dsh-official-reference/coverage.md) 为准。
-
-## 一键更新官方资料
+CLI 安装本地包：
 
 ```sh
-node scripts/sync-official-skill.mjs
+dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.5.tgz
 ```
 
-默认获取官方默认分支的最新提交，生成 [官方参考 Skill](.agents/skills/dsh-official-reference/SKILL.md)。全仓库 Markdown/MDX 均收录，保留各语言原文并检查遗漏；相同版本重复运行不会重写文件，手写规范不受影响。可用 `--check` 只检查、`--ref` 指定版本、`--transport gh` 使用已有 GitHub CLI 登录。完整说明见 [文档同步](docs/official-skill-sync.md)。
+选择实际使用的 profile。首次安装需下载依赖；FFmpeg/FFprobe 平台包可能触发宿主的脚本批准提示，查看后按宿主流程重试。macOS ARM64 的两个脚本仅 chmod 随包二进制；不要关闭全局检查。Windows 未实机验证。
 
-生成脚本和来源配置就在 Skill 内，整个 Skill 可单独复制使用。完整范围与当前计数见 [覆盖报告](.agents/skills/dsh-official-reference/coverage.md)。离线完整性检查：`node .agents/skills/dsh-official-reference/scripts/verify-local.mjs`。
+## 仓库结构
 
-## 开始一个项目
+```text
+src/host/             文件、索引、存储与任务队列
+src/client/           DSH 原生页面与交互
+src/shared/           Host/Client 共享接口
+tests/                业务与状态测试
+scripts/              构建与分发检查
+docs/                 设计、迁移与验证记录
+.github/workflows/    CI 检查及安装包产物
+.agents/skills/       继承自开发工具箱的开发规范与上游参考
+cordis.patch.yml      DSH 插件加载入口
+package.json          插件元数据、依赖和脚本
+lib/                  构建生成，不提交到 Git
+```
 
-复制本仓库的工作文件或使用托管平台的模板功能创建自己的仓库，然后给开发 Agent 描述需求，例如：
+开发资料只随源码仓库保留，不进入安装包。素材库数据、API Key、S3 凭据、测试 profile 和个人素材位于仓库之外。`template` 远程仅记录开发工具箱来源，`origin` 指向此插件的独立仓库。
 
-> 请先阅读 AGENTS.md，使用仓库中的 dsh-plugin-development Skill。我要一个收藏参考链接的 DSH 插件，用户能通过页面添加，Agent 能查询。先检查环境、明确需求和验收，确定合适结构，更新必要的项目规则与文档，再继续开发。
+## 使用
 
-仓库内的 `.agents/skills/` 是项目开发指导。Agent 是否自动发现取决于客户端；不支持自动发现时，明确让它读取 [AGENTS.md](AGENTS.md) 和 [Skill](.agents/skills/dsh-plugin-development/SKILL.md)。无需为了使用本仓库而安装全局 Skill。
+1. 从侧边栏进入“素材库”，新建空文件夹库或打开已有库。“返回”恢复此前宿主面板。顶部右侧可收起侧栏，折叠后通过图标栏展开或切换素材、收藏、最近导入、搜索及任务中心。
+2. 桌面端通过宿主目录选择器选择文件夹；不提供选择器的 Web 宿主可输入宿主机器上的绝对路径。
+3. 导入 JPG、PNG、WebP、MP4、MOV、MKV、WebM。复制原文件并按 SHA-256 去重，后台生成预览和 AI 索引。
+4. 卡片星标在悬停或键盘聚焦时显示，触屏保留可见入口。点击星标选择收藏夹，加入任意收藏夹即为已收藏，“全部收藏”汇总所有收藏夹。默认收藏夹固定保留，旧版收藏自动迁入；在“收藏夹”旁点击 + 创建分类。选择器支持搜索、多选并自动保存；详情只展示已选项。自建收藏夹仅在左侧栏提供重命名、删除，不显示素材数量。删除只移除分组与归属，不删除素材。
+5. AI 搜索默认开启，之后记住用户选择；搜索弹窗输入框右侧星形按钮切换 AI，激活时显示渐变底色，悬停或聚焦显示“AI 搜索已开启 / AI 搜索已关闭”。普通搜索在停止输入 250ms 后更新，AI 搜索约 700ms 后自动查询；无需点击搜索按钮。继续输入会取消旧请求，输入法组词期间暂停查询。等待时结果区域显示骨架占位，避免内容区闪空。支持当前库/全部库。AI 开启后，输入画面描述会调用模型。
+6. 在 DSH 原生“设置 → 素材库”配置存储、AI 与任务。配置统一从 DSH 原生设置进入，素材库侧栏不另设设置按钮。选本地仅显示默认文件夹，选 S3 才展开连接配置；常规设置自动保存，密钥单独保存。火山默认模型 doubao-embedding-vision-251215，需要账号模型权限。“保存并测试”会发起一次可能计费的文本嵌入请求。
+7. 任务中心支持暂停、继续、取消和重试。429、网络、5xx 自动有限退避重试；鉴权或格式错误显示原因，修正后重试。
 
-开发流程：
+API Key 保存在本机 DSH credentials，不写进库文件。AI 索引把素材画面发送到配置的火山 API；AI 搜索发送查询文本。普通搜索不调用模型。
 
-1. 读取现状和需求，识别此次任务的未知点。
-2. 选择实际需要的 DSH 能力，核对目标版本和可用工具。
-3. 按任务规模确定文件结构，建立或更新必要文档与长期约束。
-4. 实现一条可以安装和验证的完整路径，依据实际结果迭代。
-5. 同步代码、文档和验证记录，使后续会话能够接续。
+进入普通列表即可用方向键选择，无需先点击卡片；搜索结果同样支持方向键选择，空格快速预览，再按空格或 Esc 关闭；预览内可继续用方向键切换。卡片高亮跟随鼠标或方向键，使用灰色底和细灰边线；搜索结果保持单行灰色高亮。彻底关闭搜索后清空查询，再次打开从空搜索框和最近导入列表开始；从预览返回则保留当前查询和结果。搜索框按向下键进入结果，关闭预览保留搜索词、结果、滚动和选中位置。视频控件获得焦点后，空格遵循原生播放/暂停行为；文本输入中的空格正常输入。Esc 依次关闭最上层弹窗、详情，返回全部素材，再返回宿主。修改暂停输入 500ms 后保存，失焦或切换卡片时立即提交；失败保留草稿并显示重试。未确认保存的草稿暂存当前浏览器，跨电脑迁移前需确认保存成功。
 
-小修复可在原文档内完成准备；只有复杂或跨会话任务才需要单独计划。准备完成后继续开发，不等待额外的“开始”指令。
+点击主列表或搜索弹窗中的“筛选”，展开右侧配置面板。类型、收藏、收藏夹、标签、导入时间可组合筛选；标签提供可搜索多选项，不需要输入逗号。普通列表工具栏提供排序：最近/最早添加、文件名、文件从大到小；有查询时搜索固定按相关度排序，不提供排序控件；未输入时展示最多 8 个最近导入的素材，仅查询本地索引，不调用 AI。修改即时生效，有筛选时工具栏直接显示“重置”，面板标题栏也保留重置；清空筛选但保留排序。卡片与搜索结果不展示标签，标签在详情中管理。详情隐藏内部文件编码路径。
 
-## 本 base 的内容
+迁移完成或失败使用 DSH 全局浮动通知，约 5 秒后消失，离开素材库页面仍会显示。任务中心与设置页只显示未完成或失败的任务；已完成和已取消的记录自动隐藏。
 
-| 入口 | 用途 |
-| --- | --- |
-| [AGENTS.md](AGENTS.md) | 稳定约束、工作入口和当前可用命令 |
-| [开发 Skill](.agents/skills/dsh-plugin-development/SKILL.md) | 根据任务阶段选择流程与资料 |
-| [官方参考 Skill](.agents/skills/dsh-official-reference/SKILL.md) | 按主题读取自动同步的官方原文 |
-| [文档同步](docs/official-skill-sync.md) | 更新、固定版本、来源配置与故障处理 |
-| [文档规范](docs/documentation-standard.md) | 文档职责、开发前记录、接口说明、状态证据和更新要求 |
-| [来源映射](docs/source-map.md) | 哪些来自官方、如何适配、哪些由本仓库自行约定 |
-| [上游资料](docs/upstream.md) | 固定提交的官方文档与有边界的社区参考 |
-| [完整准备示例](examples/preparation-reference.md) | 展示需求如何对应设计、文件影响和验收，不是业务实现 |
-| [项目说明模板](templates/project-brief.md) | 需求、边界、结构、兼容基线和验收合并记录 |
-| [变更计划模板](templates/change-plan.md) | 非简单任务的范围、步骤、验证与接续位置 |
-| [项目规则模板](templates/project-rules.md) | 将长期约束补充到 AGENTS.md 的示例字段 |
-| [插件使用说明模板](templates/plugin-readme.md) | 按真实包类型说明安装、使用、模型能力与限制 |
-| [Agent 场景](docs/agent-scenarios.md) | 检验流程能否应对不同任务，而非只检验文档格式 |
-| [状态](docs/base-status.md) | 已做检查、未覆盖范围和后续工作 |
+## 本地与 S3 存储
 
-这些是开发资料的位置，不规定插件必须有 `src/`、`client/`、数据库或后端服务。业务文件按需求产生；本仓库也没有预建插件 manifest、包管理器锁文件或空业务目录。
+本地模式可选择新素材库的默认父文件夹，新建库时自动建议独立子文件夹；已有库不移动。每次新建或导入 ZIP 仍可单独选择模式与位置。
 
-## 检查这个 base
+S3 模式填写 Endpoint、区域、Bucket、对象前缀、Access Key ID、Secret Access Key；支持可选 Session Token 和路径风格。AWS 可留空 Endpoint；远程 Endpoint 要求 HTTPS，只有本机测试允许 HTTP。Bucket 需预先创建。“测试 S3 连接”验证 Bucket 访问；实际读写权限在传输时校验。上传与下载通过宿主执行，浏览器不接触 S3 密钥。分片上传需允许 PutObject、GetObject、AbortMultipartUpload；连接测试使用 HeadBucket。
 
-需要 Node.js 22 或更高版本。脚本只使用 Node 标准库，无需安装 npm 依赖。
+每个库固定自己的连接地址和前缀，后来修改默认连接不会移动旧库。凭据按连接保存到 DSH credentials，原件、预览在私有 Bucket，本机保留 SQLite 索引和可重建预览缓存。索引处理时暂存原文件，S3 上传确认成功后移除本地原件；失败仍保留文件，修正配置后在任务中心重试。不是跨电脑同步库，不允许多个电脑直接共享同一份 SQLite。
+
+## ZIP 导出与导入
+
+库选择菜单或原生设置“素材库与迁移”中：
+- **导出 ZIP**：选择输出文件夹，加入迁移队列。后台收集原文件、封面、收藏夹、标签、备注与向量，S3 文件也会下载打包；不包含密钥、本机配置、锁和临时上传。导出期间暂缓该库索引，完成后恢复。
+- **导入 ZIP**：选择插件导出的 ZIP，填写尚不存在的新库目录，再选择本地或 S3。先分块传入宿主，随后后台解压、验证 SHA-256 并建立独立库身份。导入 S3 会继续排队上传云端。
+- 任务中心显示进度、失败、取消与重试，完成或失败有插件通知。关闭页面不停止已排队任务；退出宿主后迁移任务暂停，重开可重试。ZIP 文件尚未传完时关闭浏览器，需要重新选择文件。
+- ZIP 不与现有库合并。缺少索引的素材导入本地后保持暂停，用户可手动重试；已有匹配模型的向量可继续搜索。
+
+ZIP64 流式处理，导入上限为 20 万个文件、解压后合计 1 TiB、单文件 100 GiB、目录元数据 64 MiB。打包需要本机临时空间和 ZIP 输出空间；不支持把任意文件 ZIP 当作素材库导入。S3 模式换电脑请使用完整 ZIP，单独复制本地索引文件夹不包含云端原件。
+
+本地库仍可安全关闭后整体复制文件夹：
+
+```text
+我的素材库/
+  library.json     身份、格式、非敏感存储绑定
+  library.sqlite   素材、向量、收藏夹、任务与通知
+  originals/       本地原文件或尚未确认上传的 S3 原件
+  previews/        预览与视频抽帧缓存
+  staging/         尚未完成的导入
+```
+
+同一个库仅允许一个进程打开，运行中不要直接压缩 SQLite 文件。关闭时 checkpoint 并释放锁。卸载插件不会删除库。ZIP 任务和输入暂存位于本机插件数据目录，不进入库；目前未提供历史任务和缓存清理界面。
+
+## 当前限制
+
+- 视频是每个时段中点帧的视觉索引，返回命中时间段；没有音轨转写或运动理解，短暂画面可能漏检。
+- 原文件预览上限 256 MiB，超出可导出 ZIP 后打开原件；本地模式也可从库文件夹打开。预览通过宿主 RPC 分块传输。
+- 已导入后的处理任务可恢复；文件传输中途退出，需要重新选择文件导入。未完成内容保留在 staging，目前无清理界面。
+- 更换模型、地址、分段长度后须重试任务重建；不同配置的向量不会混用。
+- 收藏夹目前为一层逻辑分类，不映射硬盘目录。向量存 SQLite 并逐条评分，尚无大库性能验证。
+- 插件内持久化通知，尚无操作系统通知；任务中心从最近 500 项记录中显示待处理与失败任务。
+- S3 仅使用本机协议服务验证，未连接真实云账户；未调用真实火山账号，未测试 Windows 桌面与原生文件夹选择器。勿把协议替身测试视为真实检索质量验证。
+
+## 开发
 
 ```sh
-node scripts/check-base.mjs
-node scripts/check-base.mjs --json
-node --test scripts/check-base.test.mjs
-node --test scripts/sync-official-skill.test.mjs
+npm ci
+npm run check
+npm pack
 ```
 
-检查脚本覆盖 Markdown 内联文件链接、引用定义、HTML 文件链接、根开发入口和 Skill 的基本发现字段；忽略代码块、行内代码、外部 URL 和页内锚点，不检查远端页面、锚点存在性或完整 YAML schema。检查范围为工作树中的 Markdown，跳过依赖、构建、版本库和本地运行数据目录，不跟随符号链接。
-
-脚本从自身位置定位仓库，允许从其他工作目录运行。失败返回非零状态，`--json` 提供机器可读结果。未来插件的构建、安装和业务测试需在选定宿主后另行建立；本检查不能替代它们。
-
-## 维护和使用边界
-
-更新官方资料时记录提交和适用范围，检查受影响的接口；无需每次开发追逐最新版本。社区资料作为可选参考，先核对版本、许可和适用场景，不批量安装或复制。
-
-开发 Skill 与业务运行内容分开。后续制作发布包时显式选择运行所需文件；如果业务插件需要向最终用户提供 Skill，按目标宿主的发现机制单独设计。
-
-当前可复用的是开发流程与资料；真实宿主加载、主题表现、Agent 行为测试和跨平台运行分别记录验证结果，不能由文档检查通过推断。
-
-## 许可与来源
-
-本项目原创代码、流程和模板采用 [MIT 许可证](LICENSE)。同步的 DeepSeek Harness 资料保留原作者归属及上游许可，详见 [第三方声明](THIRD_PARTY_NOTICES.md)。本项目由社区维护，与 DeepSeek 官方无隶属关系。
+[设计与验收](docs/asset-library.md)。源码根 AGENTS.md 和开发 Skill 为入口。基于 [DSH Plugin Devkit](https://github.com/heyjianhang/dsh-plugin-devkit)，保留其资料与许可。原创插件 MIT；FFmpeg/FFprobe 依赖遵循其各自许可证。

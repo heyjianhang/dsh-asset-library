@@ -1,8 +1,8 @@
 # DSH 插件开发入口
 
-仓库：`heyjianhang/dsh-plugin-devkit`；项目名称：DSH Plugin Devkit。
+Project: dsh-asset-library, based on heyjianhang/dsh-plugin-devkit.
 
-本仓库提供通用的 DeepSeek Harness 插件开发流程。业务目标、源码结构、技术选型由当前需求决定。已有项目在原结构上迭代，不为套用模板重排代码。
+本仓库是“素材库”独立插件，继承开发工具箱的流程与官方参考。业务源码分为 Host、Client 和 shared；沿用现有结构，不为套用模板重排代码。远程目标为 heyjianhang/dsh-asset-library 私有仓库，template 仅追溯工具箱来源，不向其推送。
 
 ## 开始工作
 
@@ -28,27 +28,55 @@
 - 原生界面通过目标版本支持的 Slots、公共组件、主题与语言机制接入。前端、工具等多个入口若操作同一业务，复用同一业务校验与数据所有者。
 - 注册、订阅、定时器和自有进程有明确生命周期；验证与本次修改相关的禁用、重载和退出行为。
 
-## 当前状态与真实命令
+## 当前项目约束
 
-目前有开发流程、官方参考生成器、参考资料、文档模板和检查脚本。尚无业务插件、已选择的宿主运行基线或 DSH 构建/安装命令。
+用户要求：名称固定“素材库”，是 DSH 原生插件；托管本地多库，搜索弹窗右侧 AI 开关，点击素材打开右侧详情，允许创建收藏夹。不得替换成独立网页。
 
-- `node scripts/check-base.mjs`：检查本仓库 Markdown 文件链接及 Skill 入口。
-- `node --test scripts/check-base.test.mjs`：测试检查脚本的有效输入、失败检测及退出状态。
-- `node scripts/sync-official-skill.mjs`：联网同步并生成官方参考 Skill；`--check` 只读检查，`--ref` 固定版本。行为和来源范围见 [同步说明](docs/official-skill-sync.md)。
-- `node .agents/skills/dsh-official-reference/scripts/verify-local.mjs`：离线核对全部文档覆盖、原文与产物哈希；查看 [覆盖报告](.agents/skills/dsh-official-reference/coverage.md)。
-- `node --test scripts/sync-official-skill.test.mjs`：离线测试生成、更新、失败和回退。
-- 检查与测试不安装依赖、不启动宿主；只有同步命令联网。使用 Node.js 22 或更高版本；实际验证环境见 [base 状态](docs/base-status.md)。
+用户补充：卡片与搜索结果不展示标签，详情不展示内部哈希路径；空格预览采用紧凑媒体浮层；搜索取消提交按钮，输入防抖自动查询；库选择箭头位于右端；增加即时筛选侧栏。
 
-首次业务开发时核对并选择项目依赖和包管理器，建立实际可执行的命令后更新本节。只有需要前端构建时才引入对应工具链。
+用户确认：配置接入 DSH 原生设置；支持本地或 S3。S3 保存原文件和预览，本机保存索引；通过完整 ZIP 导出/导入迁移。凭据不得进入导出包。
 
-## 当前项目文档入口
+用户补充：AI 搜索默认开启，提示仅显示简短开关状态；完成任务通过 DSH 通知提示，不常驻设置页。筛选不含 AI 索引，标签支持搜索多选，普通列表排序独立可见。收藏夹弹窗上下留白均衡，仅侧栏提供重命名和删除，选择器只负责勾选；收藏夹不显示素材数量。素材库侧栏不设置独立“设置”按钮，配置统一从 DSH 原生设置进入。删除收藏夹不删除素材。
 
-- [base 说明](README.md)
-- [官方与社区资料索引](docs/upstream.md)
-- [本地规则与官方来源映射](docs/source-map.md)
+用户补充：界面不堆叠用途介绍、操作复述或重复占位文字的说明。保留必要的错误、处理状态、筛选语义与操作后果提示，文案保持简短。
+
+用户补充：任务中心与设置均不常驻已完成或已取消的任务；完成后仅通过 DSH 通知提示。待处理、暂停与失败任务保留可用操作，不另加历史列表。
+
+用户补充：搜索固定相关度、不显示排序；普通列表与搜索结果支持方向键和空格预览，关闭预览保留查询、结果及焦点；彻底关闭搜索则清空查询，再次打开不恢复上次查询，空搜索框展示最近导入的素材。收藏统一为默认收藏夹与自建收藏夹，加入任意收藏夹即为已收藏；已有收藏迁入默认收藏夹。默认收藏夹不可删除或改名，自建收藏夹管理仍只放侧栏。
+
+用户补充：素材卡片用灰色背景和细灰边线表示当前项，搜索结果用灰色背景；鼠标与键盘共用一个当前项，避免同时出现两个高亮。进入列表即可用方向键开始选择，不需要先点击卡片；输入、媒体及弹层控件保留自身键盘行为。
+
+用户补充：素材库侧栏支持展开和折叠，使用 DSH 原生布局接口；展开时顶部有收起按钮，折叠后保留图标导航和展开入口。
+
+项目选择：库→一层逻辑收藏夹，多对多引用，不重复文件；标签描述内容。共享接口由 src/shared/contracts.ts 维护，Host 是 UI/工具唯一业务所有者。密钥仅存 DSH credentials，不写进库。手动搬移目录前关闭并 checkpoint；完整 ZIP 使用受控快照导出。
+
+目标 DSH 0.2.0-rc.2 / Cordis 4.0.5。UI 使用宿主 Primitives/Slots/Locale/token。对现有库升级须保留数据；不修改开发机个人 DSH profile 或用户宿主 checkout。安装验证使用独立 DSH_HOME/profile。
+
+## 实际命令
+
+Node ≥22.19，npm + package-lock.json：
+
+- npm ci：安装依赖。
+- npm run check：类型检查、业务测试、构建。
+- npm pack：可安装 tgz。
+- npm run prepare：Git 安装时构建 Host/Client；需按宿主提示精确允许构建脚本。
+- npm run check:package：核对构建入口与 npm 分发内容。
+- node scripts/check-base.mjs：文档链接检查。
+- node .agents/skills/dsh-official-reference/scripts/verify-local.mjs：官方参考完整性。
+
+资料检查不能替代真实插件安装与交互验证，原始生成参考不手工编辑。
+
+## 项目文档
+
+- [安装与使用](README.md)
+- [需求、验收和架构](docs/asset-library.md)
+- [验证与未覆盖项](docs/asset-library-verification.md)
+- [原工具箱资料索引](docs/upstream.md)
 - [文档规范](docs/documentation-standard.md)
-- [已验证范围与后续验收](docs/base-status.md)
-- [Agent 场景验收方法](docs/agent-scenarios.md)
-- [官方资料同步实现记录](docs/tasks/official-skill-sync.md)
+- [工具箱历史检查](docs/base-status.md)
 
-本节目前没有业务需求与架构文档。首次业务任务按需建立并登记；可参考 [项目说明模板](templates/project-brief.md)。
+收藏夹导航整行统一高亮，内部文字按钮及菜单按钮不叠加背景或独立焦点环；每行宽度一致，保留行间距。
+
+搜索初始页展示最近导入，空库和无结果保持紧凑空态。鼠标真实移动才接管当前项，静止指针不能抢回方向键选择；输入框保持文本编辑，方向键从当前悬停项继续导航。
+
+用户补充：卡片收藏星标只在悬停或键盘聚焦时显示，触屏保留入口；搜索等待显示结果骨架占位。有效筛选时主列表和搜索工具栏直接提供重置，面板内重置并入标题行。
