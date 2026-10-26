@@ -1,5 +1,17 @@
 # 验证记录
 
+## 仓库同步与 Git 安装（2026-10-26）
+
+已创建私有仓库 heyjianhang/dsh-asset-library，origin 指向该仓库；template 仍为只读工具箱来源。新增 prepare 构建钩子、分发内容检查与 GitHub CI，开发参考资料保留在源码仓库但不进入安装包。
+
+本地完整检查通过：类型检查、24/24 测试和构建。GitHub 首次 CI 的业务测试全部通过，但 npm 10 在 dry-run 的 JSON 前输出 prepare 日志，导致分发检查解析失败；修复检查脚本后，提交 7fef8c1 的 CI 全部通过并生成 tgz artifact。
+
+使用全新 DSH_HOME/profile，通过官方 CLI 从私有 GitHub 提交 4fdb3b4 安装，首次遇到预期的脚本批准门槛：仅允许该精确 Git 提交的构建，以及已核对的 FFmpeg/FFprobe 两个 macOS ARM64 精确版本（仅 chmod），随后安装 exitCode=0。Git 安装生成的 Host/Client 与本地实测产物逐字节一致；后续 7fef8c1 仅修改分发检查脚本，未改变运行代码。
+
+测试 profile 显式选择 base、web-app 和素材库 bundle，在独立 4319 端口启动；原生侧栏出现素材库，进入后显示空库的新建/打开入口，浏览器 error 日志为空。CLI add 只负责安装依赖，bundle 选择在测试中显式配置；图形安装器的 installBundle 默认启用 bundle。本轮没有声称逐按钮验证图形安装向导。截图“素材库-GitHub安装验证.png”。验证后关闭临时宿主，原 4318 预览继续运行。
+
+私有仓库安装需要宿主机器的 Git 读取权限；仅浏览器登录不保证满足。未发布 npm，裸包名不能作为安装来源；Windows 实机安装仍未覆盖。
+
 ## 0.6.5 收藏入口、搜索占位与筛选重置（2026-10-26）
 
 - 仅修改 Client，Host/Client 类型检查、构建和官方 CLI 隔离安装通过。卡片收藏按钮不再因为已收藏而常驻，悬停或键盘焦点显示；无 hover 的触屏设备保留入口。实际 DOM 检查 6 张卡片（含 3 个已收藏）静止时按钮 opacity=0、pointer-events=none；方向键选中卡片后 Tab 可进入收藏按钮，opacity=1。触屏策略本轮仅静态核对。

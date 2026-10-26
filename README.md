@@ -20,6 +20,8 @@ CLI 安装本地包：
 dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.5.tgz
 ```
 
+CLI `add` 安装依赖后，还需在插件页启用该 bundle；如果自行管理 profile，则将 `dsh-asset-library` 加入该 profile 的 `dsh.profile.bundles`。图形界面的“添加插件”默认完成安装并启用。
+
 选择实际使用的 profile。首次安装需下载依赖；FFmpeg/FFprobe 平台包可能触发宿主的脚本批准提示，查看后按宿主流程重试。macOS ARM64 的两个脚本仅 chmod 随包二进制；不要关闭全局检查。Windows 未实机验证。
 
 ## 仓库结构
