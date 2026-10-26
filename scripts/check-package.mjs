@@ -11,11 +11,11 @@ const required = [
   "LICENSE",
 ].map((path) => path.replace(/^\.\//, ""));
 for (const path of required) assert((await readFile(path)).length > 0, path);
-const [pack] = JSON.parse(
-  execFileSync(process.platform === "win32" ? "npm.cmd" : "npm", [
+const output = execFileSync(process.platform === "win32" ? "npm.cmd" : "npm", [
     "pack", "--dry-run", "--json", "--ignore-scripts",
-  ], { encoding: "utf8", shell: process.platform === "win32" }),
-);
+  ], { encoding: "utf8", shell: process.platform === "win32" });
+// npm 10 can print prepare-script output before its JSON, even in dry-run mode.
+const [pack] = JSON.parse(output.slice(output.lastIndexOf("\n[") + 1));
 const files = pack.files.map(({ path }) => path);
 for (const path of required) assert(files.includes(path), `Missing ${path}`);
 for (const path of files) {
