@@ -2,7 +2,7 @@
 
 Project: dsh-asset-library, based on heyjianhang/dsh-plugin-devkit.
 
-本仓库是“素材库”独立插件，继承开发工具箱的流程与官方参考。业务源码分为 Host、Client 和 shared；沿用现有结构，不为套用模板重排代码。远程目标为 heyjianhang/dsh-asset-library 私有仓库，template 仅追溯工具箱来源，不向其推送。
+本仓库是“素材库”独立插件，继承开发工具箱的流程与官方参考。业务源码分为 Host、Client 和 shared；沿用现有结构，不为套用模板重排代码。远程为 heyjianhang/dsh-asset-library 公开仓库，template 仅追溯工具箱来源，不向其推送。
 
 ## 开始工作
 
@@ -50,7 +50,7 @@ Project: dsh-asset-library, based on heyjianhang/dsh-plugin-devkit.
 
 项目选择：库→一层逻辑收藏夹，多对多引用，不重复文件；标签描述内容。共享接口由 src/shared/contracts.ts 维护，Host 是 UI/工具唯一业务所有者。密钥仅存 DSH credentials，不写进库。手动搬移目录前关闭并 checkpoint；完整 ZIP 使用受控快照导出。
 
-目标 DSH 0.2.0-rc.2 / Cordis 4.0.5。UI 使用宿主 Primitives/Slots/Locale/token。对现有库升级须保留数据；不修改开发机个人 DSH profile 或用户宿主 checkout。安装验证使用独立 DSH_HOME/profile。
+目标 DSH 0.2.1-rc.3 / Cordis 4.0.5。UI 使用宿主 Primitives/Slots/Locale/token。对现有库升级须保留数据；不修改开发机个人 DSH profile 或用户宿主 checkout。安装验证使用独立 DSH_HOME/profile。
 
 ## 实际命令
 
@@ -81,3 +81,5 @@ Node ≥22.19，npm + package-lock.json：
 用户补充：卡片收藏星标只在悬停或键盘聚焦时显示，触屏保留入口；搜索等待显示结果骨架占位。有效筛选时主列表和搜索工具栏直接提供重置，面板内重置并入标题行。
 
 项目分发约定：lib/ 构建产物随 Git 提交；不得添加 prepare、prepack 等安装生命周期构建钩子。修改运行源码后重建 lib/ 并一同提交，CI 校验产物无差异，避免私有 Git 安装依赖插件构建白名单。
+
+兼容基线：开发依赖与运行声明固定为 DSH 0.2.1-rc.3。发布前运行 npm run check:compatibility，使用已安装官方 app-boot 的真实兼容检查器；不得仅放宽版本范围或配置 allow-version 来使安装通过。
