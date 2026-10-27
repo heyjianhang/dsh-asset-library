@@ -2,22 +2,22 @@
 
 DSH 原生插件：管理本地或 S3 中的图片、视频，用文件名、标签、备注或火山多模态向量搜索。本机保存索引，一个文件夹对应一个库；ZIP 可完整迁移。点素材打开右侧详情；收藏夹按项目或用途整理，同一素材可归入多个收藏夹，不重复复制原文件。
 
-当前版本 0.6.6 为试用版，未发布到 npm。目标宿主 DSH 0.2.0-rc.2，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
+当前版本 0.6.7 为试用版，未发布到 npm。目标宿主 DSH 0.2.0-rc.2，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
 
 ## 安装与使用
 
 在 DSH 的“插件 → 添加插件”中，可以填入下面任意一种安装来源：
 
-- 本机安装包：构建好的 `dsh-asset-library-0.6.6.tgz` 的绝对路径。
+- 本机安装包：构建好的 `dsh-asset-library-0.6.7.tgz` 的绝对路径。
 - 本机源码目录：先在仓库执行 `npm ci && npm run build`，再填入仓库的绝对路径。
 - GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。这是私有仓库，安装器所在机器的 Git 必须具备该仓库读取权限；账户只有浏览器登录状态不保证 Git 已认证。建议安装时固定提交：`github:heyjianhang/dsh-asset-library#<commit>`。
 
-仓库包含 `prepare` 构建钩子，Git 安装时生成 `lib/`。DSH 若提示构建脚本待批准，核对来源后仅允许列出的具体包，再重试。直接输入 `dsh-asset-library` 会访问 npm；本项目尚未发布到 npm，不能用裸包名安装。
+仓库已提交构建好的 `lib/`，Git 安装直接使用 Host/Client 产物，不执行本插件的构建脚本，也不需要为插件添加 `allowBuilds`。直接输入 `dsh-asset-library` 会访问 npm；本项目尚未发布到 npm，不能用裸包名安装。
 
 CLI 安装本地包：
 
 ```sh
-dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.6.tgz
+dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.7.tgz
 ```
 
 CLI `add` 安装依赖后，还需在插件页启用该 bundle；如果自行管理 profile，则将 `dsh-asset-library` 加入该 profile 的 `dsh.profile.bundles`。图形界面的“添加插件”默认完成安装并启用。
@@ -37,7 +37,7 @@ docs/                 设计、迁移与验证记录
 .agents/skills/       继承自开发工具箱的开发规范与上游参考
 cordis.patch.yml      DSH 插件加载入口
 package.json          插件元数据、依赖和脚本
-lib/                  构建生成，不提交到 Git
+lib/                  随 Git 分发的构建产物，CI 校验与源码一致
 ```
 
 开发资料只随源码仓库保留，不进入安装包。素材库数据、API Key、S3 凭据、测试 profile 和个人素材位于仓库之外。`template` 远程仅记录开发工具箱来源，`origin` 指向此插件的独立仓库。
@@ -106,7 +106,7 @@ ZIP64 流式处理，导入上限为 20 万个文件、解压后合计 1 TiB、�
 ```sh
 npm ci
 npm run check
-npm pack
+npm run pack:release
 ```
 
 [设计与验收](docs/asset-library.md)。源码根 AGENTS.md 和开发 Skill 为入口。基于 [DSH Plugin Devkit](https://github.com/heyjianhang/dsh-plugin-devkit)，保留其资料与许可。原创插件 MIT；FFmpeg/FFprobe 依赖遵循其各自许可证。

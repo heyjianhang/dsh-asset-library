@@ -1,6 +1,6 @@
 {
   "name": "dsh-asset-library",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "素材库：可迁移的本地图片和视频库",
   "type": "module",
   "license": "MIT",
@@ -43,10 +43,9 @@
     "typecheck": "tsc -p tsconfig.host.json && tsc -p tsconfig.client.json",
     "test": "node --import tsx --test tests/*.test.ts",
     "check": "npm run typecheck && npm test && npm run build",
-    "prepack": "npm run build",
     "format": "prettier --write src tests scripts/build-plugin.mjs",
-    "prepare": "npm run build",
-    "check:package": "node scripts/check-package.mjs"
+    "check:package": "node scripts/check-package.mjs",
+    "pack:release": "npm run build && npm run check:package && npm pack"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.5",

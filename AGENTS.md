@@ -58,8 +58,7 @@ Node ≥22.19，npm + package-lock.json：
 
 - npm ci：安装依赖。
 - npm run check：类型检查、业务测试、构建。
-- npm pack：可安装 tgz。
-- npm run prepare：Git 安装时构建 Host/Client；需按宿主提示精确允许构建脚本。
+- npm run pack:release：构建、检查并生成可安装 tgz；npm pack 仅打包已有产物。
 - npm run check:package：核对构建入口与 npm 分发内容。
 - node scripts/check-base.mjs：文档链接检查。
 - node .agents/skills/dsh-official-reference/scripts/verify-local.mjs：官方参考完整性。
@@ -80,3 +79,5 @@ Node ≥22.19，npm + package-lock.json：
 搜索初始页展示最近导入，空库和无结果保持紧凑空态。鼠标真实移动才接管当前项，静止指针不能抢回方向键选择；输入框保持文本编辑，方向键从当前悬停项继续导航。
 
 用户补充：卡片收藏星标只在悬停或键盘聚焦时显示，触屏保留入口；搜索等待显示结果骨架占位。有效筛选时主列表和搜索工具栏直接提供重置，面板内重置并入标题行。
+
+项目分发约定：lib/ 构建产物随 Git 提交；不得添加 prepare、prepack 等安装生命周期构建钩子。修改运行源码后重建 lib/ 并一同提交，CI 校验产物无差异，避免私有 Git 安装依赖插件构建白名单。
