@@ -458,6 +458,10 @@
   overflow-y: auto;
   min-height: 0;
 }
+.transferModal {
+  width: min(520px, 100%);
+  max-height: 100%;
+}
 .searchModal {
   width: min(760px, calc(100vw - 48px));
   max-width: 760px;
@@ -1226,42 +1230,44 @@
 }
 .settingsPage {
   width: 100%;
-  max-width: 840px;
+  max-width: 720px;
   min-width: 0;
-  margin: 0 auto;
-  padding: 12px 0 40px;
+  color: var(--dsw-alias-label-primary);
+  container-type: inline-size;
 }
 .settingsHeading {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 .settingsHeading h2 {
-  margin: 0 0 12px;
-  font-size: 22px;
-  font-weight: 600;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
 }
-.settingsHeading p,
-.settingSection > p,
-.settingRow p {
-  color: var(--dsw-alias-label-secondary);
-  line-height: 1.6;
-  margin: 4px 0 16px;
-  font-size: 13px;
+.settingsHeading > span {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-tertiary);
 }
 .settingSection {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--dsw-alias-border-l3);
-}
-.settingSection:last-of-type {
-  border-bottom: 0;
+  margin-bottom: 24px;
 }
 .settingSection h3 {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.settingCard {
+  padding: 14px 16px;
+  border: 0.5px solid var(--dsw-alias-settings-card-stroke);
+  border-radius: var(--dsw-radius-xl);
+  background: var(--dsw-alias-settings-card-fill);
+  min-width: 0;
 }
 .settingTitle,
 .settingRow {
@@ -1269,90 +1275,156 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  min-width: 0;
+}
+.settingTitle {
   margin-bottom: 12px;
 }
 .settingTitle h3 {
   margin: 0;
 }
-.settingRow p {
+.settingLabel,
+.settingRowText > span {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.settingRowText {
+  flex: 1;
+  min-width: 0;
+}
+.settingRowText > p,
+.settingHint {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-tertiary);
   margin: 4px 0 0;
 }
-.settingSection summary {
-  color: var(--dsw-alias-label-secondary);
-  cursor: pointer;
-  padding: 8px 0;
-  font-size: 13px;
+.settingRow > :last-child {
+  flex-shrink: 0;
 }
-.storageChoices {
-  display: grid;
+.settingBody {
+  border-top: 0.5px solid var(--dsw-alias-border-l2);
+  margin-top: 14px;
+  padding-top: 14px;
+}
+.settingsPage .form {
+  gap: 12px;
+}
+.settingsPage .form label {
+  min-width: 0;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+}
+.settingsPage .form label > span {
+  min-width: 0;
+}
+.settingsPage .twoColumns {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
-.storageChoices > button {
-  min-width: 0;
-  height: auto;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  white-space: normal;
-  text-align: left;
-  gap: 8px;
-  border-radius: 12px;
-}
-.storageChoices strong {
-  font-size: 14px;
-}
-.storageChoices span {
+.settingCredential {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 18px;
+  color: var(--dsw-alias-label-tertiary);
+}
+.settingCredential::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dsw-alias-label-tertiary);
+}
+.settingCredential[data-configured="true"]::before {
+  background: var(--dsw-alias-state-success-primary);
+}
+.settingActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.settingDisclosure {
+  border-top: 0.5px solid var(--dsw-alias-border-l2);
+  padding-top: 10px;
+}
+.settingDisclosure > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+  line-height: 18px;
   color: var(--dsw-alias-label-secondary);
 }
-.storageChoices .storageSelected {
-  background: var(--dsw-alias-interactive-bg-hover);
-  border-color: var(--dsw-alias-label-secondary);
+.settingDisclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.settingDisclosure > summary::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+}
+.settingDisclosure[open] > summary::before {
+  transform: rotate(45deg);
+}
+.settingDisclosureBody {
+  padding-top: 12px;
+}
+.settingDisclosureBody > label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .settingLibrary {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--dsw-alias-border-l3);
+  gap: 10px;
+  min-width: 0;
+  padding: 12px 0;
+}
+.settingLibrary:first-child {
+  padding-top: 0;
+}
+.settingLibrary:last-child {
+  padding-bottom: 0;
+}
+.settingLibrary + .settingLibrary {
+  border-top: 0.5px solid var(--dsw-alias-border-l2);
+}
+.settingLibrary > svg,
+.settingLibrary > button {
+  flex: none;
 }
 .settingLibrary > div {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
 }
 .settingLibrary strong {
   font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .settingLibrary span {
   font-size: 12px;
-  color: var(--dsw-alias-label-secondary);
-}
-.exportPath {
-  font-size: 12px;
-  color: var(--dsw-alias-label-secondary);
-  overflow-wrap: anywhere;
-  user-select: text;
-}
-@media (max-width: 720px) {
-  .storageChoices {
-    grid-template-columns: 1fr;
-  }
-  .settingsHeading {
-    flex-direction: column;
-  }
-  .settingTitle {
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
+  line-height: 18px;
+  color: var(--dsw-alias-label-tertiary);
 }
 .folderField {
   display: flex;
@@ -1365,6 +1437,27 @@
 }
 .folderField > button {
   flex-shrink: 0;
+}
+@container (max-width: 520px) {
+  .settingCard > .settingRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .settingCard > .settingRow > :last-child {
+    align-self: flex-start;
+  }
+}
+@container (max-width: 360px) {
+  .settingsPage .twoColumns {
+    grid-template-columns: 1fr;
+  }
+  .folderField {
+    flex-wrap: wrap;
+  }
+  .folderField > :first-child {
+    flex-basis: 100%;
+  }
 }
 
 /* Shared native menu controls and metadata filters. */

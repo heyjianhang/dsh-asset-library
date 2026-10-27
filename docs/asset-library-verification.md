@@ -1,5 +1,13 @@
 # 验证记录
 
+## 0.6.6 原生设置与跨存储 ZIP 复核（2026-10-27）
+
+- 设置页改用 DSH 原生分段切换、16px 标题、紧凑设置卡片和原生 Toast，删除大块存储选择卡片；本地和 S3 按选择显示各自字段。ZIP 导入/导出弹窗恢复原生底部间距，目录输入与选择按钮同排，导入选项明确为“导入后的存储方式”。
+- `npm run check` 通过：类型检查、24/24 业务测试、Host/Client 构建。随后仅调整迁移弹窗布局和文案，再次类型检查、构建通过；分发入口检查通过。
+- 本地→本地、本地→S3、S3→本地、S3→另一 S3 的完整 ZIP 测试通过。验证新库身份、原件和预览字节、收藏夹、标签、备注、收藏状态、匹配向量复用，以及改变默认存储和重新打开后库绑定不变。S3 导出后，删除源凭据仍可从完整 ZIP 恢复为本地库。
+- 官方 CLI 在隔离 DSH_HOME 的 creative-test profile 安装 0.6.6 tarball；4321 实际宿主加载正常。验证本地/S3 切换、普通配置自动保存与重启保留、迁移区和导入弹窗的目标存储选项。深色和浅色均实际检查，页面宽约 559px 无横向溢出；主题与默认 S3 设置已恢复原值。浏览器 error 日志为空。截图 asset-library-settings-local.png、asset-library-settings-s3.png、asset-library-settings-light.png、asset-library-import-dialog.png。
+- 未调用收费嵌入接口或连接真实云账号；真实 AWS/TOS/R2 兼容性及 Windows 实机仍未覆盖。导入到 S3 的解包任务与后续媒体上传是两个阶段，需等待后台上传完成。
+
 ## 仓库同步与 Git 安装（2026-10-26）
 
 已创建私有仓库 heyjianhang/dsh-asset-library，origin 指向该仓库；template 仍为只读工具箱来源。新增 prepare 构建钩子、分发内容检查与 GitHub CI，开发参考资料保留在源码仓库但不进入安装包。

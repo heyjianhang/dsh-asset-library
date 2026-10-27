@@ -89,7 +89,7 @@ export function TransferDialog(
         if (!busy) p.onClose();
       }}
       backdropBlur={false}
-      className={css.libraryModal}
+      className={css.transferModal}
       contentClassName={css.modalContent}
       footer={
         <>
@@ -123,38 +123,41 @@ export function TransferDialog(
         )}
         <label>
           {p.t(p.kind === "export" ? "exportFolder" : "newLibraryFolder")}
-          <Input
-            disabled={busy}
-            value={path}
-            onChange={(e) => setPath(e.target.value)}
-          />
+          <div className={css.folderField}>
+            <Input
+              disabled={busy}
+              value={path}
+              onChange={(e) => setPath(e.target.value)}
+            />
+            <Button
+              variant="outline"
+              disabled={busy}
+              onClick={() =>
+                void p
+                  .pickDirectory()
+                  .then((dir) => {
+                    if (dir)
+                      setPath(
+                        p.kind === "import"
+                          ? dir.replace(/[/\\]$/, "") +
+                              "/" +
+                              (file?.name.replace(/\.zip$/i, "") ??
+                                "Imported Library")
+                          : dir,
+                      );
+                  })
+                  .catch((e) => setError(e.message))
+              }
+            >
+              {p.t("chooseFolder")}
+            </Button>
+          </div>
         </label>
-        <Button
-          disabled={busy}
-          onClick={() =>
-            void p
-              .pickDirectory()
-              .then((dir) => {
-                if (dir)
-                  setPath(
-                    p.kind === "import"
-                      ? dir.replace(/[/\\]$/, "") +
-                          "/" +
-                          (file?.name.replace(/\.zip$/i, "") ??
-                            "Imported Library")
-                      : dir,
-                  );
-              })
-              .catch((e) => setError(e.message))
-          }
-        >
-          {p.t("chooseFolder")}
-        </Button>
         {p.kind === "import" && (
           <label>
-            {p.t("storageTitle")}
+            {p.t("importStorage")}
             <ChoiceMenu<"local" | "s3">
-              label={p.t("storageTitle")}
+              label={p.t("importStorage")}
               value={mode}
               disabled={busy}
               options={[

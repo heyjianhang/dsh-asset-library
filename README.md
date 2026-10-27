@@ -2,13 +2,13 @@
 
 DSH 原生插件：管理本地或 S3 中的图片、视频，用文件名、标签、备注或火山多模态向量搜索。本机保存索引，一个文件夹对应一个库；ZIP 可完整迁移。点素材打开右侧详情；收藏夹按项目或用途整理，同一素材可归入多个收藏夹，不重复复制原文件。
 
-当前版本 0.6.5 为试用版，未发布到 npm。目标宿主 DSH 0.2.0-rc.2，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
+当前版本 0.6.6 为试用版，未发布到 npm。目标宿主 DSH 0.2.0-rc.2，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
 
 ## 安装与使用
 
 在 DSH 的“插件 → 添加插件”中，可以填入下面任意一种安装来源：
 
-- 本机安装包：构建好的 `dsh-asset-library-0.6.5.tgz` 的绝对路径。
+- 本机安装包：构建好的 `dsh-asset-library-0.6.6.tgz` 的绝对路径。
 - 本机源码目录：先在仓库执行 `npm ci && npm run build`，再填入仓库的绝对路径。
 - GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。这是私有仓库，安装器所在机器的 Git 必须具备该仓库读取权限；账户只有浏览器登录状态不保证 Git 已认证。建议安装时固定提交：`github:heyjianhang/dsh-asset-library#<commit>`。
 
@@ -17,7 +17,7 @@ DSH 原生插件：管理本地或 S3 中的图片、视频，用文件名、标
 CLI 安装本地包：
 
 ```sh
-dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.5.tgz
+dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.6.tgz
 ```
 
 CLI `add` 安装依赖后，还需在插件页启用该 bundle；如果自行管理 profile，则将 `dsh-asset-library` 加入该 profile 的 `dsh.profile.bundles`。图形界面的“添加插件”默认完成安装并启用。

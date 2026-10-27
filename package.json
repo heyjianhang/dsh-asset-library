@@ -1,6 +1,6 @@
 {
   "name": "dsh-asset-library",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "素材库：可迁移的本地图片和视频库",
   "type": "module",
   "license": "MIT",

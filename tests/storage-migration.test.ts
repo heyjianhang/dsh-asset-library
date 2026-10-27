@@ -38,6 +38,7 @@ async function fixture() {
   const root = await mkdtemp(join(tmpdir(), "dsh-storage-")),
     secrets = new Map<string, S3Secret>();
   let key: string | undefined = "test-ark-secret-never-export";
+  let embeddingCalls = 0;
   const credentials = {
     read: async () => key,
     write: async (v: string) => {
@@ -57,16 +58,19 @@ async function fixture() {
   const service = new LibraryService(
     join(root, "machine"),
     credentials,
-    (async () =>
-      new Response(JSON.stringify({ data: { embedding: [1, 0, 0] } }), {
+    (async () => {
+      embeddingCalls++;
+      return new Response(JSON.stringify({ data: { embedding: [1, 0, 0] } }), {
         status: 200,
-      })) as typeof fetch,
+      });
+    }) as typeof fetch,
   );
   await service.init();
   return {
     root,
     service,
     credentials,
+    embeddingCalls: () => embeddingCalls,
     cleanup: async () => {
       await service.dispose();
       await rm(root, { recursive: true, force: true });
@@ -393,7 +397,7 @@ test("transfer queue cancellation, failed retry and restart preserve durable sta
   await resumed.dispose();
   await rm(root, { recursive: true, force: true });
 });
-test("S3 private upload, ranged preview, remote ZIP export and multipart use the official signed SDK", async () => {
+test("S3 signed transport and ZIP migration across local and different S3 targets preserve complete libraries", async () => {
   const f = await fixture(),
     objects = new Map<string, Buffer>(),
     parts = new Map<string, Map<number, Buffer>>();
@@ -533,6 +537,30 @@ test("S3 private upload, ranged preview, remote ZIP export and multipart use the
       ),
       png,
     );
+    await f.service.collection({
+      libraryId: id!,
+      action: "create",
+      name: "Keep collection",
+    });
+    const collectionId = (await f.service.snapshot()).collections.find(
+      (c) => c.libraryId === id && c.name === "Keep collection",
+    )!.id;
+    await f.service.editAsset({
+      libraryId: id!,
+      id: assetId,
+      tags: ["portable"],
+      notes: "preserved across storage",
+      collectionIds: [collectionId],
+    });
+    const preview = Buffer.from(
+      (
+        await f.service.media(
+          { libraryId: id!, id: assetId, preview: true },
+          signal(),
+        )
+      ).data,
+      "base64",
+    );
     const exported = await finish(
       f.service,
       (
@@ -571,7 +599,140 @@ test("S3 private upload, ranged preview, remote ZIP export and multipart use the
       ),
       png,
     );
-    await f.credentials.writeS3(connectionId(s3), {
+    // A local library exports without the old cloud credentials, even when S3 is the default.
+    const localExport = await finish(
+      f.service,
+      (
+        await f.service.startTransfer({
+          kind: "export",
+          libraryId: imported.result!,
+          path: f.root,
+        })
+      ).id,
+    );
+    const cases = [
+      {
+        label: "S3 to another S3",
+        zip: exported.result!,
+        bucket: "other-cloud",
+        prefix: "moved/cloud",
+      },
+      {
+        label: "local to S3",
+        zip: localExport.result!,
+        bucket: "from-local",
+        prefix: "moved/local",
+      },
+    ];
+    for (const [index, migration] of cases.entries()) {
+      const target = {
+        ...s3,
+        bucket: migration.bucket,
+        prefix: migration.prefix,
+      };
+      await f.service.saveSettings({
+        ...defaults,
+        storageMode: "s3",
+        s3: target,
+        accessKeyId: "destination-access",
+        secretAccessKey: "destination-secret",
+      });
+      const destination = join(f.root, `cloud-restored-${index}`);
+      const archive = await ingestZip(f.service, migration.zip);
+      const callsBeforeImport = f.embeddingCalls();
+      const job = await finish(
+        f.service,
+        (
+          await f.service.startTransfer({
+            kind: "import",
+            archiveId: archive,
+            path: destination,
+            storageMode: "s3",
+          })
+        ).id,
+      );
+      assert.notEqual(job.result, id, migration.label);
+      assert.notEqual(job.result, imported.result, migration.label);
+      const state = await until(
+        () => f.service.snapshot(),
+        (state) =>
+          state.tasks.some(
+            (t) =>
+              t.libraryId === job.result &&
+              ["completed", "failed"].includes(t.status),
+          ),
+      );
+      const task = state.tasks.find((t) => t.libraryId === job.result)!;
+      assert.equal(task.status, "completed", task.error ?? migration.label);
+      assert.equal(
+        f.embeddingCalls(),
+        callsBeforeImport,
+        "matching vectors must not be charged for again",
+      );
+      assert.deepEqual(
+        state.libraries.find((l) => l.id === job.result)!.storage,
+        { mode: "s3", s3: target },
+      );
+      const migrated = (
+        await f.service.search(
+          { query: "portable", libraryId: job.result, ai: true },
+          signal(),
+        )
+      ).hits[0];
+      assert.ok(migrated, migration.label);
+      assert.equal(migrated.notes, "preserved across storage");
+      assert.deepEqual(migrated.collectionIds, [collectionId]);
+      assert.equal(migrated.favorite, true);
+      assert.equal(migrated.status, "ready");
+      await assert.rejects(stat(join(destination, migrated.relativePath)), {
+        code: "ENOENT",
+      });
+      const objectPrefix = `/${target.bucket}/${target.prefix}/${job.result}/`;
+      assert.deepEqual(objects.get(objectPrefix + migrated.relativePath), png);
+      assert.deepEqual(
+        objects.get(objectPrefix + migrated.thumbnail!),
+        preview,
+      );
+      // Force preview reads through S3, rather than passing from the import cache.
+      await rm(join(destination, migrated.thumbnail!));
+      for (const isPreview of [false, true]) {
+        const bytes = Buffer.from(
+          (
+            await f.service.media(
+              { libraryId: job.result!, id: assetId, preview: isPreview },
+              signal(),
+            )
+          ).data,
+          "base64",
+        );
+        assert.deepEqual(bytes, isPreview ? preview : png);
+      }
+      // Changing defaults does not retarget an existing library, including after reopening it.
+      await f.service.saveSettings({ ...defaults, storageMode: "local" });
+      await f.service.library({ action: "close", id: job.result! });
+      await f.service.library({ action: "open", path: destination });
+      assert.deepEqual(
+        (await f.service.snapshot()).libraries.find((l) => l.id === job.result)!
+          .storage,
+        { mode: "s3", s3: target },
+      );
+      assert.deepEqual(
+        Buffer.from(
+          (
+            await f.service.media(
+              { libraryId: job.result!, id: assetId, preview: false },
+              signal(),
+            )
+          ).data,
+          "base64",
+        ),
+        png,
+      );
+    }
+    await f.service.saveSettings({
+      ...defaults,
+      storageMode: "s3",
+      s3,
       accessKeyId: "test-access",
       secretAccessKey: "test-secret",
     });
