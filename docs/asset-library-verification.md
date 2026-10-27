@@ -6,7 +6,7 @@
 
 本版将 Host/Client 与 source map 一起提交到 `lib/`，移除 `prepare`、`prepack` 生命周期构建；`npm run pack:release` 显式构建并打包。CI 重建后检查 `lib/` 无差异，分发检查拒绝安装构建钩子和未跟踪产物。业务、存储格式和凭据服务不变。
 
-本机类型检查、24 项业务测试与构建通过（S3 回环测试在允许本机监听的环境重跑通过）；分发清单检查和 tgz 打包通过。Git 无构建批准安装及加载验证待执行。FFmpeg/FFprobe 平台依赖本身的脚本批准仍遵循宿主流程。
+本机类型检查、24 项业务测试与构建通过（S3 回环测试在允许本机监听的环境重跑通过）；分发清单检查和 tgz 打包通过。pnpm 11.25.0 在独立目录安装本地 Git 提交与真实私有 GitHub 提交 `065e9c1`，均未给本插件加入 allowBuilds，安装 exitCode=0。Host 实际 import、Client ModuleLoader 注册和安装产物 SHA-256 与本地构建一致；修复提交的 GitHub CI 全部通过。固定安装标签为 `v0.6.7`。FFmpeg/FFprobe 平台依赖本身的脚本批准仍遵循宿主流程。
 
 ## 0.6.6 原生设置与跨存储 ZIP 复核（2026-10-27）
 
