@@ -163,6 +163,8 @@ export const zh = {
   s3Help: "原文件和预览存入 S3，索引保存在本机。",
   s3Connection: "S3 连接",
   s3Endpoint: "Endpoint",
+  s3AllowHttp: "允许 HTTP（不加密）",
+  s3AllowHttpHelp: "HTTP 不加密，凭据与素材可能被截获。",
   s3Bucket: "Bucket",
   s3Region: "区域",
   s3Prefix: "对象前缀",
@@ -198,6 +200,9 @@ export const zh = {
 export type Key = keyof typeof zh;
 export const en: Record<Key, string> = {
   ...zh,
+  s3AllowHttp: "Allow HTTP (unencrypted)",
+  s3AllowHttpHelp:
+    "HTTP is unencrypted; credentials and media may be intercepted.",
   title: "Asset library",
   storageSettings: "Storage",
   importStorage: "Storage after import",

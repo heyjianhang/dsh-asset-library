@@ -46,9 +46,12 @@ export function validateS3(c: S3Config) {
       );
     if (
       u.protocol === "http:" &&
-      !["localhost", "127.0.0.1", "[::1]"].includes(u.hostname)
+      !["localhost", "127.0.0.1", "[::1]"].includes(u.hostname) &&
+      !c.allowInsecureHttp
     )
-      throw new WorkError("远程 S3 Endpoint 必须使用 HTTPS");
+      throw new WorkError(
+        "远程 S3 Endpoint 使用 HTTP，请开启“允许 HTTP（不加密）”或改用 HTTPS",
+      );
   }
   if (
     c.prefix.split("/").some((x) => x === "." || x === "..") ||

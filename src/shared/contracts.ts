@@ -9,6 +9,7 @@ export const s3Schema = z.object({
   bucket: z.string().trim().max(255).default(""),
   prefix: z.string().trim().max(500).default("asset-library"),
   forcePathStyle: z.boolean().default(true),
+  allowInsecureHttp: z.boolean().default(false),
 });
 export type S3Config = z.infer<typeof s3Schema>;
 export const storageSchema = z.discriminatedUnion("mode", [
@@ -103,6 +104,7 @@ export const settingsSchema = z.object({
     bucket: "",
     prefix: "asset-library",
     forcePathStyle: true,
+    allowInsecureHttp: false,
   }),
 });
 export const searchInput = z.object({

@@ -2,22 +2,22 @@
 
 DSH 原生插件：管理本地或 S3 中的图片、视频，用文件名、标签、备注或火山多模态向量搜索。本机保存索引，一个文件夹对应一个库；ZIP 可完整迁移。点素材打开右侧详情；收藏夹按项目或用途整理，同一素材可归入多个收藏夹，不重复复制原文件。
 
-当前版本 0.7.0 内置素材库助手，未发布到 npm。目标宿主 DSH 0.2.1-rc.3，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
+当前版本 0.7.1 内置素材库助手，未发布到 npm。目标宿主 DSH 0.2.1-rc.3，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
 
 ## 安装与使用
 
 在 DSH 的“插件 → 添加插件”中，可以填入下面任意一种安装来源：
 
-- 本机安装包：构建好的 `dsh-asset-library-0.7.0.tgz` 的绝对路径。
+- 本机安装包：构建好的 `dsh-asset-library-0.7.1.tgz` 的绝对路径。
 - 本机源码目录：先在仓库执行 `npm ci && npm run build`，再填入仓库的绝对路径。
-- GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。仓库现已公开，可直接使用；推荐固定版本：`https://github.com/heyjianhang/dsh-asset-library.git#v0.7.0`。
+- GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。推荐固定版本：`https://github.com/heyjianhang/dsh-asset-library.git#v0.7.1`。
 
 仓库已提交构建好的 `lib/`，Git 安装直接使用 Host/Client 产物，不执行本插件的构建脚本，也不需要为插件添加 `allowBuilds`。直接输入 `dsh-asset-library` 会访问 npm；本项目尚未发布到 npm，不能用裸包名安装。
 
 CLI 安装本地包：
 
 ```sh
-dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.7.0.tgz
+dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.7.1.tgz
 ```
 
 CLI `add` 安装依赖后，还需在插件页启用该 bundle；如果自行管理 profile，则将 `dsh-asset-library` 加入该 profile 的 `dsh.profile.bundles`。图形界面的“添加插件”默认完成安装并启用。
@@ -85,7 +85,7 @@ API Key 保存在本机 DSH credentials，不写进库文件。AI 索引把素�
 
 本地模式可选择新素材库的默认父文件夹，新建库时自动建议独立子文件夹；已有库不移动。每次新建或导入 ZIP 仍可单独选择模式与位置。
 
-S3 模式填写 Endpoint、区域、Bucket、对象前缀、Access Key ID、Secret Access Key；支持可选 Session Token 和路径风格。AWS 可留空 Endpoint；远程 Endpoint 要求 HTTPS，只有本机测试允许 HTTP。Bucket 需预先创建。“测试 S3 连接”验证 Bucket 访问；实际读写权限在传输时校验。上传与下载通过宿主执行，浏览器不接触 S3 密钥。分片上传需允许 PutObject、GetObject、AbortMultipartUpload；连接测试使用 HeadBucket。
+S3 模式填写 Endpoint、区域、Bucket、对象前缀、Access Key ID、Secret Access Key；支持可选 Session Token 和路径风格。AWS 可留空 Endpoint；远程 Endpoint 默认要求 HTTPS；使用 HTTP 的 MinIO 时，需在地址下方显式开启“允许 HTTP（不加密）”。HTTP 不加密，凭据与素材可能被截获；建议配置 HTTPS。本机回环测试仍可使用 HTTP。开关随连接保存，并由新建或导入的 S3 库继承；旧库继续使用原有存储绑定。Bucket 需预先创建。“测试 S3 连接”验证 Bucket 访问；实际读写权限在传输时校验。上传与下载通过宿主执行，浏览器不接触 S3 密钥。分片上传需允许 PutObject、GetObject、AbortMultipartUpload；连接测试使用 HeadBucket。
 
 每个库固定自己的连接地址和前缀，后来修改默认连接不会移动旧库。凭据按连接保存到 DSH credentials，原件、预览在私有 Bucket，本机保留 SQLite 索引和可重建预览缓存。索引处理时暂存原文件，S3 上传确认成功后移除本地原件；失败仍保留文件，修正配置后在任务中心重试。不是跨电脑同步库，不允许多个电脑直接共享同一份 SQLite。
 

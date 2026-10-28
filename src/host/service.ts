@@ -56,6 +56,7 @@ export const defaults: Settings = {
     bucket: "",
     prefix: "asset-library",
     forcePathStyle: true,
+    allowInsecureHttp: false,
   },
 };
 type Registry = {

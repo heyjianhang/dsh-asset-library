@@ -272,6 +272,19 @@ function SettingsForm(p: SharedProps & { initial: Settings }) {
                   </span>
                 </div>
                 {s3input("endpoint", "s3Endpoint", "https://s3.example.com")}
+                <div className={css.settingRow}>
+                  <div className={css.settingRowText}>
+                    <span>{p.t("s3AllowHttp")}</span>
+                    <p>{p.t("s3AllowHttpHelp")}</p>
+                  </div>
+                  <Switch
+                    checked={value.s3.allowInsecureHttp}
+                    onChange={(checked) =>
+                      change("s3", { ...value.s3, allowInsecureHttp: checked })
+                    }
+                    label={p.t("s3AllowHttp")}
+                  />
+                </div>
                 <div className={css.twoColumns}>
                   {s3input("bucket", "s3Bucket")}
                   {s3input("region", "s3Region", "us-east-1")}
