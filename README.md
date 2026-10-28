@@ -2,22 +2,22 @@
 
 DSH 原生插件：管理本地或 S3 中的图片、视频，用文件名、标签、备注或火山多模态向量搜索。本机保存索引，一个文件夹对应一个库；ZIP 可完整迁移。点素材打开右侧详情；收藏夹按项目或用途整理，同一素材可归入多个收藏夹，不重复复制原文件。
 
-当前版本 0.6.8 为试用版，未发布到 npm。目标宿主 DSH 0.2.1-rc.3，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
+当前版本 0.7.0 内置素材库助手，未发布到 npm。目标宿主 DSH 0.2.1-rc.3，Node ≥22.19。[验证范围](docs/asset-library-verification.md)。
 
 ## 安装与使用
 
 在 DSH 的“插件 → 添加插件”中，可以填入下面任意一种安装来源：
 
-- 本机安装包：构建好的 `dsh-asset-library-0.6.8.tgz` 的绝对路径。
+- 本机安装包：构建好的 `dsh-asset-library-0.7.0.tgz` 的绝对路径。
 - 本机源码目录：先在仓库执行 `npm ci && npm run build`，再填入仓库的绝对路径。
-- GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。仓库现已公开，可直接使用；推荐固定版本：`https://github.com/heyjianhang/dsh-asset-library.git#v0.6.8`。
+- GitHub：`https://github.com/heyjianhang/dsh-asset-library.git`。仓库现已公开，可直接使用；推荐固定版本：`https://github.com/heyjianhang/dsh-asset-library.git#v0.7.0`。
 
 仓库已提交构建好的 `lib/`，Git 安装直接使用 Host/Client 产物，不执行本插件的构建脚本，也不需要为插件添加 `allowBuilds`。直接输入 `dsh-asset-library` 会访问 npm；本项目尚未发布到 npm，不能用裸包名安装。
 
 CLI 安装本地包：
 
 ```sh
-dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.6.8.tgz
+dsh plugin --profile YOUR_PROFILE add /absolute/path/dsh-asset-library-0.7.0.tgz
 ```
 
 CLI `add` 安装依赖后，还需在插件页启用该 bundle；如果自行管理 profile，则将 `dsh-asset-library` 加入该 profile 的 `dsh.profile.bundles`。图形界面的“添加插件”默认完成安装并启用。
@@ -38,9 +38,30 @@ docs/                 设计、迁移与验证记录
 cordis.patch.yml      DSH 插件加载入口
 package.json          插件元数据、依赖和脚本
 lib/                  随 Git 分发的构建产物，CI 校验与源码一致
+skills/               随插件内置的素材库助手 Skill
 ```
 
 开发资料只随源码仓库保留，不进入安装包。素材库数据、API Key、S3 凭据、测试 profile 和个人素材位于仓库之外。`template` 远程仅记录开发工具箱来源，`origin` 指向此插件的独立仓库。
+
+## 对话操作素材库
+
+安装并启用本版后，“素材库助手”会自动注册到 DSH 技能目录，无需另外安装 MCP 或复制文件。直接对话或输入 `/asset-library-assistant`：
+
+- “把 /绝对路径/拍摄素材 导入到产品素材库，保留原文件。”
+- “看看刚导入的图片，按画面打标签，归入现有收藏夹。”
+- “帮我找傍晚海边的镜头，告诉我视频里的时间段。”
+
+文本与看图理解复用 DSH 当前模型；按画面分类需要支持图片的模型。语义检索与索引使用素材库中配置的嵌入模型。文件导入和 AI 索引分开报告状态，任务中心可暂停、恢复、取消与重试。
+
+| 工具 | 能力 |
+| --- | --- |
+| asset_library_list / manage | 查看库、分类与可用状态，创建/打开/关闭库 |
+| asset_library_import / jobs | 递归扫描、后台导入、去重、进度和每文件结果 |
+| asset_library_search / inspect | 关键词/语义搜索、原生图片附件和视频指定时间抽帧 |
+| asset_library_update / collections | 批量修改标签、名称、备注和收藏夹归属，管理收藏夹 |
+| asset_library_index | 为指定素材排队建立或重建索引 |
+
+完整工作流与边界见 [内置 Skill](skills/asset-library-assistant/SKILL.md)，实现与验证见 [素材库助手](docs/agent-assistant.md)。工具是否可调用仍遵从 DSH 当前 Agent 模式与权限。
 
 ## 使用
 

@@ -5,7 +5,7 @@ import {
 } from "@deepseek-ai/dsh-typert-protocol";
 import type {} from "@deepseek-ai/dsh-typert-registry";
 import { credentialKey } from "@deepseek-ai/dsh-credentials";
-import { defineTool } from "@deepseek-ai/dsh-tools";
+import { registerAssistant } from "./assistant.ts";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { contribution, endpoints, type Method } from "../shared/contracts.ts";
@@ -99,55 +99,5 @@ export async function apply(ctx: Context, config: { dataDir?: string } = {}) {
       invocations: contribution.descriptors,
     }),
   );
-  ctx.inject(["tools"], (ctx) => {
-    ctx.tools.register(
-      defineTool({
-        name: "asset_library_list",
-        description:
-          "列出本机打开的素材库，搜索前可获取库 ID。不返回 API Key。",
-        parameters: {},
-        output: {
-          schema: { type: "string" },
-          render: (_args, value) => [{ type: "text", text: value }],
-        },
-        execute: async () =>
-          JSON.stringify((await library.snapshot()).libraries),
-      }),
-    );
-    ctx.tools.register(
-      defineTool({
-        name: "asset_library_search",
-        description:
-          "搜索用户本地图片和视频。默认匹配文件名、标签和备注；ai=true 使用火山语义搜索，会产生模型调用。返回库 ID、素材 ID、相对路径和视频命中时间段。",
-        parameters: {
-          query: {
-            type: "string",
-            required: true,
-            description: "关键词或画面描述",
-          },
-          library_id: {
-            type: "string",
-            description: "可选库 ID，省略则搜索全部库",
-          },
-          ai: { type: "boolean", description: "是否使用 AI 搜索，默认 false" },
-        },
-        output: {
-          schema: { type: "string" },
-          render: (_args, value) => [{ type: "text", text: value }],
-        },
-        execute: async (args) =>
-          JSON.stringify(
-            await library.search(
-              {
-                query: args.query,
-                ...(args.library_id ? { libraryId: args.library_id } : {}),
-                ai: args.ai ?? false,
-                limit: 20,
-              },
-              AbortSignal.timeout(65000),
-            ),
-          ),
-      }),
-    );
-  });
+  await registerAssistant(ctx, library);
 }

@@ -198,6 +198,7 @@ export const endpoints = {
       .object({
         libraryId: z.string(),
         id: z.string(),
+        name: z.string().trim().min(1).max(255).optional(),
         tags: z.array(z.string().trim().min(1).max(80)).max(50).optional(),
         notes: z.string().max(10000).optional(),
         favorite: z.boolean().optional(),

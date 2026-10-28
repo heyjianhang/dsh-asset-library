@@ -6,9 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: calc(var(--dsh-frame-top-clearance, 0px) + 16px) 12px 16px;
+  min-height: 0;
+  padding: 16px 12px;
   color: var(--dsw-alias-label-primary);
-  background: var(--dsw-specific-sidebar-fill);
+  background: transparent;
 }
 .sidebar > button {
   justify-content: flex-start;
@@ -26,6 +27,21 @@
   flex: none;
   width: 36px;
   padding: 0;
+  -webkit-app-region: no-drag;
+}
+:global(html[data-platform="darwin"]) .sidebar {
+  padding-top: calc(var(--dsh-frame-top-clearance, 48px) + 16px);
+}
+:global(html[data-windows-titlebar]) .sidebarToggle {
+  position: fixed;
+  top: calc((var(--dsh-windows-titlebar-height) - 28px) / 2);
+  left: 12px;
+  z-index: 30;
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  border-radius: var(--dsw-radius-sm);
+  color: var(--dsw-alias-label-secondary);
 }
 .railDivider {
   flex-shrink: 0;
@@ -999,6 +1015,9 @@
 }
 .sidebarCompact svg {
   flex-shrink: 0;
+}
+:global(html[data-windows-titlebar]) .canvas {
+  padding-top: 28px;
 }
 .saveError small {
   display: block;

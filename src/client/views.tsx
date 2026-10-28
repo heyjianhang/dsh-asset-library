@@ -221,7 +221,7 @@ export function Sidebar(p: SidebarProps) {
           restoreToggleFocus.current = true;
           p.onToggle();
         }}
-        icon={<IconPanelLeftOutlineRegular size={18} />}
+        icon={<IconPanelLeftOutlineRegular size={16} />}
       />
     </Tooltip>
   );

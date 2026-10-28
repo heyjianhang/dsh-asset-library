@@ -9,6 +9,7 @@ const required = [
   manifest.dsh.bundle.patch,
   "README.md",
   "LICENSE",
+  "skills/asset-library-assistant/SKILL.md",
 ].map((path) => path.replace(/^\.\//, ""));
 for (const path of required) assert((await readFile(path)).length > 0, path);
 const output = execFileSync(process.platform === "win32" ? "npm.cmd" : "npm", [
@@ -19,7 +20,7 @@ const files = pack.files.map(({ path }) => path);
 for (const path of required) assert(files.includes(path), `Missing ${path}`);
 for (const path of files) {
   assert(
-    /^(lib\/|docs\/|README\.md$|LICENSE$|package\.json$|cordis\.patch\.yml$)/.test(path),
+    /^(lib\/|docs\/|skills\/|README\.md$|LICENSE$|package\.json$|cordis\.patch\.yml$)/.test(path),
     `Unexpected published file: ${path}`,
   );
   assert(!/(^|\/)(\.env|credentials|\.dsh|node_modules)(\/|\.|$)|\.(sqlite|db|zip)$/i.test(path), path);

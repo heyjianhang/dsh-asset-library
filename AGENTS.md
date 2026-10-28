@@ -48,6 +48,8 @@ Project: dsh-asset-library, based on heyjianhang/dsh-plugin-devkit.
 
 用户补充：素材库侧栏支持展开和折叠，使用 DSH 原生布局接口；展开时顶部有收起按钮，折叠后保留图标导航和展开入口。
 
+用户补充：进入素材库后切换为素材库专用导航，返回后恢复宿主主导航，不将两套菜单上下堆叠。侧栏背景由宿主窗口材质负责，桌面窗口控件按平台公开布局契约避让。
+
 项目选择：库→一层逻辑收藏夹，多对多引用，不重复文件；标签描述内容。共享接口由 src/shared/contracts.ts 维护，Host 是 UI/工具唯一业务所有者。密钥仅存 DSH credentials，不写进库。手动搬移目录前关闭并 checkpoint；完整 ZIP 使用受控快照导出。
 
 目标 DSH 0.2.1-rc.3 / Cordis 4.0.5。UI 使用宿主 Primitives/Slots/Locale/token。对现有库升级须保留数据；不修改开发机个人 DSH profile 或用户宿主 checkout。安装验证使用独立 DSH_HOME/profile。
@@ -83,3 +85,5 @@ Node ≥22.19，npm + package-lock.json：
 项目分发约定：lib/ 构建产物随 Git 提交；不得添加 prepare、prepack 等安装生命周期构建钩子。修改运行源码后重建 lib/ 并一同提交，CI 校验产物无差异，避免私有 Git 安装依赖插件构建白名单。
 
 兼容基线：开发依赖与运行声明固定为 DSH 0.2.1-rc.3。发布前运行 npm run check:compatibility，使用已安装官方 app-boot 的真实兼容检查器；不得仅放宽版本范围或配置 allow-version 来使安装通过。
+
+对话 Agent 能力随包注册原生工具与 `asset-library-assistant` Skill，工作流只维护在 [内置技能](skills/asset-library-assistant/SKILL.md)。业务仍由 LibraryService 所有；新增工具不得直接改库或泄露凭据。导入队列本机持久化，完成不代表索引完成；后台预览更新只合并媒体字段，不能覆盖并发元数据编辑。设计与验证入口见 [素材库助手](docs/agent-assistant.md)。

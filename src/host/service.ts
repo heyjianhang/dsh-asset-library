@@ -14,7 +14,9 @@ import {
 import { join, extname, basename, isAbsolute } from "node:path";
 import { LibraryDB, atomicJSON, safePath, now } from "./storage.ts";
 import { embed, fingerprint, similarity, WorkError } from "./ark.ts";
-import { prepare, imageData, mediaTypes, type Segment } from "./media.ts";
+import { prepare, imageData, mediaTypes, run, type Segment } from "./media.ts";
+import { Imports } from "./imports.ts";
+import { z } from "zod";
 import {
   Objects,
   connectionId,
@@ -89,11 +91,48 @@ export class LibraryService {
   private timer?: ReturnType<typeof setInterval>;
   private queryCache = new Map<string, number[]>();
   private transfers: Transfers;
+  readonly imports: Imports;
   constructor(
     readonly dataDir: string,
     readonly credentials: Credentials,
     private readonly fetcher: typeof fetch = fetch,
   ) {
+    this.imports = new Imports(join(dataDir, "imports"), {
+      excludedRoots: () => [
+        this.dataDir,
+        ...this.state.libraries.map((l) => l.path),
+      ],
+      validate: (id, ids) => {
+        const lib = this.get(id);
+        if (this.exporting.has(id))
+          throw new WorkError("素材库正在导出，请完成后再导入");
+        if (ids.some((id) => !lib.collections().some((c) => c.id === id)))
+          throw new WorkError("收藏夹不存在或不属于当前素材库");
+      },
+      begin: async (libraryId, name, size) =>
+        (await this.beginUpload({ libraryId, name, size })).id,
+      ready: (libraryId, id) => {
+        const row = this.get(libraryId)
+          .db.prepare("SELECT * FROM uploads WHERE id=?")
+          .get(id) as Upload | undefined;
+        return !!(row?.result || row?.prepared);
+      },
+      chunk: async (libraryId, id, offset, data) =>
+        (
+          await this.uploadChunk({
+            libraryId,
+            id,
+            offset,
+            data: data.toString("base64"),
+          })
+        ).offset,
+      finish: (libraryId, id, signal) =>
+        this.finishUpload({ libraryId, id }, signal),
+      decorate: async (libraryId, id, tags, collectionIds) => {
+        if (tags.length || collectionIds.length)
+          await this.editAsset({ libraryId, id, tags, collectionIds });
+      },
+    });
     this.transfers = new Transfers(
       join(dataDir, "transfers"),
       async (job, signal, report) => {
@@ -170,6 +209,7 @@ export class LibraryService {
       }
     }
     await this.transfers.init();
+    await this.imports.init();
     this.timer = setInterval(() => this.tick(), 800);
     this.timer.unref();
     this.tick();
@@ -221,6 +261,7 @@ export class LibraryService {
       ),
       tasks: [...this.libraries.values()]
         .flatMap((l) => l.tasks())
+        .concat(this.imports.tasks())
         .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
         .slice(0, 500),
       keyConfigured: !!(await this.credentials.read()),
@@ -251,13 +292,16 @@ export class LibraryService {
               text: `${j.kind === "export" ? "导出" : "导入"}${j.status === "completed" ? "完成" : "失败"}：${j.name}${j.error ? "。" + j.error : ""}`,
               createdAt: j.updatedAt,
             })),
-        ),
+        )
+        .concat(this.imports.notices()),
     };
   }
   async library(r: Input<"library">) {
     return this.exclusive("registry", async () => {
       if (r.action === "close") {
         if (!r.id) throw new WorkError("请选择素材库");
+        if (this.imports.busy(r.id))
+          throw new WorkError("请先暂停或取消文件导入任务再关闭素材库");
         if (
           this.transfers.rows.some(
             (j) =>
@@ -368,6 +412,8 @@ export class LibraryService {
   async startTransfer(r: Input<"startTransfer">) {
     if (r.kind === "export") {
       if (!r.libraryId) throw new WorkError("请选择导出的素材库");
+      if (this.imports.busy(r.libraryId))
+        throw new WorkError("请先暂停文件导入任务再导出素材库");
       const lib = this.get(r.libraryId);
       return this.transfers.add({
         kind: "export",
@@ -393,36 +439,200 @@ export class LibraryService {
   async editAsset(raw: Input<"editAsset">) {
     const r = endpoints.editAsset.input.parse(raw);
     return this.exclusive("library:" + r.libraryId, async () => {
+      const lib = this.get(r.libraryId);
+      return lib.transaction(() => this.applyEdit(lib, r));
+    });
+  }
+  private applyEdit(lib: LibraryDB, r: Input<"editAsset">) {
+    const asset = lib.asset(r.id);
+    let ids = r.collectionIds ? [...new Set(r.collectionIds)] : undefined;
+    if (!ids && r.favorite !== undefined)
+      ids = r.favorite
+        ? asset.collectionIds.length
+          ? asset.collectionIds
+          : [lib.ensureDefaultCollection()]
+        : [];
+    if (ids && ids.some((id) => !lib.collections().some((c) => c.id === id)))
+      throw new WorkError("收藏夹不存在或不属于当前素材库");
+    lib.saveAsset({
+      ...asset,
+      ...(r.name !== undefined ? { name: r.name } : {}),
+      ...(r.tags !== undefined ? { tags: [...new Set(r.tags)] } : {}),
+      ...(r.notes !== undefined ? { notes: r.notes } : {}),
+      ...(ids !== undefined ? { favorite: ids.length > 0 } : {}),
+    });
+    if (ids) {
+      lib.db
+        .prepare("DELETE FROM collection_assets WHERE asset_id=?")
+        .run(r.id);
+      for (const id of ids)
+        lib.db
+          .prepare("INSERT INTO collection_assets VALUES(?,?)")
+          .run(id, r.id);
+    }
+    return lib.asset(r.id);
+  }
+  async editBatch(raw: unknown, signal: AbortSignal) {
+    const r = z
+      .object({
+        libraryId: z.string(),
+        changes: z
+          .array(
+            z
+              .object({
+                id: z.string(),
+                name: z.string().trim().min(1).max(255).optional(),
+                notes: z.string().max(10000).optional(),
+                addTags: z
+                  .array(z.string().trim().min(1).max(80))
+                  .max(50)
+                  .default([]),
+                removeTags: z.array(z.string()).max(50).default([]),
+                addCollections: z.array(z.string()).max(100).default([]),
+                removeCollections: z.array(z.string()).max(100).default([]),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(100),
+      })
+      .strict()
+      .parse(raw);
+    return this.exclusive("library:" + r.libraryId, async () => {
+      signal.throwIfAborted();
+      const lib = this.get(r.libraryId);
+      if (new Set(r.changes.map((c) => c.id)).size !== r.changes.length)
+        throw new WorkError("同一批次请勿重复修改同一素材");
+      const patches = r.changes.map((c) => {
+        const asset = lib.asset(c.id);
+        return endpoints.editAsset.input.parse({
+          libraryId: r.libraryId,
+          id: c.id,
+          ...(c.name !== undefined ? { name: c.name } : {}),
+          ...(c.notes !== undefined ? { notes: c.notes } : {}),
+          tags: [
+            ...new Set([
+              ...asset.tags.filter((t) => !c.removeTags.includes(t)),
+              ...c.addTags,
+            ]),
+          ],
+          collectionIds: [
+            ...new Set([
+              ...asset.collectionIds.filter(
+                (id) => !c.removeCollections.includes(id),
+              ),
+              ...c.addCollections,
+            ]),
+          ],
+        });
+      });
+      const ids = new Set(lib.collections().map((c) => c.id));
+      for (const p of patches)
+        if (p.collectionIds!.some((id) => !ids.has(id)))
+          throw new WorkError("收藏夹不存在或不属于当前素材库");
+      // One transaction: an invalid batch cannot leave half the assets changed.
+      return lib.transaction(() => patches.map((p) => this.applyEdit(lib, p)));
+    });
+  }
+  async inspectAsset(raw: unknown, signal: AbortSignal) {
+    const r = z
+      .object({
+        libraryId: z.string(),
+        id: z.string(),
+        frames: z.array(z.number().min(0).max(86400)).max(4).default([0]),
+      })
+      .strict()
+      .parse(raw);
+    return this.exclusive("library:" + r.libraryId, async () => {
+      signal.throwIfAborted();
       const lib = this.get(r.libraryId),
         asset = lib.asset(r.id);
-      let ids = r.collectionIds ? [...new Set(r.collectionIds)] : undefined;
-      if (!ids && r.favorite !== undefined)
-        ids = r.favorite
-          ? asset.collectionIds.length
-            ? asset.collectionIds
-            : [lib.ensureDefaultCollection()]
-          : [];
-      if (ids && ids.some((id) => !lib.collections().some((c) => c.id === id)))
-        throw new WorkError("收藏夹不存在或不属于当前素材库");
-      lib.transaction(() => {
-        lib.saveAsset({
-          ...asset,
-          ...(r.tags !== undefined ? { tags: [...new Set(r.tags)] } : {}),
-          ...(r.notes !== undefined ? { notes: r.notes } : {}),
-          ...(ids !== undefined ? { favorite: ids.length > 0 } : {}),
-        });
-        if (ids) {
-          lib.db
-            .prepare("DELETE FROM collection_assets WHERE asset_id=?")
-            .run(r.id);
-          for (const id of ids)
-            lib.db
-              .prepare("INSERT INTO collection_assets VALUES(?,?)")
-              .run(id, r.id);
+      const directory = join(this.dataDir, "inspection", lib.id, asset.id);
+      await mkdir(directory, { recursive: true });
+      const source = safePath(lib.root, asset.relativePath);
+      await this.objects(lib).hydrate(asset.relativePath, signal);
+      const metadata = JSON.parse(
+        await run(
+          this.state.settings.ffprobePath,
+          [
+            "-v",
+            "error",
+            "-show_streams",
+            "-show_format",
+            "-of",
+            "json",
+            source,
+          ],
+          signal,
+        ),
+      );
+      const video = metadata.streams?.find(
+        (s: { codec_type: string }) => s.codec_type === "video",
+      );
+      const duration = Number(metadata.format?.duration) || asset.duration;
+      const times =
+        asset.kind === "image"
+          ? [0]
+          : [...new Set(r.frames.length ? r.frames : [0])];
+      if (duration && times.some((t) => t >= duration))
+        throw new WorkError("抽帧时间超出视频时长");
+      const frames = [];
+      for (const time of times) {
+        signal.throwIfAborted();
+        const path = join(directory, `${time}.jpg`);
+        if (!(await stat(path).catch(() => null))?.size) {
+          const temp = path + "." + randomUUID() + ".jpg";
+          try {
+            await run(
+              this.state.settings.ffmpegPath,
+              [
+                "-nostdin",
+                "-v",
+                "error",
+                "-y",
+                ...(asset.kind === "video" ? ["-ss", String(time)] : []),
+                "-i",
+                source,
+                "-frames:v",
+                "1",
+                "-vf",
+                "scale=1024:1024:force_original_aspect_ratio=decrease",
+                temp,
+              ],
+              signal,
+            );
+            signal.throwIfAborted();
+            await rename(temp, path);
+          } finally {
+            await unlink(temp).catch(() => {});
+          }
         }
-      });
-      return lib.asset(r.id);
+        frames.push({ time, path });
+      }
+      return {
+        asset,
+        width: video?.width ?? null,
+        height: video?.height ?? null,
+        duration: duration ?? null,
+        frames,
+      };
     });
+  }
+  async indexAssets(libraryId: string, ids: string[], signal: AbortSignal) {
+    const input = z.array(z.string()).min(1).max(100).parse(ids);
+    const lib = this.get(libraryId);
+    for (const id of input) lib.asset(id);
+    const tasks = [];
+    for (const id of new Set(input)) {
+      signal.throwIfAborted();
+      const task = lib.tasks().find((t) => t.assetId === id);
+      if (task) {
+        if (!["queued", "running", "retrying"].includes(task.status))
+          await this.task({ libraryId, id: task.id, action: "retry" });
+        tasks.push(task.id);
+      }
+    }
+    return { taskIds: tasks };
   }
   async collection(r: Input<"collection">) {
     const lib = this.get(r.libraryId);
@@ -689,6 +899,7 @@ export class LibraryService {
     }
   }
   async acknowledge(r: Input<"acknowledge">) {
+    await this.imports.acknowledge(r.ids);
     await this.transfers.acknowledge(r.ids);
     for (const lib of this.libraries.values())
       for (const id of r.ids)
@@ -696,6 +907,10 @@ export class LibraryService {
     return { ok: true as const };
   }
   async task(r: Input<"task">) {
+    if (this.imports.has(r.id)) {
+      await this.imports.control(r.id, r.action, r.libraryId);
+      return { ok: true as const };
+    }
     const lib = this.get(r.libraryId),
       task = lib.tasks().find((t) => t.id === r.id);
     if (!task) throw new WorkError("任务不存在");
@@ -918,7 +1133,7 @@ export class LibraryService {
         segments = result.segments;
         await atomicJSON(segmentsPath, { fingerprint: fp, segments });
         asset = {
-          ...asset,
+          ...lib.asset(asset.id),
           thumbnail: result.thumbnail,
           duration: result.duration,
         };
@@ -1040,6 +1255,7 @@ export class LibraryService {
   async dispose() {
     this.closed = true;
     clearInterval(this.timer);
+    await this.imports.dispose();
     await this.transfers.dispose();
     for (const job of this.running.values()) job.abort.abort();
     await Promise.allSettled([...this.running.values()].map((x) => x.promise));

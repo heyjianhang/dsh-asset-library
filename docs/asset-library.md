@@ -48,9 +48,11 @@ src/shared/contracts.ts 是 Host/Client 共用的 Zod 契约与 Remote 描述表
 
 Client index.tsx 管 slots/store/订阅生命周期；views.tsx 管原生界面；CSS Modules 使用宿主 token。使用 sidebar.panellist 与同 ID main，进入时注册优先级 -50 的根 sidebar，离开释放；返回选择之前的 panel ID 或 null 会话。右侧素材详情属于插件主面板布局，不覆盖宿主会话工具侧栏。公共 Modal/Button/Input/Menu/Switch/Toast 来自 DSH Primitives。
 
+素材库专用导航不注入 sidebar.workspaces，避免与宿主的品牌、新建会话和全局导航堆叠。根侧栏透明，继承 AppFrame 的窗口材质；macOS 使用公开的 data-platform 与 frame-top-clearance 避让窗口顶栏。Windows 的 AppFrame 已在列布局外预留标题栏，插件不重复增加该高度；折叠按钮按 data-windows-titlebar 的 28px 标题栏控件位置布局，不遮住应用/编辑菜单。
+
 接口通过共享表派生显式描述，Host typert.register(invocations)，Client remote.$mount。它是本项目选择，不是 Typert 生成器产物；不另外启动 REST 服务。
 
-asset_library_list 返回打开的库；asset_library_search 接收 query、可选 library_id 与 ai（默认 false），返回 ID、相对路径和视频时间。UI 与工具复用检索服务。真实对话中的工具调度尚未测试。
+对话能力通过原生 asset_library_* 工具及随包注册的素材库助手 Skill 提供，包括库管理、递归导入、看图/视频抽帧、批量整理、检索与任务控制，完整契约和限制见 [素材库助手](agent-assistant.md)。
 
 ## 存储与恢复
 
